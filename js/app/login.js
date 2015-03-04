@@ -10,7 +10,7 @@ define(function(require) {
     		dataType: "json"
     	}).done(function(data) {
     		if(data.state) {
-    			location.href = "index.html";
+    			location.href = "portal.html";
     		} else {
     			console.log("login failed");
     		}
