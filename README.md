@@ -6,8 +6,8 @@
 后端采用C++实现，只通过JSON与前端交互
 
 前端采用的技术：
-  （1）jquery
-  （2）underscore
-  （3）require
-  （4）backbone
-  （5）handlebars
+    （1）jquery
+    （2）underscore
+    （3）require
+    （4）backbone
+    （5）handlebars
