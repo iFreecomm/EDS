@@ -1,0 +1,63 @@
+/********logo图片定位********/
+.logo {
+	position: absolute;
+	left: 50px;
+	top: 20px;
+}
+/********登录表单********/
+.login-box {
+	width: 800px;
+	height: 635px;
+	padding-left: 220px;
+	padding-top: 135px;
+	margin: auto;
+	background: url(../img/login/login.png) no-repeat 0 0;
+}
+/********用户名输入框********/
+#username {
+	width: 380px;
+	height: 76px;
+	line-height: 26px;
+	padding: 25px 75px;
+	border: none;
+	outline: none;
+	background: url(../img/login/user1.png) no-repeat 0 0;
+}
+#username:focus {
+	background-image: url(../img/login/user2.png);
+}
+/********密码输入框********/
+#password {
+	width: 380px;
+	height: 76px;
+	line-height: 26px;
+	padding: 25px 75px;
+	border: none;
+	outline: none;
+	background: url(../img/login/pwd1.png) no-repeat 0 0;
+}
+#password:focus {
+	background-image: url(../img/login/pwd2.png);
+}
+/********登录/重置按钮********/
+.input-btn {
+	width: 169px;
+	height: 59px;
+	padding: 0;
+	border: none;
+	margin-top: 25px;
+	outline: none;
+	background: url(../img/login/btn1.png) no-repeat 0 0;
+	color: #FFF;
+	font-size: 20px;
+	font-weight: bold;
+}
+.input-btn:hover {
+	background-image: url(../img/login/btn2.png);
+}
+input[type=submit] {
+	margin-left: 12px;
+}
+input[type=reset] {
+	margin-left: 15px;
+}

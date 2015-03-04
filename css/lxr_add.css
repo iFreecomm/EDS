@@ -1,0 +1,26 @@
+/******表单样式******/
+.form-container {
+	position: relative;
+	width: 60%;
+	min-width: 800px;
+	max-width: 1050px;
+	padding-top: 50px;
+	padding-right: 150px;
+	margin: 0 auto;
+}
+.form-cell {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.form-cell[hclx] {
+	display: none;
+}
+.form-btns {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	width: 140px;
+}
+.input-btn {
+	margin-top: 10px;
+}

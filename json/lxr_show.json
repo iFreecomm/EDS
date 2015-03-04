@@ -1,0 +1,17 @@
+[
+	{
+		"name": "A",
+		"info": "asdasd",
+		"type": 1
+	},
+	{
+		"name": "B",
+		"info": "asdasd",
+		"type": 2
+	},
+	{
+		"name": "C",
+		"info": "asdasd<br/>asdas",
+		"type": 3
+	}
+]
