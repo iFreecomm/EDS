@@ -1,7 +1,7 @@
 /*************通用样式****************/
-html, body { width: 100%; height: 100%; }
-#wrapper { display: none; position:absolute; left: 0; top: 0; width: 100%; min-width: 1000px; height: 100%; }
-#wrapper-table { display: table; width: 100%; min-width: 1000px; min-height: 100%; background: url(../img/login/bg.png) no-repeat center; }
+html, body { width: 100%; height: 100%; min-width: 1000px; }
+#wrapper { width: 100%; height: 100%; }
+#wrapper-table { display: table; width: 100%; height: 100%; background: url(../img/login/bg.png) no-repeat center; }
 #wrapper-table-cell { display: table-cell; vertical-align: middle; }
 .tip { padding: 20px 50px; margin: 0; text-align: left; color: #353535; font-size: 18px; }
 .fixed { position: fixed; }

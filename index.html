@@ -19,7 +19,7 @@
 					<ul>
 						<li class="split"></li>
 						<li class="tab">
-							<a href="zkhy.html" target="mainFrame">
+							<a href="zkhy.html">
 								<img src="img/frame/icon/zkhy.png"/>
 								<p>召开会议</p>
 							</a>
@@ -33,7 +33,7 @@
 						</li>
 						<li class="split"></li>
 						<li class="tab">
-							<a href="lxr_show.html" target="mainFrame">
+							<a href="lxr_show.html">
 								<img src="img/frame/icon/dzb.png"/>
 								<p>地址本</p>
 							</a>
@@ -90,6 +90,15 @@
 					</ul>
 				</div>
 			</div>
+			<div id="container">
+				
+			</div>
 		</div>
+		<script src="js/lib/require.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			require(["./js/config"], function(config) {
+				require(["app/index"]);
+			});
+		</script>
 	</body>
 </html>

@@ -1,4 +1,5 @@
 define(function(require) {
+    	alert($({}).jquery);
     var Backbone = require("backbone"),
     	ModelBinder = require("modelbinder");
     

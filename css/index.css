@@ -1,90 +1,10 @@
-/********logo图片定位********/
-.logo {
-	position: absolute;
-	left: 50px;
-	top: 20px;
-}
-/********首页定位********/
-.index-box {
-	position: relative;
-	width: 100%;
-	max-width: 1440px;
-	height: 520px;
-	margin: auto;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-}
-/********7种背景颜色********/
-.index-box .bg1 { background-color: #419FB9; }
-.index-box .bg2 { background-color: #00C075; }
-.index-box .bg3 { background-color: #8DA847; }
-.index-box .bg4 { background-color: #E74C2E; }
-.index-box .bg5 { background-color: #199DDE; }
-.index-box .bg6 { background-color: #3E596A; }
-.index-box .bg7 { background-color: #EDB53C; }
-/********2种高度********/
-.index-box .height1 { height: 160px; }
-.index-box .line-height1 { line-height: 160px; }
-.index-box .height2 { height: 160px; }
-.index-box .line-height2 { line-height: 160px; }
-/********模块间距********/
-.index-box td {
-	border: 10px solid transparent;
-}
-/********3列表格的宽度********/
-.index-box .table1 {
-	display: inline-block;
-	width: 25%;
-}
-.index-box .table2,
-.index-box .table3 {
-	display: inline-block;
-	width: 25%;
-	margin-left: 50px;
-}
-.index-box table {
-	width: 100%;
-}
-/********模块内部元素样式********/
-.index-box a {
-	display: block;
-	text-decoration: none;
-	color: #FFF;
-}
-.index-box span {
-	margin-left: 14px;
-}
-.index-box img {
-	margin-top: 8px;
-}
-.index-box .colspan2 img {
-	margin-top: 0;
-}
-.index-box p {
-	margin-top: 5px;
-	margin-left: 20px;
-	text-align: left;
-}
-/********模块内部元素样式********/
-@media (max-width: 1024px) {
-	.index-box img {
-		width: 90px;
-		height: 90px;
-		margin-top: 15px;
-	}
-}
-
 /********二级页面动画层样式********/
 .header {
-	position: absolute;
-	width: 100%;
 	height: 94px;
 	background: url(../img/frame/header_bg.png) repeat-x 0 0;
 	overflow: hidden;
 }
 .header-logo {
-	width: 100%;
 	height: 100%;
 	padding-left: 250px;
 	background: url(../img/frame/logo.png) no-repeat 42px 10px;

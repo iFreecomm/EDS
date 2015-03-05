@@ -1,26 +1,15 @@
-(function($) {
-
-	var $wrapperTable = $("#wrapper-table");
-	var $wrapper = $("#wrapper");
-	var $back = $("#back");
-	var speed = 200;
-	
-	$wrapperTable.on("click", "a", function() {
-		$wrapper.fadeIn(speed).find("a[href='" + $(this).attr("href") + "']").addClass("active");
-		$wrapperTable.fadeOut(speed);
-	});
-	
-	$wrapper.on("click", "a", function() {
-		$wrapper.find("a").removeClass("active");
-		$(this).addClass("active");
-	});
-	
-	$back.click(function(e) {
-		e.preventDefault();
-		$wrapperTable.fadeIn(speed);
-		$wrapper.fadeOut(speed, function() {
-			$wrapper.find("a").removeClass("active")
-		});
-	});
-
-})(jQuery);
+define(function(require) {
+    var Backbone = require("backbone");
+    
+    var Router = Backbone.Router.extend({
+    	routes: {
+    		"*path": "load"
+    	},
+    	load: function(path) {
+    		alert(path);
+    	}
+    });
+    
+    new Router();
+    Backbone.history.start();
+});
