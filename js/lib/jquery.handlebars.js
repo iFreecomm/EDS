@@ -1,5 +1,6 @@
-(function($) {
-	
+define(function(require) {
+	var $ = require("jquery");
+	var Handlebars = require("handlebars");
 	var tmpls = {};
 	
 	$.fn.handlebars = function(tmpl, dataUrl, postData) {
@@ -35,5 +36,4 @@
 			});
 		}
 	};
-	
-})(jQuery);
+});

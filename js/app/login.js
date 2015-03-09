@@ -1,7 +1,6 @@
 define(function(require) {
-    	alert($({}).jquery);
-    var Backbone = require("backbone"),
-    	ModelBinder = require("modelbinder");
+    var Backbone = require("backbone");
+    require("stickit");
     
     Backbone.sync = function(method, model, callback) {
     	$.ajax({
@@ -21,12 +20,15 @@ define(function(require) {
     var LoginView = Backbone.View.extend({
         el: ".login-box",
         model: new Backbone.Model(),
-        _modelBinder: new ModelBinder(),
         initialize: function() {
-        	this._modelBinder.bind(this.model, this.el);
+        	this.stickit(this.model, {
+        		"#username": "username",
+        		"#password": "password",
+        		"[name=ah]": "ah"
+        	});
         },
         close: function() {
-        	this._modelBinder.unbind();
+        	this.unstickit();
         },
         events: {
             "click [type=submit]": "submit"

@@ -1,43 +1,29 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>显示联系人</title>
-		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="css/lxr_show.css"/>
-	</head>
-	<body>
-		<div id="mainContent"></div>
-		<script id="template" type="text/x-handlebars-template">
-			<div class="lxr-container justify-list">
-				<a class="justify-item lxr add" href="lxr_add.html">
-					<div class="lxr-head">添加联系人</div>
-					<div class="lxr-body"></div>
-				</a>
-				{{#each this}}
-					<a class="justify-item lxr {{typeToClass type}}" href="lxr_add.html">
-						<div class="lxr-head">{{name}}</div>
-						<div class="lxr-body">{{info}}</div>
-					</a>
-				{{/each}}
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-				<a class="justify-item lxr"></a>
-			</div>
-		</script>
-		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/handlebars-v2.0.0.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jquery.handlebars.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/lxr_show.js" type="text/javascript" charset="utf-8"></script>
-	</body>
-</html>
+<link rel="stylesheet" type="text/css" href="css/lxr_show.css"/>
+<div id="mainContent"></div>
+<script id="template" type="text/x-handlebars-template">
+	<div class="lxr-container justify-list">
+		<a class="justify-item lxr add" href="lxr_add.html">
+			<div class="lxr-head">添加联系人</div>
+			<div class="lxr-body"></div>
+		</a>
+		{{#each this}}
+			<a class="justify-item lxr {{typeToClass type}}" href="lxr_add.html">
+				<div class="lxr-head">{{name}}</div>
+				<div class="lxr-body">{{info}}</div>
+			</a>
+		{{/each}}
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+		<a class="justify-item lxr"></a>
+	</div>
+</script>
+<script type="text/javascript">
+	require(["app/lxr_show"]);
+</script>

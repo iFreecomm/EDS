@@ -6,7 +6,7 @@ define(function(require) {
     		"*path": "load"
     	},
     	load: function(path) {
-    		alert(path);
+    		$("#container").load(path);
     	}
     });
     
