@@ -1,36 +1,56 @@
 define(function(require) {
 	var Backbone = require("backbone");
 	var Handlebars = require("handlebars");
-	require("jquery.handlebars");
 	
+	var classes = ["","sxj","zk","zkhy"];
 	Handlebars.registerHelper("typeToClass", function(type) {
-		if(type === 1) {
-			return "sxj";
-		} else if(type === 2) {
-			return "zk";
-		} else if(type === 3) {
-			return "zkhy";
-		}
+		return classes[type];
 	});
 	
-	var Lxr = new Backbone.Model();
+	var Lxr = Backbone.Model.extend();
 	
 	var LxrList = Backbone.Collection.extend({
 		model: Lxr,
+		url: "json/lxr_show.json",
+		sync: function(method, collection) {
+			var self = this;
+			$.ajax({
+	    		type: "GET",
+	    		url: self.url,
+	    		dataType: "json"
+	    	}).done(function(data) {
+	    		self.reset(data);
+	    	});
+		}
 	});
 	
 	var Lxrs = new LxrList();
 	
 	var LxrView = Backbone.View.extend({
-		el: "#mainContent",
-		tmpl: Handlebars.compile($("#template").html()),
+		el: "#lxr_show_container",
+		tmpl: Handlebars.compile($("#lxr_show_template").html()),
+		
+		events: {
+			"click .lxr": "addOrUpdate"
+		},
+		
 		initialize: function() {
+			this.listenTo(Lxrs, "reset", this.addAll);
 			
+			Lxrs.fetch();
 		},
 		render: function() {
-			this.$el.html();
+		},
+		addAll: function() {
+			this.$el.html(this.tmpl(Lxrs.toJSON()));
+		},
+		addOrUpdate: function() {
+			this.close();
+		},
+		close: function() {
+			this.remove();
 		}
 	});
 	
-	$("#mainContent").handlebars($("#template"), "json/lxr_show.json");
+	new LxrView;
 });

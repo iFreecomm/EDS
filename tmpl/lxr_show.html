@@ -1,13 +1,13 @@
 <link rel="stylesheet" type="text/css" href="css/lxr_show.css"/>
-<div id="mainContent"></div>
-<script id="template" type="text/x-handlebars-template">
+<div id="lxr_show_container"></div>
+<script id="lxr_show_template" type="text/x-handlebars-template">
 	<div class="lxr-container justify-list">
-		<a class="justify-item lxr add" href="lxr_add.html">
+		<a class="justify-item lxr add" href="#c1/tmpl/lxr_add.html">
 			<div class="lxr-head">添加联系人</div>
 			<div class="lxr-body"></div>
 		</a>
 		{{#each this}}
-			<a class="justify-item lxr {{typeToClass type}}" href="lxr_add.html">
+			<a class="justify-item lxr {{typeToClass type}}" href="#c1/tmpl/lxr_add.html">
 				<div class="lxr-head">{{name}}</div>
 				<div class="lxr-body">{{info}}</div>
 			</a>

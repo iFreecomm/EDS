@@ -3,10 +3,10 @@ define(function(require) {
     
     var Router = Backbone.Router.extend({
     	routes: {
-    		"*path": "load"
+    		":container/*path": "load"
     	},
-    	load: function(path) {
-    		$("#container").load(path);
+    	load: function(container, path) {
+    		$("#"+container).load(path);
     	}
     });
     

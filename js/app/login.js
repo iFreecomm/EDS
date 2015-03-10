@@ -23,8 +23,7 @@ define(function(require) {
         initialize: function() {
         	this.stickit(this.model, {
         		"#username": "username",
-        		"#password": "password",
-        		"[name=ah]": "ah"
+        		"#password": "password"
         	});
         },
         close: function() {
