@@ -3,10 +3,22 @@ define(function(require) {
     
     var Router = Backbone.Router.extend({
     	routes: {
-    		":container/*path": "load"
+    		"lxr": "showLxr",
+    		"lxr/show": "showLxr",
+    		"lxr/add(/:lxrId)": "addLxr"
     	},
-    	load: function(container, path) {
-    		$("#"+container).load(path);
+    	resetView: function() {
+    		this.view && (this.view.close ? this.view.close() : this.view.remove());
+    	},
+    	showLxr: function() {
+    		var ShowLxrView = require("views/lxr_show_view");
+    		this.resetView();
+    		this.view = new ShowLxrView();
+    	},
+    	addLxr: function(lxrId) {
+    		var AddLxrView = require("views/lxr_add_view");
+    		this.resetView();
+    		this.view = new AddLxrView({lxrId:lxrId});
     	}
     });
     

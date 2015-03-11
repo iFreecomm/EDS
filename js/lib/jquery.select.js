@@ -1,4 +1,5 @@
-(function($) {
+define(function(require) {
+	var $ = require("jquery");
 	function CustomSelect(select, opt) {
 		var $select = $(select);
 		var $select_hgmwyp = $("<div class='select-hgmwyp'></div>");
@@ -46,4 +47,4 @@
 		});
 	};
 	
-})(jQuery);
+});
