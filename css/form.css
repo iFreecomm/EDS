@@ -82,20 +82,21 @@ input[type=checkbox] {
 	display: none;
 }
 .label-checkbox {
-	width: 95px;
+	display: inline-block;
+	width: 100px;
 	padding-left: 30px;
 	margin-left: 10px;
 	margin-bottom: 0;
-	background: url(../img/frame/checkbox.png) no-repeat 0 15px;
+	background: url(../img/frame/checkbox.png) no-repeat 0 16px;
 	line-height: 64px;
 	font-size: 20px;
 	font-weight: normal;
 }
 .label-checkbox.active {/*需要js配合兼容IE8*/
-	background-position: 0 -49px;
+	background-position: 0 -48px;
 }
 input[type=checkbox]:checked+label {
-	background-position: 0 -49px;
+	background-position: 0 -48px;
 }
 /******表单按钮******/
 .input-btn {

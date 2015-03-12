@@ -1,12 +1,15 @@
-/*********联系人容器样式*********/
-.lxr-container {
-	padding: 50px;
-}
 /*********联系人样式*********/
-.lxr {
+.lxr-box {
+	padding: 40px 50px;
+	margin: 0;
+}
+.lxr-box li {
 	width: 180px;
-	text-decoration: none !important;
-	vertical-align: top;
+}
+.lxr-box a {
+	display: block;
+	margin-bottom: 20px;
+	text-decoration: none;
 }
 /*********联系人头部样式*********/
 .lxr-head {
@@ -17,16 +20,16 @@
 	color: #FFF;
 	background: #1E89B5;
 }
-.lxr:hover .lxr-head {
+.lxr-box a:hover .lxr-head {
 	background: #F47900;
 }
 /*********联系人主体样式*********/
 .lxr-body {
+	box-sizing: border-box;
 	height: 155px;
 	padding-top: 30px;
 	padding-left: 20px;
 	padding-right: 20px;
-	margin-bottom: 10px;
 	word-wrap: break-word;
 	color: #000;
 }

@@ -10,6 +10,15 @@ define(function(require) {
 	Handlebars.registerHelper("typeToClass", function(type) {
 		return classes[type];
 	});
+	Handlebars.registerHelper("getInfo", function(type) {
+		if(type === 1) {
+			return this.typeInfo1 + this.name;
+		} else if(type === 2) {
+			return this.typeInfo2 + this.name;
+		} else if(type === 3) {
+			return this.typeInfo3 + this.name;
+		}
+	});
 	
 	var ShowLxrView = Backbone.View.extend({
 		tmpl: Handlebars.compile(tmpl),

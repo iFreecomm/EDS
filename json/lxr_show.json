@@ -2,16 +2,43 @@
 	{
 		"name": "A",
 		"info": "asdasd",
-		"type": 1
+		"type": 1,
+		"typeInfo1": "typeInfo1111111111111"
 	},
 	{
 		"name": "B",
 		"info": "asdasd",
-		"type": 2
+		"type": 2,
+		"typeInfo2": "typeInfo1222222222"
 	},
 	{
 		"name": "C",
 		"info": "asdasd<br/>asdas",
-		"type": 3
+		"type": 3,
+		"typeInfo3": "typeInfo1333333333333"
+	},
+	{
+		"name": "B",
+		"info": "asdasd",
+		"type": 2,
+		"typeInfo2": "typeInfo1222222222"
+	},
+	{
+		"name": "C",
+		"info": "asdasd<br/>asdas",
+		"type": 3,
+		"typeInfo3": "typeInfo1333333333333"
+	},
+	{
+		"name": "B",
+		"info": "asdasd",
+		"type": 2,
+		"typeInfo2": "typeInfo1222222222"
+	},
+	{
+		"name": "C",
+		"info": "asdasd<br/>asdas",
+		"type": 3,
+		"typeInfo3": "typeInfo1333333333333"
 	}
 ]
