@@ -5,6 +5,8 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 #wrapper-table-cell { display: table-cell; vertical-align: middle; }
 .tip { padding: 20px 50px; margin: 0; text-align: left; color: #353535; font-size: 18px; }
 .fixed { position: fixed; }
+#loading { display: none; position: fixed; left: 50%; top: 50%; margin-left: -220px; margin-top: -145px; }
+
 .tal { text-align: left; }
 .tac { text-align: center; }
 .tar { text-align: right; }

@@ -25,7 +25,9 @@ define(function(require) {
 			"#pxh": "pxh"
 		},
 		events: {
-			"click #saveBtn": "saveLxr"
+			"click #saveBtn": "saveLxr",
+			"click #cancelBtn": "cancelLxr",
+			"click #defaultBtn": "defaultLxr"
 		},
 		initialize: function(opt) {
 			//this.model.fetch();
@@ -62,6 +64,15 @@ define(function(require) {
 			this.$("[hclx="+curHclx+"]").show();
 		},
 		saveLxr: function(e) {
+			e.preventDefault();
+			this.$("#loading").show();
+			this.model.save();
+		},
+		cancelLxr: function(e) {
+			e.preventDefault();
+			require("app/index").navigate("lxr", {trigger: true});
+		},
+		defaultLxr: function(e) {
 			e.preventDefault();
 			
 		}

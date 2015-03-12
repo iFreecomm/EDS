@@ -7,9 +7,9 @@
 	</li>
 	{{#each this}}
 		<li class="justify-item">
-			<a class="{{typeToClass type}}" href="#lxr/add/{{id}}">
-				<div class="lxr-head">{{name}}</div>
-				<div class="lxr-body">{{getInfo type}}</div>
+			<a class="{{getClass hclx}}" href="#lxr/add/{{id}}">
+				<div class="lxr-head">{{hcmc}}</div>
+				<div class="lxr-body">{{getInfo hclx}}</div>
 			</a>
 		</li>
 	{{/each}}

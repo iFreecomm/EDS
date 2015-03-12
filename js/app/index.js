@@ -22,6 +22,8 @@ define(function(require) {
     	}
     });
     
-    new Router();
+    var router = new Router();
     Backbone.history.start();
+    
+    return router;
 });

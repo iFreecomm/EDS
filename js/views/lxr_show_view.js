@@ -7,17 +7,19 @@ define(function(require) {
 	var Handlebars = require("handlebars");
 	
 	var classes = ["","sxj","zk","zkhy"];
-	Handlebars.registerHelper("typeToClass", function(type) {
-		return classes[type];
+	Handlebars.registerHelper("getClass", function(hclx) {
+		return classes[hclx];
 	});
-	Handlebars.registerHelper("getInfo", function(type) {
-		if(type === 1) {
-			return this.typeInfo1 + this.name;
-		} else if(type === 2) {
-			return this.typeInfo2 + this.name;
-		} else if(type === 3) {
-			return this.typeInfo3 + this.name;
+	Handlebars.registerHelper("getInfo", function(hclx) {
+		var result;
+		if(hclx === "1") {
+			result = this.hcmc;
+		} else if(hclx === "2") {
+			result = this.hcmc + "<br>" + this.IPdz;
+		} else if(hclx === "3") {
+			result = this.hcmc + "<br>" + this.dbURL;
 		}
+		return new Handlebars.SafeString(result);
 	});
 	
 	var ShowLxrView = Backbone.View.extend({
