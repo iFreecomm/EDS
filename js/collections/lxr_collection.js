@@ -4,15 +4,11 @@ define(function(require) {
 	
 	var LxrList = Backbone.Collection.extend({
 		model: LxrModel,
-		sync: function(method, collection) {
-			var self = this;
-			$.ajax({
-	    		type: "GET",
-	    		url: "json/lxr_show.json",
-	    		dataType: "json"
-	    	}).done(function(data) {
-	    		self.reset(data);
-	    	});
+		urls: {
+			"create": "json/lxr_show.json",
+			"update": "json/lxr_show.json",
+			"delete": "json/lxr_show.json",
+			"read": "json/lxr_show.json"
 		}
 	});
 	

@@ -17,15 +17,11 @@ define(function(require) {
 			dbURL: "点播URL333",
 			pxh: "pxh333"
 		},
-		sync: function(method, collection) {
-			var self = this;
-			$.ajax({
-	    		type: "GET",
-	    		url: "json/lxr.json",
-	    		dataType: "json"
-	    	}).done(function(data) {
-	    		self.set(data);
-	    	});
+		urls: {
+			"create": "json/lxr.json",
+			"update": "json/lxr.json",
+			"delete": "json/lxr.json",
+			"read": "json/lxr.json"
 		}
 	});
 	

@@ -2,39 +2,41 @@ define(function(require) {
     var Backbone = require("backbone");
     require("stickit");
     
-    Backbone.sync = function(method, model, callback) {
-    	$.ajax({
-    		type: "GET",
-    		url: "json/login.json",
-    		data: model.attributes,
-    		dataType: "json"
-    	}).done(function(data) {
-    		if(data.state) {
-    			location.href = "portal.html";
-    		} else {
-    			console.log("login failed");
-    		}
-    	});
-    };
+    var LoginModel = Backbone.Model.extend({
+    	urls: {
+			"create": "json/login.json"
+    	}
+    });
     
     var LoginView = Backbone.View.extend({
         el: ".login-box",
-        model: new Backbone.Model(),
-        initialize: function() {
-        	this.stickit(this.model, {
-        		"#username": "username",
-        		"#password": "password"
-        	});
-        },
-        close: function() {
-        	this.unstickit();
-        },
+        model: new LoginModel(),
         events: {
             "click [type=submit]": "submit"
         },
+        bindings: {
+    		"#username": "username",
+    		"#password": "password"
+        },
+        initialize: function() {
+        	this.stickit();
+        },
+        close: function() {
+        	this.remove().unstickit();
+        },
         submit: function(e) {
             e.preventDefault();
-            this.model.save();
+            this.model.save({}, {
+            	success: this.success
+            });
+        },
+        success: function(model, resp, opt) {
+//      	if(resp.state) {
+//  			location.href = "portal.html";
+//  		} else {
+//  			console.log("login failed");
+//  		}
+alert("success");
         }
     });
     
