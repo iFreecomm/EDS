@@ -6,6 +6,7 @@
 		<title>高清庭审主机EDS</title>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
 		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/navLeft.css"/>
 		<link rel="stylesheet" type="text/css" href="css/form.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<!--[if lt IE 9]>
@@ -18,7 +19,7 @@
 				<div class="header-logo">
 					<ul>
 						<li>
-							<a href="zkhy.html">
+							<a href="#zkhy">
 								<img src="img/frame/icon/zkhy.png"/>
 								<p>召开会议</p>
 							</a>
@@ -86,7 +87,7 @@
 		<script src="js/lib/require.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			require(["./js/config"], function(config) {
-				require(["app/index"]);
+				require(["router/index"]);
 			});
 		</script>
 	</body>

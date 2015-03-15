@@ -16,12 +16,12 @@ body {
 	background: url(../img/zkhy/split.png) no-repeat 0 61px;
 }
 /******黄色背景图片******/
-#navLeft .nav-bg {
+#navLeft a {
+	display: block;
 	height: 57px;
 	line-height: 57px;
 	color: #353535;
 	font-size: 18px;
-	cursor: pointer;
 }
 /******文本和图标******/
 #navLeft .nav-text {
@@ -40,12 +40,12 @@ body {
 	background: url(../img/zkhy/4.png) no-repeat 15px 10px;
 }
 /******选中和浮动效果******/
-#navLeft .nav-bg:hover,
-#navLeft .nav-bg.active {
+#navLeft a:hover,
+#navLeft a.active {
 	color: #FBFBFB;
 	background: url(../img/zkhy/bg.png) no-repeat 0 0;
 }
-#navLeft .nav-bg:hover .nav-text,
-#navLeft .nav-bg.active .nav-text {
+#navLeft a:hover .nav-text,
+#navLeft a.active .nav-text {
 	background-position: 15px -50px;
 }

@@ -1130,7 +1130,7 @@
   // Useful when interfacing with server-side languages like **PHP** that make
   // it difficult to read the body of `PUT` requests.
   Backbone.sync = function(method, model, options) {
-    var type = "GET";
+    var type = methodMap[method];
 
     // Default options, unless specified.
     _.defaults(options || (options = {}), {
@@ -1149,13 +1149,7 @@
     // Ensure that we have the appropriate request data.
     if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
       params.contentType = 'application/json';
-//    params.data = JSON.stringify(options.attrs || model.toJSON(options));
-//	  params.data = {
-//	  	"username": "username",
-//	  	"password": "password",
-//	  	"ah": ["123", "456", "789"]
-//	  };
-	  params.data = "{%22username%22:abc}";
+      params.data = JSON.stringify(options.attrs || model.toJSON(options));
 	  
     }
 

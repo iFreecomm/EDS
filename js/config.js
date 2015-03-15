@@ -9,9 +9,10 @@ requirejs.config({
     baseUrl: "js/lib",
     paths: {
         app: "../app",
-        models: "../models",
-        collections: "../collections",
-        views: "../views",
+        model: "../model",
+        collection: "../collection",
+        view: "../view",
+        router: "../router",
         tmpl: "../../tmpl",
         style: "../../css",
         jquery: "jquery-1.11.2",
