@@ -4,6 +4,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	
 	var ZkhyNavView = Backbone.View.extend({
+		className: "navLeft",
 		initialize: function() {
 			this.render();
 		},

@@ -6,25 +6,25 @@ define(function(require) {
 	var LxrView = Backbone.View.extend({
 		name: "lxr",
 		renderShowLxr: function() {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.contentView = new ShowLxrView();
 			this.renderContent();
 		},
 		renderAddLxr: function(lxrId) {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.contentView = new AddLxrView({lxrId: lxrId});
 			this.renderContent();
 		},
 		renderContent: function() {
 			$("#c1").append(this.contentView.el);
 		},
-		closeContent: function() {
-			this.contentView && this.contentView.close();
-		},
 		close: function() {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.remove();
-		}
+		},
+		closeView: function(view) {
+    		view && (view.close ? view.close() : view.remove());
+    	}
 	});
 	
 	return LxrView;

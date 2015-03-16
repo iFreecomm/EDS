@@ -8,6 +8,7 @@ define(function(require) {
 	require("customSelect");
 	
 	var AddLxrView = Backbone.View.extend({
+		id: "lxr_add",
 		bindings: {
 			"#hcmc": "hcmc",
 			"#hclx": "hclx",
@@ -25,36 +26,27 @@ define(function(require) {
 		},
 		events: {
 			"click #saveBtn": "saveLxr",
-			"click #cancelBtn": "cancelLxr",
-			"click #defaultBtn": "defaultLxr"
+			"click #cancelBtn": "cancelLxr"
 		},
 		initialize: function(opt) {
-			//this.model.fetch();
+			var self = this;
 			this.model = new LxrModel();
 			this.listenTo(this.model, "change:hclx", this.changeHclx);
-			var self = this;
+			
 			if(opt.lxrId) {
-				$.ajax({
-		    		type: "GET",
-		    		url: "json/lxr.do",
-		    		dataType: "json",
-		    		data: opt.lxrId
-		    	}).done(function(data) {
-		    		self.model.set(data);
-		    		self.render();
-		    	});
+				this.model.set({id: opt.lxrId});
+				this.model.fetch().done(function() {
+					self.render();
+				});
 			} else {
 				this.render();
 			}
 		},
 		render: function() {
-			this.$el.html(tmpl).appendTo($("#c1"));
+			this.$el.html(tmpl);
 			this.stickit();
-			$("select").customSelect();
-			this.model.trigger("change:hclx");
-		},
-		close: function() {
-			this.remove().unstickit();
+			this.$("select").customSelect();
+			this.changeHclx();
 		},
 		changeHclx: function() {
 			var curHclx = this.model.get("hclx");
@@ -65,17 +57,20 @@ define(function(require) {
 		saveLxr: function(e) {
 			e.preventDefault();
 			this.$("#loading").show();
-			this.model.save();
+			this.model.save({}, {
+				success: this.cancelLxr,
+				error: this.saveError
+			});
 		},
-		cancelLxr: function(e) {
-			e.preventDefault();
-			require("router/index").navigate("lxr", {trigger: true});
+		saveError: function() {
+			alert("保存联系人失败！");
+			this.$("#loading").hide();
 		},
-		defaultLxr: function(e) {
-			e.preventDefault();
-			
+		cancelLxr: function() {
+			require("router/index_router").navigate("lxr", {trigger: true});
 		},
 		close: function() {
+			this.unstickit();
 			this.remove();
 		}
 	});

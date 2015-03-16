@@ -22,22 +22,18 @@ define(function(require) {
 	});
 	
 	var ShowLxrView = Backbone.View.extend({
+		id: "lxr_show",
 		tmpl: Handlebars.compile(tmpl),
-		
 		initialize: function() {
+			var self = this;
 			this.collection = new LxrList();
-			
-			this.listenTo(this.collection, "sync", this.addAll);
-			
-			this.collection.fetch();
-		},
-		render: function() {
-		},
-		addAll: function() {
-			this.$el.html(this.tmpl(this.collection.toJSON())).appendTo($("#c1"));
-		},
-		close: function() {
-			this.remove();
+			this.collection.fetch({
+				reset: true
+			}).done(function() {
+				self.$el.html(self.tmpl(self.collection.toJSON()));
+			}).fail(function() {
+				alert("获取数据失败！");
+			});
 		}
 	});
 	

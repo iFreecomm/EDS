@@ -180,23 +180,23 @@
 }
 
 /******表单样式******/
-.form-container {
+#ydyhy .form-container {
 	width: 88%;
 	margin-left: 6%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-.form-cell {
+#ydyhy .form-cell {
 	margin-left: 3%;
 	float: left;
 }
-.form-btns {
+#ydyhy .form-btns {
 	float: right;
 }
-.fieldName {
+#ydyhy .fieldName {
 	width: 100px;
 }
-.fieldBox {
+#ydyhy .fieldBox {
 	padding-left: 100px;
 }
 

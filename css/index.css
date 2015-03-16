@@ -1,5 +1,6 @@
-/********二级页面动画层样式********/
+/********首页头部样式********/
 .header {
+	min-width: 1000px;
 	height: 94px;
 	background: url(../img/frame/header_bg.png) repeat-x 0 0;
 	overflow: hidden;
@@ -41,17 +42,17 @@
 
 @media (max-width: 1920px) {
 	.header li {
-		width: 115px;
+		width: 119px;
 	}
 }
 @media (max-width: 1440px) {
 	.header li {
-		width: 95px;
+		width: 99px;
 	}
 }
 @media (max-width: 1280px) {
 	.header li {
-		width: 72px;
+		width: 76px;
 	}
 }
 @media (max-width: 1024px) {
@@ -59,4 +60,81 @@
 		padding-left: 230px;
 		background-position: 20px 10px;
 	}
+}
+
+/***********左侧导航样式************/
+#c1 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 94px;
+	bottom: 0;
+	overflow: hidden;
+	min-width: 1000px;
+}
+/***********左侧导航样式************/
+.navLeft {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0px;
+	z-index: 1;
+	width: 200px;
+	padding: 4px 6px;
+	background: #F0F0F0;
+}
+.navLeft ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.navLeft li {
+	padding-bottom: 10px;
+	background: url(../img/zkhy/split.png) no-repeat 0 61px;
+}
+/******超链接样式******/
+.navLeft a {
+	display: block;
+	height: 57px;
+	line-height: 57px;
+	color: #353535;
+	font-size: 18px;
+	text-decoration: none;
+}
+/******文本和图标******/
+.navLeft .nav-text {
+	padding-left: 58px;
+}
+.navLeft .ydyhy {
+	background: url(../img/zkhy/1.png) no-repeat 15px 10px;
+}
+.navLeft .hyjl {
+	background: url(../img/zkhy/2.png) no-repeat 15px 10px;
+}
+.navLeft .yyhy {
+	background: url(../img/zkhy/3.png) no-repeat 15px 10px;
+}
+.navLeft .hymb {
+	background: url(../img/zkhy/4.png) no-repeat 15px 10px;
+}
+/******选中和浮动效果-黄色背景图片-图标切换******/
+.navLeft a:hover,
+.navLeft a.active {
+	color: #FBFBFB;
+	background: url(../img/zkhy/bg.png) no-repeat 0 0;
+}
+.navLeft a:hover .nav-text,
+.navLeft a.active .nav-text {
+	background-position: 15px -50px;
+}
+/******右侧内容样式******/
+.contentRight {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	overflow: auto;
+	width: 100%;
+	padding-left: 200px;
+	background: #F4F1F1 url(../img/frame/contentRight_bg.png) repeat-y 200px 0;
 }

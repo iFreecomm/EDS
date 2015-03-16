@@ -1,18 +1,23 @@
+#lxr_show, #lxr_add {
+	overflow: auto;
+	height: 100%;
+	max-height: 100%;
+}
 /*********联系人样式*********/
-.lxr-box {
+#lxr_show .lxr-box {
 	padding: 40px 50px;
 	margin: 0;
 }
-.lxr-box li {
+#lxr_show .lxr-box li {
 	width: 180px;
 }
-.lxr-box a {
+#lxr_show .lxr-box a {
 	display: block;
 	margin-bottom: 20px;
 	text-decoration: none;
 }
 /*********联系人头部样式*********/
-.lxr-head {
+#lxr_show .lxr-head {
 	height: 32px;
 	line-height: 32px;
 	font-size: 18px;
@@ -20,11 +25,11 @@
 	color: #FFF;
 	background: #1E89B5;
 }
-.lxr-box a:hover .lxr-head {
+#lxr_show .lxr-box a:hover .lxr-head {
 	background: #F47900;
 }
 /*********联系人主体样式*********/
-.lxr-body {
+#lxr_show .lxr-body {
 	box-sizing: border-box;
 	height: 155px;
 	padding-top: 30px;
@@ -33,21 +38,21 @@
 	word-wrap: break-word;
 	color: #000;
 }
-.add .lxr-body {
+#lxr_show .add .lxr-body {
 	background: #A9A9A9 url(../img/lxr/plus.png) no-repeat center;
 }
-.sxj .lxr-body {
+#lxr_show .sxj .lxr-body {
 	background: #A9A9A9 url(../img/lxr/sxj.png) no-repeat 110px 110px;
 }
-.zk .lxr-body {
+#lxr_show .zk .lxr-body {
 	background: #A9A9A9 url(../img/lxr/zk.png) no-repeat 103px 110px;
 }
-.zkhy .lxr-body {
+#lxr_show .zkhy .lxr-body {
 	background: #A9A9A9 url(../img/lxr/zkhy.png) no-repeat 96px 98px;
 }
 
 /******添加联系人表单样式******/
-.form-box {
+#lxr_add .form-box {
 	position: relative;
 	width: 60%;
 	min-width: 800px;
@@ -56,19 +61,19 @@
 	padding-right: 150px;
 	margin: 0 auto;
 }
-.form-cell {
+#lxr_add .form-cell {
 	width: 100%;
 	margin-bottom: 10px;
 }
-.form-cell[hclx] {
+#lxr_add .form-cell[hclx] {
 	display: none;
 }
-.form-btns {
+#lxr_add .form-btns {
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
 	width: 140px;
 }
-.input-btn {
+#lxr_add .input-btn {
 	margin-top: 10px;
 }

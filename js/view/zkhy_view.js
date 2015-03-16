@@ -16,36 +16,36 @@ define(function(require) {
 			$("#c1").append(this.navView.el);
 		},
 		renderYdyhy: function() {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.contentView = new ZkhyYdyhyView();
 			this.renderContent();
 		},
 		renderHyjl: function() {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.contentView = new ZkhyHyjlView();
 			this.renderContent();
 		},
 		renderYyhy: function() {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.contentView = new ZkhyYyhyView();
 			this.renderContent();
 		},
 		renderHymb: function() {
-			this.closeContent();
+			this.closeView(this.contentView);
 			this.contentView = new ZkhyHymbView();
 			this.renderContent();
 		},
 		renderContent: function() {
 			$("#c1").append(this.contentView.el);
 		},
-		closeContent: function() {
-			this.contentView && this.contentView.remove();
-		},
 		close: function() {
-			this.navView.remove();
-			this.closeContent();
+			this.closeView(this.navView);
+			this.closeView(this.contentView);
 			this.remove();
-		}
+		},
+		closeView: function(view) {
+    		view && (view.close ? view.close() : view.remove());
+    	}
 	});
 	
 	return ZkhyView;
