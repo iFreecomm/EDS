@@ -15,22 +15,26 @@ define(function(require) {
 		render: function() {
 			$("#c1").append(this.navView.el);
 		},
-		renderYdyhy: function() {
+		renderYdyhy: function(hyId) {
+			this.navView.activeLink("ydyhy");
 			this.closeView(this.contentView);
-			this.contentView = new ZkhyYdyhyView();
+			this.contentView = new ZkhyYdyhyView({hyId: hyId});
 			this.renderContent();
 		},
 		renderHyjl: function() {
+			this.navView.activeLink("hyjl");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyHyjlView();
 			this.renderContent();
 		},
 		renderYyhy: function() {
+			this.navView.activeLink("yyhy");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyYyhyView();
 			this.renderContent();
 		},
 		renderHymb: function() {
+			this.navView.activeLink("hymb");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyHymbView();
 			this.renderContent();

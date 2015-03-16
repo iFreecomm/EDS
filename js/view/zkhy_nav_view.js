@@ -10,6 +10,10 @@ define(function(require) {
 		},
 		render: function() {
 			this.$el.html(nav_tmpl);
+		},
+		activeLink: function(href) {
+			this.$("a").removeClass("active");
+    		this.$("a[href*="+href+"]").addClass("active");
 		}
 	});
 	

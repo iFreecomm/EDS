@@ -1,10 +1,13 @@
 define(function(require) {
     var Backbone = require("backbone");
-	var IndexView = require("view/index_view");
+	var AppView = require("view/app_view");
     
     var Router = Backbone.Router.extend({
     	routes: {
-    		"": "ydyhy",
+    		"": "login",
+    		"login": "login",
+    		"portal": "portal",
+    		"*error": "error",
     		
     		"zkhy": "ydyhy",
     		"zkhy/ydyhy(/:hyId)": "ydyhy",
@@ -17,7 +20,7 @@ define(function(require) {
     		"lxr/add(/:lxrId)": "addLxr"
     	},
     	initialize: function() {
-    		this.view = new IndexView();
+    		this.view = new AppView();
     	},
     	
     	ydyhy: function(hyId) {

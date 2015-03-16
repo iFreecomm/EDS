@@ -3,19 +3,15 @@ define(function(require) {
 	
 	var YdyhyModel = Backbone.Model.extend({
 		defaults: {
-			hcmc: "会场名称333",
-			hclx: "3",
-			sxj: "3",
-			dyyzw: "3",
-			cyyyjl: true,
-			MIC: ["6","12"],
-			jlyxj: "3",
-			hcdk: "3",
-			hm: "号码333",
-			IPdz: "172.18.0.1333",
-			dbdk: "3",
-			dbURL: "点播URL333",
-			pxh: "pxh333"
+			lxrs: ["001", "002", "003"],
+			hymc: "会场名称444",
+			hyhm: "0007",
+			zxmm: "123456",
+			yyrq: "2015-04-01",
+			hymb: "4",
+			hydk: "70KB",
+			hymm: "123456789",
+			cxsj: "3h"
 		},
 		urls: {
 			"create": "json/zkhy_ydyhy.do",

@@ -3,14 +3,9 @@ define(function(require) {
     
     var IndexView = Backbone.View.extend({
     	el: "body",
-    	events: {
-    		"click .header a": "clickHeader"
-    	},
-    	clickHeader: function(e) {
-    		var $tar = $(e.target);
-    		var $a = $tar.parents("a");
-    		$(".header").find("a").removeClass("active");
-    		$a.addClass("active");
+    	activeLink: function(href) {
+    		this.$(".header").find("a").removeClass("active");
+    		this.$("a[href=#"+href+"]").addClass("active");
     	},
     	
     	resetView: function() {
@@ -20,6 +15,7 @@ define(function(require) {
     	zkhy: function() {
     		if(!(this.subview && this.subview.name === "zkhy")) {
     			this.resetView();
+    			this.activeLink("zkhy");
     			var ZkhyView = require("view/zkhy_view");
     			this.subview = new ZkhyView();
     		}
@@ -44,6 +40,7 @@ define(function(require) {
     	lxr: function() {
     		if(!(this.subview && this.subview.name === "lxr")) {
     			this.resetView();
+    			this.activeLink("lxr");
     			var LxrView = require("view/lxr_view");
     			this.subview = new LxrView();
     		}
