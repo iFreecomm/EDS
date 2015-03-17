@@ -2,6 +2,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	
 	var tmpl = require("text!tmpl/zkhy_hymb_add_basic.html");
+	require("customSelect");
 	
 	var BasicView = Backbone.View.extend({
 		className: "tabContent",
@@ -14,6 +15,7 @@ define(function(require) {
 		render: function() {
 			this.$el.html(tmpl);
 //			this.stickit();
+			this.$("select").customSelect();
 		},
 		close: function() {
 			this.unstickit();

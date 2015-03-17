@@ -227,3 +227,25 @@
 .mode-bg .none-visible {
     visibility: hidden;
 }
+
+/********添加会议模板样式开始***********/
+#hymb_add .tabBox {
+	position: relative;
+}
+#hymb_add .tabContentBox {
+	position: absolute;
+	top: 32px;
+	bottom: 60px;
+	left: 200px;
+	right: 0;
+	overflow: auto;
+}
+#hymb_add .input-btn-area {
+	position: absolute;
+	bottom: 0;
+	left: 200px;
+	right: 0;
+	text-align: center;
+	background: #D4D4D4;
+}
+/********添加会议模板样式结束***********/

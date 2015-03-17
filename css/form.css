@@ -2,29 +2,25 @@
 .form-cell {
 	width: 100%;
 }
-.form-cell-float {
-	float: left;
-}
 .fieldName {
 	float: left;
-	width: 150px;
+	width: 180px;
 	line-height: 64px;
 	font-size: 24px;
 	font-weight: normal;
 	color: #2F2F2F;
+	text-align: right;
+}
+.fieldName.w250 {
+	width: 250px;
+	padding-right: 70px;
 }
 .fieldBox {
 	width: 100%;
-	padding-left: 150px;
+	padding-left: 180px;
 }
-.form-cell.form-cell-250 .fieldName {
-	width: 250px;
-}
-.form-cell.form-cell-250 .fieldBox {
+.fieldBox.pl250 {
 	padding-left: 250px;
-}
-.form-cell.form-cell-noname .fieldBox {
-	padding-left: 0;
 }
 /******text文本输入框样式******/
 input[type=text] {
@@ -98,7 +94,6 @@ input[type=checkbox] {
 }
 .label-checkbox {
 	display: inline-block;
-	width: 100px;
 	padding-left: 30px;
 	margin-left: 10px;
 	margin-bottom: 0;

@@ -27,7 +27,7 @@ define(function(require) {
 		},
 		render: function() {
 			this.$el.html(tmpl);
-			this.$("#tabContentBox")
+			this.$(".tabContentBox")
 				.append(this.basicView.el)
 				.append(this.yhzView.el)
 				.append(this.dhmView.el)
@@ -37,7 +37,7 @@ define(function(require) {
 		selectTab: function(e) {
 			var $tar = $(e.target);
 			$tar.addClass("active").siblings().removeClass("active");
-			this.$("#tabContentBox").children().removeClass("active").eq($tar.index()).addClass("active");
+			this.$(".tabContentBox").children().removeClass("active").eq($tar.index()).addClass("active");
 		},
 		closeView: function(view) {
     		view && (view.close ? view.close() : view.remove());
