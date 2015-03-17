@@ -67,7 +67,7 @@ define(function(require) {
 			this.$("#loading").hide();
 		},
 		cancelLxr: function() {
-			require("router/index_router").navigate("lxr", {trigger: true});
+			require("router").navigate("lxr", {trigger: true});
 		},
 		close: function() {
 			this.unstickit();

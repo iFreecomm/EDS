@@ -1,4 +1,4 @@
-require.config({
+requirejs.config({
     baseUrl: "js/lib",
     paths: {
         model: "../model",
@@ -16,4 +16,4 @@ require.config({
     }
 });
 
-require(["router"]);
+requirejs(["router"]);

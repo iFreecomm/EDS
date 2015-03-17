@@ -1,57 +1,68 @@
 define(function(require) {
     var Backbone = require("backbone");
+    var NavTopView = require("view/nav_top_view");
+    var LxrView = require("view/lxr_view");
+    var ZkhyView = require("view/zkhy_view");
     
     var IndexView = Backbone.View.extend({
-    	el: "body",
-    	activeLink: function(href) {
-    		this.$(".header").find("a").removeClass("active");
-    		this.$("a[href=#"+href+"]").addClass("active");
+    	name: "index",
+    	id: "wrapper",
+    	initialize: function() {
+    		this.navTopView = new NavTopView();
+    		this.$el.html(this.navTopView.el);
     	},
-    	
-    	resetView: function() {
-    		this.subview && this.subview.close();
+    	appendContent: function() {
+    		this.$el.append(this.contentView.el);
     	},
     	
     	zkhy: function() {
-    		if(!(this.subview && this.subview.name === "zkhy")) {
-    			this.resetView();
-    			this.activeLink("zkhy");
-    			var ZkhyView = require("view/zkhy_view");
-    			this.subview = new ZkhyView();
+    		if(!(this.contentView && this.contentView.name === "zkhy")) {
+    			this.closeView(this.contentView);
+    			this.navTopView.activeLink("zkhy");
+    			this.contentView = new ZkhyView();
+				this.appendContent();
     		}
     	},
     	ydyhy: function(hyId) {
     		this.zkhy();
-			this.subview.renderYdyhy(hyId);
+			this.contentView.ydyhy(hyId);
     	},
     	hyjl: function() {
     		this.zkhy();
-			this.subview.renderHyjl();
+			this.contentView.hyjl();
     	},
     	yyhy: function() {
     		this.zkhy();
-			this.subview.renderYyhy();
+			this.contentView.yyhy();
     	},
     	hymb: function() {
     		this.zkhy();
-			this.subview.renderHymb();
+			this.contentView.hymb();
     	},
     	
     	lxr: function() {
-    		if(!(this.subview && this.subview.name === "lxr")) {
-    			this.resetView();
-    			this.activeLink("lxr");
-    			var LxrView = require("view/lxr_view");
-    			this.subview = new LxrView();
+    		if(!(this.contentView && this.contentView.name === "lxr")) {
+    			this.closeView(this.contentView);
+    			this.navTopView.activeLink("lxr");
+    			this.contentView = new LxrView();
+				this.appendContent();
     		}
     	},
     	showLxr: function() {
     		this.lxr();
-    		this.subview.renderShowLxr();
+    		this.contentView.showLxr();
     	},
     	addLxr: function(lxrId) {
     		this.lxr();
-    		this.subview.renderAddLxr(lxrId);
+    		this.contentView.addLxr(lxrId);
+    	},
+    	closeView: function(view) {
+    		view && (view.close ? view.close() : view.remove());
+    	},
+    	close: function() {
+    		this.closeView(this.navTopView);
+    		this.closeView(this.contentView);
+    		this.remove();
     	}
     });
     

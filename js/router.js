@@ -7,7 +7,6 @@ define(function(require) {
     		"": "login",
     		"login": "login",
     		"portal": "portal",
-    		"*error": "error",
     		
     		"zkhy": "ydyhy",
     		"zkhy/ydyhy(/:hyId)": "ydyhy",
@@ -21,6 +20,13 @@ define(function(require) {
     	},
     	initialize: function() {
     		this.view = new AppView();
+    	},
+    	
+    	login: function() {
+    		this.view.login();
+    	},
+    	portal: function() {
+    		this.view.portal();
     	},
     	
     	ydyhy: function(hyId) {

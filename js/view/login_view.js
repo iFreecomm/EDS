@@ -1,4 +1,6 @@
 define(function(require) {
+    var tmpl = require("text!tmpl/login.html");
+    
     var Backbone = require("backbone");
     require("stickit");
     
@@ -9,8 +11,8 @@ define(function(require) {
     });
     
     var LoginView = Backbone.View.extend({
-        el: ".login-box",
-        model: new LoginModel(),
+    	name: "login",
+    	id: "wrapper",
         events: {
             "click [type=submit]": "submit"
         },
@@ -19,10 +21,12 @@ define(function(require) {
     		"#password": "password"
         },
         initialize: function() {
-        	this.stickit();
+	        this.model = new LoginModel();
+	        this.render();
         },
-        close: function() {
-        	this.remove().unstickit();
+        render: function() {
+        	this.$el.html(tmpl);
+        	this.stickit();
         },
         submit: function(e) {
             e.preventDefault();
@@ -32,12 +36,16 @@ define(function(require) {
         },
         success: function(model, resp, opt) {
         	if(resp.state) {
-    			location.href = "portal.html";
+    			require("router").navigate("portal", {trigger: true});
     		} else {
     			console.log("login failed");
     		}
+        },
+        close: function() {
+        	this.unstickit();
+        	this.remove();
         }
     });
     
-    new LoginView();
+    return LoginView;
 });

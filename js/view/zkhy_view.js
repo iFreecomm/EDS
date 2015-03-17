@@ -1,5 +1,4 @@
 define(function(require) {
-	require("css!style/zkhy.css");
 	var ZkhyNavView = require("view/zkhy_nav_view");
 	var ZkhyYdyhyView = require("view/zkhy_ydyhy_view");
 	var ZkhyHyjlView = require("view/zkhy_hyjl_view");
@@ -8,48 +7,46 @@ define(function(require) {
 	
 	var ZkhyView = Backbone.View.extend({
 		name: "zkhy",
+		id: "c1",
 		initialize: function() {
 			this.navView = new ZkhyNavView();
-			this.render();
+			this.$el.html(this.navView.el);
 		},
-		render: function() {
-			$("#c1").append(this.navView.el);
-		},
-		renderYdyhy: function(hyId) {
+		appendContent: function() {
+    		this.$el.append(this.contentView.el);
+    	},
+		ydyhy: function(hyId) {
 			this.navView.activeLink("ydyhy");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyYdyhyView({hyId: hyId});
-			this.renderContent();
+			this.appendContent();
 		},
-		renderHyjl: function() {
+		hyjl: function() {
 			this.navView.activeLink("hyjl");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyHyjlView();
-			this.renderContent();
+			this.appendContent();
 		},
-		renderYyhy: function() {
+		yyhy: function() {
 			this.navView.activeLink("yyhy");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyYyhyView();
-			this.renderContent();
+			this.appendContent();
 		},
-		renderHymb: function() {
+		hymb: function() {
 			this.navView.activeLink("hymb");
 			this.closeView(this.contentView);
 			this.contentView = new ZkhyHymbView();
-			this.renderContent();
+			this.appendContent();
 		},
-		renderContent: function() {
-			$("#c1").append(this.contentView.el);
-		},
+		closeView: function(view) {
+    		view && (view.close ? view.close() : view.remove());
+    	},
 		close: function() {
 			this.closeView(this.navView);
 			this.closeView(this.contentView);
 			this.remove();
-		},
-		closeView: function(view) {
-    		view && (view.close ? view.close() : view.remove());
-    	}
+		}
 	});
 	
 	return ZkhyView;
