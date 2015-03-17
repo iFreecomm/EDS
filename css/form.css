@@ -1,4 +1,10 @@
 /******表单样式******/
+.form-cell {
+	width: 100%;
+}
+.form-cell-float {
+	float: left;
+}
 .fieldName {
 	float: left;
 	width: 150px;
@@ -10,6 +16,15 @@
 .fieldBox {
 	width: 100%;
 	padding-left: 150px;
+}
+.form-cell.form-cell-250 .fieldName {
+	width: 250px;
+}
+.form-cell.form-cell-250 .fieldBox {
+	padding-left: 250px;
+}
+.form-cell.form-cell-noname .fieldBox {
+	padding-left: 0;
 }
 /******text文本输入框样式******/
 input[type=text] {

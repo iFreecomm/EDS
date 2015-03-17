@@ -39,6 +39,10 @@ define(function(require) {
     		this.zkhy();
 			this.contentView.hymb();
     	},
+    	addHymb: function() {
+    		this.zkhy();
+			this.contentView.addHymb();
+    	},
     	
     	lxr: function() {
     		if(!(this.contentView && this.contentView.name === "lxr")) {

@@ -25,8 +25,8 @@ define(function(require) {
 			"#pxh": "pxh"
 		},
 		events: {
-			"click #saveBtn": "saveLxr",
-			"click #cancelBtn": "cancelLxr"
+			"click .saveBtn": "saveLxr",
+			"click .cancelBtn": "cancelLxr"
 		},
 		initialize: function(opt) {
 			var self = this;

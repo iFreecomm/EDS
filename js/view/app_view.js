@@ -60,6 +60,10 @@ define(function(require) {
     	hymb: function() {
     		this.index();
 			this.curView.hymb();
+    	},
+    	addHymb: function() {
+    		this.index();
+			this.curView.addHymb();
     	}
 	});
 	

@@ -13,6 +13,7 @@ define(function(require) {
     		"zkhy/hyjl": "hyjl",
     		"zkhy/yyhy": "yyhy",
     		"zkhy/hymb": "hymb",
+    		"zkhy/hymb/add": "addHymb",
     		
     		"lxr": "showLxr",
     		"lxr/show": "showLxr",
@@ -40,6 +41,9 @@ define(function(require) {
     	},
     	hymb: function() {
 			this.view.hymb();
+    	},
+    	addHymb: function() {
+			this.view.addHymb();
     	},
     	
     	showLxr: function() {

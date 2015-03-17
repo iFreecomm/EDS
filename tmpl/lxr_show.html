@@ -1,15 +1,15 @@
-<ul class="lxr-box justify-list">
+<ul class="box-container justify-list">
 	<li class="justify-item">
 		<a class="add" href="#lxr/add">
-			<div class="lxr-head">添加联系人</div>
-			<div class="lxr-body"></div>
+			<div class="box-head">添加联系人</div>
+			<div class="box-body"></div>
 		</a>
 	</li>
 	{{#each this}}
 		<li class="justify-item">
 			<a class="{{getClass hclx}}" href="#lxr/add/{{id}}">
-				<div class="lxr-head">{{hcmc}}</div>
-				<div class="lxr-body">{{getInfo hclx}}</div>
+				<div class="box-head">{{hcmc}}</div>
+				<div class="box-body">{{getInfo hclx}}</div>
 			</a>
 		</li>
 	{{/each}}

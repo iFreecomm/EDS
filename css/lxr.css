@@ -1,53 +1,14 @@
 #lxr_show, #lxr_add {
 	overflow: auto;
 	height: 100%;
-	max-height: 100%;
 }
-/*********联系人样式*********/
-#lxr_show .lxr-box {
-	padding: 40px 50px;
-	margin: 0;
-}
-#lxr_show .lxr-box li {
-	width: 180px;
-}
-#lxr_show .lxr-box a {
-	display: block;
-	margin-bottom: 20px;
-	text-decoration: none;
-}
-/*********联系人头部样式*********/
-#lxr_show .lxr-head {
-	height: 32px;
-	line-height: 32px;
-	font-size: 18px;
-	text-align: center;
-	color: #FFF;
-	background: #1E89B5;
-}
-#lxr_show .lxr-box a:hover .lxr-head {
-	background: #F47900;
-}
-/*********联系人主体样式*********/
-#lxr_show .lxr-body {
-	box-sizing: border-box;
-	height: 155px;
-	padding-top: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
-	word-wrap: break-word;
-	color: #000;
-}
-#lxr_show .add .lxr-body {
-	background: #A9A9A9 url(../img/lxr/plus.png) no-repeat center;
-}
-#lxr_show .sxj .lxr-body {
+#lxr_show .sxj .box-body {
 	background: #A9A9A9 url(../img/lxr/sxj.png) no-repeat 110px 110px;
 }
-#lxr_show .zk .lxr-body {
+#lxr_show .zk .box-body {
 	background: #A9A9A9 url(../img/lxr/zk.png) no-repeat 103px 110px;
 }
-#lxr_show .zkhy .lxr-body {
+#lxr_show .zkhy .box-body {
 	background: #A9A9A9 url(../img/lxr/zkhy.png) no-repeat 96px 98px;
 }
 
@@ -62,7 +23,6 @@
 	margin: 0 auto;
 }
 #lxr_add .form-cell {
-	width: 100%;
 	margin-bottom: 10px;
 }
 #lxr_add .form-cell[hclx] {

@@ -180,15 +180,14 @@
 }
 
 /******表单样式******/
-#ydyhy .form-container {
+#ydyhy .form-box {
 	width: 88%;
 	margin-left: 6%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-#ydyhy .form-cell {
+#ydyhy .form-cell-float {
 	margin-left: 3%;
-	float: left;
 }
 #ydyhy .form-btns {
 	float: right;

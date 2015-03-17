@@ -1,6 +1,5 @@
 /********首页头部样式********/
 .navTop {
-	min-width: 1000px;
 	height: 94px;
 	background: url(../img/frame/navTop_bg.png) repeat-x 0 0;
 	overflow: hidden;
@@ -69,8 +68,8 @@
 	right: 0;
 	top: 94px;
 	bottom: 0;
-	overflow: hidden;
 	min-width: 1000px;
+	overflow: hidden;
 }
 /***********左侧导航样式************/
 .navLeft {
