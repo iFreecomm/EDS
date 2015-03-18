@@ -1,0 +1,36 @@
+[
+	{
+		"name": "A",
+		"contents": [
+			{"name":"全景", "info":"SDI6"},
+			{"name":"法官", "info":"SDI1"},
+			{"name":"嫌疑人", "info":"SDI3"},
+			{"name":"公诉人", "info":"SDI4"},
+			{"name":"被告", "info":"SDI6"},
+			{"name":"原告", "info":"SDI2"},
+			{"name":"场景1", "info":"SDI1"},
+			{"name":"场景2", "info":"SDI2"},
+			{"name":"美国", "info":"SDI4"},
+			{"name":"中国", "info":"SDI7"}
+		]
+	},
+	{
+		"name": "B",
+		"contents": [
+			{"name":"法官", "info":"SDI1"},
+			{"name":"全景", "info":"SDI6"},
+			{"name":"场景2", "info":"SDI2"},
+			{"name":"场景1", "info":"SDI1"},
+			{"name":"中国", "info":"SDI7"},
+			{"name":"美国", "info":"SDI4"}
+		]
+	},
+	{
+		"name": "C",
+		"contents": [
+			{"name":"全景", "info":"SDI6"},
+			{"name":"美国", "info":"SDI4"},
+			{"name":"场景2", "info":"SDI2"}
+		]
+	}
+]
