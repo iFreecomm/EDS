@@ -14,10 +14,10 @@ define(function(require) {
 			cxsj: "3h"
 		},
 		urls: {
-			"create": "json/zkhy_ydyhy.do",
-			"update": "json/zkhy_ydyhy.do",
-			"delete": "json/zkhy_ydyhy.do",
-			"read": "json/zkhy_ydyhy.do"
+			"create": "json/ydyhy.do",
+			"update": "json/ydyhy.do",
+			"delete": "json/ydyhy.do",
+			"read": "json/ydyhy.do"
 		}
 	});
 	

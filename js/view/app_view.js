@@ -45,9 +45,13 @@ define(function(require) {
     		this.index();
     		this.curView.addLxr(lxrId);
     	},
-    	ydyhy: function(hyId) {
+    	ydyhy: function() {
     		this.index();
-			this.curView.ydyhy(hyId);
+			this.curView.ydyhy();
+    	},
+    	addYdyhy: function(hyId) {
+    		this.index();
+			this.curView.addYdyhy(hyId);
     	},
     	hyjl: function() {
     		this.index();

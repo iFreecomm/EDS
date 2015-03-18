@@ -1,5 +1,5 @@
 define(function(require) {
-	var ydyhy_tmpl = require("text!tmpl/zkhy_ydyhy.html");
+	var ydyhy_tmpl = require("text!tmpl/zkhy_ydyhy_add.html");
 	var YdyhyModel = require("model/ydyhy_model");
 	
 	var YhzView = require("view/zkhy_hymb_add_yhz_view");
@@ -9,7 +9,7 @@ define(function(require) {
 	
 	
 	var ZkhyYdyhyView = Backbone.View.extend({
-		id: "ydyhy",
+		id: "ydyhy_add",
 		className: "contentRight",
 		tmpl: Handlebars.compile(ydyhy_tmpl),
 		bindings: {

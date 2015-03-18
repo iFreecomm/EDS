@@ -1,6 +1,7 @@
 define(function(require) {
 	var ZkhyNavView = require("view/zkhy_nav_view");
 	var ZkhyYdyhyView = require("view/zkhy_ydyhy_view");
+	var ZkhyYdyhyAddView = require("view/zkhy_ydyhy_add_view");
 	var ZkhyHyjlView = require("view/zkhy_hyjl_view");
 	var ZkhyYyhyView = require("view/zkhy_yyhy_view");
 	var ZkhyHymbView = require("view/zkhy_hymb_view");
@@ -16,10 +17,16 @@ define(function(require) {
 		appendContent: function() {
     		this.$el.append(this.contentView.el);
     	},
-		ydyhy: function(hyId) {
+		ydyhy: function() {
 			this.navView.activeLink("ydyhy");
 			this.closeView(this.contentView);
-			this.contentView = new ZkhyYdyhyView({hyId: hyId});
+			this.contentView = new ZkhyYdyhyView();
+			this.appendContent();
+		},
+		addYdyhy: function(hyId) {
+			this.navView.activeLink("ydyhy");
+			this.closeView(this.contentView);
+			this.contentView = new ZkhyYdyhyAddView({hyId: hyId});
 			this.appendContent();
 		},
 		hyjl: function() {

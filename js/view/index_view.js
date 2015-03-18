@@ -23,9 +23,13 @@ define(function(require) {
 				this.appendContent();
     		}
     	},
-    	ydyhy: function(hyId) {
+    	ydyhy: function() {
     		this.zkhy();
-			this.contentView.ydyhy(hyId);
+			this.contentView.ydyhy();
+    	},
+    	addYdyhy: function(hyId) {
+    		this.zkhy();
+			this.contentView.addYdyhy(hyId);
     	},
     	hyjl: function() {
     		this.zkhy();

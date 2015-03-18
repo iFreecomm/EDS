@@ -1,63 +1,24 @@
-<p class="tip">点击添加会议创建新的会议；点击已添加的会议发起会议；点击已发起会议进入会议控制页面，已经预约的会议加亮显示</p>
-
-<div id="select-lxr-box-container"></div>
-
-<div class="form-box cf">
-	<div class="fl">
-		<span class="fieldName">会议名称：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="hymc" id="hymc" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">会议号码：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="hyhm" id="hyhm" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">主席密码：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="zxmm" id="zxmm" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">预约日期：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="yyrq" id="yyrq" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">会议模板：</span>
-		<div class="fieldBox">
-			<select name="hymb" id="hymb" class="select-md">
-				<option value="1" hclx="1">会场类型1</option>
-				<option value="2" hclx="2">会场类型2</option>
-				<option value="3" hclx="2">会场类型3</option>
-				<option value="3" hclx="3" selected="selected">会场类型4</option>
-			</select>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">会议带宽：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="hydk" id="hydk" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">会议密码：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="hymm" id="hymm" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="fl">
-		<span class="fieldName">持续时间：</span>
-		<div class="fieldBox">
-			<input class="input-md" type="text" name="cxsj" id="cxsj" autocomplete="off"/>
-		</div>
-	</div>
-	<div class="form-btns">
-		<input type="button" class="input-btn" value="保存会议"/>
-		<input type="button" class="input-btn ml20" value="取消返回"/>
-	</div>
-</div>
+<ul class="box-container justify-list">
+	<li class="justify-item">
+		<a class="add" href="#zkhy/addYdyhy/add">
+			<div class="box-head">添加会议</div>
+			<div class="box-body"></div>
+		</a>
+	</li>
+	{{#each this}}
+		<li class="justify-item">
+			<a href="#zkhy/addYdyhy/add/{{id}}">
+				<div class="box-head">{{name}}</div>
+				<div class="box-body">{{desc}}</div>
+			</a>
+		</li>
+	{{/each}}
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+</ul>

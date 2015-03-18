@@ -9,7 +9,8 @@ define(function(require) {
     		"portal": "portal",
     		
     		"zkhy": "ydyhy",
-    		"zkhy/ydyhy(/:hyId)": "ydyhy",
+    		"zkhy/ydyhy": "ydyhy",
+    		"zkhy/addYdyhy(/:hyId)": "addYdyhy",
     		"zkhy/hyjl": "hyjl",
     		"zkhy/yyhy": "yyhy",
     		"zkhy/hymb": "hymb",
@@ -30,8 +31,11 @@ define(function(require) {
     		this.view.portal();
     	},
     	
-    	ydyhy: function(hyId) {
-			this.view.ydyhy(hyId);
+    	ydyhy: function() {
+			this.view.ydyhy();
+    	},
+    	addYdyhy: function(hyId) {
+			this.view.addYdyhy(hyId);
     	},
     	hyjl: function() {
 			this.view.hyjl();
