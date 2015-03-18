@@ -1,6 +1,5 @@
 define(function(require) {
 	var Backbone = require("backbone");
-	var Handlebars = require("handlebars");
 	
 	var tmpl = require("text!tmpl/zkhy_hymb_add.html");
 	
@@ -13,13 +12,13 @@ define(function(require) {
 	var ZkhyHymbAddView = Backbone.View.extend({
 		id: "hymb_add",
 		className: "contentRight",
-		tmpl: Handlebars.compile(tmpl),
 		events: {
 			"click .tabBox li": "selectTab"
 		},
 		initialize: function() {
 			this.basicView = new BasicView();
 			this.yhzView = new YhzView();
+			this.yhzView.$el.addClass("tabContent"); //这是公用View，其它地方不需要这个class
 			this.dhmView = new DhmView();
 			this.spjzView = new SpjzView();
 			this.lzbmView = new LzbmView();

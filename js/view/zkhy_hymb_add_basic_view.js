@@ -5,6 +5,7 @@ define(function(require) {
 	require("customSelect");
 	
 	var BasicView = Backbone.View.extend({
+		id: "hymb_add_basic",
 		className: "tabContent active",
 		bindings: {
 			

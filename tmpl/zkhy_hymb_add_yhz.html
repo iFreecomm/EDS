@@ -1,1 +1,36 @@
-与会者
+<div class="select-lxr-box">
+	<div class="lxr-box-left">
+		<div class="nav-character"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i><i>F</i><i>G</i><i>H</i><i>I</i><i>J</i><i>K</i><i>L</i><i>M</i><i>N</i><i>O</i><i>P</i><i>Q</i><i>R</i><i>S</i><i>T</i><i>U</i><i>V</i><i>W</i><i>X</i><i>Y</i><i>Z</i></div>
+		<div class="lxr-box-container">
+			<h3>会场地址本</h3>
+			{{#each allLxr}}
+				<div class="lxr-label">{{name}}</div>
+				<div class="lxr-box cf">
+					{{#each contents}}
+						<div class="lxr">
+							<div class="lxr-head">{{name}}</div>
+							<div class="lxr-body">{{info}}</div>
+						</div>
+					{{/each}}
+				</div>
+			{{/each}}
+		</div>
+	</div>
+	
+	<div class="btn-area-adddel">
+		<div class="btn-add">添加</div>
+		<div class="btn-del">删除</div>
+	</div>
+	
+	<div class="lxr-box-right">
+		<h3>预定与会会场</h3>
+		<div class="lxr-box">
+			{{#each selectedLxr}}
+				<div class="lxr">
+					<div class="lxr-head">{{name}}</div>
+					<div class="lxr-body">{{info}}</div>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</div>
