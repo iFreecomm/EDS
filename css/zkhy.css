@@ -1,11 +1,4 @@
-#mainContent {
-	height: 100%;
-	min-height: 300px;
-	width: 100%;
-	padding-left: 200px;
-	background: url(../img/zkhy/bg_left.png) repeat-y 200px 0;
-	overflow: auto;
-}
+/************预定义会议样式开始*************/
 .select-lxr-container {
 	width: 100%;
 	text-align: center;
@@ -181,24 +174,50 @@
 
 /******表单样式******/
 #ydyhy .form-box {
-	width: 88%;
-	margin-left: 6%;
+	width: 90%;
+	margin-left: 5%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-#ydyhy .form-cell-float {
-	margin-left: 3%;
+#ydyhy .fieldName {
+	width: 126px;
+}
+#ydyhy .fieldBox {
+	padding-left: 126px;
 }
 #ydyhy .form-btns {
 	float: right;
+	width: 352px;
+	text-align: center;
 }
-#ydyhy .fieldName {
-	width: 100px;
-}
-#ydyhy .fieldBox {
-	padding-left: 100px;
-}
+/************预定义会议样式结束*************/
 
+
+
+/********添加会议模板样式开始***********/
+/********基本参数样式开始***********/
+#hymb_add .tabBox {
+	position: relative;
+}
+#hymb_add .tabContentBox {
+	position: absolute;
+	top: 32px;
+	bottom: 60px;
+	left: 200px;
+	right: 0;
+	overflow: auto;
+}
+#hymb_add .input-btn-area {
+	position: absolute;
+	bottom: 0;
+	left: 200px;
+	right: 0;
+	text-align: center;
+	background: #D4D4D4;
+}
+/********基本参数样式结束***********/
+
+/************多画面样式开始*************/
 .mode-container {
     border: 1px solid #D4D4D4;
     box-shadow: 0 0 10px 0 #ccc inset;
@@ -227,25 +246,5 @@
 .mode-bg .none-visible {
     visibility: hidden;
 }
-
-/********添加会议模板样式开始***********/
-#hymb_add .tabBox {
-	position: relative;
-}
-#hymb_add .tabContentBox {
-	position: absolute;
-	top: 32px;
-	bottom: 60px;
-	left: 200px;
-	right: 0;
-	overflow: auto;
-}
-#hymb_add .input-btn-area {
-	position: absolute;
-	bottom: 0;
-	left: 200px;
-	right: 0;
-	text-align: center;
-	background: #D4D4D4;
-}
+/************多画面样式结束*************/
 /********添加会议模板样式结束***********/

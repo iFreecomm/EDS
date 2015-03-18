@@ -28,6 +28,9 @@
 #lxr_add .form-cell[hclx] {
 	display: none;
 }
+#lxr_add .label-checkbox {
+	width: 100px;
+}
 #lxr_add .form-btns {
 	position: absolute;
 	right: 0px;

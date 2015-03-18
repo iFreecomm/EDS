@@ -5,7 +5,7 @@ define(function(require) {
 	require("customSelect");
 	
 	var BasicView = Backbone.View.extend({
-		className: "tabContent",
+		className: "tabContent active",
 		bindings: {
 			
 		},
