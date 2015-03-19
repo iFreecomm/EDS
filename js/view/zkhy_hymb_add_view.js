@@ -18,7 +18,7 @@ define(function(require) {
 		initialize: function() {
 			this.basicView = new BasicView();
 			this.yhzView = new YhzView();
-			this.yhzView.$el.addClass("tabContent"); //这是公用View，其它地方不需要这个class
+			this.yhzView.$el.addClass("tabContent").attr("id", "hymb_add_yhz"); //这是公用View，其它地方不需要这个class和这个id
 			this.dhmView = new DhmView();
 			this.spjzView = new SpjzView();
 			this.lzbmView = new LzbmView();

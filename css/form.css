@@ -22,6 +22,16 @@
 .fieldBox.pl250 {
 	padding-left: 250px;
 }
+
+.form-btns-bottom-right {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	width: 140px;
+}
+.form-btns-bottom-right .input-btn {
+	margin-top: 10px;
+}
 /******text文本输入框样式******/
 input[type=text] {
 	width: 126px;

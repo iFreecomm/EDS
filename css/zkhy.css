@@ -224,33 +224,113 @@
 /********与会者样式结束***********/
 
 /************多画面样式开始*************/
-.mode-container {
+.dhm-page {
+	width: 96%;
+    margin: auto;
+}
+.mode-box-container {
     border: 1px solid #D4D4D4;
     box-shadow: 0 0 10px 0 #ccc inset;
-    padding: 15px;
+    padding-top: 20px;
     background: #e5e5e5;
     overflow: hidden;
 }
-.mode-bg {
+.mode-box {
     float: left;
-    margin-left: 20px;
     width: 160px;
     height: 90px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     background: #A9ABAE;
 }
-.mode-bg table {
+.mode-box table {
     width: 100%;
     height: 100%;
     border: none;
     border-collapse: collapse;
     border-spacing: 0;
+    table-layout: fixed;
 }
-.mode-bg td {
+.mode-box .mode-table-2 {
+	position: relative;
+	top: 25%;
+	height: 50%;
+}
+.mode-box td {
     border: 2px solid #FFF;
     background: #1E89B5;
 }
-.mode-bg .none-visible {
+.mode-box.active td {
+    background: #F47900;
+}
+.mode-box .hzh {
+    float: right;
+    width: 33%;
+    height: 33%;
+    border: 2px solid #FFF;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    background: #1E89B5;
+}
+.unvisible {
     visibility: hidden;
+    border-color: transparent;
+}
+.vab {
+	vertical-align: bottom;
+}
+
+.dhm-pz-container {
+	position: relative;
+	height: 500px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.lxr-box2 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 180px;
+	height: 100%;
+	border: 1px solid #D4D4D4;
+	box-shadow: 0 0 10px 0 #ccc inset;
+}
+.mode-box-selected-container {
+	margin-left: 200px;
+	margin-right: 160px;
+	height: 100%;
+	border: 1px solid #D4D4D4;
+	box-shadow: 0 0 10px 0 #ccc inset;
+	text-align: center;
+}
+.mode-box-big {
+	position: relative;
+	z-index: 0;
+	top: 5%;
+	float: none;
+	width: 70%;
+	min-width: 380px;
+	max-width: 800px;
+	height: 90%;
+	margin: auto;
+}
+.mode-box-big td {
+    border: 5px solid #FFF;
+}
+@media (max-width: 1440px) {
+	.dhm-pz-container {
+		height: 350px;
+	}
+}
+@media (max-width: 1280px) {
+	.dhm-pz-container {
+		height: 300px;
+	}
+}
+@media (max-width: 1024px) {
+	.dhm-pz-container {
+		height: 250px;
+	}
 }
 /************多画面样式结束*************/
 /********添加会议模板样式结束***********/

@@ -8,6 +8,7 @@ requirejs.config({
         tmpl: "../../tmpl",
         style: "../../css",
         jquery: "jquery-1.11.2",
+        jqueryui: "jquery-ui-1.11.4/jquery-ui.min",
         customSelect: "jquery.select",
         underscore: "underscore-min",
         backbone: "backbone",

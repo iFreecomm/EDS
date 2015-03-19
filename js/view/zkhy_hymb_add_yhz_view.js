@@ -5,7 +5,6 @@ define(function(require) {
 	var tmpl = require("text!tmpl/zkhy_hymb_add_yhz.html");
 	
 	var YhzView = Backbone.View.extend({
-		id: "hymb_add_yhz",
 		tmpl: Handlebars.compile(tmpl),
 		initialize: function() {
 			var self = this;

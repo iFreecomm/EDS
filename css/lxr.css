@@ -31,12 +31,3 @@
 #lxr_add .label-checkbox {
 	width: 100px;
 }
-#lxr_add .form-btns {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	width: 140px;
-}
-#lxr_add .input-btn {
-	margin-top: 10px;
-}

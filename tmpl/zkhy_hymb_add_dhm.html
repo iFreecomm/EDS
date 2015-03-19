@@ -1,1 +1,161 @@
-多画面
+<div class="dhm-page">
+	<div>
+	    <span>使用自动多画面模式</span>
+	    <input type="checkbox" name="automode" id="automode" />
+	    <label for="automode" class="label-checkbox">自动多画面模式，自动后不用配置多画面模式，系统会根据会议状态自动切换</label>
+	</div>
+	
+	<div>请选择画面模式</div>
+	<div class="mode-box-container">
+		<div class="mode-box">
+			<table class="mode-table-2">
+				<tr>
+				    <td></td>
+				    <td></td>
+				</tr>
+			</table>
+		</div>
+		<div class="mode-box">
+	        <table>
+	            <tr>
+	                <td rowspan="4" width="75%"></td>
+	                <td></td>
+	            </tr>
+	            <tr><td></td></tr>
+	            <tr><td></td></tr>
+	            <tr><td class="unvisible"></td></tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td rowspan="4" width="75%"></td>
+	                <td></td>
+	            </tr>
+	            <tr><td class="unvisible"></td></tr>
+	            <tr><td class="unvisible"></td></tr>
+	            <tr><td class="unvisible"></td></tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td colspan="3" height="75%"></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td rowspan="2" colspan="2"></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td rowspan="3" colspan="3"></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <div class="mode-box">
+	        <table>
+	            <tr>
+	                <td class="vab">
+	                    <div class="hzh">
+	                    	
+	                    </div>
+	                </td>
+	            </tr>
+	        </table>
+	    </div>
+	</div>
+	
+	<div class="dhm-pz-container">
+		<div class="lxr-box2">
+			{{#each this}}
+				<div class="lxr">
+					<div class="lxr-head">{{name}}</div>
+				</div>
+			{{/each}}
+		</div>
+		
+		<div class="mode-box-selected-container">
+			<div class="mode-box mode-box-big">
+		        <table>
+		            <tr>
+		                <td rowspan="4" width="75%"></td>
+		                <td></td>
+		            </tr>
+		            <tr><td></td></tr>
+		            <tr><td></td></tr>
+		            <tr><td class="unvisible"></td></tr>
+		        </table>
+		    </div>
+		</div>
+		
+		<div class="form-btns-bottom-right">
+			<input type="button" class="input-btn saveBtn" value="预设"/>
+			<input type="button" class="input-btn cancelBtn" value="保存"/>
+			<input type="button" class="input-btn saveBtn" value="缺省值"/>
+		</div>
+	</div>
+</div>
