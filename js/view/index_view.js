@@ -17,8 +17,8 @@ define(function(require) {
     	
     	zkhy: function() {
     		if(!(this.contentView && this.contentView.name === "zkhy")) {
-    			this.closeView(this.contentView);
     			this.navTopView.activeLink("zkhy");
+    			this.closeView(this.contentView);
     			this.contentView = new ZkhyView();
 				this.appendContent();
     		}
@@ -50,8 +50,8 @@ define(function(require) {
     	
     	lxr: function() {
     		if(!(this.contentView && this.contentView.name === "lxr")) {
-    			this.closeView(this.contentView);
     			this.navTopView.activeLink("lxr");
+    			this.closeView(this.contentView);
     			this.contentView = new LxrView();
 				this.appendContent();
     		}

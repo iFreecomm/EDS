@@ -37,12 +37,14 @@ define(function(require) {
     	addYdyhy: function(hyId) {
 			this.view.addYdyhy(hyId);
     	},
+    	
     	hyjl: function() {
 			this.view.hyjl();
     	},
     	yyhy: function() {
 			this.view.yyhy();
     	},
+    	
     	hymb: function() {
 			this.view.hymb();
     	},

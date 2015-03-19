@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var YdyhyModel = require("model/ydyhy_model");
 	
-	var LxrList = Backbone.Collection.extend({
+	var YdyhyList = Backbone.Collection.extend({
 		model: YdyhyModel,
 		urls: {
 			"create": "json/ydyhy_show.do",
@@ -12,5 +12,5 @@ define(function(require) {
 		}
 	});
 	
-	return LxrList;
+	return YdyhyList;
 });

@@ -6,7 +6,7 @@ define(function(require) {
 	
 	var Backbone = require("backbone");
 	var Handlebars = require("handlebars");
-	
+	require("customSelect");
 	
 	var ZkhyYdyhyView = Backbone.View.extend({
 		id: "ydyhy_add",

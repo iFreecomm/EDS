@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var HymbModel = require("model/hymb_model");
 	
-	var LxrList = Backbone.Collection.extend({
+	var HymbList = Backbone.Collection.extend({
 		model: HymbModel,
 		urls: {
 			"create": "json/hymb_show.do",
@@ -12,5 +12,5 @@ define(function(require) {
 		}
 	});
 	
-	return LxrList;
+	return HymbList;
 });
