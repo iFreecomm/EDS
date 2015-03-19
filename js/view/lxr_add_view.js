@@ -5,7 +5,9 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Handlebars = require("handlebars");
 	require("stickit");
-	require("customSelect");
+//	require("customSelect");
+	require("jqueryui");
+	require("datepickerCN");
 	
 	var AddLxrView = Backbone.View.extend({
 		id: "lxr_add",
@@ -44,8 +46,11 @@ define(function(require) {
 		},
 		render: function() {
 			this.$el.html(tmpl);
-			this.stickit();
-			this.$("select").customSelect();
+//			this.stickit();
+			this.$( "#hcmc" ).datepicker();
+			this.$( "#hcmc" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+			this.$( "#hcmc" ).datepicker( "option", $.datepicker.regional["zh-TW"] );
+			this.$("#hclx").selectmenu();
 			this.changeHclx();
 		},
 		changeHclx: function() {

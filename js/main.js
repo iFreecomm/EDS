@@ -9,6 +9,7 @@ requirejs.config({
         style: "../../css",
         jquery: "jquery-1.11.2",
         jqueryui: "jquery-ui-1.11.4/jquery-ui.min",
+        datepickerCN: "jquery-ui-1.11.4/datepicker-zh-CN",
         customSelect: "jquery.select",
         underscore: "underscore-min",
         backbone: "backbone",
