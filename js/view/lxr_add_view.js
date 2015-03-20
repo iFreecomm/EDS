@@ -7,7 +7,7 @@ define(function(require) {
 	require("stickit");
 //	require("customSelect");
 	require("jqueryui");
-	require("datepickerCN");
+	require("datepickerzhCN");
 	
 	var AddLxrView = Backbone.View.extend({
 		id: "lxr_add",
@@ -46,12 +46,23 @@ define(function(require) {
 		},
 		render: function() {
 			this.$el.html(tmpl);
-//			this.stickit();
+			this.stickit();
 			this.$( "#hcmc" ).datepicker();
-			this.$( "#hcmc" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-			this.$( "#hcmc" ).datepicker( "option", $.datepicker.regional["zh-TW"] );
-			this.$("#hclx").selectmenu();
 			this.changeHclx();
+			
+			sm();
+			var time = 0;
+			
+			function sm() {
+				time ++;
+				var w = this.$("#hclx").width();
+				if(!w) {
+					setTimeout(sm, 13);
+				} else {
+					this.$("#hclx").selectmenu();
+					console.log(time);
+				}
+			}
 		},
 		changeHclx: function() {
 			var curHclx = this.model.get("hclx");

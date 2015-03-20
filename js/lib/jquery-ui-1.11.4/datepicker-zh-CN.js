@@ -4,15 +4,15 @@
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
-		define([ "../datepicker" ], factory );
+		define([ "jquery", "jqueryui" ], factory );
 	} else {
 
 		// Browser globals
-		factory( jQuery.datepicker );
+		factory( jQuery );
 	}
-}(function( datepicker ) {
+}(function( $ ) {
 
-datepicker.regional['zh-CN'] = {
+$.datepicker.regional['zh-CN'] = {
 	closeText: '关闭',
 	prevText: '&#x3C;上月',
 	nextText: '下月&#x3E;',
@@ -30,8 +30,8 @@ datepicker.regional['zh-CN'] = {
 	isRTL: false,
 	showMonthAfterYear: true,
 	yearSuffix: '年'};
-datepicker.setDefaults(datepicker.regional['zh-CN']);
+$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 
-return datepicker.regional['zh-CN'];
+return $.datepicker.regional['zh-CN'];
 
 }));

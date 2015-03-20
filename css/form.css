@@ -90,6 +90,8 @@ input.input-lg { width: 356px; background-position: -352px 0; }
 .select-hgmwyp li:hover {
 	background: #E4E4E4;
 }
+.select-lg { width: 356px; }
+#hclx { width: 356px; }
 .select-hgmwyp.select-sm { width: 126px; }
 .select-hgmwyp.select-sm .select-text-bg { background-position: 0 0; }
 .select-hgmwyp.select-md { width: 226px; }
