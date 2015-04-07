@@ -17,7 +17,7 @@ public class ActionServlet extends HttpServlet {
 	System.out.println("get");
     	String uri = request.getRequestURI();
     	System.out.println("uri="+uri);
-    	String url = "json"+uri.substring(5, uri.lastIndexOf("psp"))+"json";
+    	String url = "json"+uri.substring(4, uri.lastIndexOf("psp"))+"json";
     	
     	response.sendRedirect(url);
     }

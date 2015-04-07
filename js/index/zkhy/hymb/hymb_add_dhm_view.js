@@ -56,7 +56,7 @@ define(function(require) {
 		
 		onRender: function() {
 			this.stickit().fixIE8();
-			this.renderSelectedMode();
+//			this.renderSelectedMode();
 			
 			//使联系人可以拖动
 			this.enableDraggable(this.ui.lxrs);
@@ -108,6 +108,8 @@ define(function(require) {
 				$span.data("recordId", curSub.recordId);
 				$span.text(curSub.addrName);
 				
+				$this.append($span).addClass("active");
+				
 				$span.draggable({
 					helper: "clone",
 					addClasses: false,
@@ -115,7 +117,6 @@ define(function(require) {
 					containment: curView.ui.appendToBox
 				});
 				
-				$this.append($span).addClass("active");
 			});
 		},
 		
@@ -134,7 +135,7 @@ define(function(require) {
 				accept: ".lxr",
 				hoverClass: "hover",
 				addClasses: false,
-				greedy: true,
+//				greedy: true,
 				
 				drop: function(event, ui) {
 					var $drag = ui.draggable;
@@ -147,9 +148,9 @@ define(function(require) {
 						$drag.replaceWith($chi);
 						$this.append($drag);
 					} else {
-						var $dragClone = $drag.clone().addClass("inTd");
+						var $dragClone = $drag.clone();
 						curView.enableDraggable($dragClone);
-						$this.addClass("active").html($dragClone);
+						$this.addClass("active").html($dragClone.addClass("inTd"));
 					}
 				},
 				
