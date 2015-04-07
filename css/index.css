@@ -1,13 +1,13 @@
 /********首页头部样式********/
 .navTop {
-	height: 94px;
-	background: url(../img/frame/navTop_bg.png) repeat-x 0 0;
+	height: 86px;
+	background: #1E89B5;
 	overflow: hidden;
 }
 .navTop-logo {
 	height: 100%;
 	padding-left: 250px;
-	background: url(../img/frame/logo.png) no-repeat 42px 10px;
+	background: url(../img/frame/logo.png) no-repeat 42px center;
 }
 .navTop ul {
 	float: right;
@@ -17,7 +17,7 @@
 }
 .navTop li {
 	float: left;
-	height: 94px;
+	height: 86px;
 	padding-left: 4px;
 	background: url(../img/frame/split.png) no-repeat 0 5px;
 	text-align: center;
@@ -38,52 +38,26 @@
 	color: #FFF;
 	margin: 0;
 }
-
-@media (max-width: 1920px) {
-	.navTop li {
-		width: 119px;
-	}
-}
-@media (max-width: 1440px) {
-	.navTop li {
-		width: 99px;
-	}
-}
-@media (max-width: 1280px) {
-	.navTop li {
-		width: 76px;
-	}
-}
-@media (max-width: 1024px) {
-	.navTop-logo {
-		padding-left: 230px;
-		background-position: 20px 10px;
-	}
-}
-
 /***********左侧导航样式************/
 #c1 {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 94px;
+	top: 86px;
 	bottom: 0;
 	min-width: 1000px;
 	overflow: hidden;
+	background: #F4F1F1 url(../img/frame/navTop_bg.png) repeat-x 0 0 \9;
 }
 /***********左侧导航样式************/
 .navLeft {
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0px;
-	z-index: 1;
-	width: 200px;
-	padding: 4px 6px;
+	float: left;
+	height: 100%;
 	background: #F0F0F0;
 }
 .navLeft ul {
-	padding: 0;
+	width: 200px;
+	padding: 4px 6px;
 	margin: 0;
 	list-style: none;
 }
@@ -104,16 +78,16 @@
 .navLeft .nav-text {
 	padding-left: 58px;
 }
-.navLeft .ydyhy {
+.navLeft .nav-ydyhy {
 	background: url(../img/zkhy/1.png) no-repeat 15px 10px;
 }
-.navLeft .hyjl {
+.navLeft .nav-hyjl {
 	background: url(../img/zkhy/2.png) no-repeat 15px 10px;
 }
-.navLeft .yyhy {
+.navLeft .nav-yyhy {
 	background: url(../img/zkhy/3.png) no-repeat 15px 10px;
 }
-.navLeft .hymb {
+.navLeft .nav-hymb {
 	background: url(../img/zkhy/4.png) no-repeat 15px 10px;
 }
 /******选中和浮动效果-黄色背景图片-图标切换******/
@@ -128,12 +102,8 @@
 }
 /******右侧内容样式******/
 .contentRight {
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
+	height: 100%;
 	overflow: auto;
-	width: 100%;
-	padding-left: 200px;
-	background: #F4F1F1 url(../img/frame/contentRight_bg.png) repeat-y 200px 0;
+	background: url(../img/frame/contentRight_bg.png) repeat-y 0 0 \9;
+	box-shadow: 0 0 10px 1px #A3A1A1 inset;
 }

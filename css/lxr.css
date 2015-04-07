@@ -1,7 +1,3 @@
-#lxr_show, #lxr_add {
-	overflow: auto;
-	height: 100%;
-}
 #lxr_show .sxj .box-body {
 	background: #A9A9A9 url(../img/lxr/sxj.png) no-repeat 110px 110px;
 }
@@ -13,7 +9,7 @@
 }
 
 /******添加联系人表单样式******/
-#lxr_add .form-box {
+#lxr_add .formBox {
 	position: relative;
 	width: 60%;
 	min-width: 800px;
@@ -22,10 +18,8 @@
 	padding-right: 150px;
 	margin: 0 auto;
 }
-#lxr_add .form-cell {
-	margin-bottom: 10px;
-}
-#lxr_add .form-cell[hclx] {
+#lxr_add .formLine[equType],
+#lxr_add .lineName[equType] {
 	display: none;
 }
 #lxr_add .label-checkbox {

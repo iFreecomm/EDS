@@ -1,0 +1,24 @@
+<ul class="box-container justify-list">
+	<li class="justify-item">
+		<a class="add" href="#zkhy/addYdyhy">
+			<div class="box-head">添加会议</div>
+			<div class="box-body"></div>
+		</a>
+	</li>
+	{{#each items}}
+		<li class="justify-item">
+			<a href="#zkhy/addYdyhy/{{id}}">
+				<div class="box-head">{{name}}</div>
+				<div class="box-body">{{desc}}</div>
+			</a>
+		</li>
+	{{/each}}
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+	<li class="justify-item"></li>
+</ul>

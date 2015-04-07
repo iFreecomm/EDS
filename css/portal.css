@@ -60,11 +60,3 @@
 	margin-left: 20px;
 	text-align: left;
 }
-/********模块内部元素样式********/
-@media (max-width: 1024px) {
-	.portal-box img {
-		width: 90px;
-		height: 90px;
-		margin-top: 15px;
-	}
-}

@@ -1,21 +1,23 @@
 requirejs.config({
-    baseUrl: "js/lib",
+    baseUrl: "js/lib/dev",
     paths: {
-        model: "../model",
-        collection: "../collection",
-        view: "../view",
-        router: "../router",
-        tmpl: "../../tmpl",
-        style: "../../css",
-        jquery: "jquery-1.11.2",
-        jqueryui: "jquery-ui-1.11.4/jquery-ui",
-        datepickerzhCN: "jquery-ui-1.11.4/datepicker-zh-CN",
-        customSelect: "jquery.select",
-        underscore: "underscore-min",
+    	web: "../../../js",
+        jquery: "jquery",
+        mousewheel: "jquery.mousewheel",
+        jqueryui: "jqueryui/jquery-ui",
+        datepickerzhCN: "jqueryui/datepicker-zh-CN",
+        timepicker: "jqueryui/jquery-ui-timepicker-addon",
+        underscore: "underscore",
         backbone: "backbone",
         stickit: "backbone.stickit",
-        handlebars: "handlebars-v2.0.0"
+        radio: "backbone.radio",
+        marionette: "backbone.marionette",
+        handlebars: "handlebars",
+        text: "text",
+        moment: "moment"
     }
 });
 
-requirejs(["router"]);
+requirejs(["web/app"], function(App) {
+	new App().start();
+});

@@ -1,0 +1,61 @@
+/**********配置样式开始**********/
+.pz .formBox {
+	margin-top: 20px;
+}
+.pz .cellName {
+	padding-right: 5px;
+}
+.pz .fieldBox p {
+	margin: 0 0 10px 0;
+}
+.pz .form-btns {
+	margin-bottom: 20px;
+}
+.pz .form-btns input {
+	margin-left: 140px;
+}
+.pz .sliderBox .formCell {
+	width: 680px;
+}
+.pz .slider {
+	width: 480px;
+	margin: 11px 10px;
+	float: left;
+}
+.pz .ui-widget-header {
+	background: #1c94c4;
+}
+.pz .sliderValue {
+	line-height: 2.2;
+	font-size: 16px;
+	margin-left: 10px;
+}
+/**********配置样式结束**********/
+
+/**********网络设置样式开始**********/
+.spjk,.wlsz {
+	padding: 30px 50px;
+}
+.wlsz-box {
+	padding: 20px;
+}
+.wlsz-box input {
+	width: 205px;
+	height: 120px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+#pz_wlsz_nat .cellName,
+#pz_wlsz_sip .cellName {
+	width: 200px;
+}
+#pz_wlsz_nat .form-btns input[type=submit],
+#pz_wlsz_sip .form-btns input[type=submit] {
+	margin-left: 200px;
+}
+
+#pz_wlsz_dksz .fieldBox {
+	margin-left: 140px;
+}
+/**********网络设置样式结束**********/

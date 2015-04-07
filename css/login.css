@@ -13,6 +13,7 @@
 	background: url(../img/login/login.png) no-repeat 0 0;
 	text-align: center;
 }
+/********输入框样式********/
 .login-box .input-text {
 	display: block;
 	width: 380px;
@@ -26,6 +27,7 @@
 /********用户名输入框********/
 #username {
 	background: url(../img/login/user1.png) no-repeat 0 0;
+	box-shadow: none;
 }
 #username:focus {
 	background-image: url(../img/login/user2.png);
@@ -33,12 +35,13 @@
 /********密码输入框********/
 #password {
 	background: url(../img/login/pwd1.png) no-repeat 0 0;
+	box-shadow: none;
 }
 #password:focus {
 	background-image: url(../img/login/pwd2.png);
 }
 /********登录/重置按钮********/
-.login-box .input-btn-area {
+.login-box .form-btns {
 	margin-top: 25px;
 }
 .login-box .input-btn {

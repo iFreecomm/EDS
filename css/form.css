@@ -1,26 +1,33 @@
 /******表单样式******/
-.form-cell {
+.formLine {
 	width: 100%;
+	margin-bottom: 20px;
 }
-.fieldName {
+.lineName {
 	float: left;
-	width: 180px;
-	line-height: 64px;
+	width: 260px;
+	padding-right: 80px;
+	line-height: 1.4;
 	font-size: 24px;
 	font-weight: normal;
 	color: #2F2F2F;
 	text-align: right;
 }
-.fieldName.w250 {
-	width: 250px;
-	padding-right: 70px;
+.formCell {
+	margin-bottom: 10px;
+}
+.cellName {
+	float: left;
+	width: 140px;
+	padding-right: 20px;
+	line-height: 2.2;
+	font-size: 16px;
+	font-weight: normal;
+	color: #2F2F2F;
+	text-align: right;
 }
 .fieldBox {
-	width: 100%;
-	padding-left: 180px;
-}
-.fieldBox.pl250 {
-	padding-left: 250px;
+	overflow: hidden;
 }
 
 .form-btns-bottom-right {
@@ -33,92 +40,65 @@
 	margin-top: 10px;
 }
 /******text文本输入框样式******/
-input[type=text] {
-	width: 126px;
-	height: 64px;
-	line-height: 24px;
-	padding: 20px;
-	border: none;
-	outline: none;
-	background: url(../img/frame/input.png) no-repeat 0 0;
-}
-input[type=text]:focus {
-	background-position-y: -64px;
-}
-input.input-sm { width: 126px; background-position: 0 0; }
-input.input-md { width: 226px; background-position: -126px 0; }
-input.input-lg { width: 356px; background-position: -352px 0; }
-/******select样式******/
-.select-hgmwyp {
-	position: relative;
-	width: 126px;
-}
-.select-text-bg {
-	background: url(../img/frame/input.png) no-repeat 0 0;
-}
-.select-text {
-	height: 64px;
-	line-height: 24px;
-	padding: 20px;
-	background: url(../img/frame/select.png) no-repeat right center;
-}
-.select-list {
-	display: none;
-	position: absolute;
-	z-index: 100;
-	left: 0;
-	top: 53px;
-	width: 100%;
-	padding: 0 10px;
-}
-.select-hgmwyp ul {
-	width: 100%;
-	padding: 0;
-	border: 1px solid #F47900;
-	margin: 0;
-	list-style: none;
+input[type=text],
+input[type=password] {
+	width: 200px;
+	line-height: 1.4;
+	padding: 7px 16px;
+	vertical-align: middle;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.075) inset;
 	background: #FFF;
-	cursor: default;
+	transition: border linear .2s, box-shadow linear .2s;
+	color: #1C94C4;
 }
-.select-hgmwyp li {
-	border-top: 1px solid #F47900;
-	padding: 8px 15px;
+input[type=text]:focus,
+input[type=password]:focus {
+	border-color: #FBCB09;
+	box-shadow: 0 0 5px 0 rgba(251,203,9,0.5) inset;
+	outline: 0;
 }
-.select-hgmwyp li:first-child {
+input.spinner {
+	height: 30px;
+	width: 100px;
 	border: none;
+	background: none;
+	box-shadow: none;
 }
-.select-hgmwyp li:hover {
-	background: #E4E4E4;
+input.spinner:focus {
+	border: 1px solid #FBCB09;
+	background: #FFF;
 }
-.select-lg { width: 356px; }
-#hclx { width: 356px; }
-.select-hgmwyp.select-sm { width: 126px; }
-.select-hgmwyp.select-sm .select-text-bg { background-position: 0 0; }
-.select-hgmwyp.select-md { width: 226px; }
-.select-hgmwyp.select-md .select-text-bg { background-position: -126px 0; }
-.select-hgmwyp.select-lg { width: 356px; }
-.select-hgmwyp.select-lg .select-text-bg { background-position: -352px 0; }
-.select-hgmwyp.active .select-text-bg { background-position-y: -64px; }
-.select-hgmwyp.active .select-list { display: block; }
+/******select样式******/
+select {
+	width: 200px;
+}
+.ui-selectmenu-button {
+	vertical-align: middle;
+}
+.ui-state-default,.ui-state-focus {
+	font-weight: normal !important;
+}
+.ui-selectmenu-button span.ui-selectmenu-text {
+	padding: 7px 34px 7px 16px;
+}
 /******checkbox样式******/
 input[type=checkbox] {
 	display: none;
 }
 .label-checkbox {
 	display: inline-block;
-	padding-left: 30px;
-	margin-left: 10px;
-	margin-bottom: 0;
-	background: url(../img/frame/checkbox.png) no-repeat 0 16px;
-	line-height: 64px;
-	font-size: 20px;
+	padding: 7px 0 7px 30px;
+	line-height: 1.4;
 	font-weight: normal;
+	background: url(../img/frame/checkbox.png) no-repeat 0 2px;
 }
 .label-checkbox.active {/*需要js配合兼容IE8*/
-	background-position: 0 -48px;
+	background-position: 0 -62px;
 }
 input[type=checkbox]:checked+label {
-	background-position: 0 -48px;
+	background-position: 0 -62px;
 }
 /******表单按钮******/
 .input-btn {

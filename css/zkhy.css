@@ -1,20 +1,15 @@
 /************预定义会议样式开始*************/
 /******表单样式******/
-#ydyhy .form-box {
+#zkhy_ydyhy_add .formBox {
+	position: relative;
+	margin: 20px auto;
 	width: 90%;
-	margin-left: 5%;
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
-#ydyhy .fieldName {
-	width: 126px;
+#zkhy_ydyhy_add input[name=desc] {
+	width: 100%;
+	max-width: 1220px;
 }
-#ydyhy .fieldBox {
-	padding-left: 126px;
-}
-#ydyhy .form-btns {
-	float: right;
-	width: 352px;
+#zkhy_ydyhy_add .form-btns {
 	text-align: center;
 }
 /************预定义会议样式结束*************/
@@ -22,10 +17,10 @@
 
 
 /*********添加会议模板样式开始***********/
-#hymb_add .tabBox {
+#zkhy_hymb_add .tabBox {
 	position: relative;
 }
-#hymb_add .tabContentBox {
+#zkhy_hymb_add .tabContentBox {
 	position: absolute;
 	top: 32px;
 	bottom: 60px;
@@ -33,7 +28,7 @@
 	right: 0;
 	overflow: auto;
 }
-#hymb_add .input-btn-area {
+#zkhy_hymb_add .input-btn-area {
 	position: absolute;
 	bottom: 0;
 	left: 200px;
@@ -41,41 +36,36 @@
 	text-align: center;
 	background: #D4D4D4;
 }
-#hymb_add .select-lxr-box {
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
 /********基本参数样式开始***********/
 /********基本参数样式结束***********/
 
 /********与会者样式开始***********/
+#zkhy_hymb_add_yhz {
+	padding: 30px 0;
+}
 .select-lxr-box {
 	width: 100%;
 	text-align: center;
 }
-.lxr-box-right {
+.select-lxr-box .box-right {
 	display: inline-block;
 	width: 33%;
-	height: 624px;
-	border: 1px solid #D4D4D4;
-	box-shadow: 0 0 10px 0 #ccc inset;
+	height: 648px;
 	vertical-align: top;
 	overflow: auto;
 	background: #E5E5E5;
 }
-.lxr-box-left {
+.select-lxr-box .box-left {
 	position: relative;
 	display: inline-block;
 	width: 45%;
-	height: 624px;
+	height: 648px;
 	vertical-align: top;
 }
 .lxr-box-container {
 	width: 100%;
 	height: 100%;
 	padding-right: 12px;
-	border: 1px solid #D4D4D4;
-	box-shadow: 0 0 10px 0 #ccc inset;
 	overflow: auto;
 	background: #F8F7F7;
 }
@@ -101,17 +91,6 @@
 .nav-character i:hover {
 	background: #F47900;
 }
-/*********h3标题样式*********/
-.select-lxr-box h3 {
-	padding: 0;
-	margin: 0;
-	height: 40px;
-	line-height: 40px;
-	font-size: 20px;
-	color: #484747;
-	text-align: left;
-	margin-left: 10px;
-}
 /*********联系人标签样式*********/
 .lxr-label {
 	height: 32px;
@@ -123,53 +102,24 @@
 	font-size: 25px;
 	text-align: left;
 }
-/*********联系人容器样式*********/
-.lxr-box {
-	padding: 10px 20px;
-}
-/*********联系人样式*********/
-.lxr-box .lxr {
-	float: left;
-	width: 160px;
-	margin-left: 10px;
-	color: #FFF;
-	cursor: default;
-}
-/*********联系人头部样式*********/
-.lxr-box .lxr-head {
-	height: 30px;
-	line-height: 30px;
-	background: #1E89B5;
-	font-size: 18px;
-}
-.lxr-box .lxr.active .lxr-head {
-	background: #F47900;
-}
-/*********联系人主体样式*********/
-.lxr-box .lxr-body {
-	height: 40px;
-	padding-left: 20px;
-	padding-right: 20px;
-	margin-bottom: 10px;
-	word-wrap: break-word;
-	background: #A9A9A9;
-	font-size: 16px;
-}
 /******添加按钮*******/
 .btn-area-adddel {
 	display: inline-block;
-	width: 103px;
-	height: 624px;
+	width: 15%;
+	max-width: 180px;
+	height: 648px;
 	padding-top: 230px;
-	margin: 0 20px;
 	vertical-align: top;
 	overflow: hidden;
+	text-align: center;
 }
 /******添加删除按钮*******/
 .btn-area-adddel .btn-add {
 	position: relative;
+	display: inline-block;
 	width: 66px;
 	height: 44px;
+	margin-left: -37px;
 	line-height: 44px;
 	text-align: right;
 	font-size: 20px;
@@ -195,6 +145,7 @@
 /******删除按钮*******/
 .btn-area-adddel .btn-del {
 	position: relative;
+	display: inline-block;
 	width: 66px;
 	height: 44px;
 	line-height: 44px;
@@ -224,10 +175,6 @@
 /********与会者样式结束***********/
 
 /************多画面样式开始*************/
-.dhm-page {
-	width: 96%;
-    margin: auto;
-}
 .mode-box-container {
     border: 1px solid #D4D4D4;
     box-shadow: 0 0 10px 0 #ccc inset;
@@ -237,8 +184,8 @@
 }
 .mode-box {
     float: left;
-    width: 160px;
-    height: 90px;
+    width: 144px;
+    height: 81px;
     margin-left: 20px;
     margin-bottom: 20px;
     background: #A9ABAE;
@@ -264,44 +211,66 @@
     background: #F47900;
 }
 .mode-box .hzh {
-    float: right;
-    width: 33%;
-    height: 33%;
-    border: 2px solid #FFF;
-    margin-bottom: 1px;
-    margin-right: 1px;
-    background: #1E89B5;
+	position: relative;
+	height: 100%;
+}
+.mode-box .hzh-in {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 33%;
+	height: 33%;
+	margin-bottom: 1px;
+	margin-right: 1px;
 }
 .unvisible {
-    visibility: hidden;
-    border-color: transparent;
+    background: transparent !important;
 }
-.vab {
-	vertical-align: bottom;
-}
-
+/************多画面配置容器样式*************/
 .dhm-pz-container {
 	position: relative;
 	height: 500px;
 	margin-top: 20px;
-	margin-bottom: 20px;
 }
+/************多画面左侧联系人样式*************/
 .lxr-box2 {
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 180px;
+	width: 200px;
 	height: 100%;
+	padding: 20px;
 	border: 1px solid #D4D4D4;
 	box-shadow: 0 0 10px 0 #ccc inset;
+	overflow: auto;
+	background: #E5E5E5;
 }
+.lxr-box2 ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.lxr-box2 li {
+	margin-bottom: 5px;
+	padding-left: 15px;
+	line-height: 2;
+	background: #1E89B5;
+}
+.lxr-box2 li:hover {
+	background: #F47900;
+}
+.dhm-pz-container .lxr {
+	color: #FFF;
+	cursor: move;
+}
+/************多画面右侧被选择的mode放大版样式*************/
 .mode-box-selected-container {
-	margin-left: 200px;
-	margin-right: 160px;
+	margin-left: 220px;
 	height: 100%;
 	border: 1px solid #D4D4D4;
 	box-shadow: 0 0 10px 0 #ccc inset;
 	text-align: center;
+	background: #E5E5E5;
 }
 .mode-box-big {
 	position: relative;
@@ -317,20 +286,9 @@
 .mode-box-big td {
     border: 5px solid #FFF;
 }
-@media (max-width: 1440px) {
-	.dhm-pz-container {
-		height: 350px;
-	}
-}
-@media (max-width: 1280px) {
-	.dhm-pz-container {
-		height: 300px;
-	}
-}
-@media (max-width: 1024px) {
-	.dhm-pz-container {
-		height: 250px;
-	}
+.mode-box-big td.hover,
+.mode-box-big td.active {
+    background: #F47900;
 }
 /************多画面样式结束*************/
 /********添加会议模板样式结束***********/

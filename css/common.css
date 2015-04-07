@@ -5,7 +5,7 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 #wrapper-table-cell { display: table-cell; vertical-align: middle; }
 
 .tip { padding: 20px 50px; margin: 0; text-align: left; color: #353535; font-size: 18px; }
-#loading { display: none; position: fixed; left: 50%; top: 50%; margin-left: -64px; margin-top: -100px; }
+.loading { display: none; position: fixed; left: 50%; top: 50%; margin-left: -64px; margin-top: -100px; }
 
 .tal { text-align: left; }
 .tac { text-align: center; }
@@ -18,6 +18,9 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 .m10 { margin: 10px; } .mt10 { margin-top: 10px; } .mr10 { margin-right: 10px; } .mb10 { margin-bottom: 10px; } .ml10 { margin-left: 10px; }
 .m20 { margin: 20px; } .mt20 { margin-top: 20px; } .mr20 { margin-right: 20px; } .mb20 { margin-bottom: 20px; } .ml20 { margin-left: 20px; }
 .m50 { margin: 50px; } .mt50 { margin-top: 50px; } .mr50 { margin-right: 50px; } .mb50 { margin-bottom: 50px; } .ml50 { margin-left: 50px; }
+
+.w50 { width: 50%; }
+.w80 { width: 80%; }
 
 /*************两端对齐***************/
 .justify-list {
@@ -37,9 +40,9 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
   overflow: hidden;
 }
 
-/*********小盒子的容器样式*********/
+/*********Collection中小盒子的容器样式*********/
 .box-container {
-	padding: 40px 50px;
+	padding: 30px 50px;
 	margin: 0;
 }
 .box-container li {
@@ -51,7 +54,8 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 	text-decoration: none;
 }
 /*********小盒子头部样式*********/
-.box-head {
+.box-container .box-head {
+	position: relative;
 	height: 32px;
 	line-height: 32px;
 	font-size: 18px;
@@ -62,8 +66,29 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 .box-container a:hover .box-head {
 	background: #F47900;
 }
+/*********小盒子删除按钮样式*********/
+.box-container .delBtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: none;
+	margin: 0;
+	outline: 0;
+	background: url(../img/del.png) no-repeat center;
+	opacity: 0;
+}
+.box-container .delBtn:hover {
+	background-color: #1E89B5;
+}
+.box-container li:hover .delBtn {
+	opacity: 1;
+	transition: opacity 3s;
+}
 /*********小盒子主体样式*********/
-.box-body {
+.box-container .box-body {
 	box-sizing: border-box;
 	height: 155px;
 	padding-top: 30px;
@@ -73,14 +98,55 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 	color: #000;
 	background: #A9A9A9;
 }
-.add .box-body {
+.box-container .add .box-body {
 	background: #A9A9A9 url(../img/lxr/plus.png) no-repeat center;
 }
 
-/*************tab标签样式***************/
-.tabBox {
-	background: #fff;
+/*************联系人小盒子样式***************/
+.shadow-box {
+	border: 1px solid #D4D4D4;
+	box-shadow: 0 0 10px 0 #ccc inset;
 }
+.shadow-box h3 {
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	color: #484747;
+	text-align: left;
+	margin-left: 10px;
+} 
+.lxr-box {
+	padding: 10px 20px;
+}
+.lxr-box .lxr {
+	float: left;
+	width: 160px;
+	margin-left: 10px;
+	color: #FFF;
+	cursor: default;
+}
+.lxr-box .lxr-head {
+	height: 30px;
+	line-height: 30px;
+	background: #1E89B5;
+	font-size: 18px;
+}
+.lxr-box .lxr.active .lxr-head {
+	background: #F47900;
+}
+.lxr-box .lxr-body {
+	height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 10px;
+	word-wrap: break-word;
+	background: #A9A9A9;
+	font-size: 16px;
+}
+
+/*************tab标签样式***************/
 .tabBox ul {
 	padding: 0;
 	margin: 0;
@@ -108,9 +174,20 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 
 .tabContent {
 	display: none;
+	padding: 30px 50px;
 }
 .tabContent.active {
 	display: block;
+}
+
+/*************清除浮动***************/
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
 }
 
 /*************改变盒模型***************/
@@ -124,13 +201,4 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-}
-/*************清除浮动***************/
-.cf:before,
-.cf:after {
-    content: " ";
-    display: table;
-}
-.cf:after {
-    clear: both;
 }
