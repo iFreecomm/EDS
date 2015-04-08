@@ -30,13 +30,21 @@ define(function(require) {
 			var self = this;
 			
 			var yhzArr = Radio.channel("venueId").request("getYhzArr");
+			var showMpMode = Radio.channel("dhm").request("getShowMpMode");
+			var subPicInfo = Radio.channel("dhm").request("getSubPicInfo");
 			
-			this.model.set("venueId", yhzArr)
-					  .save().done(function() {
-						  self.saveSuccess();
-					  }).fail(function() {
-						  self.saveError();
-					  });
+			this.model.set({
+				"venueId": yhzArr,
+				"showMpMode": showMpMode,
+				"subPicInfo": subPicInfo
+			})
+			.save()
+			.done(function() {
+				self.saveSuccess();
+			})
+			.fail(function() {
+				self.saveError();
+			});
 		},
 		saveSuccess: function() {
 			this.cancelTemp();

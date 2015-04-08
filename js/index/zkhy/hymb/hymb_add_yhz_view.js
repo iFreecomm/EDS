@@ -79,9 +79,8 @@ define(function(require) {
 			    result[name].contents.push(val);
 			 }); 
 			 
-			 var helpers = this.options.templateHelpers;
-			 helpers = helpers || {};
-			 helpers.allLxr = _.chain(result).values(result).sortBy(function(obj) {
+			 this.options.templateHelpers = this.options.templateHelpers || {};
+			 this.options.templateHelpers.allLxr = _.chain(result).values(result).sortBy(function(obj) {
 			 	if(obj.name === "#") return "z"; //保证#的排序在最后面
 			 	return obj.name; //按照A-Z的顺序排序
 			 }).value();
