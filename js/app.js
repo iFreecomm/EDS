@@ -131,6 +131,17 @@ define(function(require) {
 				    return val;
 				}
 			});
+			
+			Backbone.Stickit.addHandler({
+				selector: ".sliderValue",
+				// 移除可编辑属性，避免人为编辑
+				initialize: function($el) {
+					$el.removeAttr("contenteditable");
+				},
+				getVal: function($el) {
+					return +$el.text();
+				}
+			});
 		},
 		
 		onStart: function() {

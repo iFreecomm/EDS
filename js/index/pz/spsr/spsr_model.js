@@ -7,7 +7,13 @@ define(function(require) {
 			name: "默认名称000",
 			kzck: 0,
 			ydsd: 0,
-			srjkxh: 0
+			srjkxh: 0,
+			
+			ld: 123,
+			dbd: 124,
+			bhd: 125,
+			sppy: 126,
+			czpy: 127
 		},
 		urls: {
 			"create": "spsr.psp",

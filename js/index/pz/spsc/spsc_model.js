@@ -9,11 +9,12 @@ define(function(require) {
 			mnxh: 0,
 			fbl: 0,
 			xsms: 0,
+			
 			ld: 123,
-			dbd: 123,
-			bhd: 123,
-			sppy: 123,
-			czpy: 221
+			dbd: 124,
+			bhd: 125,
+			sppy: 126,
+			czpy: 127
 		},
 		urls: {
 			"create": "spsc.psp",

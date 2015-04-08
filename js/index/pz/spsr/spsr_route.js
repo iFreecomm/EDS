@@ -4,16 +4,24 @@ define(function(require) {
 	
 	var NavLeftView = require("web/index/pz/navLeft/navLeft_view");
 	var SpsrView = require("web/index/pz/spsr/spsr_view");
+	
+	var SpsrModel = require("web/index/pz/spsr/spsr_model");
 
 	var SpsrRoute = Route.extend({
 		
 		initialize: function(options) {
 			var self = this;
 			this.container = options.container;
+			this.spsrModel = new SpsrModel();
 			
-			$.getJSON("json/spsr_lxr.json").done(function(lxrs) {
+			$.getJSON("spsr_lxr.psp").done(function(lxrs) {
 				self.templateHelpers = lxrs;
-				self.showView();
+				
+				$.when(self.spsrModel.myFetch({
+					id: lxrs.SDI[0].recordId || lxrs.VGA[0].recordId
+				})).done(function() {
+					self.showView();
+				});
 			});
 		},
 		
@@ -21,6 +29,7 @@ define(function(require) {
 			this.show({
 				navLeftView: NavLeftView,
 				contentRightView: new SpsrView({
+					model: this.spsrModel,
 					templateHelpers: this.templateHelpers
 				})
 			});

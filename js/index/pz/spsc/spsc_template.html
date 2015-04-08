@@ -3,7 +3,7 @@
 		<h3>视频输出接口配置</h3>
 		<div class="lxr-box cf">
 			{{#each VGA}}
-				<div class="lxr" data-id="{{id}}">
+				<div class="lxr" data-id="{{recordId}}">
 					<div class="lxr-head">{{name}}</div>
 					<div class="lxr-body">{{info}}</div>
 				</div>
@@ -64,7 +64,7 @@
 						<span class="cellName">亮度：</span>
 						<div class="fieldBox">
 							<div class="slider"></div>
-							<span class="sliderValue" id="ld"></span>
+							<span class="sliderValue" id="ld" contenteditable="true" data-min="0" data-max="255"></span>
 						</div>
 					</div>
 					
@@ -72,7 +72,7 @@
 						<span class="cellName">对比度：</span>
 						<div class="fieldBox">
 							<div class="slider"></div>
-							<span class="sliderValue" id="dbd"></span>
+							<span class="sliderValue" id="dbd" contenteditable="true" data-min="0" data-max="255"></span>
 						</div>
 					</div>
 					
@@ -80,7 +80,7 @@
 						<span class="cellName">饱和度：</span>
 						<div class="fieldBox">
 							<div class="slider"></div>
-							<span class="sliderValue" id="bhd"></span>
+							<span class="sliderValue" id="bhd" contenteditable="true" data-min="0" data-max="255"></span>
 						</div>
 					</div>
 					
@@ -88,7 +88,7 @@
 						<span class="cellName">水平偏移：</span>
 						<div class="fieldBox">
 							<div class="slider"></div>
-							<span class="sliderValue" id="sppy"></span>
+							<span class="sliderValue" id="sppy" contenteditable="true" data-min="0" data-max="255"></span>
 						</div>
 					</div>
 					
@@ -96,7 +96,7 @@
 						<span class="cellName">垂直偏移：</span>
 						<div class="fieldBox">
 							<div class="slider"></div>
-							<span class="sliderValue" id="czpy"></span>
+							<span class="sliderValue" id="czpy" contenteditable="true" data-min="0" data-max="255"></span>
 						</div>
 					</div>
 				</div>
