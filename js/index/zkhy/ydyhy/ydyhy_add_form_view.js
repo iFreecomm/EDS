@@ -161,7 +161,11 @@ define(function(require) {
 				this.ui.yyrq,
 				this.ui.jsrq
 			);
-		}
+			if(this.options.state === "yjzk") {
+				this.$("#name").prop("disabled", true).css({"opacity":0.5});
+				this.$("#tempRecordId").selectmenu("option", "disabled", true);
+			}
+		},
 	});
 	
 	return YdyhyAddFormView;

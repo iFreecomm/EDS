@@ -206,6 +206,9 @@
 .mode-box td {
     border: 2px solid #FFF;
     background: #1E89B5;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	color: #FFF;
 }
 .mode-box.active td {
     background: #F47900;
@@ -255,6 +258,10 @@
 	padding-left: 15px;
 	line-height: 2;
 	background: #1E89B5;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #FFF;
 }
 .lxr-box2 li:hover {
 	background: #F47900;

@@ -14,11 +14,13 @@ define(function(require) {
 		initialize: function(options) {
 			var self = this;
 			this.container = options.container;
+			this.state = options.state;
 			this.ydyhyModel = new YdyhyModel();
 			
 			$.when(
 				$.getJSON("getAllMeetingTemp.psp"),
-				$.getJSON("getAllAddrBook.psp")
+				$.getJSON("getAllAddrBook.psp"),
+				this.ydyhyModel.myFetch(options)
 			).done(function(allTemp,allLxr) {
 				self.allTemp = allTemp[0].data.tempList?allTemp[0].data.tempList:{};
 				self.allLxr = allLxr[0].data.bookInfo?allLxr[0].data.bookInfo:{};
@@ -31,6 +33,7 @@ define(function(require) {
 				navLeftView: NavLeftView,
 				contentRightView: new YdyhyAddView(),
 				zkhyYdyhyAddFormView: new YdyhyAddFormView({
+					state: this.state,
 					model: this.ydyhyModel,
 					templateHelpers: {
 						allTemp: this.allTemp

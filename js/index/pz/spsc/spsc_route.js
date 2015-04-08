@@ -18,7 +18,7 @@ define(function(require) {
 				self.templateHelpers = lxrs;
 				
 				$.when(self.spscModel.myFetch({
-					recordId: lxrs[0].recordId
+					id: lxrs[0].recordId
 				})).done(function() {
 					self.showView();
 				});
