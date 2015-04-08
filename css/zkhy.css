@@ -298,4 +298,29 @@
     background: #F47900;
 }
 /************多画面样式结束*************/
+
+/************视频矩阵样式开始*************/
+.spjz-table-container {
+	padding-top: 20px;
+}
+.spjz-table-container table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.spjz-table-container th,
+.spjz-table-container td {
+	border: 1px solid #1E89B5;
+	height: 50px;
+	padding: 0 10px;
+}
+.spjz-table-container td.hover {
+	background: #E5E5E5;
+}
+.spjz-table-container td.hoverIn {
+	background: #1E89B5;
+}
+.spjz-table-container td.active {
+	background: #C77405;
+}
+/************视频矩阵样式结束*************/
 /********添加会议模板样式结束***********/
