@@ -1,7 +1,7 @@
 <div>
     <span>使用自动多画面模式</span>
-    <input type="checkbox" name="enable" id="enable" />
-    <label for="enable" class="label-checkbox">自动多画面模式，自动后不用配置多画面模式，系统会根据会议状态自动切换</label>
+    <input type="checkbox" name="enableDhm" id="enableDhm" />
+    <label for="enableDhm" class="label-checkbox">自动多画面模式，自动后不用配置多画面模式，系统会根据会议状态自动切换</label>
 </div>
 
 <div>请选择画面模式</div>
@@ -137,7 +137,7 @@
 		<ul>
 			{{#each dhmLxr}}
 				<li>
-					<span class="lxr" data-recordid="{{recordId}}" data-equtype="{{equType}}">{{addrName}}</span>
+					<span class="lxr" data-equtype="{{equType}}" data-recordid="{{recordId}}" data-camport="{{camPort}}" data-vgaport="{{vgaPort}}">{{addrName}}</span>
 				</li>
 			{{/each}}
 		</ul>

@@ -5,6 +5,7 @@
  */
 define(function(require) {
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Radio = require("radio");
 	var FormView = require("web/common/formView");
 	var Handlebars = require("handlebars");
@@ -21,7 +22,7 @@ define(function(require) {
 			"appendToBox": ".dhm-pz-container"
 		},
 		bindings: {
-			"#enable": "enable"
+			"#enableDhm": "enableDhm"
 		},
 		events: {
 			"click @ui.mode_box": "selectMode"
@@ -37,6 +38,7 @@ define(function(require) {
 		},
 		
 		initialize: function() {
+			Radio.channel("dhm").reset();
 			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
 			Radio.channel("dhm").reply("getSubPicInfo", this.getSubPicInfo, this);
 		},
@@ -51,9 +53,11 @@ define(function(require) {
 				var $this = $(this);
 				var ch = $this.data("ch");
 				var $span = $this.children(".lxr");
+				var equType = $span.data("equtype");
 				return {
-					equType: $span.data("equtype") || 11,
+					equType: _.isNumber(equType) ? equType : 11,
 					recordId: $span.data("recordid") || 0,
+					camport: $span.data("camport") || 0,
 					camport: $span.data("camport") || 0
 				}
 			}).get();

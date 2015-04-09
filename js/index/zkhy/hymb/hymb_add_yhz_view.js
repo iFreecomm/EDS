@@ -54,7 +54,7 @@ define(function(require) {
 		initialize: function() {
 			//转换服务器端提供的数据的格式，统一在这里转换
 			this.setTemplateHelpers();
-			
+			Radio.channel("venueId").reset();
 			Radio.channel("venueId").reply("getYhzArr", this.getYhzArr, this);
 			Radio.channel("venueId").comply("loadHymb", this.loadHymb, this);
 		},

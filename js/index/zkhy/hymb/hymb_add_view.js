@@ -30,13 +30,21 @@ define(function(require) {
 			var self = this;
 			
 			var yhzArr = Radio.channel("venueId").request("getYhzArr");
+			
 			var showMpMode = Radio.channel("dhm").request("getShowMpMode");
 			var subPicInfo = Radio.channel("dhm").request("getSubPicInfo");
 			
+			var matrixInOut = Radio.channel("spjz").request("getMatrixInOut");
+			
 			this.model.set({
 				"venueId": yhzArr,
+				
 				"showMpMode": showMpMode,
-				"subPicInfo": subPicInfo
+				"subPicInfo": subPicInfo,
+				"subPicCnt": subPicInfo.length,
+				
+				"matrixInOut": matrixInOut,
+				"matrixNum": matrixInOut.length
 			})
 			.save()
 			.done(function() {

@@ -14,6 +14,7 @@ define(function(require) {
 		},
 		
 		initialize: function() {
+			Radio.channel("index").reset();
 			Radio.channel("index").comply("activeLink", this.activeLink, this);
 		},
 		

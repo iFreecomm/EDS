@@ -21,12 +21,17 @@ define(function(require) {
 			this.hymbModel = new HymbModel();
 			
 			$.when(
-				$.getJSON("getAllAddrBook.psp"),
-				$.getJSON("getDhmAddrBook.psp"),
+				$.getJSON("getAllAddrBook.psp"), //与会者
+				
+				$.getJSON("getDhmAddrBook.psp"), //多画面
+				
+				$.getJSON("getSpjzHeadInfo.psp"), //视频矩阵
+				
 				this.hymbModel.myFetch(options)
-			).done(function(allLxr, dhmLxr) {
+			).done(function(allLxr, dhmLxr, spjzHead) {
 				self.allLxr = allLxr[0].data.bookInfo;
 				self.dhmLxr = dhmLxr[0].data.bookInfo;
+				self.spjzHead = spjzHead[0].data.bookInfo;
 				self.showView();
 			});
 		},
@@ -50,7 +55,7 @@ define(function(require) {
 				}),
 				zkhyHymbAddDhmView: new HymbAddDhmView({
 					//和父层View共享同一个hymbModel
-					//但是只有enable字段同步
+					//但是只有enableDhm字段同步
 					//其它字段对应不了表单元素，所以只能手动初始化页面
 					//获取其它字段需要使用Radio.channel.request
 					model: this.hymbModel,
@@ -58,7 +63,14 @@ define(function(require) {
 						dhmLxr: this.dhmLxr
 					}
 				}),
-				zkhyHymbAddSpjzView: new HymbAddSpjzView(),
+				zkhyHymbAddSpjzView: new HymbAddSpjzView({
+					//和父层View共享同一个hymbModel
+					//但是只有enableSpjz字段同步
+					//其它字段对应不了表单元素，所以只能手动初始化页面
+					//获取其它字段需要使用Radio.channel.request
+					model: this.hymbModel,
+					spjzHead: this.spjzHead
+				}),
 				zkhyHymbAddLzbmView: new HymbAddLzbmView()
 			});
 		}

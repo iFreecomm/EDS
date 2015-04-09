@@ -18,7 +18,7 @@
 	"enbTransGuard": 1,
 	"venueId": [1, 2, 4, 5, 7, 11, 12, 16],
 	
-	"enable": 0,
+	"enableDhm": 0,
 	"showMpMode": 3,
 	"subPicCnt": 4,
 	"subPicInfo": [
@@ -36,6 +36,37 @@
 		},
 		{
 			"equType": 7
+		}
+	],
+	
+	"enableSpjz": 0,
+	"matrixNum": 2,
+	"matrixInOut": [
+		{
+			"equSrc": {
+				"equType": 1,
+				"recordId": 4,
+				"camPort": 0,
+				"vgaPort": 0
+			},
+			"equDst": {
+				"equType": 2,
+				"recordId": 5,
+				"dviPort": 0
+			}
+		},
+		{
+			"equSrc": {
+				"equType": 3,
+				"recordId": 6,
+				"camPort": 0,
+				"vgaPort": 0
+			},
+			"equDst": {
+				"equType": 2,
+				"recordId": 11,
+				"dviPort": 0
+			}
 		}
 	]
   }
