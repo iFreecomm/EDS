@@ -65,6 +65,111 @@ define(function() {
 		
 		//图像质量
 		VidQuality_Fluency: 0,//流畅
-		VidQuality_Clear: 1 //清晰
+		VidQuality_Clear: 1, //清晰
+		
+		//视频输入
+		VidInPort_CAMERA_DVI1:0,  //HDMI+Ypbpr+VGA
+	    VidInPort_CAMERA_DVI2:0,  //HDMI+Ypbpr+VGA
+	    VidInPort_CAMERA_CVBS:0,  
+	    VidInPort_CAMERA_3GSDI1:0,
+	    VidInPort_CAMERA_3GSDI2:0,
+	    VidInPort_CAMERA_HDMI1:0,//5
+	    VidInPort_CAMERA_HDMI2:0,
+	    VidInPort_CAMERA_VGA1:0,
+	    VidInPort_CAMERA_VGA2:0,
+	    VidInPort_PC_VGA:0,       //Ypbpr+VGA
+	    VidInPort_PC_HDMI:0,//10  //HDMI+DVI
+	    VidInPort_PC_DVI:0,       //HDMI+Ypbpr+VGA
+	    
+	    VidInPort_FPGA_MP:0,      //新添加,FPGA输入
+	
+	    VidInPort_MBSDI1:0,   //主板SDI输入口1
+	    VidInPort_MBSDI2:0,   //主板SDI输入口2
+	    VidInPort_MBSDI3:0,   //主板SDI输入口3
+	    VidInPort_MBVGA1:0,   //主板VGA输入口1
+	    VidInPort_MBVGA2:0,   //主板VGA输入口2
+	
+	    VidInPort_EXB1SDI1:0, //扩展板1SDI输入口1
+	    VidInPort_EXB1SDI2:0, //扩展板1SDI输入口2
+	    VidInPort_EXB1SDI3:0, //扩展板1SDI输入口3
+	    VidInPort_EXB1VGA1:0, //扩展板1VGA输入口1
+	    VidInPort_EXB1VGA2:0, //扩展板1VGA输入口2
+	
+	    VidInPort_EXB2SDI1:0, //扩展板2SDI输入口1
+	    VidInPort_EXB2SDI2:0, //扩展板2SDI输入口2
+	    VidInPort_EXB2SDI3:0, //扩展板2SDI输入口3
+	    VidInPort_EXB2VGA1:0, //扩展板2VGA输入口1
+	    VidInPort_EXB2VGA2:0, //扩展板2VGA输入口2
+	
+	    VidInPort_MB1VPIN1:0,
+	    VidInPort_MB1VPIN2:0,
+	    VidInPort_MB2VPIN1:0,
+	    VidInPort_MB2VPIN2:0,
+	
+	    VidInPort_EXB11VPIN1:0,
+	    VidInPort_EXB11VPIN2:0,
+	    VidInPort_EXB12VPIN1:0,
+	    VidInPort_EXB12VPIN2:0,
+	
+	    VidInPort_EXB21VPIN1:0,
+	    VidInPort_EXB21VPIN2:0,
+	    VidInPort_EXB22VPIN1:0,
+	    VidInPort_EXB22VPIN2:0, 
+	    
+	    VidInPort_Cnt:0,
+	    
+	    
+	    //视频输出
+	    VidOutPort_DVI1:0,   //Ypbpr
+	    VidOutPort_DVI2:0,   //HDMI+Ypbpr+VGA
+	    VidOutPort_CVBS:0,   
+	    VidOutPort_VGA:0,
+	    VidOutPort_VGA1:0,
+	    VidOutPort_HDMI:0, 
+	    VidOutPort_HDMI1:0, 
+	    VidOutPort_3GSDI:0,
+	
+	    VidOutPort_MBDVI1:8,   //主板DVI输出口1 
+	    VidOutPort_MBDVI2:9,   //主板DVI输出口2 
+	    VidOutPort_MBDVI3:10,   //主板DVI输出口3 
+	    VidOutPort_MBDVI4:11,   //主板DVI输出口4 
+	
+	    VidOutPort_EXB1DVI1:12, //扩展板1DVI输出口1 
+	    VidOutPort_EXB1DVI2:13, //扩展板1DVI输出口2 
+	    VidOutPort_EXB1DVI3:14, //扩展板1DVI输出口3 
+	    VidOutPort_EXB1DVI4:15, //扩展板1DVI输出口4 
+	
+	    VidOutPort_EXB2DVI1:16, //扩展板2DVI输出口1 
+	    VidOutPort_EXB2DVI2:17, //扩展板2DVI输出口2 
+	    VidOutPort_EXB2DVI3:18, //扩展板2DVI输出口3 
+	    VidOutPort_EXB2DVI4:19, //扩展板2DVI输出口4 
+	
+	    VidInPort_MB1VPOUT1:20,
+	    VidInPort_MB1VPOUT2:21,
+	    VidInPort_MB2VPOUT1:22,
+	    VidInPort_MB2VPOUT2:23,
+	
+	    VidInPort_EXB11VPOUT1:24,
+	    VidInPort_EXB11VPOUT2:25,
+	    VidInPort_EXB12VPOUT1:26,
+	    VidInPort_EXB12VPOUT2:27,
+	
+	    VidInPort_EXB21VPOUT1:28,
+	    VidInPort_EXB21VPOUT2:29,
+	    VidInPort_EXB22VPOUT1:30,
+	    VidInPort_EXB22VPOUT2:31, 
+	
+	    VidOutPort_MPOut1:32,
+	    VidOutPort_MPOut2:33,
+	    VidOutPort_MPOut3:34,
+	    VidOutPort_MPOut4:35,
+	    VidOutPort_MPOut5:36,
+	    VidOutPort_MPOut6:37,
+	    VidOutPort_MPOut7:38,
+	    VidOutPort_MPOut8:39,
+	    VidOutPort_MPOut9:40,
+	    VidOutPort_MPOut:41,
+	
+	    VidOutPort_Cnt:42
 	};
 });

@@ -9,7 +9,7 @@ define(function(require) {
 		id: "hymb_add_spjz",
 		template: tmpl,
 		bindings: {
-			"#enableSpjz": "enableSpjz"
+			"#enableVM": "enableVM"
 		},
 		ui: {
 			"spjz_table_container": ".spjz-table-container"
@@ -43,13 +43,16 @@ define(function(require) {
 			if(!$td.is("td")) return;
 			
 			var colIndex = $td.index() - 1;
+			var rowIndex = $td.parent().index() - 1;
 			var rows = this.rows;
 			var cols = this.cols;
 			for(var i = 0; i < rows; i ++) {
-				this.$tds.eq(colIndex + i * cols).removeClass("active");
+				if(i === rowIndex) {
+					$td.toggleClass("active");
+				} else {
+					this.$tds.eq(colIndex + i * cols).removeClass("active");
+				}
 			}
-			
-			$td.addClass("active");
 		},
 		
 		initialize: function() {
@@ -64,9 +67,21 @@ define(function(require) {
 				var $td = $(this);
 				var colIndex = $td.index() - 1;
 				var rowIndex = $td.parent().index() - 1;
+				
+				var src = rowHeadArr[rowIndex];
+				var dest = colHeadArr[colIndex];
 				return {
-					"equSrc": rowHeadArr[rowIndex],
-					"equDst": colHeadArr[colIndex]
+					"equSrc": {
+						equType: _.isNumber(src.equType) ? src.equType : 11,
+						recordId: src.recordId || 0,
+						camPort: src.camPort || 0,
+						vgaPort: src.vgaPort || 0
+					},
+					"equDst": {
+						equType: _.isNumber(dest.equType) ? dest.equType : 11,
+						recordId: dest.recordId || 0,
+						dviPort: dest.dviPort || 0,
+					}
 				}
 			}).get();
 		},
@@ -206,10 +221,29 @@ define(function(require) {
 		},
 		
 		_getRowHead: function() {
-			return this.options.spjzHead.rowHead;
+			//return this.options.spjzHead.rowHead;
+			var srcArr = this.options.spjzHead;
+			srcArr.push({equType:Const.EquType_MP,addrName:"多画面"});
+			srcArr.push({equType:Const.EquipType_PLAYER,addrName:"播放器"});
+			return srcArr;
 		},
 		_getColHead: function() {
-			return this.options.spjzHead.colHead;
+			//return this.options.spjzHead.colHead;
+			var dstArr = [{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI1,addrName:"DVI1"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI2,addrName:"DVI2"},
+			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI3,addrName:"DVI3"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI4,addrName:"DVI4"},
+			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI1,addrName:"DVI5"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI2,addrName:"DVI6"},
+			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI3,addrName:"DVI7"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI4,addrName:"DVI8"},
+			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI1,addrName:"DVI9"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI2,addrName:"DVI10"},
+			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];
+			
+			$.each(this.options.spjzHead, function(i,addr){      
+			    if(addr.equType == Const.EquType_H323 || addr.equType == Const.EquType_SIP)
+				{
+					dstArr.push(addr);
+				}  
+			});
+			
+			return dstArr;
 		},
 		
 		onDestroy: function() {

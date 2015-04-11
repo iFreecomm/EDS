@@ -22,7 +22,7 @@ define(function(require) {
 			"appendToBox": ".dhm-pz-container"
 		},
 		bindings: {
-			"#enableDhm": "enableDhm"
+			"#enableMp": "enableMp"
 		},
 		events: {
 			"click @ui.mode_box": "selectMode"
@@ -35,6 +35,11 @@ define(function(require) {
 			this.ui.mode_box_big.html($box.html());
 			
 			this.enableTdDroppable();
+			
+			// 渲染子画面信息
+			if($box.data("mode") === this.model.get("showMpMode")) {
+				this.renderSubPicInfo();
+			}
 		},
 		
 		initialize: function() {
@@ -57,15 +62,18 @@ define(function(require) {
 				return {
 					equType: _.isNumber(equType) ? equType : 11,
 					recordId: $span.data("recordid") || 0,
-					camport: $span.data("camport") || 0,
-					camport: $span.data("camport") || 0
+					camPort: $span.data("camport") || 0,
+					vgaPort: $span.data("vgaport") || 0
 				}
 			}).get();
 		},
 		
 		onRender: function() {
 			this.stickit().fixIE8();
-			this.renderSelectedMode();
+			
+			// 点击选择的模式，手动触发事件
+			var modeNum = this.model.get("showMpMode");
+			this.ui.mode_box.filter('[data-mode="'+ modeNum +'"]').click();
 			
 			//使联系人可以拖动
 			this.enableDraggable(this.ui.lxrs);
@@ -89,17 +97,6 @@ define(function(require) {
 					ui.draggable.parent().removeClass("active").end().remove();
 				}
 			});
-		},
-		
-		renderSelectedMode: function() {
-			// 选择自动多画面模式，就不处理了
-			var enable = this.model.get("enable");
-			if(enable) return;
-			// 点击选择的模式，手动触发事件
-			var modeNum = this.model.get("showMpMode");
-			this.ui.mode_box.filter('[data-mode="'+ modeNum +'"]').click();
-			// 渲染子画面信息
-			this.renderSubPicInfo();
 		},
 		
 		renderSubPicInfo: function() {

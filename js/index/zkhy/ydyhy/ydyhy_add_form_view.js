@@ -71,6 +71,9 @@ define(function(require) {
 		getYyrqMoment: function() {
 			var date = this.model.get("date");
 			var time = this.model.get("time");
+			if(!date || !time){
+				return Moment();
+			}
 			return Moment(date + " " + time);
 		},
 		getYyrqString: function() {
@@ -125,8 +128,10 @@ define(function(require) {
 			if(this.model.get("tempRecordId")) {
 				return this.model.get("tempRecordId");
 			} else {
-				return this.options.templateHelpers.allTemp[0].recordId;
+				if(this.options.templateHelpers.allTemp && this.options.templateHelpers.allTemp.length>0)
+					return this.options.templateHelpers.allTemp[0].recordId;
 			}
+			return -1;
 		},
 		changeHymb: function() {
 			$.getJSON("getMeetingTempVenue.psp", JSON.stringify({

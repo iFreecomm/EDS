@@ -21,17 +21,17 @@ define(function(require) {
 			this.hymbModel = new HymbModel();
 			
 			$.when(
-				$.getJSON("getAllAddrBook.psp"), //与会者
-				
-				$.getJSON("getDhmAddrBook.psp"), //多画面
-				
-				$.getJSON("getSpjzHeadInfo.psp"), //视频矩阵
-				
+				$.getJSON("getAllAddrBook.psp"),//所有联系人
+				//$.getJSON("getAllAddrBook.psp"),
+				//$.getJSON("getAllAddrBook.psp"),
 				this.hymbModel.myFetch(options)
 			).done(function(allLxr, dhmLxr, spjzHead) {
 				self.allLxr = allLxr[0].data.bookInfo;
-				self.dhmLxr = dhmLxr[0].data.bookInfo;
-				self.spjzHead = spjzHead[0].data.bookInfo;
+				//self.dhmLxr = dhmLxr[0].data.bookInfo;
+				//self.spjzHead = spjzHead[0].data.bookInfo;
+				self.dhmLxr = allLxr[0].data.bookInfo;
+				self.spjzHead = allLxr[0].data.bookInfo;
+				
 				self.showView();
 			});
 		},

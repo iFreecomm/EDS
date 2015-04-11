@@ -18,7 +18,10 @@ define(function(require) {
 			secFrameRate: 0,
 			secQuality: 2,
 			secVidSend: 1,
-			enbTransGuard: true
+			enbTransGuard: true,
+			enableMp:0,
+			showMpMode:1,
+			enableVM:0
 		},
 		urls: {
 			"create": "addMeetingTemp.psp",

@@ -17,7 +17,7 @@ define(function(require) {
 			var $btn = $(e.target);
 			var id = $btn.data("id");
 			
-			$.getJSON("delete.psp", JSON.stringify({
+			$.getJSON("delMeetingTemp.psp", JSON.stringify({
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {
