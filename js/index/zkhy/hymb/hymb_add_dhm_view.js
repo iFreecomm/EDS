@@ -10,6 +10,7 @@ define(function(require) {
 	var FormView = require("web/common/formView");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_dhm_template.html");
+	var Const = require("web/common/const");
 	
 	var DhmView = FormView.extend({
 		id: "hymb_add_dhm",
@@ -18,7 +19,7 @@ define(function(require) {
 		ui: {
 			"mode_box_big": ".mode-box-big",
 			"mode_box": ".mode-box-container .mode-box",
-			"lxrs": ".lxr-box2 .lxr",
+			"dhmLxrs": ".dhmLxrs",
 			"appendToBox": ".dhm-pz-container"
 		},
 		bindings: {
@@ -42,104 +43,29 @@ define(function(require) {
 			}
 		},
 		
-		initialize: function() {
-			Radio.channel("dhm").reset();
-			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
-			Radio.channel("dhm").reply("getSubPicInfo", this.getSubPicInfo, this);
-		},
-		
-		getShowMpMode: function() {
-			return this.ui.mode_box.filter(".active").data("mode");
-		},
-		
-		getSubPicInfo: function() {
-			var $td = this.ui.mode_box_big.find("td").not(".unvisible");
-			return $td.map(function() {
-				var $this = $(this);
-				var ch = $this.data("ch");
-				var $span = $this.children(".lxr");
-				var equType = $span.data("equtype");
-				return {
-					equType: _.isNumber(equType) ? equType : 11,
-					recordId: $span.data("recordid") || 0,
-					camPort: $span.data("camport") || 0,
-					vgaPort: $span.data("vgaport") || 0
-				}
-			}).get();
-		},
-		
-		onRender: function() {
-			this.stickit().fixIE8();
-			
-			// 点击选择的模式，手动触发事件
-			var modeNum = this.model.get("showMpMode");
-			this.ui.mode_box.filter('[data-mode="'+ modeNum +'"]').click();
-			
-			//使联系人可以拖动
-			this.enableDraggable(this.ui.lxrs);
-			
-			//将联系人拖出大盒子，就隐藏它，并去掉td元素的active
-//			this.ui.mode_box_big.droppable({
-//				accept: ".inTd",
-//				addClasses: false,
-//				
-//				out: function(event, ui) {
-//					ui.draggable.hide().parent().removeClass("active");
-//				}
-//			});
-			
-			//将联系人拖放到大容器中，就删除掉它
-			this.ui.appendToBox.droppable({
-				accept: ".inTd",
-				addClasses: false,
-				
-				drop: function(event, ui) {
-					ui.draggable.parent().removeClass("active").end().remove();
-				}
-			});
-		},
-		
 		renderSubPicInfo: function() {
-			var subPicInfo = this.fixSubPicInfo();
-			if(subPicInfo.length === 0) return;
+			var subPicInfo = this.model.get("subPicInfo");
+			if(_.isEmpty(subPicInfo)) return;
 			
 			var $td = this.ui.mode_box_big.find("td").not(".unvisible");
-			var $span = $('<span class="lxr inTd" data-equtype="" data-recordid=""></span>');
+			var $span = $('<span class="lxr inTd"></span>');
 			var $allSpan = $td.map(function() {
 				var $this = $(this);
 				var ch = $this.data("ch");
 				var curSub = subPicInfo[ch];
 				
-				if(curSub.equType !== 11) {
+				if(curSub.equType !== Const.EquType_NONE) {
 					var $sp = $span.clone();
-					$sp.data("equtype", curSub.equType);
-					$sp.data("recordid", curSub.recordId);
+					$sp.data("equType", curSub.equType);
+					$sp.data("recordId", curSub.recordId);
 					$sp.text(curSub.addrName);
 					
 					$this.addClass("active").append($sp);
 					return $sp;
 				}
-				
-				return false;
 			});
 			
 			this.enableDraggable($allSpan);
-		},
-		
-		fixSubPicInfo: function() {
-			var dhmLxr = this.options.templateHelpers.dhmLxr || [];
-			var subPicInfo = this.model.get("subPicInfo") || [];
-			var curSub, curDhm, equType, recordId;
-			for(var i = 0; curSub = subPicInfo[i]; i++) {
-				equType = curSub.equType;
-				recordId = curSub.recordId;
-				for(var j = 0; curDhm = dhmLxr[j]; j++) {
-					if(equType === curDhm.equType && (equType === 7 || recordId === curDhm.recordId)) {
-						curSub.addrName = curDhm.addrName;
-					}
-				}
-			}
-			return subPicInfo;
 		},
 		
 		enableDraggable: function($obj) {
@@ -163,14 +89,116 @@ define(function(require) {
 					var $drag = ui.draggable;
 					if(!$drag.is(".inTd")) {
 						var $dragClone = $drag.clone().addClass("inTd");
+						$dragClone.data($drag.data());
 						curView.enableDraggable($dragClone);
 						$(this).addClass("active").children(".lxr").remove().end().append($dragClone);
 					}
 				}
 			});
+		},
+				
+		initialize: function() {
+			Radio.channel("dhm").reset();
+			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
+			Radio.channel("dhm").reply("getSubPicInfo", this.getSubPicInfo, this);
 			
-//			this.ui.mode_box_big.find(".hzh-in").find("td").droppable("option", "greedy", true);
+			Radio.channel("dhm").comply("addDhmlxr", this.addDhmlxr, this);
+			Radio.channel("dhm").comply("subDhmlxr", this.subDhmlxr, this);
+		},
+		
+		getShowMpMode: function() {
+			return this.ui.mode_box.filter(".active").data("mode");
+		},
+		
+		getSubPicInfo: function() {
+			var $td = this.ui.mode_box_big.find("td").not(".unvisible");
+			return $td.map(function() {
+				var $this = $(this);
+				var ch = $this.data("ch");
+				var $span = $this.children(".lxr");
+				var equType = $span.data("equType");
+				return {
+					equType: _.isNumber(equType) ? equType : 11,
+					recordId: $span.data("recordId") || 0,
+					camPort: $span.data("camPort") || 0,
+					vgaPort: $span.data("vgaPort") || 0
+				}
+			}).get();
+		},
+				
+		addDhmlxr: function(lxrArr) {
+			if(_.isEmpty(lxrArr)) return;
 			
+			var $li = $('<li></li>');
+			var $span = $('<span class="lxr"></span>');
+			var $cur;
+			
+			var spanArr = $.map(lxrArr, function(lxr) {
+				$cur = $span.clone();
+				$cur.data("equType", lxr.equType);
+				$cur.data("recordId", lxr.recordId);
+				$cur.data("camPort", lxr.camPort);
+				$cur.data("vgaPort", lxr.vgaPort);
+				$cur.text(lxr.addrName);
+				return $cur;
+			});
+			
+			this.enableDraggable($(spanArr));
+			
+			var liArr = $.map(spanArr, function($span) {
+				return $li.clone().append($span);
+			});
+			
+			this.ui.dhmLxrs.append(liArr);
+		},
+		
+		subDhmlxr: function(lxrArr) {
+			if(_.isEmpty(lxrArr)) return;
+			
+			var self = this;
+			this.ui.appendToBox.find(".lxr").each(function() {
+				var $this = $(this);
+				var lxrObj = {
+					equType: $this.data("equType"),
+					recordId: $this.data("recordId")
+				};
+				if(self._isLxrInArr(lxrObj, lxrArr)) {
+					if($this.is(".inTd")) {
+						$this.parent().removeClass("active").end().remove();
+					} else {
+						$this.parent().remove();
+					}
+				}
+			});
+		},
+		
+		_isLxrInArr: function(lxrObj, lxrArr) {
+			var equType = lxrObj.equType;
+			var recordId = lxrObj.recordId;
+			
+			return _.some(lxrArr, function(lxr) {
+				if(equType === lxr.equType && (equType === Const.EquType_PLAYER || recordId === lxr.recordId)) {
+					return true;
+				}
+			});
+		},
+		
+		onRender: function() {
+			this.stickit().fixIE8();
+			
+			// 点击选择的模式，手动触发事件
+			var modeNum = this.model.get("showMpMode");
+			this.ui.mode_box.filter('[data-mode="'+ modeNum +'"]').click();
+			
+			//将联系人拖放到大容器中，就删除掉它
+			this.ui.appendToBox.droppable({
+				accept: ".inTd",
+				addClasses: false,
+				
+				drop: function(event, ui) {
+					ui.draggable.parent().removeClass("active").end().remove();
+				}
+			});
 		},
 		
 		onDestroy: function() {

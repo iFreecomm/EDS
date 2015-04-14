@@ -25,7 +25,7 @@ define(function(require) {
 			
 			this.saveDateTimeDurationToModel();
 			
-			var yhzArr = Radio.channel("venueId").request("getYhzArr");
+			var yhzArr = Radio.channel("yhz").request("getYhzArr");
 			
 			this.model.set("venueId", yhzArr)
 					  .save().done(function() {
@@ -41,7 +41,7 @@ define(function(require) {
 			alert("保存会议失败！");
 		},
 		cancelMeeting: function() {
-			Backbone.history.navigate("zkhy/showYdyhy", {trigger: true});
+			this.navigate("zkhy/showYdyhy", {trigger: true});
 		},
 		
 		initialize: function() {
@@ -141,7 +141,7 @@ define(function(require) {
 				if(yhzIdArr && yhzIdArr.data && yhzIdArr.data.venueId) {
 					venueId = yhzIdArr.data.venueId;
 				}
-				Radio.channel("venueId").command("loadHymb", venueId);
+				Radio.channel("yhz").command("loadHymb", venueId);
 			});
 			return this;
 		},

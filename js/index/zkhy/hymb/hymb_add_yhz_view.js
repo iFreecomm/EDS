@@ -39,25 +39,54 @@ define(function(require) {
 			var idArr = this.getYhzArr();
 			var $box = this.ui.lxr_box;
 			
+			var addLxrIdArr = [];
 			this.ui.box_left.find(".active").removeClass("active").each(function() {
 				var $this = $(this);
 				var id = $this.data("id");
 				if(!_.include(idArr, id)) {
+					addLxrIdArr.push(id);
 					$this.clone().appendTo($box);
 				}
 			});
+			
+			var addLxrArr = this.getLxrDataById(addLxrIdArr);
+			Radio.channel("dhm").command("addDhmlxr", addLxrArr);
+			Radio.channel("spjz").command("addMatrix", addLxrArr);
 		},
 		delLxr: function() {
-			this.ui.box_right.find(".active").remove();
+			var subLxrIdArr = this.ui.box_right.find(".active").map(function() {
+				var $this = $(this);
+				var id = $this.data("id");
+				$this.remove();
+				return id;
+			}).get();
+			
+			var subLxrArr = this.getLxrDataById(subLxrIdArr);
+			Radio.channel("dhm").command("subDhmlxr", subLxrArr);
+			Radio.channel("spjz").command("subMatrix", subLxrArr);
+		},
+		getLxrDataById: function(idArr) {
+			var allLxr = this.options.allLxr;
+			if(_.isEmpty(idArr) || _.isEmpty(allLxr)) return [];
+			
+			var i = 0, l = allLxr.length, curLxr;
+			return _.map(idArr, function(id) {
+				for(i = 0; i < l; i ++) {
+					curLxr = allLxr[i];
+					if(curLxr.recordId === id) {
+						return curLxr;
+					}
+				}
+			});
 		},
 		
 		initialize: function() {
-			//转换服务器端提供的数据的格式，统一在这里转换
 			this.setTemplateHelpers();
-			Radio.channel("venueId").reset();
-			Radio.channel("venueId").reply("getYhzArr", this.getYhzArr, this);
-			Radio.channel("venueId").comply("loadHymb", this.loadHymb, this);
+			Radio.channel("yhz").reset();
+			Radio.channel("yhz").reply("getYhzArr", this.getYhzArr, this);
+			Radio.channel("yhz").comply("loadHymb", this.loadHymb, this);
 		},
+		//转换服务器端提供的数据的格式，统一在这里转换
 		setTemplateHelpers: function() {
 			var result = {}, name;
 			
@@ -85,11 +114,13 @@ define(function(require) {
 			 	return obj.name; //按照A-Z的顺序排序
 			 }).value();
 		},
+		//对外提供可以获取与会者ID数组的接口
 		getYhzArr: function() {
 			return this.ui.box_right.find(".lxr").map(function() {
 				return $(this).data("id");
 			}).get();
 		},
+		//对外提供加载会议模版的接口
 		loadHymb: function(idArr) {
 			idArr = idArr || [];
 			var $box = this.ui.lxr_box.empty();
@@ -104,7 +135,7 @@ define(function(require) {
 		},
 		
 		onDestroy: function() {
-			Radio.channel("venueId").reset();
+			Radio.channel("yhz").reset();
 		}
 	});
 	

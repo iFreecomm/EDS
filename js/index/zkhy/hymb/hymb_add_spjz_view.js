@@ -58,6 +58,9 @@ define(function(require) {
 		initialize: function() {
 			Radio.channel("spjz").reset();
 			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
+			
+			Radio.channel("spjz").comply("addMatrix", this.addMatrix, this);
+			Radio.channel("spjz").comply("subMatrix", this.subMatrix, this);
 		},
 		
 		getMatrixInOut: function() {
@@ -72,21 +75,61 @@ define(function(require) {
 				var dest = colHeadArr[colIndex];
 				return {
 					"equSrc": {
-						equType: _.isNumber(src.equType) ? src.equType : 11,
+						equType: _.isNumber(src.equType) ? src.equType : Const.EquType_NONE,
 						recordId: src.recordId || 0,
 						camPort: src.camPort || 0,
 						vgaPort: src.vgaPort || 0
 					},
 					"equDst": {
-						equType: _.isNumber(dest.equType) ? dest.equType : 11,
+						equType: _.isNumber(dest.equType) ? dest.equType : Const.EquType_NONE,
 						recordId: dest.recordId || 0,
-						dviPort: dest.dviPort || 0,
+						dviPort: dest.dviPort || 0
 					}
 				}
 			}).get();
 		},
 		
-		onRender: function() {
+		addMatrix: function(addLxrArr) {
+			this.matrixInOut = this.getMatrixInOut();
+			
+			var lxrArr = this.lxrArr || [];
+			this.lxrArr = lxrArr.concat(addLxrArr);
+			
+			this.ui.spjz_table_container.empty();
+			
+			this.renderMatrix();
+		},
+		
+		subMatrix: function(subLxrArr) {
+			this.matrixInOut = this.getMatrixInOut();
+			
+			this.lxrArr = this._getSubLxrArr(subLxrArr);
+			
+			this.ui.spjz_table_container.empty();
+			
+			this.renderMatrix();
+		},
+		
+		_getSubLxrArr: function(subLxrArr) {
+			var lxrArr = this.lxrArr || [];
+			var self = this;
+			return _.filter(lxrArr, function(lxr) {
+				return !self._isLxrInArr(lxr, subLxrArr);
+			});
+		},
+		
+		_isLxrInArr: function(lxrObj, lxrArr) {
+			var equType = lxrObj.equType;
+			var recordId = lxrObj.recordId;
+			
+			return _.some(lxrArr, function(lxr) {
+				if(equType === lxr.equType && (equType === Const.EquType_PLAYER || recordId === lxr.recordId)) {
+					return true;
+				}
+			});
+		},
+		
+		renderMatrix: function() {
 			var rowHeadArr = this._getRowHead();
 			var colHeadArr = this._getColHead();
 			var rows = this.rows = rowHeadArr.length;
@@ -122,13 +165,13 @@ define(function(require) {
 			var colHeadArr = this._getColHead();
 			var cols = colHeadArr.length;
 			var $tds = this.$tds = $table.find("td");
-			var matrixInOut = this.model.get("matrixInOut") || [];
+			var matrixInOut = this.matrixInOut || this.model.get("matrixInOut") || [];
 			var curInOut, equSrc, equDst, i, l = matrixInOut.length;
 			
 			for(i = 0; i < l; i ++) {
 				curInOut = matrixInOut[i];
 				srcIndex = this.getSrcIndex(curInOut.equSrc, rowHeadArr);
-				dstIndex = this.getSrcIndex(curInOut.equDst, colHeadArr);
+				dstIndex = this.getDstIndex(curInOut.equDst, colHeadArr);
 				
 				if(srcIndex === -1 || dstIndex === -1) continue;
 				$tds.eq(dstIndex + srcIndex * cols).addClass("active");
@@ -221,25 +264,22 @@ define(function(require) {
 		},
 		
 		_getRowHead: function() {
-			//return this.options.spjzHead.rowHead;
-			var srcArr = this.options.spjzHead;
+			var srcArr = [].concat(this.lxrArr);
 			srcArr.push({equType:Const.EquType_MP,addrName:"多画面"});
-			srcArr.push({equType:Const.EquipType_PLAYER,addrName:"播放器"});
+			srcArr.push({equType:Const.EquType_PLAYER,addrName:"播放器"});
 			return srcArr;
 		},
 		_getColHead: function() {
-			//return this.options.spjzHead.colHead;
-			var dstArr = [{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI1,addrName:"DVI1"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI2,addrName:"DVI2"},
-			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI3,addrName:"DVI3"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_MBDVI4,addrName:"DVI4"},
-			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI1,addrName:"DVI5"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI2,addrName:"DVI6"},
-			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI3,addrName:"DVI7"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI4,addrName:"DVI8"},
-			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI1,addrName:"DVI9"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI2,addrName:"DVI10"},
-			{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquipType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];
+			var dstArr = [{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI1,addrName:"DVI1"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI2,addrName:"DVI2"},
+			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI3,addrName:"DVI3"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI4,addrName:"DVI4"},
+			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI1,addrName:"DVI5"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI2,addrName:"DVI6"},
+			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI3,addrName:"DVI7"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI4,addrName:"DVI8"},
+			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI1,addrName:"DVI9"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI2,addrName:"DVI10"},
+			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];
 			
-			$.each(this.options.spjzHead, function(i,addr){      
-			    if(addr.equType == Const.EquType_H323 || addr.equType == Const.EquType_SIP)
-				{
-					dstArr.push(addr);
+			_.each(this.lxrArr || [], function(lxr) {
+			    if(lxr.equType == Const.EquType_H323 || lxr.equType == Const.EquType_SIP) {
+					dstArr.push(lxr);
 				}  
 			});
 			

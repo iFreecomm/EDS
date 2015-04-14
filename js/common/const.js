@@ -12,6 +12,7 @@ define(function() {
 		EquType_RECORD: 8, //录制
 		EquType_RTMP: 9,   //推送
 		EquType_Cnt: 10,
+		EquType_NONE: 11, //不存在
 		
 		/***********以下是网站中所有URL常量************/
 		

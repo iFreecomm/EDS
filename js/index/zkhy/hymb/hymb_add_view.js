@@ -4,6 +4,7 @@ define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_template.html");
+	var Const = require("web/common/const");
 	
 	var HymbAddView = Mn.LayoutView.extend({
 		id: "zkhy_hymb_add",
@@ -29,7 +30,7 @@ define(function(require) {
 			e.preventDefault();
 			var self = this;
 			
-			var yhzArr = Radio.channel("venueId").request("getYhzArr");
+			var yhzArr = Radio.channel("yhz").request("getYhzArr");
 			
 			var showMpMode = Radio.channel("dhm").request("getShowMpMode");
 			var subPicInfo = Radio.channel("dhm").request("getSubPicInfo");
@@ -73,7 +74,16 @@ define(function(require) {
 		},
 		onAttach: function() {
 			Radio.channel("index").command("activeLink");
-			Radio.channel("venueId").command("loadHymb", this.model.get("venueId"));
+			Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
+			var lxrArr = this.options.lxrArr;
+			
+			var dhmlxr = [{
+				equType: Const.EquType_PLAYER,
+				addrName: "播放器"
+			}].concat(lxrArr);
+			
+			Radio.channel("dhm").command("addDhmlxr", dhmlxr);
+			Radio.channel("spjz").command("addMatrix", lxrArr);
 		}
 	});
 	
