@@ -19,12 +19,12 @@
 	"venueId": [1, 2, 4, 5, 7, 11, 12, 16],
 	
 	"enableDhm": 0,
-	"showMpMode": 3,
+	"showMpMode": 8,
 	"subPicCnt": 4,
 	"subPicInfo": [
 		{
 			"equType": 1,
-			"recordId": 4
+			"recordId": 17
 		},
 		{
 			"equType": 2,
@@ -32,10 +32,11 @@
 		},
 		{
 			"equType": 3,
-			"recordId": 6
+			"recordId": 16
 		},
 		{
-			"equType": 7
+			"equType": 0,
+			"recordId": 11
 		}
 	],
 	

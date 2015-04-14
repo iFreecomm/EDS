@@ -262,13 +262,17 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: #FFF;
+	cursor: move;
 }
 .lxr-box2 li:hover {
 	background: #F47900;
 }
-.dhm-pz-container .lxr {
+.dhm-pz-container li.ui-draggable-dragging {
+	width: 158px;
+	padding-left: 15px;
+	line-height: 2;
+	list-style: none;
 	color: #FFF;
-	cursor: move;
 }
 /************多画面右侧被选择的mode放大版样式*************/
 .mode-box-selected-container {
@@ -296,6 +300,17 @@
 .mode-box-big td.hover,
 .mode-box-big td.active {
     background: #F47900;
+}
+/**********增大可拖拽范围**********/
+.mode-box-big .lxr-span {
+	padding: 10px 20px;
+	color: #FFF;
+	cursor: move;
+}
+.dhm-pz-container .lxr-span.ui-draggable-dragging {
+	padding: 10px 20px;
+	color: #FFF;
+	cursor: move;
 }
 /************多画面样式结束*************/
 

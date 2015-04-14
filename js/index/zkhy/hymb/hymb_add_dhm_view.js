@@ -48,7 +48,7 @@ define(function(require) {
 			if(_.isEmpty(subPicInfo)) return;
 			
 			var curView = this;
-			var $span = $('<span class="lxr inTd"></span>');
+			var $span = $('<span class="lxr-span"></span>');
 			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
 				var $this = $(this);
 				var ch = $this.data("ch");
@@ -78,21 +78,34 @@ define(function(require) {
 		enableTdDroppable: function() {
 			var curView = this;
 			this.ui.mode_box_big.find("td").not(".unvisible").droppable({
-				accept: ".lxr",
+				accept: ".lxr-li",
 				hoverClass: "hover",
 				addClasses: false,
 				greedy: true,
 				
 				drop: function(event, ui) {
-					var $drag = ui.draggable;
-					if(!$drag.is(".inTd")) {
-						var $dragClone = $drag.clone().addClass("inTd");
-						$dragClone.data($drag.data());
-						curView.enableDraggable($dragClone);
-						$(this).addClass("active").children(".lxr").remove().end().append($dragClone);
-					}
+					var $drag = ui.draggable.children(".lxr-span");
+					var $dragClone = $drag.clone();
+					//因为$drag.data()里面含有其它不需要的数据，所以这里只获取需要的数据
+					$dragClone.data(curView._getDataInfo($drag));
+					curView.enableDraggable($dragClone);
+					$(this).addClass("active").children(".lxr-span").remove().end().append($dragClone);
 				}
 			});
+		},
+		
+		_getDataInfo: function($obj) {
+			var result = {}, temp;
+			
+			result.equType = $obj.data("equType") || Const.EquType_NONE;
+			temp = $obj.data("recordId");
+			_.isNumber(temp) && (result.recordId = temp); //不是数字就不设置该值，以免污染数据库
+			temp = $obj.data("camPort");
+			_.isNumber(temp) && (result.camPort = temp);
+			temp = $obj.data("vgaPort");
+			_.isNumber(temp) && (result.vgaPort = temp);
+			
+			return result;
 		},
 				
 		initialize: function() {
@@ -131,11 +144,12 @@ define(function(require) {
 		
 		getSubPicInfo: function() {
 			var result = [];
+			var curView = this;
 			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
 				var $this = $(this);
 				var ch = $this.data("ch"); //当前TD元素的序号
-				var $span = $this.children(".lxr");
-				result[ch] = $span.data() || { equType: Const.EquType_NONE };
+				var $span = $this.children(".lxr-span");
+				result[ch] = curView._getDataInfo($span);
 			});
 			return result;
 		},
@@ -143,38 +157,37 @@ define(function(require) {
 		addDhmlxr: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
 			
-			var $li = $('<li></li>');
-			var $span = $('<span class="lxr"></span>');
-			var $spanArr = $({}), $sp;
+			var $li = $('<li class="lxr-li"></li>');
+			var $span = $('<span class="lxr-span"></span>');
+			var $curLi, $curSpan;
+			var curView = this;
 			
-			_.each(lxrArr, function(lxr) {
-				$sp = $span.clone();
-				$sp.data(lxr);
-				$sp.text(lxr.addrName);
-				$spanArr.add($sp);
+			var $liArr = _.map(lxrArr, function(lxr) {
+				$curSpan = $span.clone();
+				$curSpan.data(lxr);
+				$curSpan.text(lxr.addrName);
+				
+				$curLi = $li.clone().append($curSpan);
+				curView.enableDraggable($curLi);
+				
+				return $curLi;
 			});
 			
-			this.enableDraggable($spanArr);
-			
-			var $liArr = $spanArr.map(function() {
-				return $li.clone().append(this);
-			});
-			
-			this.ui.dhmLxrs.append(liArr);
+			this.ui.dhmLxrs.append($liArr);
 		},
 		
 		subDhmlxr: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
 			
 			var self = this;
-			this.ui.appendToBox.find(".lxr").each(function() {
+			this.ui.appendToBox.find(".lxr-span").each(function() {
 				var $this = $(this);
 				var lxrObj = $this.data();
 				if(self._isLxrInArr(lxrObj, lxrArr)) {
-					if($this.is(".inTd")) {
-						$this.parent().removeClass("active").end().remove();
-					} else {
+					if($this.parent().is("li")) {
 						$this.parent().remove();
+					} else {
+						$this.parent().removeClass("active").end().remove();
 					}
 				}
 			});
@@ -200,7 +213,7 @@ define(function(require) {
 			
 			//将联系人拖放到大容器中，就删除掉它
 			this.ui.appendToBox.droppable({
-				accept: ".inTd",
+				accept: ".lxr-span",
 				addClasses: false,
 				
 				drop: function(event, ui) {
