@@ -28,48 +28,9 @@ define(function(require) {
 				this.hymbModel.myFetch(options)
 			).done(function(allLxr) {
 				self.allLxr = allLxr[0].data.bookInfo;
-
-				self.fixSubPicInfo();
 				
 				self.showView();
 			});
-		},
-		
-		//修复多画面中的subPicInfo字段，缺少用来显示的addrName字段
-		fixSubPicInfo: function() {
-			var allLxr = this.allLxr;
-			var subPicInfo = this.hymbModel.get("subPicInfo");
-			
-			if(_.isEmpty(allLxr) || _.isEmpty(subPicInfo)) return;
-			
-			var curSub, curLxr, equType, recordId;
-			for(var i = 0; curSub = subPicInfo[i]; i++) {
-				equType = curSub.equType;
-				recordId = curSub.recordId;
-				for(var j = 0; curLxr = allLxr[j]; j++) {
-					if(equType === curLxr.equType && (equType === Const.EquType_PLAYER || recordId === curLxr.recordId)) {
-						curSub.addrName = curLxr.addrName;
-					}
-				}
-			}
-		},
-		
-		getSelectedLxr: function() {
-			var allLxr = this.allLxr;
-			var venueIdArr = this.hymbModel.get("venueId");
-			
-			if(_.isEmpty(allLxr) || _.isEmpty(venueIdArr)) return [];
-			
-			var curVenue, curLxr, result = [];
-			for(var i = 0; curVenue = venueIdArr[i]; i++) {
-				for(var j = 0; curLxr = allLxr[j]; j++) {
-					if(curVenue === curLxr.recordId) {
-						result.push(curLxr);
-					}
-				}
-			}
-			
-			return result;
 		},
 		
 		showView: function() {
@@ -77,7 +38,7 @@ define(function(require) {
 				navLeftView: NavLeftView,
 				contentRightView: new HymbAddView({
 					model: this.hymbModel,
-					lxrArr: this.getSelectedLxr()
+					allLxr: this.allLxr
 				}),
 				
 				zkhyHymbAddBasicView: new HymbAddBasicView({
@@ -95,7 +56,8 @@ define(function(require) {
 					//但是只有enableMP字段同步
 					//其它字段对应不了表单元素，所以只能手动初始化页面
 					//获取其它字段需要使用Radio.channel.request
-					model: this.hymbModel
+					model: this.hymbModel,
+					allLxr: this.allLxr
 				}),
 				zkhyHymbAddSpjzView: new HymbAddSpjzView({
 					//和父层View共享同一个hymbModel

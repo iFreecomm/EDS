@@ -90,31 +90,37 @@ define(function(require) {
 		},
 		
 		addMatrix: function(addLxrArr) {
+			//缓存已经配置的矩阵数据
 			this.matrixInOut = this.getMatrixInOut();
-			
-			var lxrArr = this.lxrArr || [];
-			this.lxrArr = lxrArr.concat(addLxrArr);
-			
+			//修改联系人数据
+			this.lxrArr = this._getAddLxrArr(addLxrArr);
+			//清空现有的表格
 			this.ui.spjz_table_container.empty();
-			
+			//重新绘制表格
 			this.renderMatrix();
 		},
 		
+		_getAddLxrArr: function(addLxrArr) {
+			var lxrArr = this.lxrArr || [];
+			return lxrArr.concat(addLxrArr);
+		},
+		
 		subMatrix: function(subLxrArr) {
+			//缓存已经配置的矩阵数据
 			this.matrixInOut = this.getMatrixInOut();
-			
+			//修改联系人数据
 			this.lxrArr = this._getSubLxrArr(subLxrArr);
-			
+			//清空现有的表格
 			this.ui.spjz_table_container.empty();
-			
+			//重新绘制表格
 			this.renderMatrix();
 		},
 		
 		_getSubLxrArr: function(subLxrArr) {
 			var lxrArr = this.lxrArr || [];
 			var self = this;
-			return _.filter(lxrArr, function(lxr) {
-				return !self._isLxrInArr(lxr, subLxrArr);
+			return _.reject(lxrArr, function(lxr) {
+				return self._isLxrInArr(lxr, subLxrArr);
 			});
 		},
 		

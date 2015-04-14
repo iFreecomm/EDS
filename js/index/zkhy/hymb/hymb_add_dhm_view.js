@@ -47,25 +47,23 @@ define(function(require) {
 			var subPicInfo = this.model.get("subPicInfo");
 			if(_.isEmpty(subPicInfo)) return;
 			
-			var $td = this.ui.mode_box_big.find("td").not(".unvisible");
+			var curView = this;
 			var $span = $('<span class="lxr inTd"></span>');
-			var $allSpan = $td.map(function() {
+			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
 				var $this = $(this);
 				var ch = $this.data("ch");
 				var curSub = subPicInfo[ch];
 				
 				if(curSub.equType !== Const.EquType_NONE) {
 					var $sp = $span.clone();
-					$sp.data("equType", curSub.equType);
-					$sp.data("recordId", curSub.recordId);
+					$sp.data(curSub);
 					$sp.text(curSub.addrName);
 					
+					curView.enableDraggable($sp);
 					$this.addClass("active").append($sp);
-					return $sp;
 				}
 			});
 			
-			this.enableDraggable($allSpan);
 		},
 		
 		enableDraggable: function($obj) {
@@ -98,6 +96,8 @@ define(function(require) {
 		},
 				
 		initialize: function() {
+			this.fixSubPicInfo();
+			
 			Radio.channel("dhm").reset();
 			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
 			Radio.channel("dhm").reply("getSubPicInfo", this.getSubPicInfo, this);
@@ -106,24 +106,38 @@ define(function(require) {
 			Radio.channel("dhm").comply("subDhmlxr", this.subDhmlxr, this);
 		},
 		
+		//修复多画面中的subPicInfo字段，缺少用来显示的addrName字段
+		fixSubPicInfo: function() {
+			var allLxr = this.options.allLxr;
+			var subPicInfo = this.model.get("subPicInfo");
+			
+			if(_.isEmpty(allLxr) || _.isEmpty(subPicInfo)) return;
+			
+			_.each(subPicInfo, function(curSubPic) {
+				var equType = curSubPic.equType;
+				var recordId = curSubPic.recordId;
+				_.some(allLxr, function(curLxr) {
+					if(equType === curLxr.equType && (equType === Const.EquType_PLAYER || recordId === curLxr.recordId)) {
+						curSubPic.addrName = curLxr.addrName;
+						return true; //结束循环
+					}
+				});
+			});
+		},
+		
 		getShowMpMode: function() {
 			return this.ui.mode_box.filter(".active").data("mode");
 		},
 		
 		getSubPicInfo: function() {
-			var $td = this.ui.mode_box_big.find("td").not(".unvisible");
-			return $td.map(function() {
+			var result = [];
+			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
 				var $this = $(this);
-				var ch = $this.data("ch");
+				var ch = $this.data("ch"); //当前TD元素的序号
 				var $span = $this.children(".lxr");
-				var equType = $span.data("equType");
-				return {
-					equType: _.isNumber(equType) ? equType : 11,
-					recordId: $span.data("recordId") || 0,
-					camPort: $span.data("camPort") || 0,
-					vgaPort: $span.data("vgaPort") || 0
-				}
-			}).get();
+				result[ch] = $span.data() || { equType: Const.EquType_NONE };
+			});
+			return result;
 		},
 				
 		addDhmlxr: function(lxrArr) {
@@ -131,22 +145,19 @@ define(function(require) {
 			
 			var $li = $('<li></li>');
 			var $span = $('<span class="lxr"></span>');
-			var $cur;
+			var $spanArr = $({}), $sp;
 			
-			var spanArr = $.map(lxrArr, function(lxr) {
-				$cur = $span.clone();
-				$cur.data("equType", lxr.equType);
-				$cur.data("recordId", lxr.recordId);
-				$cur.data("camPort", lxr.camPort);
-				$cur.data("vgaPort", lxr.vgaPort);
-				$cur.text(lxr.addrName);
-				return $cur;
+			_.each(lxrArr, function(lxr) {
+				$sp = $span.clone();
+				$sp.data(lxr);
+				$sp.text(lxr.addrName);
+				$spanArr.add($sp);
 			});
 			
-			this.enableDraggable($(spanArr));
+			this.enableDraggable($spanArr);
 			
-			var liArr = $.map(spanArr, function($span) {
-				return $li.clone().append($span);
+			var $liArr = $spanArr.map(function() {
+				return $li.clone().append(this);
 			});
 			
 			this.ui.dhmLxrs.append(liArr);
@@ -158,10 +169,7 @@ define(function(require) {
 			var self = this;
 			this.ui.appendToBox.find(".lxr").each(function() {
 				var $this = $(this);
-				var lxrObj = {
-					equType: $this.data("equType"),
-					recordId: $this.data("recordId")
-				};
+				var lxrObj = $this.data();
 				if(self._isLxrInArr(lxrObj, lxrArr)) {
 					if($this.is(".inTd")) {
 						$this.parent().removeClass("active").end().remove();

@@ -49,7 +49,7 @@ define(function(require) {
 				}
 			});
 			
-			var addLxrArr = this.getLxrDataById(addLxrIdArr);
+			var addLxrArr = this._getLxrDataById(addLxrIdArr);
 			Radio.channel("dhm").command("addDhmlxr", addLxrArr);
 			Radio.channel("spjz").command("addMatrix", addLxrArr);
 		},
@@ -61,27 +61,23 @@ define(function(require) {
 				return id;
 			}).get();
 			
-			var subLxrArr = this.getLxrDataById(subLxrIdArr);
+			var subLxrArr = this._getLxrDataById(subLxrIdArr);
 			Radio.channel("dhm").command("subDhmlxr", subLxrArr);
 			Radio.channel("spjz").command("subMatrix", subLxrArr);
 		},
-		getLxrDataById: function(idArr) {
+		_getLxrDataById: function(idArr) {
 			var allLxr = this.options.allLxr;
-			if(_.isEmpty(idArr) || _.isEmpty(allLxr)) return [];
 			
-			var i = 0, l = allLxr.length, curLxr;
-			return _.map(idArr, function(id) {
-				for(i = 0; i < l; i ++) {
-					curLxr = allLxr[i];
-					if(curLxr.recordId === id) {
-						return curLxr;
-					}
-				}
+			if(_.isEmpty(allLxr) || _.isEmpty(idArr)) return [];
+			
+			return _.filter(allLxr, function(lxr) {
+				return _.contains(idArr, lxr.recordId);
 			});
 		},
 		
 		initialize: function() {
 			this.setTemplateHelpers();
+			
 			Radio.channel("yhz").reset();
 			Radio.channel("yhz").reply("getYhzArr", this.getYhzArr, this);
 			Radio.channel("yhz").comply("loadHymb", this.loadHymb, this);
@@ -122,9 +118,8 @@ define(function(require) {
 		},
 		//对外提供加载会议模版的接口
 		loadHymb: function(idArr) {
-			idArr = idArr || [];
 			var $box = this.ui.lxr_box.empty();
-			if(idArr.length === 0) return;
+			if(_.isEmpty(idArr)) return;
 			this.ui.box_left.find(".lxr").each(function() {
 				var $this = $(this);
 				var id = $this.data("id");

@@ -1,5 +1,6 @@
 define(function(require) {
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Backbone = require("backbone");
 	var Radio = require("radio");
 	var Mn = require("marionette");
@@ -74,16 +75,34 @@ define(function(require) {
 		},
 		onAttach: function() {
 			Radio.channel("index").command("activeLink");
+			//初始化与会者页面右侧已经选择的联系人
 			Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
-			var lxrArr = this.options.lxrArr;
+			//初始化多画面左侧可以拖拽的联系人
+			Radio.channel("dhm").command("addDhmlxr", this.getDhmLxr());
+			//初始化视频矩阵，表格行头和表格列头需要联系人
+			Radio.channel("spjz").command("addMatrix", this.getMatrixLxr());
+		},
+		
+		getDhmLxr: function() {
+			return [
+				{
+					equType: Const.EquType_PLAYER,
+					addrName: "播放器"
+				}
+			].concat(this._getLxrDataById());
+		},
+		getMatrixLxr: function() {
+			return this._getLxrDataById();
+		},
+		_getLxrDataById: function() {
+			var allLxr = this.options.allLxr;
+			var venueIdArr = this.model.get("venueId");
 			
-			var dhmlxr = [{
-				equType: Const.EquType_PLAYER,
-				addrName: "播放器"
-			}].concat(lxrArr);
+			if(_.isEmpty(allLxr) || _.isEmpty(venueIdArr)) return [];
 			
-			Radio.channel("dhm").command("addDhmlxr", dhmlxr);
-			Radio.channel("spjz").command("addMatrix", lxrArr);
+			return _.filter(allLxr, function(lxr) {
+				return _.contains(venueIdArr, lxr.recordId);
+			});
 		}
 	});
 	
