@@ -183,6 +183,7 @@
     overflow: hidden;
 }
 .mode-box {
+	position: relative;
     float: left;
     width: 144px;
     height: 81px;
@@ -203,6 +204,13 @@
 	top: 25%;
 	height: 50%;
 }
+.mode-box .mode-table-hzh {
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	width: 33%;
+	height: 33%;
+}
 .mode-box td {
     border: 2px solid #FFF;
     background: #1E89B5;
@@ -212,19 +220,6 @@
 }
 .mode-box.active td {
     background: #F47900;
-}
-.mode-box .hzh {
-	position: relative;
-	height: 100%;
-}
-.mode-box .hzh-in {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 33%;
-	height: 33%;
-	margin-bottom: 1px;
-	margin-right: 1px;
 }
 .unvisible {
     background: transparent !important;
@@ -293,6 +288,10 @@
 	max-width: 800px;
 	height: 90%;
 	margin: auto;
+}
+.mode-box-big .mode-table-hzh {
+	bottom: 6px;
+	right: 6px;
 }
 .mode-box-big td {
     border: 5px solid #FFF;
