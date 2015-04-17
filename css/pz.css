@@ -1,4 +1,7 @@
 /**********配置样式开始**********/
+.pz {
+	padding: 30px 50px;
+}
 .pz .formBox {
 	margin-top: 20px;
 }
@@ -18,9 +21,9 @@
 	width: 680px;
 }
 .pz .slider {
+	float: left;
 	width: 480px;
 	margin: 11px 10px;
-	float: left;
 }
 .pz .ui-widget-header {
 	background: #1c94c4;
@@ -33,9 +36,6 @@
 /**********配置样式结束**********/
 
 /**********网络设置样式开始**********/
-.spjk,.wlsz {
-	padding: 30px 50px;
-}
 .wlsz-box {
 	padding: 20px;
 }
@@ -59,3 +59,113 @@
 	margin-left: 140px;
 }
 /**********网络设置样式结束**********/
+
+/**********音频配置样式开始**********/
+.yppz table {
+	margin: auto;
+}
+.yppz td {
+	text-align: center;
+	padding: 10px 5px;
+	font-size: 0;
+}
+.yppz .btn-default.h100 {
+	line-height: 1.6;
+}
+.yppz .btn-default.w2 {
+	width: 4em;
+}
+.yppz .btn-default.w4 {
+	width: 6em;
+}
+.yppz .btn-default.w6 {
+	width: 8em;
+}
+.yppz .rightArrow {
+	width: 50px;
+	height: 6px;
+	margin-right: 20px;
+}
+.yppz .rightArrow.long {
+	width: 224px;
+}
+.yppz .rightArrow:after {
+	top: -4px;
+	border: 7px solid transparent;
+	border-left: 20px solid #1E89B5;
+}
+
+.yppz .slide-box {
+	float: left;
+	width: 96px;
+	height: 412px;
+}
+.yppz .slide-box-big {
+	position: relative;
+	width: 96px;
+	height: 412px;
+	background: url(../img/vertical/panel.png) no-repeat;
+}
+.yppz h4 {
+	height: 27px;
+	line-height: 30px;
+	margin: 0;
+	font-size: 12px;
+	color: #EAEAEA;
+	text-align: center;
+}
+.yppz .switch {
+	display: block;
+	width: 100%;
+	margin-top: 8px;
+	height: 35px;
+	margin-bottom: 8px;
+	background: url(../img/vertical/btn2.png) no-repeat center;
+}
+.yppz .switch.active {
+	background: url(../img/vertical/btn1.png) no-repeat center;
+}
+.yppz .hxgd {
+	display: block;
+	width: 100%;
+	height: 49px;
+	background: url(../img/vertical/btn4.png) no-repeat center;
+}
+.yppz .hxgd.active {
+	background: url(../img/vertical/btn3.png) no-repeat center;
+}
+.yppz .color {
+	position: absolute;
+	left: 11px;
+	bottom: 13px;
+	width: 17px;
+	/*height: 267px;*/
+	background: url(../img/vertical/color.png) no-repeat center bottom;
+}
+.yppz .slider {
+	position: absolute;
+	right: 26px;
+	bottom: 15px;
+	width: 11px;
+	height: 264px;
+	border: none;
+	margin: 0;
+	background: transparent;
+}
+.yppz .ui-widget-header {
+	background: transparent;
+}
+.yppz .ui-slider-handle {
+	width: 66px;
+	height: 44px;
+	border: none;
+	left: -30px;
+	margin-bottom: -22px;
+	background: url(../img/vertical/handler.png) no-repeat;
+	outline: none;
+	cursor: pointer;
+}
+.yppz .sliderValue {
+	display: none;
+}
+/**********音频配置样式结束**********/

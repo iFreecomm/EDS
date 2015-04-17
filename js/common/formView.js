@@ -47,7 +47,7 @@ define(function(require) {
 			return this;
 		},
 		_selectChangeEvent: function(event, ui) {
-			$(event.target).change();
+			$(this).change();
 		},
 		
 		// 使用jqueryui中的slider控件
@@ -55,23 +55,49 @@ define(function(require) {
 			var self = this;
 			this.$(".slider").each(function() {
 				var $this = $(this);
-				var $sib = $this.siblings(".sliderValue");
-				$this.slider({
-					range: "min",
-					value: $sib.text(),
-					min: $sib.data("min"),
-					max: $sib.data("max"),
-					slide: self._slideEvent,
-					stop: self._slideStopEvent,
-				});
+				var options = self._getSliderOptions($this);
+				$this.slider(options);
+				
+				if(options.orientation === "vertical") {
+					// 触发change事件
+					$this.slider("value", options.value);
+				}
 			});
 			return this;
 		},
-		_slideEvent: function(event, ui) {
-			$(event.target).siblings(".sliderValue").text(ui.value);
+		// 目前只有两种情况，以vertical字段作为判断条件
+		// 如果将来增加其它情况，最好换一个字段作为判断条件
+		_getSliderOptions: function($slider) {
+			var $sv = $slider.siblings(".sliderValue");
+			var options = {
+				range: "min",
+				value: +$sv.text(),
+				min: $sv.data("min"),
+				max: $sv.data("max")
+			};
+			if($sv.data("vertical")) {
+				options.orientation = "vertical";
+				options.slide = this._slideVerticalEvent;
+				options.change = this._slideVerticalChangeEvent;
+			} else {
+				options.slide = this._slideHorizontalEvent;
+				options.change = this._slideHorizontalChangeEvent;
+			}
+			return options;
 		},
-		_slideStopEvent: function(event, ui) {
-			$(event.target).siblings(".sliderValue").change();
+		_slideHorizontalEvent: function(event, ui) {
+			$(this).siblings(".sliderValue").text(ui.value);
+		},
+		_slideHorizontalChangeEvent: function(event, ui) {
+			$(this).siblings(".sliderValue").change();
+		},
+		_slideVerticalEvent: function(event, ui) {
+			// 267是颜色条纹的高度
+			// 32是slider的最大值
+			$(this).siblings(".color").height(ui.value * 267 / 32);
+		},
+		_slideVerticalChangeEvent: function(event, ui) {
+			$(this).siblings(".color").height(ui.value * 267 / 32).end().siblings(".sliderValue").text(ui.value).change();
 		},
 		
 		// 修复IE8中自定义的checkbox的样式问题

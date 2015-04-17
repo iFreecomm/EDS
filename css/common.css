@@ -21,6 +21,7 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 
 .w50 { width: 50%; }
 .w80 { width: 80%; }
+.h100 { height: 100%; }
 
 /*************两端对齐***************/
 .justify-list {
@@ -178,6 +179,36 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 }
 .tabContent.active {
 	display: block;
+}
+
+/*************箭头样式***************/
+.rightArrow {
+	position: relative;
+	display: inline-block;
+	text-align: right;
+	color: #FFF;
+	background: #1E89B5;
+	cursor: default;
+}
+.rightArrow:after {
+	content: "";
+	position: absolute;
+	display: block;
+	left: 100%;
+}
+.leftArrow {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+	color: #FFF;
+	background: #1E89B5;
+	cursor: default;
+}
+.leftArrow:before {
+	content: "";
+	position: absolute;
+	display: block;
+	right: 100%;
 }
 
 /*************清除浮动***************/

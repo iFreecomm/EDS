@@ -29,16 +29,6 @@
 .fieldBox {
 	overflow: hidden;
 }
-
-.form-btns-bottom-right {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	width: 140px;
-}
-.form-btns-bottom-right .input-btn {
-	margin-top: 10px;
-}
 /******text文本输入框样式******/
 input[type=text],
 input[type=password] {
@@ -103,17 +93,32 @@ input[type=checkbox]:checked+label {
 	background-position: 0 -61px;
 }
 /******表单按钮******/
-.input-btn {
-	display: inline-block;
-	width: 140px;
-	height: 60px;
+.btn {
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+}
+.btn-default {
+	padding: 1em;
+	margin: 0;
 	border: none;
 	outline: none;
 	background:  #1E89B5;
 	color: #FFF;
-	font-size: 27px;
+	font-size: 21px;
 	text-shadow: 0 2px 1px #555;
 }
-.input-btn:hover {
+.btn-default:hover {
 	background:  #F47900;
+}
+
+.form-btns-bottom-right {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	width: 140px;
+}
+.form-btns-bottom-right .input-btn {
+	margin-top: 10px;
 }

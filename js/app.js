@@ -98,6 +98,13 @@ define(function(require) {
 				}
 				return new Handlebars.SafeString(result);
 			});
+			Handlebars.registerHelper("addOne", function(index) {
+				return index+1;
+			});
+			Handlebars.registerHelper("isActive", function(active) {
+				if(active == 1) return "active";
+				return "";
+			});
 		},
 		
 		initStickitHandler: function() {
