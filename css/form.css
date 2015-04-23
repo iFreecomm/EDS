@@ -49,6 +49,7 @@ input[type=password]:focus {
 	box-shadow: 0 0 5px 0 rgba(251,203,9,0.5) inset;
 	outline: 0;
 }
+/******spinner文本输入框样式******/
 input.spinner {
 	height: 30px;
 	width: 100px;
@@ -78,7 +79,7 @@ select {
 input[type=checkbox] {
 	display: none;
 }
-.label-checkbox {
+.checkbox-label {
 	display: inline-block;
 	padding: 0 0 0 30px;
 	height: 38px;
@@ -86,11 +87,69 @@ input[type=checkbox] {
 	font-weight: normal;
 	background: url(../img/frame/checkbox.png) no-repeat 0 3px;
 }
-.label-checkbox.active {/*需要js配合兼容IE8*/
+.checkbox-label.active {
 	background-position: 0 -61px;
 }
-input[type=checkbox]:checked+label {
-	background-position: 0 -61px;
+/******radio样式******/
+input[type=radio] {
+	display: none;
+}
+.radio-set {
+	display: inline-block;
+	position: relative;
+	font-size: 0;
+	height: 52px;
+}
+.label-radio {
+	display: inline-block;
+	height: 100%;
+	line-height: 52px;
+	padding: 0 1.5em;
+	font-size: 21px;
+	font-weight: normal;
+	background: url(../img/form/radio/mid1.png) repeat-x 0 0;
+	color: #373737;
+	text-align: center;
+	vertical-align: top;
+	cursor: pointer;
+}
+.radio-first {
+	margin-left: 15px;
+}
+.radio-last {
+	margin-right: 15px;
+}
+.radio-split {
+	display: inline-block;
+	width: 4px;
+	height: 100%;
+	background: url(../img/form/radio/split.png) repeat-x 0 0;
+}
+.radio-left {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 15px;
+	height: 100%;
+	background: url(../img/form/radio/left1.png) repeat-x 0 0;
+}
+.radio-right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 15px;
+	height: 100%;
+	background: url(../img/form/radio/right1.png) repeat-x 0 0;
+}
+.label-radio.active {
+	color: #FFF;
+	background: url(../img/form/radio/mid2.png) repeat-x 0 0;
+}
+.label-radio.active+.radio-left {
+	background: url(../img/form/radio/left2.png) repeat-x 0 0;
+}
+.label-radio.active+.radio-right {
+	background: url(../img/form/radio/right2.png) repeat-x 0 0;
 }
 /******表单按钮******/
 .btn {
@@ -98,27 +157,39 @@ input[type=checkbox]:checked+label {
 	margin: 0;
 	border: none;
 	outline: none;
-}
-.btn-default {
-	padding: 1em;
-	margin: 0;
-	border: none;
-	outline: none;
-	background:  #1E89B5;
+	background: #1E89B5;
 	color: #FFF;
 	font-size: 21px;
 	text-shadow: 0 2px 1px #555;
 }
-.btn-default:hover {
+.btn-ls {
+	letter-spacing: 1em;
+	padding: .8em .5em .8em 1.5em;
+}
+.btn-ls:hover {
 	background:  #F47900;
 }
-
-.form-btns-bottom-right {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	width: 140px;
+.btn-switch1 {
+	width: 47px;
+	height: 49px;
+	background: url(../img/form/slider/switch1_off.png) no-repeat;
 }
-.form-btns-bottom-right .input-btn {
-	margin-top: 10px;
+.btn-switch1.active {
+	background: url(../img/form/slider/switch1_on.png) no-repeat;
+}
+.btn-switch2 {
+	width: 65px;
+	height: 31px;
+	background: url(../img/form/slider/switch2_off.png) no-repeat;
+}
+.btn-switch2.active {
+	background: url(../img/form/slider/switch2_on.png) no-repeat;
+}
+.btn-switch3 {
+	width: 108px;
+	height: 52px;
+	background: url(../img/form/switch3_off.png) no-repeat;
+}
+.btn-switch3.active {
+	background: url(../img/form/switch3_on.png) no-repeat;
 }

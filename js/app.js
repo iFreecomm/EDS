@@ -101,8 +101,12 @@ define(function(require) {
 			Handlebars.registerHelper("addOne", function(index) {
 				return index+1;
 			});
+			Handlebars.registerHelper("isFirst", function(index) {
+				if(index === 0) return "ml50";
+				return "";
+			});
 			Handlebars.registerHelper("isActive", function(active) {
-				if(active == 1) return "active";
+				if(active === 1) return "active";
 				return "";
 			});
 		},

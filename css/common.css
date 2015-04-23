@@ -4,9 +4,6 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 #wrapper-table { display: table; width: 100%; height: 100%; background: url(../img/login/bg.png) no-repeat center; }
 #wrapper-table-cell { display: table-cell; vertical-align: middle; }
 
-.tip { padding: 20px 50px; margin: 0; text-align: left; color: #353535; font-size: 18px; }
-.loading { display: none; position: fixed; left: 50%; top: 50%; margin-left: -64px; margin-top: -100px; }
-
 .tal { text-align: left; }
 .tac { text-align: center; }
 .tar { text-align: right; }
@@ -19,9 +16,12 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 .m20 { margin: 20px; } .mt20 { margin-top: 20px; } .mr20 { margin-right: 20px; } .mb20 { margin-bottom: 20px; } .ml20 { margin-left: 20px; }
 .m50 { margin: 50px; } .mt50 { margin-top: 50px; } .mr50 { margin-right: 50px; } .mb50 { margin-bottom: 50px; } .ml50 { margin-left: 50px; }
 
-.w50 { width: 50%; }
-.w80 { width: 80%; }
 .h100 { height: 100%; }
+
+.tip { padding: 20px 50px; margin: 0; text-align: left; color: #353535; font-size: 18px; }
+.mask { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999; }
+.loading { display: none; position: fixed; left: 50%; top: 50%; width: 128px; height: 128px; margin-left: -64px; margin-top: -100px; z-index: 9999; }
+.noText { font-size: 0; }
 
 /*************两端对齐***************/
 .justify-list {
@@ -39,176 +39,6 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
   font-size: 0;
   visibility: hidden;
   overflow: hidden;
-}
-
-/*********Collection中小盒子的容器样式*********/
-.box-container {
-	padding: 30px 50px;
-	margin: 0;
-}
-.box-container li {
-	width: 180px;
-}
-.box-container a {
-	display: block;
-	margin-bottom: 20px;
-	text-decoration: none;
-}
-/*********小盒子头部样式*********/
-.box-container .box-head {
-	position: relative;
-	height: 32px;
-	line-height: 32px;
-	font-size: 18px;
-	text-align: center;
-	color: #FFF;
-	background: #1E89B5;
-}
-.box-container a:hover .box-head {
-	background: #F47900;
-}
-/*********小盒子删除按钮样式*********/
-.box-container .delBtn {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 32px;
-	height: 32px;
-	padding: 0;
-	border: none;
-	margin: 0;
-	outline: 0;
-	background: url(../img/del.png) no-repeat center;
-	opacity: 0;
-}
-.box-container .delBtn:hover {
-	background-color: #1E89B5;
-}
-.box-container li:hover .delBtn {
-	opacity: 1;
-	transition: opacity 3s;
-}
-/*********小盒子主体样式*********/
-.box-container .box-body {
-	box-sizing: border-box;
-	height: 155px;
-	padding-top: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
-	word-wrap: break-word;
-	color: #000;
-	background: #A9A9A9;
-}
-.box-container .add .box-body {
-	background: #A9A9A9 url(../img/lxr/plus.png) no-repeat center;
-}
-
-/*************联系人小盒子样式***************/
-.shadow-box {
-	border: 1px solid #D4D4D4;
-	box-shadow: 0 0 10px 0 #ccc inset;
-}
-.shadow-box h3 {
-	padding: 0;
-	margin: 0;
-	height: 40px;
-	line-height: 40px;
-	font-size: 20px;
-	color: #484747;
-	text-align: left;
-	margin-left: 10px;
-} 
-.lxr-box {
-	padding: 10px 20px;
-}
-.lxr-box .lxr {
-	float: left;
-	width: 160px;
-	margin-left: 10px;
-	color: #FFF;
-	cursor: default;
-}
-.lxr-box .lxr-head {
-	height: 30px;
-	line-height: 30px;
-	background: #1E89B5;
-	font-size: 18px;
-}
-.lxr-box .lxr.active .lxr-head {
-	background: #F47900;
-}
-.lxr-box .lxr-body {
-	height: 40px;
-	padding-left: 20px;
-	padding-right: 20px;
-	margin-bottom: 10px;
-	word-wrap: break-word;
-	background: #A9A9A9;
-	font-size: 16px;
-}
-
-/*************tab标签样式***************/
-.tabBox ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	overflow: hidden;
-}
-.tabBox li {
-	float: left;
-	height: 32px;
-	line-height: 22px;
-	padding: 4px 8px;
-	border: 1px solid #000;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom: none;
-	margin-left: 20px;
-	color: #444;
-	cursor: pointer;
-}
-.tabBox li.active {
-	font-weight: bold;
-	color: #F47900;
-	background: #F4F1F1;
-}
-
-.tabContent {
-	display: none;
-	padding: 30px 50px;
-}
-.tabContent.active {
-	display: block;
-}
-
-/*************箭头样式***************/
-.rightArrow {
-	position: relative;
-	display: inline-block;
-	text-align: right;
-	color: #FFF;
-	background: #1E89B5;
-	cursor: default;
-}
-.rightArrow:after {
-	content: "";
-	position: absolute;
-	display: block;
-	left: 100%;
-}
-.leftArrow {
-	position: relative;
-	display: inline-block;
-	text-align: left;
-	color: #FFF;
-	background: #1E89B5;
-	cursor: default;
-}
-.leftArrow:before {
-	content: "";
-	position: absolute;
-	display: block;
-	right: 100%;
 }
 
 /*************清除浮动***************/

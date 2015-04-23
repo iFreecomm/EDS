@@ -6,7 +6,7 @@
 	width: 90%;
 }
 #zkhy_ydyhy_add input[name=desc] {
-	width: 100%;
+	width: 96%;
 	max-width: 1220px;
 }
 #zkhy_ydyhy_add .form-btns {
@@ -28,7 +28,7 @@
 	right: 0;
 	overflow: auto;
 }
-#zkhy_hymb_add .input-btn-area {
+#zkhy_hymb_add .btn-area {
 	position: absolute;
 	bottom: 0;
 	left: 200px;
@@ -36,7 +36,13 @@
 	text-align: center;
 	background: #D4D4D4;
 }
+#zkhy_hymb_add .cancelBtn {
+	margin-left: 50px;
+}
 /********基本参数样式开始***********/
+#zkhy_hymb_add input[name=desc] {
+	width: 50%;
+}
 /********基本参数样式结束***********/
 
 /********与会者样式开始***********/
@@ -174,8 +180,6 @@
     width: 100%;
     height: 100%;
     border: none;
-    border-collapse: collapse;
-    border-spacing: 0;
     table-layout: fixed;
 }
 .mode-box .mode-table-2 {
@@ -294,11 +298,7 @@
 
 /************视频矩阵样式开始*************/
 .spjz-table-container {
-	padding-top: 20px;
-}
-.spjz-table-container table {
-	border-collapse: collapse;
-	border-spacing: 0;
+	padding: 20px 0;
 }
 .spjz-table-container th,
 .spjz-table-container td {

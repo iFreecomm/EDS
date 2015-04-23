@@ -27,14 +27,14 @@ define(function(require) {
 	var H323Model = require("web/index/pz/wlsz/H323/H323_model");
 	var H323View = require("web/index/pz/wlsz/H323/H323_view");
 	
-	var LayoutView = Mn.LayoutView.extend({
+	var WlszView = Mn.LayoutView.extend({
 		id: "pz_wlsz",
 		template: tmpl,
 		regions: {
 			container: "#pz_wlsz_container"
 		},
 		events: {
-			"click .wlsz-box input" : "wlsz",
+			"click .wlsz-box .btn" : "wlsz",
 		},
 		modelViewMap: {
 			"wk1" : [Wk1Model, Wk1View],
@@ -69,5 +69,5 @@ define(function(require) {
 		}
 	});
 	
-	return LayoutView;
+	return WlszView;
 });

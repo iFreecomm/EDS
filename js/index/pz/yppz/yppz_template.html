@@ -1,48 +1,38 @@
 <div class="yppz pz">
 	<div class="shadow-box mb20">
 		<h3>音频配置</h3>
-		<table>
-			<tr>
-				<td><button type="button" id="jsydhy" class="btn-default">接收远端会议</button></td>
-				<td colspan="3"><div class="rightArrow long"></div></td>
-				<td rowspan="2"><button type="button" id="jsydhy" class="btn-default h100 w2">编组<br />混音</button></td>
-				<td rowspan="2"><div class="rightArrow"></div></td>
-				<td rowspan="2"><button type="button" id="jsydhy" class="btn-default h100 w2">语音<br />激励</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default">回声消除</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default">自动降噪</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default">发送远端会议</button></td>
-			</tr>
-			<tr>
-				<td><button type="button" id="jsydhy" class="btn-default w6">本地输入</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default w2">压限</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default w4">反馈抑制</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default w4">压服</button></td>
-				<td><div class="rightArrow"></div></td>
-				<td><button type="button" id="jsydhy" class="btn-default w6">本地输出</button></td>
-			</tr>
-		</table>
+		<div class="yppz-box">
+			<table>
+				<tr>
+					<td><button type="button" id="jsydhy" class="btn">接收远端会议</button></td>
+					<td colspan="3"><div class="rightArrow long"></div></td>
+					<td rowspan="2"><button type="button" id="bzhy" class="btn h100 w2">编组<br />混音</button></td>
+					<td rowspan="2"><div class="rightArrow"></div></td>
+					<td rowspan="2"><button type="button" id="yyjl" class="btn h100 w2">语音<br />激励</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="hsxc" class="btn">回声消除</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="zdjz" class="btn">自动降噪</button></td>
+					<td colspan="3"><div class="rightArrow long"></div></td>
+					<td><button type="button" id="fsydhy" class="btn">发送远端会议</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" id="bdsr" class="btn w6">本地输入</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="yx" class="btn w2">压限</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="fkyz" class="btn w4">反馈抑制</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="xf" class="btn w4">限幅</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="jhtj" class="btn w2">均衡调节</button></td>
+					<td><div class="rightArrow"></div></td>
+					<td><button type="button" id="bdsc" class="btn w6">本地输出</button></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
-	<div class="shadow-box cf">
-		<h3>本地输入</h3>
-		{{#each MIC}}
-			<div class="slide-box">
-				<div class="slide-box-big">
-					<h4>MIC{{addOne @index}}</h4>
-					<button type="button" class="btn switch {{isActive switch}}" title="开关"></button>
-					<button type="button" class="btn hxgd {{isActive hxgd}}" title="换相供电"></button>
-					<div class="color"></div>
-					<div class="slider"></div>
-					<span class="sliderValue" id="abc" contenteditable="true" data-min="0" data-max="32" data-vertical="true">{{value}}</span>
-				</div>
-			</div>
-		{{/each}}
-	</div>
+	<div class="shadow-box" id="pz_yppz_container"></div>
 </div>

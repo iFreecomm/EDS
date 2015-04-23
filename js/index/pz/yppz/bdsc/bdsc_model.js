@@ -1,8 +1,7 @@
 define(function(require) {
 	var Model = require("web/common/model");
 	
-	var YppzModel = Model.extend({
-		idAttribute: "recordId",
+	var BdsrModel = Model.extend({
 		defaults: {
 			name: "默认名称000",
 			kzck: 0,
@@ -18,12 +17,12 @@ define(function(require) {
 			abc: 16
 		},
 		urls: {
-			"create": "spsr.psp",
-			"update": "spsr.psp",
-			"delete": "spsr.psp",
-			"read": "spsr.psp"
+			"create": "yppz_bdsc.psp",
+			"update": "yppz_bdsc.psp",
+			"delete": "yppz_bdsc.psp",
+			"read": "yppz_bdsc.psp"
 		}
 	});
 	
-	return YppzModel;
+	return BdsrModel;
 });

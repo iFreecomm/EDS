@@ -44,20 +44,16 @@
 .login-box .form-btns {
 	margin-top: 25px;
 }
-.login-box .input-btn {
+.login-box .btn {
 	width: 169px;
 	height: 59px;
 	line-height: 59px;
-	padding: 0;
-	border: none;
-	margin: 0;
-	outline: none;
 	background: url(../img/login/btn1.png) no-repeat 0 0;
 	color: #FFF;
 	font-size: 20px;
 	font-weight: bold;
 }
-.login-box .input-btn:hover {
+.login-box .btn:hover {
 	background-image: url(../img/login/btn2.png);
 }
 .login-box input[type=reset] {

@@ -1,0 +1,35 @@
+<h3>接收远端会议</h3>
+
+<div class="formBox">
+	<div class="formCell">
+		<div class="fieldBox pb10 ml50">
+			{{#each huiyi}}
+				<div class="slide-box">
+					<div class="slide-box-big">
+						<input type="text" name="name" class="slide-box-name" value="会议{{addOne @index}}"/>
+						<button type="button" class="btn switch {{isActive switch}}" title="开关"></button>
+						<div class="color"></div>
+						<div class="slider"></div>
+						<span class="sliderValue" id="abc" contenteditable="true" data-min="0" data-max="32" data-vertical="true">{{value}}</span>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+		
+		<div class="fieldBox pb10 ml50">	
+			{{#each dianbo}}
+				<div class="slide-box">
+					<div class="slide-box-big">
+						<input type="text" name="name" class="slide-box-name" value="点播{{addOne @index}}"/>
+						<button type="button" class="btn switch {{isActive switch}}" title="开关"></button>
+						<div class="color"></div>
+						<div class="slider"></div>
+						<span class="sliderValue" id="abc" contenteditable="true" data-min="0" data-max="32" data-vertical="true">{{value}}</span>
+					</div>
+				</div>
+			{{/each}}
+			
+			<button type="button" class="btn btn-ls">保存</button>
+		</div>
+	</div>
+</div>
