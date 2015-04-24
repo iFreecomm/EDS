@@ -53,6 +53,7 @@ define(function(require) {
 				"#number": "number",
 				"#desc": "desc",
 				"#meetingType": "meetingType",
+				"#tempRecordId": "tempRecordId",
 				"#pwChairman": "pwChairman",
 				"#yyrq": "yyrq",
 				"#jsrq": "jsrq",
@@ -129,7 +130,12 @@ define(function(require) {
 				return this.model.get("tempRecordId");
 			} else {
 				if(this.options.templateHelpers.allTemp && this.options.templateHelpers.allTemp.length>0)
-					return this.options.templateHelpers.allTemp[0].recordId;
+				{
+					var tempId = this.options.templateHelpers.allTemp[0].recordId;
+					this.model.set("tempRecordId",tempId);
+					return tempId;
+				}
+					
 			}
 			return -1;
 		},
@@ -147,17 +153,33 @@ define(function(require) {
 		},
 		changeHylx: function() {
 			var hylx = this.model.get("meetingType");
-			if(hylx === 1) { //预约会议
+			if(hylx === 1 || hylx === 0) { //预约会议
 				this.ui.yyrq_con.show();
 				this.ui.jsrq_con.show();
 			} else {
 				this.ui.yyrq_con.hide();
 				this.ui.jsrq_con.hide();
 			}
+			if(hylx === 0)
+			{
+				this.ui.yyrq_con.prop("disabled", true).css({"opacity":0.5});
+			}
+			else
+			{
+				this.ui.yyrq_con.removeAttr("disabled").css({"opacity":1});
+			}
 			return this;
 		},
 		onRender: function() {
-			this.stickit().changeHymb().changeHylx();
+			if(this.model.isNew())
+			{
+				this.stickit().changeHymb();
+			}
+			else
+			{
+				Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
+			}
+			this.stickit().changeHylx();
 		},
 		onAttach: function() {
 			this.selectmenu();

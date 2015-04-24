@@ -48,6 +48,8 @@
 	width: 169px;
 	height: 59px;
 	line-height: 59px;
+	padding-top: 0;
+	padding-bottom: 0;
 	background: url(../img/login/btn1.png) no-repeat 0 0;
 	color: #FFF;
 	font-size: 20px;

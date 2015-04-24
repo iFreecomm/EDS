@@ -3,14 +3,14 @@
 		<h3>视频输入接口配置</h3>
 		<div class="lxr-box cf">
 			{{#each SDI}}
-				<div class="lxr" data-id="{{recordId}}">
+				<div class="lxr" data-id="{{camPort}}">
 					<div class="lxr-head">{{name}}</div>
 					<div class="lxr-body">{{info}}</div>
 				</div>
 			{{/each}}
 			
 			{{#each VGA}}
-				<div class="lxr" data-id="{{recordId}}">
+				<div class="lxr" data-id="{{vgaPort}}">
 					<div class="lxr-head">{{name}}</div>
 					<div class="lxr-body">{{info}}</div>
 				</div>
@@ -112,7 +112,7 @@
 			</div>
 		
 			<div class="form-btns">
-				<button type="button" class="btn btn-ls">保存</button>
+				<button type="button" class="btn btn-ls saveBtn">保存</button>
 			</div>
 		</div>
 	</div>

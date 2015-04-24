@@ -106,14 +106,9 @@ define(function(require) {
 		
 		// 修复IE8中自定义的checkbox的样式问题
 		fixIE8: function() {
-			if(this.isIE8()) {
-				this.initCheckboxClass();
-				this.addCheckboxEvent();
-			}
+			this.initCheckboxClass();
+			this.addCheckboxEvent();
 			return this;
-		},
-  		isIE8: function() {
-			return document.all && !document.addEventListener;
 		},
 		initCheckboxClass: function() {
 			this.$(".checkbox-label").each(function() {

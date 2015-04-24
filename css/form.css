@@ -177,6 +177,12 @@ input[type=radio] {
 	font-size: 21px;
 	text-shadow: 0 2px 1px #555;
 }
+.btn-default {
+	padding: .8em 1.5em;
+}
+.btn-default:hover {
+	background:  #F47900;
+}
 .btn-ls {
 	letter-spacing: 1em;
 	padding: .8em .5em .8em 1.5em;
@@ -209,15 +215,15 @@ input[type=radio] {
 	background: url(../img/form/switch3_on.png) no-repeat;
 }
 /******水平slider样式******/
-.ui-slider-horizontal {
+.slider.ui-slider-horizontal {
 	float: left;
 	width: 480px;
 	margin: 11px 10px;
 }
-.ui-slider-horizontal .ui-slider-range {
+.slider.ui-slider-horizontal .ui-slider-range {
 	background: #1c94c4;
 }
-.ui-slider-horizontal+.sliderValue {
+.slider.ui-slider-horizontal+.sliderValue {
 	line-height: 2.2;
 	font-size: 16px;
 	margin-left: 10px;

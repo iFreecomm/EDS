@@ -3,20 +3,26 @@ define(function(require) {
 	
 	var SpsrModel = Model.extend({
 		defaults: {
-			swzwk: 1,
-			wllx: 0,
-			ipdz: "172.0.0.1",
-			zwym: "255.255.255.254",
-			wgdz: "172.16.0.1",
-			dns: "8.8.8.8",
-			sxdk: 0,
-			xxdk: 0
+			prot: 0,
+			device: 0,
+			mainDevice: 1,
+			netType: 0,
+			ip: "172.0.0.1",
+			mask: "255.255.255.0",
+			gateway: "172.16.0.1",
+			mainDns: "8.8.8.8",
+			autoDial: 1,
+			user: "",
+			pwd: ""
 		},
 		urls: {
 			"create": "wk1.psp",
-			"update": "wk1.psp",
+			"update": "setNetInfo.psp",
 			"delete": "wk1.psp",
-			"read": "wk1.psp"
+			"read": "getNetInfo.psp"
+		},
+		parse: function(res) {
+			return res.data;
 		}
 	});
 	

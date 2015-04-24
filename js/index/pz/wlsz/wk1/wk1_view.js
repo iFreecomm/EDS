@@ -9,14 +9,17 @@ define(function(require) {
 		id: "pz_wlsz_wk1",
 		template: tmpl,
 		bindings: {
-			"#swzwk": "swzwk",
-			"#wllx":  "wllx",
-			"#ipdz":  "ipdz",
-			"#zwym":  "zwym",
-			"#wgdz":  "wgdz",
-			"#dns":   "dns",
-			"#sxdk":  "sxdk",
-			"#xxdk":  "xxdk" 
+			"#prot":  "prot",
+			"#device":  "device",
+			"#mainDevice": "mainDevice",
+			"#netType":  "netType",
+			"#ip":  "ip",
+			"#mask":  "mask",
+			"#gateway":  "gateway",
+			"#mainDns":   "mainDns",
+			"#autoDial":  "autoDial",
+			"#user":  "user",
+			"#pwd":  "pwd" 
 		},
 		events: {
 			"click .saveBtn" : "saveModel"
@@ -25,17 +28,35 @@ define(function(require) {
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {
-			alert("保存成功！");
+			//alert("保存成功！");
 		},
 		saveError: function() {
 			alert("保存失败！");
 		},
-		
 		onRender: function() {
-			this.stickit().fixIE8();
+			this.stickit().fixIE8().changeNetType();
 		},
 		onAttach: function() {
 			this.selectmenu();
+		},
+		initialize: function(opt) {
+			this.listenTo(this.model, "change:netType", this.changeNetType);
+		},
+		changeNetType: function() {
+			var curNet = this.model.get("netType");
+			var preNet = this.model.previous("netType");
+			this.$("[netType*="+preNet+"]").hide();
+			this.$("[netType*="+curNet+"]").show();			
+			if(curNet == 1)
+			{
+				this.$("[netType*=4]").editable = false;
+			}
+			var netCnnt = this.model.get("netCnnt");
+			var curNetCfg = netCnnt[curNet];
+			var self = this;
+			$.each(curNetCfg, function(attr,value){      
+			    self.model.set(attr,value);
+			});
 		}
 	});
 	

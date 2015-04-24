@@ -3,18 +3,20 @@ define(function(require) {
 	
 	var NATModel = Model.extend({
 		defaults: {
-			qynat: 1,
-			ipdz: "172.0.0.1",
-			hjqsdk: 3000,
-			hjjsdk: 3010,
-			mtqsdk: 6000,
-			mtjsdk: 6020
+			enable: 1,
+			externalIp: "172.0.0.1",
+			callBeginPort: 3000,
+			callEndPort: 3010,
+			rtpBeginPort: 6000,
+			rtpEndPort: 6020
 		},
 		urls: {
-			"create": "nat.psp",
-			"update": "nat.psp",
-			"delete": "nat.psp",
-			"read": "nat.psp"
+			"create": "setNatInfo.psp",
+			"update": "setNatInfo.psp",
+			"read": "getNatInfo.psp"
+		},
+		parse: function(res) {
+			return res.data;
 		}
 	});
 	

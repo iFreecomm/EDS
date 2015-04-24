@@ -4,8 +4,8 @@
 	<div class="formLine">
 		<span class="cellName">启用NAT：</span>
 		<div class="fieldBox noText">
-			<input type="checkbox" name="qynat" id="qynat"/>
-			<label for="qynat" class="checkbox-label"></label>
+			<input type="checkbox" name="enable" id="enable"/>
+			<label for="enable" class="checkbox-label"></label>
 		</div>
 	</div>
 	
@@ -14,7 +14,7 @@
 			<div class="formCell fl">
 				<span class="cellName">外部IP地址：</span>
 				<div class="fieldBox">
-					<input type="text" name="ipdz" id="ipdz" autocomplete="off"/>
+					<input type="text" name="externalIp" id="externalIp" autocomplete="off"/>
 				</div>
 			</div>
 		</div>
@@ -22,13 +22,13 @@
 			<div class="formCell fl">
 				<span class="cellName">呼叫起始端口：</span>
 				<div class="fieldBox">
-					<input type="text" name="hjqsdk" id="hjqsdk" class="spinner" />
+					<input type="text" name="callBeginPort" id="callBeginPort" class="spinner" />
 				</div>
 			</div>
 			<div class="formCell fl">
 				<span class="cellName">呼叫结束端口：</span>
 				<div class="fieldBox">
-					<input type="text" name="hjjsdk" id="hjjsdk" class="spinner" />
+					<input type="text" name="callEndPort" id="callEndPort" class="spinner" />
 				</div>
 			</div>
 		</div>
@@ -36,19 +36,19 @@
 			<div class="formCell fl">
 				<span class="cellName">媒体起始端口：</span>
 				<div class="fieldBox">
-					<input type="text" name="mtqsdk" id="mtqsdk" class="spinner" />
+					<input type="text" name="rtpBeginPort" id="rtpBeginPort" class="spinner" />
 				</div>
 			</div>
 			<div class="formCell fl">
 				<span class="cellName">媒体结束端口：</span>
 				<div class="fieldBox">
-					<input type="text" name="mtjsdk" id="mtjsdk" class="spinner" />
+					<input type="text" name="rtpEndPort" id="rtpEndPort" class="spinner" />
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="form-btns">
-		<button type="button" class="btn btn-ls">保存</button>
+		<button type="button" class="btn btn-ls saveBtn">保存</button>
 	</div>
 </div>

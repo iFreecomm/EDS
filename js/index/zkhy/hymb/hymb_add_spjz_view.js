@@ -75,13 +75,13 @@ define(function(require) {
 				var dest = colHeadArr[colIndex];
 				return {
 					"equSrc": {
-						equType: _.isNumber(src.equType) ? src.equType : Const.EquType_NONE,
+						equType: _.isNumber(src.equType) ? src.equType : Const.EquType_Cnt,
 						recordId: src.recordId || 0,
 						camPort: src.camPort || 0,
 						vgaPort: src.vgaPort || 0
 					},
 					"equDst": {
-						equType: _.isNumber(dest.equType) ? dest.equType : Const.EquType_NONE,
+						equType: _.isNumber(dest.equType) ? dest.equType : Const.EquType_Cnt,
 						recordId: dest.recordId || 0,
 						dviPort: dest.dviPort || 0
 					}
@@ -91,7 +91,11 @@ define(function(require) {
 		
 		addMatrix: function(addLxrArr) {
 			//缓存已经配置的矩阵数据
-			this.matrixInOut = this.getMatrixInOut();
+			if(this.matrixInOut === undefined) {
+				this.matrixInOut = this.model.get("matrixInOut") || [];
+			} else {
+				this.matrixInOut = this.getMatrixInOut();
+			}
 			//修改联系人数据
 			this.lxrArr = this._getAddLxrArr(addLxrArr);
 			//清空现有的表格
@@ -171,7 +175,7 @@ define(function(require) {
 			var colHeadArr = this._getColHead();
 			var cols = colHeadArr.length;
 			var $tds = this.$tds = $table.find("td");
-			var matrixInOut = this.matrixInOut || this.model.get("matrixInOut") || [];
+			var matrixInOut = this.matrixInOut;
 			var curInOut, equSrc, equDst, i, l = matrixInOut.length;
 			
 			for(i = 0; i < l; i ++) {
@@ -276,13 +280,13 @@ define(function(require) {
 			return srcArr;
 		},
 		_getColHead: function() {
-			var dstArr = [{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI1,addrName:"DVI1"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI2,addrName:"DVI2"},
+/*			var dstArr = [{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI1,addrName:"DVI1"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI2,addrName:"DVI2"},
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI3,addrName:"DVI3"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI4,addrName:"DVI4"},
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI1,addrName:"DVI5"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI2,addrName:"DVI6"},
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI3,addrName:"DVI7"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI4,addrName:"DVI8"},
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI1,addrName:"DVI9"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI2,addrName:"DVI10"},
-			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];
-			
+			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];*/
+			var dstArr = [].concat(this.options.dviArr);
 			_.each(this.lxrArr || [], function(lxr) {
 			    if(lxr.equType == Const.EquType_H323 || lxr.equType == Const.EquType_SIP) {
 					dstArr.push(lxr);

@@ -4,17 +4,18 @@ define(function(require) {
 	var YdyhyModel = Model.extend({
 		idAttribute: "recordId",
 		defaults: {
-			venueId: [2, 4, 5],
-			name: "会场名称444",
-			number: "0007",
-			pwChairman: "123456",
-			date: "2015-04-01",
-			time: "11:01:21",
-			desc: "test",
+			venueId: [],
+			name: "",
+			number: "",
+			pwChairman: "",
+			date: "",
+			time: "",
+			desc: "",
 			meetingType: 0,
+			tempRecordId:0,
 			bandwidth: 1920000,
-			pwMeeting: "123456789",
-			duration: 30
+			pwMeeting: "",
+			duration: 120
 		},
 		urls: {
 			"create": "addMeeting.psp",

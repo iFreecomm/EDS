@@ -4,7 +4,7 @@ define(function(require) {
 	var SpsrModel = Model.extend({
 		idAttribute: "recordId",
 		defaults: {
-			name: "默认名称000",
+			name: "SDI1",
 			kzck: 0,
 			ydsd: 0,
 			srjkxh: 0,

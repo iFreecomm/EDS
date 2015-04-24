@@ -6,11 +6,11 @@ define(function(require) {
 		id: "pz_wlsz_h323",
 		template: tmpl,
 		bindings: {
-			"#qygk": "qygk",
-			"#gkdz": "gkdz",
-			"#hchm": "hchm",
-			"#rzmc": "rzmc",
-			"#rzmm": "rzmm"
+			"#enable": "enable",
+			"#gkIp": "gkIp",
+			"#regNum": "regNum",
+			"#regName": "regName",
+			"#regPwd": "regPwd"
 		},
 		events: {
 			"click .saveBtn" : "saveModel"

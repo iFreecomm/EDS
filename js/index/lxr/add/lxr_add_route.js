@@ -14,9 +14,19 @@ define(function(require) {
 			
 			$.when(
 				$.getJSON("getCamMic.psp"),
+				$.getJSON("getSdiPort.psp"),
 				this.lxrModel.myFetch(options)
-			).done(function(camMic) {
-				self.templateHelpers = camMic[0].data;
+			).done(function(camMic,sdiInfo) {
+				self.micInfo = [];
+				if(camMic[0].data && camMic[0].data.micInfo)
+				{
+					self.micInfo = camMic[0].data.micInfo;
+				}
+				self.sdiInfo = [];
+				if(sdiInfo[0].data && sdiInfo[0].data.sdiInfo)
+				{
+					self.sdiInfo = sdiInfo[0].data.sdiInfo;
+				}
 				self.showView();
 			});
 		},
@@ -25,7 +35,10 @@ define(function(require) {
 			this.show({
 				contentRightView: new LxrAddView({
 					model: this.lxrModel,
-					templateHelpers: this.templateHelpers
+					templateHelpers:{
+						micInfo:this.micInfo,
+						sdiInfo:this.sdiInfo
+					}
 				})
 			});
 		}

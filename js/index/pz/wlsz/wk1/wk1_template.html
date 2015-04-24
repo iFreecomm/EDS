@@ -4,8 +4,8 @@
 	<div class="formLine">
 		<span class="cellName">设为主网口：</span>
 		<div class="fieldBox noText">
-			<input type="checkbox" name="swzwk" id="swzwk"/>
-			<label for="swzwk" class="checkbox-label"></label>
+			<input type="checkbox" name="mainDevice" id="mainDevice"/>
+			<label for="mainDevice" class="checkbox-label"></label>
 		</div>
 	</div>
 	
@@ -14,80 +14,63 @@
 			<div class="formCell fl">
 				<span class="cellName">网络类型：</span>
 				<div class="fieldBox">
-					<select name="wllx" id="wllx">
+					<select name="netType" id="netType">
 						<option data-stickit-bind-val="0">手动设置</option>
 						<option data-stickit-bind-val="1">动态获取(DHCP)</option>
-						<option data-stickit-bind-val="1">宽带拨号(PPPoE/ADSL)</option>
+						<option data-stickit-bind-val="2">宽带拨号(PPPoE/ADSL)</option>
 					</select>
 				</div>
 			</div>
-			<div class="formCell fl">
+			<div class="formCell fl" netType="014">
 				<span class="cellName">IP地址：</span>
 				<div class="fieldBox">
-					<input type="text" name="ipdz" id="ipdz" autocomplete="off"/>
+					<input type="text" name="ip" id="ip" autocomplete="off"/>
 				</div>
 			</div>
-			<div class="formCell fl">
+			<div class="formCell fl" netType="014">
 				<span class="cellName">子网掩码：</span>
 				<div class="fieldBox">
-					<input type="text" name="zwym" id="zwym" autocomplete="off"/>
+					<input type="text" name="mask" id="mask" autocomplete="off"/>
 				</div>
 			</div>
-			<div class="formCell fl">
+			<div class="formCell fl" netType="014">
 				<span class="cellName">网关地址：</span>
 				<div class="fieldBox">
-					<input type="text" name="wgdz" id="wgdz" autocomplete="off"/>
+					<input type="text" name="gateway" id="gateway" autocomplete="off"/>
 				</div>
 			</div>
-			<div class="formCell fl">
+			<div class="formCell fl" netType="01">
 				<span class="cellName">DNS服务器：</span>
 				<div class="fieldBox">
-					<input type="text" name="dns" id="dns" autocomplete="off"/>
+					<input type="text" name="mainDns" id="mainDns" autocomplete="off"/>
 				</div>
 			</div>
-			<div class="formCell fl">
-				<span class="cellName">上行带宽：</span>
+			
+			<div class="formCell fl" netType="2">
+				<span class="cellName">自动拨号：</span>
 				<div class="fieldBox">
-					<select name="sxdk" id="sxdk">
-						<option data-stickit-bind-val="0">128K</option>
-						<option data-stickit-bind-val="1">256K</option>
-						<option data-stickit-bind-val="2">384K</option>
-						<option data-stickit-bind-val="3">512K</option>
-						<option data-stickit-bind-val="4">768K</option>
-						<option data-stickit-bind-val="5">1M</option>
-						<option data-stickit-bind-val="6">1.5M</option>
-						<option data-stickit-bind-val="7">2M</option>
-						<option data-stickit-bind-val="8">3M</option>
-						<option data-stickit-bind-val="9">4M</option>
-						<option data-stickit-bind-val="10">6M</option>
-						<option data-stickit-bind-val="11">8M</option>
-					</select>
+					<input type="checkbox" name="autoDial" id="autoDial"/>
+					<label for="autoDial" class="checkbox-label">&nbsp;</label>
 				</div>
 			</div>
-			<div class="formCell fl">
-				<span class="cellName">下行带宽：</span>
+			
+			<div class="formCell fl" netType="2">
+				<span class="cellName">用户名：</span>
 				<div class="fieldBox">
-					<select name="xxdk" id="xxdk">
-						<option data-stickit-bind-val="0">128K</option>
-						<option data-stickit-bind-val="1">256K</option>
-						<option data-stickit-bind-val="2">384K</option>
-						<option data-stickit-bind-val="3">512K</option>
-						<option data-stickit-bind-val="4">768K</option>
-						<option data-stickit-bind-val="5">1M</option>
-						<option data-stickit-bind-val="6">1.5M</option>
-						<option data-stickit-bind-val="7">2M</option>
-						<option data-stickit-bind-val="8">3M</option>
-						<option data-stickit-bind-val="9">4M</option>
-						<option data-stickit-bind-val="10">6M</option>
-						<option data-stickit-bind-val="11">8M</option>
-						<option data-stickit-bind-val="12">10M</option>
-					</select>
+					<input type="text" name="user" id="user" autocomplete="off"/>
+				</div>
+			</div>
+			<div class="formCell fl" netType="2">
+				<span class="cellName">密码：</span>
+				<div class="fieldBox">
+					<input type="text" name="pwd" id="pwd" autocomplete="off"/>
 				</div>
 			</div>
 		</div>
+			
 	</div>
 
 	<div class="form-btns">
-		<button type="button" class="btn btn-ls">保存</button>
+		<button type="button" class="btn btn-ls saveBtn">保存</button>
 	</div>
 </div>

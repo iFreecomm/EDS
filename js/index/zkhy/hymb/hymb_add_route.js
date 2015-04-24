@@ -24,10 +24,17 @@ define(function(require) {
 			
 			$.when(
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
+				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
 				
 				this.hymbModel.myFetch(options)
-			).done(function(allLxr) {
+			).done(function(allLxr,outPort) {
 				self.allLxr = allLxr[0].data.bookInfo;
+				
+				self.dviArr = [];
+				if(outPort[0].data && outPort[0].data.outPortInfo)
+				{
+					self.dviArr = outPort[0].data.outPortInfo;
+				}
 				
 				self.showView();
 			});
@@ -64,7 +71,8 @@ define(function(require) {
 					//但是只有enableVM字段同步
 					//其它字段对应不了表单元素，所以只能手动初始化页面
 					//获取其它字段需要使用Radio.channel.request
-					model: this.hymbModel
+					model: this.hymbModel,
+					dviArr: this.dviArr
 				}),
 				zkhyHymbAddLzbmView: new HymbAddLzbmView()
 			});

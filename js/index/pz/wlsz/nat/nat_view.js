@@ -6,12 +6,12 @@ define(function(require) {
 		id: "pz_wlsz_nat",
 		template: tmpl,
 		bindings: {
-			"#qynat": "qynat",
-			"#ipdz": "ipdz",
-			"#hjqsdk": "hjqsdk",
-			"#hjjsdk": "hjjsdk",
-			"#mtqsdk": "mtqsdk",
-			"#mtjsdk": "mtjsdk"
+			"#enable": "enable",
+			"#externalIp": "externalIp",
+			"#callBeginPort": "callBeginPort",
+			"#callEndPort": "callEndPort",
+			"#rtpBeginPort": "rtpBeginPort",
+			"#rtpEndPort": "rtpEndPort"
 		},
 		events: {
 			"click .saveBtn" : "saveModel"
@@ -20,7 +20,7 @@ define(function(require) {
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {
-			alert("保存成功！");
+			//alert("保存成功！");
 		},
 		saveError: function() {
 			alert("保存失败！");

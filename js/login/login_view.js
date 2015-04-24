@@ -13,7 +13,7 @@ define(function(require) {
 		id: "wrapper",
 		template: tmpl,
 		events: {
-			"click [type=submit]": "submit"
+			"click [type=submit]": "login"
 		},
 		bindings: {
 			"#username": "username",
@@ -23,9 +23,10 @@ define(function(require) {
 			this.model = new LoginModel();
 		},
 		
-		submit: function(e) {
+		login: function(e) {
 			e.preventDefault();
 			var self = this;
+			this.model.set("version","super");
 			this.model.save().done(function(res) {
 				self.success(res);
 			});

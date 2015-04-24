@@ -54,7 +54,7 @@ define(function(require) {
 				var ch = $this.data("ch");
 				var curSub = subPicInfo[ch];
 				
-				if(curSub.equType !== Const.EquType_NONE) {
+				if(curSub.equType !== Const.EquType_Cnt) {
 					var $sp = $span.clone();
 					$sp.data(curSub);
 					$sp.text(curSub.addrName);
@@ -97,7 +97,9 @@ define(function(require) {
 		_getDataInfo: function($obj) {
 			var result = {}, temp;
 			
-			result.equType = $obj.data("equType") || Const.EquType_NONE;
+			temp = $obj.data("equType");
+			result.equType = _.isNumber(temp) ? temp : Const.EquType_Cnt;
+			//result.equType = $obj.data("equType") || Const.EquType_Cnt;
 			temp = $obj.data("recordId");
 			_.isNumber(temp) && (result.recordId = temp); //不是数字就不设置该值，以免污染数据库
 			temp = $obj.data("camPort");

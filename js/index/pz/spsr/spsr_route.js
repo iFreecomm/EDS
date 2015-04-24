@@ -18,7 +18,7 @@ define(function(require) {
 				self.templateHelpers = lxrs;
 				
 				$.when(self.spsrModel.myFetch({
-					id: lxrs.SDI[0].recordId || lxrs.VGA[0].recordId
+					//id: lxrs.SDI[0].recordId || lxrs.VGA[0].recordId
 				})).done(function() {
 					self.showView();
 				});
