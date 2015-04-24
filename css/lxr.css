@@ -22,7 +22,7 @@
 #lxr_add .lineName[equType] {
 	display: none;
 }
-#lxr_add .label-checkbox {
+#lxr_add .checkbox-label {
 	width: 100px;
 }
 

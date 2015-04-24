@@ -21,6 +21,10 @@ define(function(require) {
 	  		return this;
   		},
   		
+  		toggleSwitch: function(e) {
+  			$(e.target).toggleClass("active");
+  		},
+  		
 		// 刷新表单，主要是为了同步数据
 		refreshForm: function() {
 			this.refreshSelectmenu();
@@ -112,14 +116,14 @@ define(function(require) {
 			return document.all && !document.addEventListener;
 		},
 		initCheckboxClass: function() {
-			this.$(".label-checkbox").each(function() {
+			this.$(".checkbox-label").each(function() {
 				var $label = $(this);
 				var $checkbox = $label.prev();
 				$checkbox.is(":checked") ? $label.addClass("active") : $label.removeClass("active");
 			});
 		},
 		addCheckboxEvent: function() {
-			this.$el.on("click", ".label-checkbox", function() {
+			this.$el.on("click", ".checkbox-label", function() {
 				var $label = $(this);
 				var $checkbox = $label.prev();
 				var box = $checkbox.get(0);

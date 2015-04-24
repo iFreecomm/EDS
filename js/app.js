@@ -99,14 +99,10 @@ define(function(require) {
 				return new Handlebars.SafeString(result);
 			});
 			Handlebars.registerHelper("addOne", function(index) {
-				return index+1;
-			});
-			Handlebars.registerHelper("isFirst", function(index) {
-				if(index === 0) return "ml50";
-				return "";
+				return index+1; //索引加1
 			});
 			Handlebars.registerHelper("isActive", function(active) {
-				if(active === 1) return "active";
+				if(active === 1) return "active"; //判断按钮是否是on状态
 				return "";
 			});
 		},

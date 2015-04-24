@@ -5,14 +5,15 @@
 		<div class="fieldBox pb10">
 			<div class="fl ml10 mr20">
 				{{#each MIC}}
-					<div class="slide-box">
-						<div class="slide-box-big">
-							<input type="text" name="name" class="slide-box-name" value="MIC{{addOne @index}}"/>
-							<button type="button" class="btn switch mt8 {{isActive switch}}" title="开关"></button>
-							<button type="button" class="btn hxgd {{isActive hxgd}}" title="换相供电"></button>
+					<div class="slide-vertical-box">
+						<div class="slide-vertical-box-sm">
+							<input type="hidden" name="audInPort" value="{{audInPort}}" />
+							<input type="text" name="audInName" class="slide-vertical-box-name" value="{{audInName}}"/>
+							<button type="button" name="enable" class="btn btn-switch1 mt8 {{isActive enable}}" title="开关"></button>
+							<button type="button" name="phtPwrEn" class="btn btn-switch2 {{isActive phtPwrEn}}" title="换相供电"></button>
 							<div class="color"></div>
 							<div class="slider"></div>
-							<span class="sliderValue" id="abc" contenteditable="true" data-min="0" data-max="32" data-vertical="true">{{value}}</span>
+							<span class="sliderValue" contenteditable="true" data-min="0" data-max="32" data-vertical="true" data-length="267">{{involume}}</span>
 						</div>
 					</div>
 				{{/each}}
@@ -20,13 +21,14 @@
 			
 			<div class="fl ml10">
 				{{#each LineIn}}
-					<div class="slide-box">
-						<div class="slide-box-big">
-							<input type="text" name="name" class="slide-box-name" value="LineIn{{addOne @index}}"/>
-							<button type="button" class="btn switch {{isActive switch}}" title="开关"></button>
+					<div class="slide-vertical-box">
+						<div class="slide-vertical-box-sm">
+							<input type="hidden" name="audInPort" value="{{audInPort}}" />
+							<input type="text" name="audInName" class="slide-vertical-box-name" value="{{audInName}}"/>
+							<button type="button" name="enable" class="btn btn-switch1 {{isActive enable}}" title="开关"></button>
 							<div class="color"></div>
 							<div class="slider"></div>
-							<span class="sliderValue" id="abc" contenteditable="true" data-min="0" data-max="32" data-vertical="true">{{value}}</span>
+							<span class="sliderValue" contenteditable="true" data-min="0" data-max="32" data-vertical="true" data-length="267">{{involume}}</span>
 						</div>
 					</div>
 				{{/each}}
@@ -35,6 +37,6 @@
 	</div>
 	
 	<div class="form-btns">
-		<button type="button" class="btn btn-ls">保存</button>
+		<button type="button" class="btn btn-ls saveBtn">保存</button>
 	</div>
 </div>

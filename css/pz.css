@@ -84,6 +84,9 @@
 	border-left: 20px solid #1E89B5;
 }
 
+.yppz .slide-vertical-box-name:focus {
+	border: 1px solid #FBCB09;
+}
 
 
 .yppz .formBox {
