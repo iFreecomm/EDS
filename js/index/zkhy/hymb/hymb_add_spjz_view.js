@@ -298,7 +298,7 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.stickit().fixIE8();
+			this.stickit().fixCheckbox();
 			//初始化视频矩阵表格
 			this.addMatrix(this.getMatrixLxr());
 		},

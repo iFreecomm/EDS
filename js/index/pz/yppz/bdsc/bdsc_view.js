@@ -1,26 +1,49 @@
 define(function(require) {
 	var FormView = require("web/common/formView");
-	var Handlebars = require("handlebars");
 	
 	var tmpl = require("text!web/index/pz/yppz/bdsc/bdsc_template.html");
 	
 	var BdsrView = FormView.extend({
 		id: "pz_yppz_bdsc",
-		template: Handlebars.compile(tmpl),
-		bindings: {
-		},
+		template: tmpl,
+		
 		events: {
-			"click .btn" : "switchBtn"
+			"click .btn-switch1": "toggleSwitch",
+			"click .saveBtn" : "saveBdsc"
 		},
-		switchBtn: function(e) {
-			$(e.target).toggleClass("active");
+		saveBdsr: function(e) {
+			this.model.set({
+				"volumeSingleOutPut": this._getOutput()
+			})
+			.save()
+			.done(function() {
+				alert("保存成功！");
+			})
+			.fail(function() {
+				alert("保存失败！");
+			});
+		},
+		_getOutput: function() {
+			var $el = this.$el;
+			return this.$(".slide-vertical-box").map(function(i) {
+				var groupName = "out" + (i + 1);
+				var $this = $(this);
+				return {
+					groupNum: $el.find('[name=' + groupName + ']:checked').val(),
+					audInPort: +$this.find("[name=audInPort]").val(),
+					audInName: $this.find("[name=audInName]").val(),
+					enable: $this.find("[name=enable]").is(".active") ? 1 : 0,
+					phtPwrEn: $this.find("[name=phtPwrEn]").is(".active") ? 1 : 0,
+					involume: $this.find(".slider").slider("value")
+				};
+			}).get();
 		},
 		
 		onRender: function() {
-			this.stickit().initSlider();
+			this.fixRadio().initSlider();
 		},
 		onAttach: function() {
-			this.activeLink().selectmenu();
+			this.activeLink();
 		}
 	});
 	

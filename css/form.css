@@ -156,14 +156,14 @@ input[type=radio] {
 	height: 100%;
 	background: url(../img/form/radio/right1.png) repeat-x 0 0;
 }
-.radio-label.active {
+.radio-set .radio-label.active {
 	color: #FFF;
 	background: url(../img/form/radio/mid2.png) repeat-x 0 0;
 }
-.radio-label.active+.radio-left {
+.radio-set .radio-label.active+.radio-left {
 	background: url(../img/form/radio/left2.png) repeat-x 0 0;
 }
-.radio-label.active+.radio-right {
+.radio-set .radio-label.active+.radio-right {
 	background: url(../img/form/radio/right2.png) repeat-x 0 0;
 }
 /******按钮样式******/

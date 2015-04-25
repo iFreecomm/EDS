@@ -34,7 +34,7 @@ define(function(require) {
 			alert("保存失败！");
 		},
 		onRender: function() {
-			this.stickit().fixIE8().changeNetType();
+			this.stickit().fixCheckbox().changeNetType();
 		},
 		onAttach: function() {
 			this.selectmenu();

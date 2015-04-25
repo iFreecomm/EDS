@@ -56,7 +56,7 @@ define(function(require) {
 			this.$("[equType*="+curHclx+"]").show();
 		},
 		onRender: function() {
-			this.stickit().fixIE8().changeEquType();
+			this.stickit().fixCheckbox().changeEquType();
 		},
 		onAttach: function() {
 			this.activeLink().selectmenu();

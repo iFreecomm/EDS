@@ -104,27 +104,62 @@ define(function(require) {
 			$(this).siblings(".color").height(ui.value * 267 / 32).end().siblings(".sliderValue").text(ui.value).change();
 		},
 		
-		// 修复IE8中自定义的checkbox的样式问题
-		fixIE8: function() {
+		//自定义checkbox
+		fixCheckbox: function() {
 			this.initCheckboxClass();
 			this.addCheckboxEvent();
 			return this;
 		},
 		initCheckboxClass: function() {
-			this.$(".checkbox-label").each(function() {
-				var $label = $(this);
-				var $checkbox = $label.prev();
-				$checkbox.is(":checked") ? $label.addClass("active") : $label.removeClass("active");
-			});
+			this.$(".checkbox-label").each(this._initClass);
 		},
 		addCheckboxEvent: function() {
 			this.$el.on("click", ".checkbox-label", function() {
+				console.log("checkbox");
+				
 				var $label = $(this);
 				var $checkbox = $label.prev();
 				var box = $checkbox.get(0);
 				box.checked = !box.checked;
 				box.checked ? $label.addClass("active") : $label.removeClass("active");
 				$checkbox.change();
+				return false;
+			});
+		},
+		_initClass: function() {
+			var $label = $(this);
+			$label.prev().is(":checked") ? $label.addClass("active") : $label.removeClass("active");
+		},
+		
+		//自定义radio
+		fixRadio: function() {
+			this.initRadioClass();
+			this.addRadioEvent();
+			return this;
+		},
+		initRadioClass: function() {
+			this.$(".radio-label").each(this._initClass);
+		},
+		addRadioEvent: function() {
+			this.$el.on("click", ".radio-label", function() {
+				console.log("radio");
+				
+				var $label = $(this);
+				if($label.is(".active")) return;
+				
+				var $radio = $label.prev();
+				
+				if($radio.parent().is("td")) {
+					//表格布局，比如垂直排列的编组
+					var name = $radio.attr("name");
+					$radio.parents("table").find('[name=' + name + ']').next().removeClass("active");
+				} else {
+					//多个radio水平排列，比如radio-set
+					$radio.siblings("[type=radio]").removeClass("active");
+				}
+				
+				$label.addClass("active");
+				$radio.change();
 				return false;
 			});
 		}

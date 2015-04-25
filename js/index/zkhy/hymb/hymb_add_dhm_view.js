@@ -207,7 +207,7 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.stickit().fixIE8();
+			this.stickit().fixCheckbox();
 			
 			//初始化多画面左侧可以拖拽的联系人
 			this.addDhmlxr(this.getDhmLxr());

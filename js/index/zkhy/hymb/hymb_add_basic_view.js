@@ -27,7 +27,7 @@ define(function(require) {
 			]);
 		},
 		onRender: function() {
-			this.stickit().fixIE8();
+			this.stickit().fixCheckbox();
 		},
 		onAttach: function() {
 			this.selectmenu();
