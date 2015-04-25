@@ -209,6 +209,9 @@ define(function(require) {
 		onRender: function() {
 			this.stickit().fixIE8();
 			
+			//初始化多画面左侧可以拖拽的联系人
+			this.addDhmlxr(this.getDhmLxr());
+			
 			// 点击选择的模式，手动触发事件
 			var modeNum = this.model.get("showMpMode");
 			this.ui.mode_box.filter('[data-mode="'+ modeNum +'"]').click();
@@ -221,6 +224,26 @@ define(function(require) {
 				drop: function(event, ui) {
 					ui.draggable.parent().removeClass("active").end().remove();
 				}
+			});
+		},
+		//添加播放器这个联系人
+		getDhmLxr: function() {
+			return [
+				{
+					equType: Const.EquType_PLAYER,
+					addrName: "播放器"
+				}
+			].concat(this._getLxrDataById());
+		},
+		//与会者页面已经选择的联系人
+		_getLxrDataById: function() {
+			var allLxr = this.options.allLxr;
+			var venueIdArr = this.model.get("venueId");
+			
+			if(_.isEmpty(allLxr) || _.isEmpty(venueIdArr)) return [];
+			
+			return _.filter(allLxr, function(lxr) {
+				return _.contains(venueIdArr, lxr.recordId);
 			});
 		},
 		

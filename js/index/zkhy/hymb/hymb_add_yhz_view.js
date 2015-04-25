@@ -43,7 +43,7 @@ define(function(require) {
 			this.ui.box_left.find(".active").removeClass("active").each(function() {
 				var $this = $(this);
 				var id = $this.data("id");
-				if(!_.include(idArr, id)) {
+				if(!_.contains(idArr, id)) {
 					addLxrIdArr.push(id);
 					$this.clone().appendTo($box);
 				}
@@ -123,10 +123,16 @@ define(function(require) {
 			this.ui.box_left.find(".lxr").each(function() {
 				var $this = $(this);
 				var id = $this.data("id");
-				if(_.include(idArr, id)) {
+				if(_.contains(idArr, id)) {
 					$this.clone().appendTo($box);
 				}
 			});
+		},
+		
+		onRender: function() {
+			//初始化与会者页面右侧已经选择的联系人
+			//由于页面复用，有些页面不需要初始化，所以需要做判断
+			this.loadHymb(this.model.get("venueId"));
 		},
 		
 		onDestroy: function() {

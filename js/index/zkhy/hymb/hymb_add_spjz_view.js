@@ -2,10 +2,11 @@ define(function(require) {
 	var $ = require("jquery");
 	var Radio = require("radio");
 	var Mn = require("marionette");
+	var FormView = require("web/common/formView");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_spjz_template.html");
 	var Const = require("web/common/const");
 	
-	var SpjzView = Mn.ItemView.extend({
+	var SpjzView = FormView.extend({
 		id: "hymb_add_spjz",
 		template: tmpl,
 		bindings: {
@@ -274,7 +275,7 @@ define(function(require) {
 		},
 		
 		_getRowHead: function() {
-			var srcArr = [].concat(this.lxrArr);
+			var srcArr = [].concat(this.lxrArr || []);
 			srcArr.push({equType:Const.EquType_MP,addrName:"多画面"});
 			srcArr.push({equType:Const.EquType_PLAYER,addrName:"播放器"});
 			return srcArr;
@@ -286,7 +287,7 @@ define(function(require) {
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI3,addrName:"DVI7"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI4,addrName:"DVI8"},
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI1,addrName:"DVI9"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI2,addrName:"DVI10"},
 			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];*/
-			var dstArr = [].concat(this.options.dviArr);
+			var dstArr = [].concat(this.options.dviArr || []);
 			_.each(this.lxrArr || [], function(lxr) {
 			    if(lxr.equType == Const.EquType_H323 || lxr.equType == Const.EquType_SIP) {
 					dstArr.push(lxr);
@@ -294,6 +295,27 @@ define(function(require) {
 			});
 			
 			return dstArr;
+		},
+		
+		onRender: function() {
+			this.stickit().fixIE8();
+			//初始化视频矩阵表格
+			this.addMatrix(this.getMatrixLxr());
+		},
+		//获取生成表格的联系人
+		getMatrixLxr: function() {
+			return this._getLxrDataById();
+		},
+		//表格行头和表格列头需要联系人
+		_getLxrDataById: function() {
+			var allLxr = this.options.allLxr;
+			var venueIdArr = this.model.get("venueId");
+			
+			if(_.isEmpty(allLxr) || _.isEmpty(venueIdArr)) return [];
+			
+			return _.filter(allLxr, function(lxr) {
+				return _.contains(venueIdArr, lxr.recordId);
+			});
 		},
 		
 		onDestroy: function() {

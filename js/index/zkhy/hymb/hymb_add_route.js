@@ -13,8 +13,6 @@ define(function(require) {
 	
 	var HymbModel = require("web/index/zkhy/hymb/hymb_model");
 	
-	var Const = require("web/common/const");
-
 	var HymbAddRoute = Route.extend({
 		
 		initialize: function(options) {
@@ -27,7 +25,7 @@ define(function(require) {
 				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
 				
 				this.hymbModel.myFetch(options)
-			).done(function(allLxr,outPort) {
+			).done(function(allLxr, outPort) {
 				self.allLxr = allLxr[0].data.bookInfo;
 				
 				self.dviArr = [];
@@ -55,13 +53,13 @@ define(function(require) {
 				}),
 				zkhyHymbAddYhzView: new HymbAddYhzView({
 					//该View中initialize方法中会统一转换成templateHelpers
-					//至于右侧已经选择的lxr，渲染页面和获取数据都需要使用Radio.channel.request
+					//至于右侧已经选择的lxr，获取数据都需要使用Radio.channel.request
+					model: this.hymbModel,
 					allLxr: this.allLxr
 				}),
 				zkhyHymbAddDhmView: new HymbAddDhmView({
 					//和父层View共享同一个hymbModel
 					//但是只有enableMP字段同步
-					//其它字段对应不了表单元素，所以只能手动初始化页面
 					//获取其它字段需要使用Radio.channel.request
 					model: this.hymbModel,
 					allLxr: this.allLxr
@@ -69,9 +67,9 @@ define(function(require) {
 				zkhyHymbAddSpjzView: new HymbAddSpjzView({
 					//和父层View共享同一个hymbModel
 					//但是只有enableVM字段同步
-					//其它字段对应不了表单元素，所以只能手动初始化页面
 					//获取其它字段需要使用Radio.channel.request
 					model: this.hymbModel,
+					allLxr: this.allLxr,
 					dviArr: this.dviArr
 				}),
 				zkhyHymbAddLzbmView: new HymbAddLzbmView()
