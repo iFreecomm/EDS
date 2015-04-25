@@ -10,6 +10,7 @@ define(function(require) {
 	var LoginRouter = require("web/login/login_router");
 	var PortalRouter = require("web/portal/portal_router");
 	var SpjzRouter = require("web/spjz/spjz_router");
+	var DhmRouter = require("web/dhm/dhm_router");
 	var LxrRouter = require("web/index/lxr/lxr_router");
 	var ZkhyRouter = require("web/index/zkhy/zkhy_router");
 	var PzRouter = require("web/index/pz/pz_router");
@@ -44,6 +45,7 @@ define(function(require) {
 			new LoginRouter(opt);
 			new PortalRouter(opt);
 			new SpjzRouter(opt);
+			new DhmRouter(opt);
 			new LxrRouter(opt);
 			new ZkhyRouter(opt);
 			new PzRouter(opt);
