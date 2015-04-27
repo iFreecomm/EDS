@@ -1,12 +1,12 @@
 {
-	"switch1": 1,
-	"value1": 12,
-	"switch2": 1,
-	"value2": 22,
-	"switch3": 1,
-	"value3": 28,
-	"switch4": 1,
-	"value4": 22,
-	"switch5": 1,
-	"value5": 22
+	"code": 0,
+	"data": {
+		"EqSingleChannelCfgArg": [
+			{ "EqGain": 12 },
+			{ "EqGain": 14 },
+			{ "EqGain": 16 },
+			{ "EqGain": 18 },
+			{ "EqGain": 20 }
+		]
+	}
 }

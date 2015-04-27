@@ -1,8 +1,10 @@
 {
-	"switch1": 1,
-	"value1": 12,
-	"switch2": 1,
-	"value2": 22,
-	"switch3": 1,
-	"value3": 28
+	"code": 0,
+	"data": {
+		"volumeSingleOutPut": [
+			{ "groupNum": 0, "enable": 0, "outVol": 12 },
+			{ "groupNum": 1, "enable": 1, "outVol": 14 },
+			{ "groupNum": 2, "enable": 1, "outVol": 22 }
+		]
+	}
 }

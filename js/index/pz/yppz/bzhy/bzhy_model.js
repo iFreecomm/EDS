@@ -3,18 +3,9 @@ define(function(require) {
 	
 	var BdsrModel = Model.extend({
 		defaults: {
-			name: "默认名称000",
-			kzck: 0,
-			ydsd: 0,
-			srjkxh: 0,
-			
-			ld: 123,
-			dbd: 124,
-			bhd: 125,
-			sppy: 126,
-			czpy: 127,
-			
-			abc: 16
+			groupNum: 1,
+			inputNum: 10,
+			audInPort: [0,2,4,6,8,10,12,14,16,18]
 		},
 		urls: {
 			"create": "spsr.psp",

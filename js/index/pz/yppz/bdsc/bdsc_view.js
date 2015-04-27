@@ -11,7 +11,7 @@ define(function(require) {
 			"click .btn-switch1": "toggleSwitch",
 			"click .saveBtn" : "saveBdsc"
 		},
-		saveBdsr: function(e) {
+		saveBdsc: function(e) {
 			this.model.set({
 				"volumeSingleOutPut": this._getOutput()
 			})
@@ -29,18 +29,30 @@ define(function(require) {
 				var groupName = "out" + (i + 1);
 				var $this = $(this);
 				return {
-					groupNum: $el.find('[name=' + groupName + ']:checked').val(),
-					audInPort: +$this.find("[name=audInPort]").val(),
-					audInName: $this.find("[name=audInName]").val(),
+					groupNum: +$el.find('[name=' + groupName + ']:checked').val(),
 					enable: $this.find("[name=enable]").is(".active") ? 1 : 0,
-					phtPwrEn: $this.find("[name=phtPwrEn]").is(".active") ? 1 : 0,
-					involume: $this.find(".slider").slider("value")
+					outVol: $this.find(".slider").slider("value")
 				};
 			}).get();
 		},
 		
 		onRender: function() {
-			this.fixRadio().initSlider();
+			this.renderData().fixRadio().initSlider();
+		},
+		renderData: function() {
+			var output = this.model.get("volumeSingleOutPut");
+			var $el = this.$el;
+			this.$(".slide-vertical-box").each(function(i) {
+				var curOut = output[i];
+				var groupName = "out" + (i + 1);
+				var groupNum = curOut.groupNum;
+				var groupSelector = '[name=' + groupName + '][value=' + groupNum + ']';
+				var $this = $(this);
+				$el.find(groupSelector).prop("checked", true);
+				curOut.enable && $this.find("[name=enable]").addClass("active");
+				$this.find(".sliderValue").text(curOut.outVol || 0);
+			});
+			return this;
 		},
 		onAttach: function() {
 			this.activeLink();

@@ -1,28 +1,21 @@
 define(function(require) {
 	var Model = require("web/common/model");
 	
-	var BdsrModel = Model.extend({
+	var ZdjzModel = Model.extend({
 		defaults: {
-			name: "默认名称000",
-			kzck: 0,
-			ydsd: 0,
-			srjkxh: 0,
-			
-			ld: 123,
-			dbd: 124,
-			bhd: 125,
-			sppy: 126,
-			czpy: 127,
-			
-			abc: 16
+			ansEn: 0,
+			ansMode: 0
 		},
 		urls: {
-			"create": "spsr.psp",
-			"update": "spsr.psp",
-			"delete": "spsr.psp",
-			"read": "spsr.psp"
+			"create": "yppz_zdjz.psp",
+			"update": "yppz_zdjz.psp",
+			"delete": "yppz_zdjz.psp",
+			"read": "yppz_zdjz.psp"
+		},
+		parse: function(res) {
+			return res.data.CfgArg;
 		}
 	});
 	
-	return BdsrModel;
+	return ZdjzModel;
 });

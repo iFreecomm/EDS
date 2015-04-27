@@ -155,12 +155,10 @@ define(function(require) {
 					$radio.parents("table").find('[name=' + name + ']').next().removeClass("active");
 				} else {
 					//多个radio水平排列，比如radio-set
-					$radio.siblings("[type=radio]").removeClass("active");
+					$radio.siblings(".radio-label").removeClass("active");
 				}
 				
 				$label.addClass("active");
-				$radio.change();
-				return false;
 			});
 		}
   		

@@ -3,24 +3,18 @@ define(function(require) {
 	
 	var HsxcModel = Model.extend({
 		defaults: {
-			name: "默认名称000",
-			kzck: 0,
-			ydsd: 0,
-			srjkxh: 0,
-			
-			ld: 123,
-			dbd: 124,
-			bhd: 125,
-			sppy: 126,
-			czpy: 127,
-			
-			abc: 16
+			aecEn: 0,
+			aecMode: 0,
+			agcEn: 0
 		},
 		urls: {
-			"create": "spsr.psp",
-			"update": "spsr.psp",
-			"delete": "spsr.psp",
-			"read": "spsr.psp"
+			"create": "yppz_hsxc.psp",
+			"update": "yppz_hsxc.psp",
+			"delete": "yppz_hsxc.psp",
+			"read": "yppz_hsxc.psp"
+		},
+		parse: function(res) {
+			return res.data.CfgArg;
 		}
 	});
 	
