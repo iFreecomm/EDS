@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var tmpl = require("text!web/index/pz/yppz/yppz_template.html");
@@ -37,8 +38,28 @@ define(function(require) {
 			container: "#pz_yppz_container"
 		},
 		events: {
+			"click .btn-switch4": "toggleSwitch4",
+			"click .btn-switch5": "toggleSwitch5",
 			"click .yppz-box .btn" : "yppz"
 		},
+		toggleSwitch4: function(e) {
+			var $this = $(e.target);
+  			$this.toggleClass("active");
+  			
+  			var value = $this.is(".active") ? 1 : 0;
+  			$.getJSON("saveQbjy.psp", JSON.stringify({
+  				qbjy: value
+  			}));
+  		},
+  		toggleSwitch5: function(e) {
+			var $this = $(e.target);
+  			$this.toggleClass("active");
+  			
+  			var value = $this.is(".active") ? 1 : 0;
+  			$.getJSON("saveQbby.psp", JSON.stringify({
+  				qbby: value
+  			}));
+  		},
 		modelViewMap: {
 			"bdsr" : [BdsrModel, BdsrView],
 			"bdsc" : [BdscModel, BdscView],

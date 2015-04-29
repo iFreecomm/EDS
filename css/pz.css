@@ -46,6 +46,23 @@
 /**********网络设置样式结束**********/
 
 /**********音频配置样式开始**********/
+.yppz-box-name {
+	margin-bottom: 5px;
+}
+.yppz-box-name h3 {
+	float: left;
+}
+.yppz-box-name .btn-switch4 {
+	margin-left: 50px;
+	color: #373737;
+	text-shadow: none;
+}
+.yppz-box-name .btn-switch5 {
+	margin-left: 20px;
+	color: #373737;
+	text-shadow: none;
+}
+
 .yppz .yppz-box table {
 	margin: auto;
 }

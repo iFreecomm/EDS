@@ -61,28 +61,23 @@ define(function(require) {
 				var $this = $(this);
 				var options = self._getSliderOptions($this);
 				$this.slider(options);
-				
-				if(options.orientation === "vertical") {
-					// 触发change事件
-					$this.slider("value", options.value);
-				}
 			});
 			return this;
 		},
 		// 目前只有两种情况，以vertical字段作为判断条件
 		// 如果将来增加其它情况，最好换一个字段作为判断条件
 		_getSliderOptions: function($slider) {
-			var $sv = $slider.siblings(".sliderValue");
+			var $sliderValue = $slider.siblings(".sliderValue");
 			var options = {
 				range: "min",
-				value: +$sv.text(),
-				min: $sv.data("min"),
-				max: $sv.data("max")
+				value: +$sliderValue.text(),
+				min: $slider.data("min"),
+				max: $slider.data("max")
 			};
-			if($sv.data("vertical")) {
+			if($slider.data("vertical")) {
 				options.orientation = "vertical";
 				options.slide = this._slideVerticalEvent;
-				options.change = this._slideVerticalChangeEvent;
+				options.create = this._slideVerticalEvent;
 			} else {
 				options.slide = this._slideHorizontalEvent;
 				options.change = this._slideHorizontalChangeEvent;
@@ -96,12 +91,15 @@ define(function(require) {
 			$(this).siblings(".sliderValue").change();
 		},
 		_slideVerticalEvent: function(event, ui) {
-			// 267是颜色条纹的高度
-			// 32是slider的最大值
-			$(this).siblings(".color").height(ui.value * 267 / 32);
-		},
-		_slideVerticalChangeEvent: function(event, ui) {
-			$(this).siblings(".color").height(ui.value * 267 / 32).end().siblings(".sliderValue").text(ui.value).change();
+			//不同slider的高度以及取值范围不一样
+			//由于现在大多数的高度都是261所以当作默认值
+			var $this = $(this);
+			
+			var value = _.isNumber(ui.value) ? ui.value : $this.slider("value");
+			var height = $this.data("height") || 261;
+			var max = $this.data("max");
+			
+			$this.siblings(".color").height(value * height / max);
 		},
 		
 		//自定义checkbox

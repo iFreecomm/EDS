@@ -214,6 +214,22 @@ input[type=radio] {
 .btn-switch3.active {
 	background: url(../img/form/switch3_on.png) no-repeat;
 }
+.btn-switch4 {
+	padding-left: 30px;
+	height: 40px;
+	background: url(../img/form/disable1.png) no-repeat 0 5px;
+}
+.btn-switch4.active {
+	background: url(../img/form/enable1.png) no-repeat 1px 5px;
+}
+.btn-switch5 {
+	padding-left: 28px;
+	height: 40px;
+	background: url(../img/form/disable2.png) no-repeat 0 5px;
+}
+.btn-switch5.active {
+	background: url(../img/form/enable2.png) no-repeat 5px 5px;
+}
 /******水平slider样式******/
 .slider.ui-slider-horizontal {
 	float: left;
@@ -260,17 +276,17 @@ input[type=radio] {
 }
 .slide-vertical-box .color {
 	position: absolute;
-	left: 11px;
-	bottom: 13px;
-	width: 17px;
-	background: url(../img/vertical/color.png) no-repeat bottom;
+	left: 14px;
+	bottom: 16px;
+	width: 10px;
+	background: url(../img/form/slider/color1.png) no-repeat bottom;
 }
 .slide-vertical-box .ui-slider-vertical {
 	position: absolute;
 	right: 26px;
-	bottom: 15px;
+	bottom: 16px;
 	width: 11px;
-	height: 264px;
+	height: 261px;
 	border: none;
 	margin: 0;
 	background: transparent;
@@ -284,7 +300,7 @@ input[type=radio] {
 	border: none;
 	left: -30px;
 	margin-bottom: -22px;
-	background: url(../img/vertical/handler.png) no-repeat;
+	background: url(../img/form/slider/handler.png) no-repeat;
 	outline: none;
 	cursor: pointer;
 }
@@ -296,17 +312,19 @@ input[type=radio] {
 	position: relative;
 	width: 96px;
 	height: 412px;
-	background: url(../img/vertical/panel.png) no-repeat;
+	background: url(../img/form/slider/panel1.png) no-repeat;
 }
 .slide-vertical-box-lg {
 	position: relative;
 	width: 96px;
 	height: 412px;
-	background: url(../img/vertical/panel.png) no-repeat;
+	background: url(../img/form/slider/panel2.png) no-repeat;
+}
+.slide-vertical-box-lg .color {
+	background: url(../img/form/slider/color2.png) no-repeat bottom;
+	bottom: 23px;
 }
 .slide-vertical-box-lg .ui-slider-vertical {
-	background: url(../img/vertical/color.png) no-repeat bottom;
-}
-.slide-vertical-box-lg .ui-slider-vertical {
-	height: 300px;
+	height: 336px;
+	bottom: 23px;
 }
