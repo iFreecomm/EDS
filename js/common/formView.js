@@ -10,10 +10,8 @@ define(function(require) {
 		    Backbone.history.navigate(url, options);
   		},
   		
-  		getBindings: function(bindings, selectIdArr) {
-  			bindings = bindings || {};
-  			var selectBindings = Radio.channel("app").request("getSelectBindings", selectIdArr);
-  			return _.extend(bindings, selectBindings);
+  		setSelectBindings: function(bindings) {
+  			Radio.channel("app").request("setSelectBindings", bindings);
   		},
   		
   		activeLink: function() {

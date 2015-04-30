@@ -57,20 +57,18 @@ define(function(require) {
 		
 		initChannel: function() {
 			Radio.DEBUG = true;
-			Radio.channel("app").reply("getSelectBindings", this.getSelectBindings, this);
+			Radio.channel("app").reply("setSelectBindings", this.setSelectBindings, this);
 		},
 		
 		// 从公共的JSON中获取select的bindings属性
-		getSelectBindings: function(selectIdArr) {
-			var result = {}, i, id, temp;
-			for(i = 0; id = selectIdArr[i]; i ++) {
-				temp = {};
-				temp.observe = id;
-				temp.selectOptions = {};
-				temp.selectOptions.collection = SelectObj[id];
-				result["#"+id] = temp;
+		setSelectBindings: function(bindings) {
+			for(var key in bindings) {
+				var value = bindings[key];
+				if(_.isEmpty(value.selectName)) continue;
+				
+				value.selectOptions = {};
+				value.selectOptions.collection = SelectObj[value.selectName];
 			}
-			return result;
 		},
 		
 		initHandlebarsHelpers: function() {

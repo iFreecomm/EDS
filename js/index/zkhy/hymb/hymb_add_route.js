@@ -72,7 +72,9 @@ define(function(require) {
 					allLxr: this.allLxr,
 					dviArr: this.dviArr
 				}),
-				zkhyHymbAddLzbmView: new HymbAddLzbmView()
+				zkhyHymbAddLzbmView: new HymbAddLzbmView({
+					model: this.hymbModel
+				})
 			});
 		}
 	});

@@ -69,6 +69,132 @@
 				"dviPort": 0
 			}
 		}
-	]
+	],
+	
+	"recorder": {
+		"recNum": 6,
+		"recList": [
+			{
+				"enbRec": 1,
+				"recIdx": 100,
+				"equSrc": 1,
+				"vidHdCfg": {
+					"enbHandle": 1,
+					"enbStoreHd": 1,
+					"vidEncParam": {
+						"vidProt": 1,	
+						"fmt": 1,
+						"frameRate": 1,
+						"bitRate": 1
+					},
+					"vodServeParam": {
+						"enable": 1,	
+						"name": "name"
+					},
+					"pushDumpParam": {
+						"enable": 1,	
+						"url": "url"
+					}
+				},
+				"vidSdCfg": {
+					"enbHandle": 1,
+					"enbStoreHd": 1,
+					"vidEncParam": {
+						"vidProt": 1,	
+						"fmt": 1,
+						"frameRate": 1,
+						"bitRate": 1
+					},
+					"vodServeParam": {
+						"enable": 1,	
+						"name": "name"
+					},
+					"pushDumpParam": {
+						"enable": 1,	
+						"url": "url"
+					}
+				},
+				"audCfg": {
+					"enbHandle": 1,
+					"audEncParam": {
+						"audProt": 1,	
+						"sampleRate": 1,
+						"bitRate": 1
+					}
+				},
+				"osdCfg": {
+					"enbShowTheme": 1,
+					"enbShowMark": 1,
+					"dispPos": 1,
+					"enbShowVolume": 1,
+					"volPos": 1,
+					"enbShowCaption": 1,
+					"capPos": 1,
+					"scrollSpeed": 1,
+					"caption": "字幕内容"
+				}
+			},
+			{
+				"enbRec": 0,
+				"recIdx": 101,
+				"equSrc": 0,
+				"vidHdCfg": {
+					"enbHandle": 0,
+					"enbStoreHd": 0,
+					"vidEncParam": {
+						"vidProt": 0,	
+						"fmt": 0,
+						"frameRate": 0,
+						"bitRate": 0
+					},
+					"vodServeParam": {
+						"enable": 0,	
+						"name": "name"
+					},
+					"pushDumpParam": {
+						"enable": 0,	
+						"url": "url"
+					}
+				},
+				"vidSdCfg": {
+					"enbHandle": 0,
+					"enbStoreHd": 0,
+					"vidEncParam": {
+						"vidProt": 0,	
+						"fmt": 0,
+						"frameRate": 0,
+						"bitRate": 0
+					},
+					"vodServeParam": {
+						"enable": 0,	
+						"name": "name"
+					},
+					"pushDumpParam": {
+						"enable": 0,	
+						"url": "url"
+					}
+				},
+				"audCfg": {
+					"enbHandle": 0,
+					"audEncParam": {
+						"audProt": 0,	
+						"sampleRate": 0,
+						"bitRate": 0
+					}
+				},
+				"osdCfg": {
+					"enbShowTheme": 0,
+					"enbShowMark": 0,
+					"dispPos": 0,
+					"enbShowVolume": 0,
+					"volPos": 0,
+					"enbShowCaption": 0,
+					"capPos": 0,
+					"scrollSpeed": 0,
+					"caption": "字幕内容123"
+				}
+			}
+		]
+	}
   }
 }

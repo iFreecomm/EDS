@@ -319,4 +319,41 @@
 	background: #C77405;
 }
 /************视频矩阵样式结束*************/
+
+/************录制编码样式开始*************/
+.lzbm-box {
+	padding: 20px;
+	margin: 0 0 -10px -10px;
+}
+.lzbm-box .btn {
+	width: 205px;
+	height: 120px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.lzbm .lineName {
+	width: 146px;
+	font-size: 18px;
+	padding-right: 20px;
+}
+.lzbm .formCell {
+	margin-right: 50px;
+}
+.lzbm .cellName {
+	width: 100px;
+}
+.lzbm-sppz .cellName {
+	width: 84px;
+}
+.lzbm-djtbzm .checkbox-label {
+	width: 126px;
+}
+.lzbm-sppz .formLine,
+.lzbm-yppz .formLine,
+.lzbm-djtbzm .formLine {
+	padding-left: 50px;
+}
+
+/************录制编码样式结束*************/
 /********添加会议模板样式结束***********/

@@ -230,6 +230,17 @@ input[type=radio] {
 .btn-switch5.active {
 	background: url(../img/form/enable2.png) no-repeat 5px 5px;
 }
+.btn-switch6 {
+	padding-right: 30px;
+	height: 40px;
+	background: url(../img/form/advance1.png) no-repeat right 13px;
+	color: #373737;
+	font-size: 16px;
+	text-shadow: none;
+}
+.btn-switch6.active {
+	background: url(../img/form/advance2.png) no-repeat right 10px;
+}
 /******水平slider样式******/
 .slider.ui-slider-horizontal {
 	float: left;

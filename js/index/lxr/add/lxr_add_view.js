@@ -7,6 +7,34 @@ define(function(require) {
 		id: "lxr_add",
 		template: Handlebars.compile(tmpl),
 		
+		bindings: {
+			"#addrName": "addrName",
+			"#camPort": "camPort",
+			"#voiIncentive": "voiIncentive",
+			"[name=micPort]": "micPort",
+			"#e164": "e164",
+			"#ip": "ip",
+			"#url": "url",
+			"#storNum": "storNum",
+			
+			"#equType": {
+				observe: "equType",
+				selectName: "equType"
+			},
+			"#presetNum": {
+				observe: "presetNum",
+				selectName: "presetNum"
+			},
+			"#incPriLev": {
+				observe: "incPriLev",
+				selectName: "incPriLev"
+			},
+			"#bandwidth": {
+				observe: "bandwidth",
+				selectName: "bandwidth"
+			}
+		},
+		
 		events: {
 			"click .saveBtn": "saveLxr",
 			"click .cancelBtn": "cancelLxr"
@@ -33,21 +61,7 @@ define(function(require) {
 		initialize: function(opt) {
 			this.listenTo(this.model, "change:equType", this.changeEquType);
 			
-			this.bindings = this.getBindings({
-				"#addrName": "addrName",
-				"#camPort": "camPort",
-				"#voiIncentive": "voiIncentive",
-				"[name=micPort]": "micPort",
-				"#e164": "e164",
-				"#ip": "ip",
-				"#url": "url",
-				"#storNum": "storNum"
-			}, [
-				"equType",
-				"presetNum",
-				"incPriLev",
-				"bandwidth"
-			]);
+			this.setSelectBindings(this.bindings);
 		},
 		changeEquType: function() {
 			var curHclx = this.model.get("equType");
