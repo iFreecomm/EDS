@@ -21,7 +21,12 @@ define(function(require) {
 			enbTransGuard: true,
 			enableMp:0,
 			showMpMode:1,
-			enableVM:0
+			enableVM:0,
+			
+			recorder: {
+				recNum: 0,
+				recList: []
+			}
 		},
 		urls: {
 			"create": "addMeetingTemp.psp",

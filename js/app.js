@@ -105,6 +105,13 @@ define(function(require) {
 				if(active === 1) return "active"; //判断按钮是否是on状态
 				return "";
 			});
+			Handlebars.registerHelper('loop', function(count, options) {
+				var out = "", index = 0;
+				while (index++ < count) {
+					out+= options.fn({index:index});
+				}
+				return out;
+			});
 		},
 		
 		initStickitHandler: function() {

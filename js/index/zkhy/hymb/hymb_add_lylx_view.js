@@ -71,7 +71,6 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-			this.listenTo(this.model, "change", this.refreshForm);
 		},
 		
 		onRender: function() {

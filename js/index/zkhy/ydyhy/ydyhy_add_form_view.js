@@ -15,6 +15,25 @@ define(function(require) {
 			yyrq: "#yyrq",
 			jsrq: "#jsrq"
 		},
+		
+		bindings: {
+			"#name": "name",
+			"#number": "number",
+			"#desc": "desc",
+			"#meetingType": "meetingType",
+			"#tempRecordId": "tempRecordId",
+			"#pwChairman": "pwChairman",
+			"#yyrq": "yyrq",
+			"#jsrq": "jsrq",
+			"#tempRecordId": "tempRecordId",
+			"#pwMeeting": "pwMeeting",
+			
+			"#bandwidth": {
+				observe: "bandwidth",
+				selectName: "bandwidth"
+			}
+		},
+		
 		events: {
 			"click .saveBtn": "saveMeeting",
 			"click .cancelBtn": "cancelMeeting"
@@ -45,23 +64,10 @@ define(function(require) {
 		},
 		
 		initialize: function() {
+			this.setSelectBindings(this.bindings);
+			
 			this.listenTo(this.model, "change:tempRecordId", this.changeHymb);
 			this.listenTo(this.model, "change:meetingType", this.changeHylx);
-			
-			this.bindings = this.getBindings({
-				"#name": "name",
-				"#number": "number",
-				"#desc": "desc",
-				"#meetingType": "meetingType",
-				"#tempRecordId": "tempRecordId",
-				"#pwChairman": "pwChairman",
-				"#yyrq": "yyrq",
-				"#jsrq": "jsrq",
-				"#tempRecordId": "tempRecordId",
-				"#pwMeeting": "pwMeeting"
-			}, [
-				"bandwidth"
-			]);
 		},
 		initYyrqAndJsrq: function() {
 			this.model.set({

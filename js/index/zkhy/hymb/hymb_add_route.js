@@ -23,9 +23,10 @@ define(function(require) {
 			$.when(
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
+				$.getJSON("getLzbm.psp"),//录制编码路数
 				
 				this.hymbModel.myFetch(options)
-			).done(function(allLxr, outPort) {
+			).done(function(allLxr, outPort, recNum) {
 				self.allLxr = allLxr[0].data.bookInfo;
 				
 				self.dviArr = [];
@@ -33,6 +34,8 @@ define(function(require) {
 				{
 					self.dviArr = outPort[0].data.outPortInfo;
 				}
+				
+				self.recNum = recNum[0].data
 				
 				self.showView();
 			});
@@ -73,7 +76,8 @@ define(function(require) {
 					dviArr: this.dviArr
 				}),
 				zkhyHymbAddLzbmView: new HymbAddLzbmView({
-					model: this.hymbModel
+					model: this.hymbModel,
+					recNum: this.recNum
 				})
 			});
 		}
