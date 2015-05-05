@@ -9,7 +9,8 @@ define(function(require) {
 		id: "zkhy_ydyhy_show",
 		template: Handlebars.compile(tmpl),
 		events: {
-			"click .delBtn": "delMeeting"
+			"click .delBtn": "delMeeting",
+			"click .beginBtn": "beginMeeting"
 		},
 		delMeeting: function(e) {
 			e.preventDefault();
@@ -22,10 +23,35 @@ define(function(require) {
 				if(res.code === 0) {
 					$btn.parents("li").remove();
 				} else {
-					alert("¨¦?3y?¨¢¨°¨¦¨º¡ì¡ã¨¹¡ê?");	
+					//alert("");	
 				}
 			}).fail(function() {
-				alert("¨¦?3y?¨¢¨°¨¦¨º¡ì¡ã¨¹¡ê?");
+				alert("åˆ é™¤ä¼šè®®å¤±è´¥");
+			});
+		},
+		beginMeeting: function(e) {
+			e.preventDefault();
+			var $btn = $(e.target);
+			var id = $btn.data("id");
+			
+			var state = $btn.data("state");
+			var url = "beginMeeting.psp";
+			var tip = "å¬å¼€ä¼šè®®";
+			if(state == 1)
+			{
+				url = "endMeeting.psp";
+				tip = "ç»“æŸä¼šè®®";
+			}
+			$.getJSON(url, JSON.stringify({
+				recordId: id
+			})).done(function(res) {
+				if(res.code === 0) {
+					alert(tip+"æˆåŠŸ");	
+				} else {
+					alert(tip+"å¤±è´¥");	
+				}
+			}).fail(function() {
+				
 			});
 		},
 		

@@ -4,13 +4,12 @@ define(function(require) {
 	var DhmModel = Model.extend({
 		defaults: {
 			venueId: [],
-			enableVM: 0
+			subPicInfo: [],
+			enableMp: 0
 		},
 		urls: {
-			"create": "addMeetingTemp.psp",
-			"update": "modifyMeetingTemp.psp",
-			"delete": "delMeetingTemp.psp",
-			"read": "getMeetingTempDetail.psp"
+			"create": "setVidMultiPic.psp",
+			"read": "getVidMultiPic.psp"
 		},
 		parse: function(res) {
 			return res.data;

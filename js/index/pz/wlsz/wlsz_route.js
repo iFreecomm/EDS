@@ -4,8 +4,8 @@ define(function(require) {
 	var NavLeftView = require("web/index/pz/navLeft/navLeft_view");
 	var WlszView = require("web/index/pz/wlsz/wlsz_view");
 
-	var Wk1Model = require("web/index/pz/wlsz/wk1/wk1_model");
-	var Wk1View = require("web/index/pz/wlsz/wk1/wk1_view");
+	var WkModel = require("web/index/pz/wlsz/wk/wk_model");
+	var WkView = require("web/index/pz/wlsz/wk/wk_view");
 
 	var WlszRoute = Route.extend({
 		
@@ -13,8 +13,10 @@ define(function(require) {
 			var self = this;
 			this.container = options.container;
 			
-			this.wk1Model = new Wk1Model();
-			this.wk1Model.fetch().done(function() {
+			this.wkModel = new WkModel();
+			this.wkModel.fetch({
+				data: JSON.stringify({ device: 0 }) //网卡1
+			}).done(function() {
 				self.showView();
 			});
 		},
@@ -23,8 +25,8 @@ define(function(require) {
 			this.show({
 				navLeftView: NavLeftView,
 				contentRightView: new WlszView(),
-				pzWlszWk1View: new Wk1View({
-					model: this.wk1Model
+				pzWlszWkView: new WkView({
+					model: this.wkModel
 				})
 			});
 		}

@@ -20,8 +20,13 @@ define(function(require) {
 			$.when(
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				
+				$.getJSON("getVenueCfg.psp"),//会场
 				this.dhmModel.myFetch(options)
-			).done(function(allLxr) {
+			).done(function(allLxr,venue) {
+				self.dhmModel.set({
+					"venueId": venue[0].data.venueId
+				});
+				
 				self.allLxr = allLxr[0].data.bookInfo;
 				
 				self.showView();

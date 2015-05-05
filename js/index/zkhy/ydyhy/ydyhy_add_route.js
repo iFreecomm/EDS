@@ -14,16 +14,20 @@ define(function(require) {
 		initialize: function(options) {
 			var self = this;
 			this.container = options.container;
-			this.state = options.state;
 			this.ydyhyModel = new YdyhyModel();
 			
 			$.when(
 				$.getJSON("getAllMeetingTemp.psp"),
 				$.getJSON("getAllAddrBook.psp"),
+				$.getJSON("getDateTime.psp"),
 				this.ydyhyModel.myFetch(options)
-			).done(function(allTemp,allLxr) {
-				self.allTemp = allTemp[0].data.tempList?allTemp[0].data.tempList:{};
-				self.allLxr = allLxr[0].data.bookInfo?allLxr[0].data.bookInfo:{};
+			).done(function(allTemp,allLxr,dateTime) {
+				self.ydyhyModel.set({
+					"date": dateTime[0].data.date,
+					"time": dateTime[0].data.time
+				});
+				self.allTemp = allTemp[0].data.tempList?allTemp[0].data.tempList:[];
+				self.allLxr = allLxr[0].data.bookInfo?allLxr[0].data.bookInfo:[];
 				self.showView();
 			});
 		},
@@ -33,13 +37,13 @@ define(function(require) {
 				navLeftView: NavLeftView,
 				contentRightView: new YdyhyAddView(),
 				zkhyYdyhyAddFormView: new YdyhyAddFormView({
-					state: this.state,
 					model: this.ydyhyModel,
 					templateHelpers: {
 						allTemp: this.allTemp
 					}
 				}),
 				zkhyYdyhyAddYhzView: new HymbAddYhzView({
+					model: this.ydyhyModel,
 					allLxr: this.allLxr
 				})
 			});

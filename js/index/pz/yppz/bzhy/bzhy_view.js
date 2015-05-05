@@ -6,9 +6,17 @@ define(function(require) {
 	var BzhyView = FormView.extend({
 		id: "pz_yppz_bzhy",
 		template: tmpl,
-		
 		events: {
-			"click .saveBtn" : "saveBzhy"
+			"click .saveBtn" : "saveBzhy",
+			"change [name=groupNum]" : "changeNum"
+		},
+		changeNum:function(){
+			var self = this;
+			this.model.fetch(this.model.getFetchOptions({
+				groupNum: this._getNum()
+			})).done(function() {
+				self.renderData();
+			});
 		},
 		saveBzhy: function() {
 			this.model.set(this._getBzhy())
@@ -19,6 +27,10 @@ define(function(require) {
 			.fail(function() {
 				alert("保存失败！");
 			});
+		},
+		_getNum:function(){
+			var $el = this.$el;
+			return  +$el.find("[name=groupNum]:checked").val();
 		},
 		_getBzhy: function() {
 			var $el = this.$el;

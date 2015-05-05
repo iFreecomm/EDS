@@ -11,7 +11,7 @@ define(function(require) {
 			voiIncentive: 1,
 			micPort: [],
 			incPriLev: 0,
-			bandwidth: 0,
+			bandwidth: 384000,
 			e164: "",
 			ip: "",
 			url: "",

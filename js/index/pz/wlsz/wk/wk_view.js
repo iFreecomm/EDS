@@ -1,12 +1,9 @@
 define(function(require) {
 	var FormView = require("web/common/formView");
-	var tmpl = require("text!web/index/pz/wlsz/wk1/wk1_template.html");
+	var tmpl = require("text!web/index/pz/wlsz/wk/wk_template.html");
 	
-	require("stickit");
-	require("jqueryui");
-	
-	var Wk1View = FormView.extend({
-		id: "pz_wlsz_wk1",
+	var WkView = FormView.extend({
+		id: "pz_wlsz_wk",
 		template: tmpl,
 		bindings: {
 			"#prot":  "prot",
@@ -39,7 +36,7 @@ define(function(require) {
 		onAttach: function() {
 			this.selectmenu();
 		},
-		initialize: function(opt) {
+		initialize: function() {
 			this.listenTo(this.model, "change:netType", this.changeNetType);
 		},
 		changeNetType: function() {
@@ -49,16 +46,16 @@ define(function(require) {
 			this.$("[netType*="+curNet+"]").show();			
 			if(curNet == 1)
 			{
-				this.$("[netType*=4]").editable = false;
+				this.$("[netType*=4]").prop("disabled", true).css({"opacity":0.5});
+			}
+			else
+			{
+				this.$("[netType*=4]").removeAttr("disabled").css({"opacity":1});
 			}
 			var netCnnt = this.model.get("netCnnt");
-			var curNetCfg = netCnnt[curNet];
-			var self = this;
-			$.each(curNetCfg, function(attr,value){      
-			    self.model.set(attr,value);
-			});
+			this.model.set(netCnnt[curNet]);
 		}
 	});
 	
-	return Wk1View;
+	return WkView;
 });

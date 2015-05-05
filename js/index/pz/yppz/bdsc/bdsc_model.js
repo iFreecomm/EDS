@@ -3,13 +3,11 @@ define(function(require) {
 	
 	var BdscModel = Model.extend({
 		defaults: {
-			VolumeSingleOutPut : []
+			volumeSingleOutPut : []
 		},
 		urls: {
-			"create": "yppz_bdsc.psp",
-			"update": "yppz_bdsc.psp",
-			"delete": "yppz_bdsc.psp",
-			"read": "yppz_bdsc.psp"
+			"create": "setVolOutControlCfg.psp",
+			"read": "getVolOutControlCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

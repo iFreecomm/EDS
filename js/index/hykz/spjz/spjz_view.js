@@ -11,6 +11,11 @@ define(function(require) {
 			spjz: "#hykz_spjz_container"
 		},
 		
+		bindings: {
+			"#matrixInOut": "matrixInOut",
+			"#enableVM": "enableVM"
+		},
+		
 		events: {
 			"click .saveBtn": "saveSpjz"
 		},

@@ -4,13 +4,12 @@ define(function(require) {
 	var SpjzModel = Model.extend({
 		defaults: {
 			venueId: [],
+			matrixInOut:[],
 			enableVM: 0
 		},
 		urls: {
-			"create": "addMeetingTemp.psp",
-			"update": "modifyMeetingTemp.psp",
-			"delete": "delMeetingTemp.psp",
-			"read": "getMeetingTempDetail.psp"
+			"create": "setVidMatrix.psp",
+			"read": "getVidMatrix.psp"
 		},
 		parse: function(res) {
 			return res.data;

@@ -8,11 +8,21 @@ define(function(require) {
 		template: tmpl,
 		
 		events: {
-			"click .saveBtn" : "saveJhtj"
+			"click .saveBtn" : "saveJhtj",
+			"change [name=outPort]" : "changeOutport"
+		},
+		changeOutport:function(){
+			var self = this;
+			this.model.fetch(this.model.getFetchOptions({
+				outPort: this._getOutport()
+			})).done(function() {
+				self.renderData();
+			});
 		},
 		saveJhtj: function(e) {
 			this.model.set({
-				"EqSingleChannelCfgArg": this._getCfgArg()
+				"eqGain": this._getCfgArg(),
+				"outPort": this._getOutport()
 			})
 			.save()
 			.done(function() {
@@ -24,23 +34,28 @@ define(function(require) {
 		},
 		_getCfgArg: function() {
 			return this.$(".slide-vertical-box").map(function() {
-				return {
-					EqGain: $(this).find(".slider").slider("value")
-				};
+				return +$(this).find(".slider").slider("value");
 			}).get();
 		},
 		
 		onRender: function() {
 			this.renderData().fixRadio().initSlider();
 		},
+		_getOutport:function(){
+			var $el = this.$el;
+			return  +$el.find("[name=outPort]:checked").val();
+		},
 		renderData: function() {
-			var output = this.model.get("EqSingleChannelCfgArg");
+			var outPort = this.model.get("outPort");
+			this.$el.find("[name=outPort][value=" + outPort + "]").prop("checked", true);
+			
+			var output = this.model.get("eqGain");
 			this.$(".slide-vertical-box").each(function(i) {
-				$(this).find(".sliderValue").text(output[i].EqGain || 0);
+				$(this).find(".sliderValue").text(output[i] || 0);
 			});
 			return this;
 		},
-		onAttach: function() {
+		onAttach: function() { 
 			this.activeLink();
 		}
 	});

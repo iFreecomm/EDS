@@ -21,8 +21,16 @@ define(function(require) {
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
 				
+				$.getJSON("getVenueCfg.psp"),//会场
+				//$.getJSON("getVidMatrix.psp"),//视频矩阵
+				
 				this.spjzModel.myFetch(options)
-			).done(function(allLxr, outPort) {
+			).done(function(allLxr,outPort,venue) {
+				self.spjzModel.set({
+						"venueId": venue[0].data.venueId,
+						//"matrixInOut": matrixInOut[0].data.matrixInOut
+				});
+				
 				self.allLxr = allLxr[0].data.bookInfo;
 				
 				self.dviArr = [];

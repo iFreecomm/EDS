@@ -7,11 +7,14 @@
 	</li>
 	{{#each items}}
 		<li class="justify-item">
-			<a href="#zkhy/modifyYdyhy/{{recordId}}/yjzk">
+			<a href="#zkhy/modifyYdyhy/{{recordId}}/yjzk" class=" {{getMetClass meetingState}}">
 				<div class="box-head">{{name}}
 					<button type="button" class="delBtn" data-id="{{recordId}}"></button>
 				</div>
-				<div class="box-body">{{desc}}</div>
+				<div class="box-body">
+					<span>{{desc}}</span>
+					<button class="beginBtn" data-id="{{recordId}}" data-state="{{meetingState}}">{{getBeginInfo meetingState}}</button>
+				</div>
 			</a>
 		</li>
 	{{/each}}

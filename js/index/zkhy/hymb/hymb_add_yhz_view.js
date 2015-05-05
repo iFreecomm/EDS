@@ -132,7 +132,7 @@ define(function(require) {
 		onRender: function() {
 			//初始化与会者页面右侧已经选择的联系人
 			//由于页面复用，有些页面不需要初始化，所以需要做判断
-			this.loadHymb(this.model.get("venueId"));
+//			this.loadHymb(this.model.get("venueId"));
 		},
 		
 		onDestroy: function() {

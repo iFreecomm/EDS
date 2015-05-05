@@ -11,6 +11,11 @@ define(function(require) {
 			dhm: "#hykz_dhm_container"
 		},
 		
+		bindings: {
+			"#subPicInfo": "subPicInfo",
+			"#showMpMode": "showMpMode"
+		},
+		
 		events: {
 			"click .saveBtn": "saveSpjz"
 		},

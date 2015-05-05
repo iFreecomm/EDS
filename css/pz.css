@@ -30,6 +30,9 @@
 	margin-bottom: 10px;
 	margin-left: 10px;
 }
+#pz_wlsz_wk .formCell[netType] {
+	display: none;
+}
 
 #pz_wlsz_nat .cellName,
 #pz_wlsz_sip .cellName {

@@ -45,6 +45,21 @@
 	opacity: 1;
 	transition: opacity 3s;
 }
+/*********召开/结束会议*********/
+
+.box-container .beginBtn {	
+	width: 120px;
+	height: 42px;
+	padding: 0;
+	border: none;
+	margin: 0;
+	outline: 0;
+	color: #FFF;
+	background: #1E89B5;
+}
+.box-container .beginBtn:hover {
+	background-color: #F47900;
+}
 /*********小盒子主体样式*********/
 .box-container .box-body {
 	box-sizing: border-box;
@@ -90,6 +105,7 @@
 	line-height: 30px;
 	background: #1E89B5;
 	font-size: 18px;
+	text-align: center;
 }
 .lxr-box .lxr.active .lxr-head {
 	background: #F47900;

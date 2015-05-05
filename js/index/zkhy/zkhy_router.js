@@ -2,7 +2,6 @@ define(function(require) {
 	var Mn = require("marionette");
 	var YdyhyShowRoute = require("web/index/zkhy/ydyhy/ydyhy_show_route");
 	var YdyhyAddRoute = require("web/index/zkhy/ydyhy/ydyhy_add_route");
-	var YdyhyModifyRoute = require("web/index/zkhy/ydyhy/ydyhy_modify_route");
 	var HymbShowRoute = require("web/index/zkhy/hymb/hymb_show_route");
 	var HymbAddRoute = require("web/index/zkhy/hymb/hymb_add_route");
 	
@@ -25,17 +24,20 @@ define(function(require) {
 				container: this.container
 			});
 		},
-		addYdyhy: function() {
+		addYdyhy: function(id, state) {
 			new YdyhyAddRoute({
 				container: this.container
 			});
 		},
 		modifyYdyhy: function(id, state) {
-			new YdyhyModifyRoute({
-				container: this.container,
-				id: id,
-				state: state
-			});
+			if(state === "yjzk") {
+				//会议控制
+			} else {
+				new YdyhyAddRoute({
+					container: this.container,
+					id: id
+				});
+			}
 		},
 		showHymb: function() {
 			new HymbShowRoute({

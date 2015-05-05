@@ -3,15 +3,16 @@ define(function(require) {
 	
 	var BdsrModel = Model.extend({
 		defaults: {
-			groupNum: 1,
+			groupNum: 0,
 			inputNum: 10,
 			audInPort: [0,2,4,6,8,10,12,14,16,18]
 		},
 		urls: {
-			"create": "spsr.psp",
-			"update": "spsr.psp",
-			"delete": "spsr.psp",
-			"read": "spsr.psp"
+			"create": "setAudGroupMixInfo.psp",
+			"read": "getAudGroupMixInfo.psp"
+		},
+		parse: function(res) {
+			return res.data;
 		}
 	});
 	

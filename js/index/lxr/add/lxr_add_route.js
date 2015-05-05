@@ -13,7 +13,7 @@ define(function(require) {
 			this.lxrModel = new LxrModel();
 			
 			$.when(
-				$.getJSON("getCamMic.psp"),
+				$.getJSON("getMicPort.psp"),
 				$.getJSON("getSdiPort.psp"),
 				this.lxrModel.myFetch(options)
 			).done(function(camMic,sdiInfo) {

@@ -105,6 +105,14 @@ define(function(require) {
 				if(active === 1) return "active"; //判断按钮是否是on状态
 				return "";
 			});
+			Handlebars.registerHelper("getMetClass", function(meetingState) {
+				if(meetingState === 1) return "begin";
+				return "end";
+			});
+			Handlebars.registerHelper("getBeginInfo", function(meetingState) {
+				if(meetingState === 1) return "结束会议"; //判断会议召开
+				return "召开会议";
+			});
 			Handlebars.registerHelper('loop', function(count, options) {
 				var out = "", index = 0;
 				while (index++ < count) {

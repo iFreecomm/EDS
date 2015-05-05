@@ -1,7 +1,7 @@
 define(function(require) {
 	var Model = require("web/common/model");
 	
-	var SpsrModel = Model.extend({
+	var WkModel = Model.extend({
 		defaults: {
 			prot: 0,
 			device: 0,
@@ -26,5 +26,5 @@ define(function(require) {
 		}
 	});
 	
-	return SpsrModel;
+	return WkModel;
 });

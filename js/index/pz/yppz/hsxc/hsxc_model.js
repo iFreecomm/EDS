@@ -8,13 +8,11 @@ define(function(require) {
 			agcEn: 0
 		},
 		urls: {
-			"create": "yppz_hsxc.psp",
-			"update": "yppz_hsxc.psp",
-			"delete": "yppz_hsxc.psp",
-			"read": "yppz_hsxc.psp"
+			"create": "setAecCfg.psp",
+			"read": "getAecCfg.psp"
 		},
 		parse: function(res) {
-			return res.data.CfgArg;
+			return res.data;
 		}
 	});
 	

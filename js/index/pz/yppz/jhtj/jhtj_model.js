@@ -3,13 +3,12 @@ define(function(require) {
 	
 	var JhtjModel = Model.extend({
 		defaults: {
-			EqSingleChannelCfgArg: []
+			outPort: 0,
+			eqGain: []
 		},
 		urls: {
-			"create": "yppz_jhtj.psp",
-			"update": "yppz_jhtj.psp",
-			"delete": "yppz_jhtj.psp",
-			"read": "yppz_jhtj.psp"
+			"create": "setEqAllChannelCfg.psp",
+			"read": "getEqAllChannelCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

@@ -39,6 +39,7 @@ define(function(require) {
 		},
 		
 		initialize: function() {
+			Radio.channel("lzbm").reset();
 			Radio.channel("lzbm").reply("getRecList", this.getRecList, this);
 			
 			this.flatModelList = [];

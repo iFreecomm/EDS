@@ -37,6 +37,23 @@ define(function(require) {
 		regions: {
 			container: "#pz_yppz_container"
 		},
+		initialize: function(options) {
+			var self = this;
+			$.when(
+				$.getJSON("getMuteFlag.psp"),
+				$.getJSON("getShieldFlag.psp")
+			).done(function(mute,shield) {
+				if(mute[0].data.enable == 1)
+				{
+					$(".btn-switch4").addClass("active");
+				}
+				
+				if(shield[0].data.enable == 1)
+				{
+					$(".btn-switch5").addClass("active");
+				}
+			});
+		},
 		events: {
 			"click .btn-switch4": "toggleSwitch4",
 			"click .btn-switch5": "toggleSwitch5",
@@ -44,21 +61,37 @@ define(function(require) {
 		},
 		toggleSwitch4: function(e) {
 			var $this = $(e.target);
-  			$this.toggleClass("active");
   			
   			var value = $this.is(".active") ? 1 : 0;
-  			$.getJSON("saveQbjy.psp", JSON.stringify({
-  				qbjy: value
-  			}));
+  			$.getJSON("setMuteFlag.psp", JSON.stringify({
+  				enable: value
+  			})).done(function(res){
+  				if(res.code == 0)
+  				{
+  					$this.toggleClass("active");
+  				}
+  				else
+  				{
+  					alert("保存失败！");
+  				}
+  			});
   		},
   		toggleSwitch5: function(e) {
 			var $this = $(e.target);
-  			$this.toggleClass("active");
-  			
+			
   			var value = $this.is(".active") ? 1 : 0;
-  			$.getJSON("saveQbby.psp", JSON.stringify({
-  				qbby: value
-  			}));
+  			$.getJSON("setShieldFlag.psp", JSON.stringify({
+  				enable: value
+  			})).done(function(res){
+  				if(res.code == 0)
+  				{
+  					$this.toggleClass("active");
+  				}
+  				else
+  				{
+  					alert("保存失败！");
+  				}
+  			});;
   		},
 		modelViewMap: {
 			"bdsr" : [BdsrModel, BdsrView],

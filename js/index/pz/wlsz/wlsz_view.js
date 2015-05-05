@@ -3,11 +3,8 @@ define(function(require) {
 	var Mn = require("marionette");
 	var tmpl = require("text!web/index/pz/wlsz/wlsz_template.html");
 	
-	var Wk1Model = require("web/index/pz/wlsz/wk1/wk1_model");
-	var Wk1View = require("web/index/pz/wlsz/wk1/wk1_view");
-	
-	var Wk2Model = require("web/index/pz/wlsz/wk2/wk2_model");
-	var Wk2View = require("web/index/pz/wlsz/wk2/wk2_view");
+	var WkModel = require("web/index/pz/wlsz/wk/wk_model");
+	var WkView = require("web/index/pz/wlsz/wk/wk_view");
 	
 	var DkszModel = require("web/index/pz/wlsz/dksz/dksz_model");
 	var DkszView = require("web/index/pz/wlsz/dksz/dksz_view");
@@ -37,8 +34,7 @@ define(function(require) {
 			"click .wlsz-box .btn" : "wlsz",
 		},
 		modelViewMap: {
-			"wk1" : [Wk1Model, Wk1View],
-			"wk2" : [Wk2Model, Wk2View],
+			"wk" : [WkModel, WkView],
 			"dksz" : [DkszModel, DkszView],
 			"sip" : [SIPModel, SIPView],
 			"nat" : [NATModel, NATView],
@@ -48,21 +44,32 @@ define(function(require) {
 		},
 		wlsz: function(e) {
 			var self = this;
-			var ModelView = this.modelViewMap[e.target.id];
+			var btn = e.target;
+			var ModelView = this.modelViewMap[btn.name];
+			var wkOption = this._getWkOption(btn);
 			
 			var Model = ModelView[0];
 			var View = ModelView[1];
 			
 			var model = new Model();
-			model.fetch().done(function() {
+			model.fetch(wkOption).done(function() {
 				self.showChildView("container", new View({
 					model: model
 				}));
 			});
 		},
+		_getWkOption: function(btn) {
+			if(btn.id === "wk1" || btn.id === "wk2") {
+				return {
+					data: JSON.stringify({
+						device: btn.id === "wk1" ? 0 : 1
+					})
+				};
+			}
+		},
 		
 		onBeforeShow: function(view, region, options) {
-			this.showChildView("container", options.pzWlszWk1View);
+			this.showChildView("container", options.pzWlszWkView);
 		},
 		onAttach: function() {
 			Radio.channel("index").command("activeLink");

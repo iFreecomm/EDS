@@ -15,6 +15,13 @@
 #zkhy_ydyhy_add .cancelBtn {
 	margin-left: 50px;
 }
+
+#zkhy_ydyhy_show .begin {
+	background-color: #F47900;
+}
+#zkhy_ydyhy_show .end {
+	background-color: #A9A9A;
+}
 /************预定义会议样式结束*************/
 
 

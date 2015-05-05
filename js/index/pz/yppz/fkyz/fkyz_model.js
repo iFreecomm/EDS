@@ -8,13 +8,11 @@ define(function(require) {
 			afrRange: 0
 		},
 		urls: {
-			"create": "yppz_fkyz.psp",
-			"update": "yppz_fkyz.psp",
-			"delete": "yppz_fkyz.psp",
-			"read": "yppz_fkyz.psp"
+			"create": "setAfrCfg.psp",
+			"read": "getAfrCfg.psp"
 		},
 		parse: function(res) {
-			return res.data.CfgArg;
+			return res.data;
 		}
 	});
 	

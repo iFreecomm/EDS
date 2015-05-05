@@ -6,10 +6,8 @@ define(function(require) {
 			volumeSingleInPut: []
 		},
 		urls: {
-			"create": "yppz_bdsr.psp",
-			"update": "yppz_bdsr.psp",
-			"delete": "yppz_bdsr.psp",
-			"read": "yppz_bdsr.psp"
+			"create": "setVolInControlCfg.psp",
+			"read": "getVolInControlCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

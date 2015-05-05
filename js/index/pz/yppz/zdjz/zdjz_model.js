@@ -7,13 +7,11 @@ define(function(require) {
 			ansMode: 0
 		},
 		urls: {
-			"create": "yppz_zdjz.psp",
-			"update": "yppz_zdjz.psp",
-			"delete": "yppz_zdjz.psp",
-			"read": "yppz_zdjz.psp"
+			"create": "setAnsCfg.psp",
+			"read": "getAnsCfg.psp"
 		},
 		parse: function(res) {
-			return res.data.CfgArg;
+			return res.data;
 		}
 	});
 	

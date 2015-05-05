@@ -15,6 +15,7 @@
 	"secFrameRate": 2,
 	"secQuality": 2,
 	"secVidSend": 2,
-	"enbTransGuard": 1
+	"enbTransGuard": 1,
+	"venueId": [1,2,3,4]
   }
 }

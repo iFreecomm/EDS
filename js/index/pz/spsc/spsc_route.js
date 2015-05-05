@@ -14,11 +14,15 @@ define(function(require) {
 			this.container = options.container;
 			this.spscModel = new SpscModel();
 			
-			$.getJSON("spsc_lxr.psp").done(function(lxrs) {
-				self.templateHelpers = lxrs;
+			$.getJSON("getVidOutPort.psp").done(function(vga) {
+				self.VGA = [];
+				if(vga.data && vga.data.outPortInfo)
+				{
+					self.VGA = vga.data.outPortInfo;
+				}
 				
 				$.when(self.spscModel.myFetch({
-					id: lxrs[0].recordId
+					id: self.VGA[0].vidOutPort
 				})).done(function() {
 					self.showView();
 				});
@@ -31,7 +35,7 @@ define(function(require) {
 				contentRightView: new SpscView({
 					model: this.spscModel,
 					templateHelpers: {
-						VGA: this.templateHelpers
+						VGA: this.VGA
 					}
 				})
 			});

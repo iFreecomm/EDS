@@ -14,11 +14,25 @@ define(function(require) {
 			this.container = options.container;
 			this.spsrModel = new SpsrModel();
 			
-			$.getJSON("spsr_lxr.psp").done(function(lxrs) {
-				self.templateHelpers = lxrs;
+			$.when(
+				$.getJSON("getSdiPort.psp"),
+				
+				$.getJSON("getVgaPort.psp")
+			).done(function(sdi,vga) {
+				self.SDI = [];
+				if(sdi[0].data && sdi[0].data.sdiInfo)
+				{
+					self.SDI = sdi[0].data.sdiInfo;
+				}
+				
+				self.VGA = [];
+				if(vga[0].data && vga[0].data.vgaInfo)
+				{
+					self.VGA = vga[0].data.vgaInfo;
+				}
 				
 				$.when(self.spsrModel.myFetch({
-					//id: lxrs.SDI[0].recordId || lxrs.VGA[0].recordId
+					id: self.SDI[0].camPort || self.VGA[0].vgaPort
 				})).done(function() {
 					self.showView();
 				});
@@ -30,7 +44,10 @@ define(function(require) {
 				navLeftView: NavLeftView,
 				contentRightView: new SpsrView({
 					model: this.spsrModel,
-					templateHelpers: this.templateHelpers
+					templateHelpers: {
+						SDI: this.SDI,
+						VGA: this.VGA
+					}
 				})
 			});
 		}
