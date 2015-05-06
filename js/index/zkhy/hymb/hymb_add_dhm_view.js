@@ -117,8 +117,8 @@ define(function(require) {
 			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
 			Radio.channel("dhm").reply("getSubPicInfo", this.getSubPicInfo, this);
 			
-			Radio.channel("dhm").comply("addDhmlxr", this.addDhmlxr, this);
-			Radio.channel("dhm").comply("subDhmlxr", this.subDhmlxr, this);
+			Radio.channel("yhz").on("addLxr", this.addDhmlxr, this);
+			Radio.channel("yhz").on("subLxr", this.subDhmlxr, this);
 		},
 		
 		//修复多画面中的subPicInfo字段，缺少用来显示的addrName字段

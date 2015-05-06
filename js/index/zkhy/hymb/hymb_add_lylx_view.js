@@ -1,14 +1,25 @@
 define(function(require) {
 	var FormView = require("web/common/formView");
+	var Radio = require("radio");
+	var Const = require("web/common/const");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_lylx_template.html");
 	
 	var LzbmView = FormView.extend({
 		id: "hymb_add_lxly",
 		template: tmpl,
 		
+		ui: {
+			"equSrc": "#equSrc"
+		},
+		
 		bindings: {
 			"#enbRec":         "enbRec",
-			"#equSrc":         "equSrc",
+			
+			"#camPort":        "equSrc.camPort",
+			"#equType":        "equSrc.equType",
+			"#recordId":       "equSrc.recordId",
+			"#vgaPort":        "equSrc.vgaPort",
+			//"#equSrc":         "equSrc",
 			
 			"#HD_enbHandle":   {
 				observe: "vidHdCfg.enbHandle",
@@ -17,10 +28,22 @@ define(function(require) {
 			},
 			
 			"#HD_enbStoreHd":  "vidHdCfg.enbStoreHd",
-			"#HD_vidProt":     "vidHdCfg.vidEncParam.vidProt",
-			"#HD_fmt":         "vidHdCfg.vidEncParam.fmt",
-			"#HD_frameRate":   "vidHdCfg.vidEncParam.frameRate",
-			"#HD_bitRate":     "vidHdCfg.vidEncParam.bitRate",
+			"#HD_vidProt": {
+				observe: "vidHdCfg.vidEncParam.vidProt",
+				selectName: "vidProt"
+			},
+			"#HD_fmt": {
+				observe: "vidHdCfg.vidEncParam.fmt",
+				selectName: "vidFmt"
+			},
+			"#HD_frameRate": {
+				observe: "vidHdCfg.vidEncParam.frameRate",
+				selectName: "frameRate"
+			},
+			"#HD_bitRate": {
+				observe: "vidHdCfg.vidEncParam.bitRate",
+				selectName: "bandwidth"
+			},
 			"#HD_RTSP_enable": "vidHdCfg.vodServeParam.enable",
 			"#HD_RTSP_name":   "vidHdCfg.vodServeParam.name",
 			"#HD_RTMP_enable": "vidHdCfg.pushDumpParam.enable",
@@ -33,28 +56,67 @@ define(function(require) {
 			},
 			
 			"#SD_enbStoreHd":  "vidSdCfg.enbStoreHd",
-			"#SD_vidProt":     "vidSdCfg.vidEncParam.vidProt",
-			"#SD_fmt":         "vidSdCfg.vidEncParam.fmt",
-			"#SD_frameRate":   "vidSdCfg.vidEncParam.frameRate",
-			"#SD_bitRate":     "vidSdCfg.vidEncParam.bitRate",
+			
+			"#SD_vidProt": {
+				observe: "vidSdCfg.vidEncParam.vidProt",
+				selectName: "vidProt"
+			},
+			"#SD_fmt": {
+				observe: "vidSdCfg.vidEncParam.fmt",
+				selectName: "vidFmt"
+			},
+			"#SD_frameRate": {
+				observe: "vidSdCfg.vidEncParam.frameRate",
+				selectName: "frameRate"
+			},
+			"#SD_bitRate": {
+				observe: "vidSdCfg.vidEncParam.bitRate",
+				selectName: "bandwidth"
+			},
+			
 			"#SD_RTSP_enable": "vidSdCfg.vodServeParam.enable",
 			"#SD_RTSP_name":   "vidSdCfg.vodServeParam.name",
 			"#SD_RTMP_enable": "vidSdCfg.pushDumpParam.enable",
 			"#SD_RTMP_url":    "vidSdCfg.pushDumpParam.url",
 			
 			"#YP_enbHandle":   "audCfg.enbHandle",
-			"#YP_audProt":     "audCfg.audEncParam.audProt",
-			"#YP_sampleRate":  "audCfg.audEncParam.sampleRate",
-			"#YP_bitRate":     "audCfg.audEncParam.bitRate",
+			
+			"#YP_audProt": {
+				observe: "audCfg.audEncParam.audProt",
+				selectName: "audProt"
+			},
+			"#YP_sampleRate": {
+				observe: "audCfg.audEncParam.sampleRate",
+				selectName: "sampleRate"
+			},
+			"#YP_bitRate": {
+				observe: "audCfg.audEncParam.bitRate",
+				selectName: "bitRate"
+			},
 			
 			"#enbShowTheme":   "osdCfg.enbShowTheme",
 			"#enbShowMark":    "osdCfg.enbShowMark",
-			"#dispPos":        "osdCfg.dispPos",
+			"#dispPos": {
+				observe: "osdCfg.dispPos",
+				selectName: "dispPos"
+			},
+			
 			"#enbShowVolume":  "osdCfg.enbShowVolume",
-			"#volPos":         "osdCfg.volPos",
+			"#volPos": {
+				observe: "osdCfg.volPos",
+				selectName: "dispPos"
+			},
 			"#enbShowCaption": "osdCfg.enbShowCaption",
-			"#capPos":         "osdCfg.capPos",
-			"#scrollSpeed":    "osdCfg.scrollSpeed",
+			
+			"#capPos": {
+				observe: "osdCfg.capPos",
+				selectName: "captionPos"
+			},
+			"#scrollSpeed": {
+				observe: "osdCfg.scrollSpeed",
+				selectName: "scrollSpeed"
+			},
+			
 			"#caption":        "osdCfg.caption"
 		},
 		
@@ -64,20 +126,109 @@ define(function(require) {
 		},
 		
 		events: {
-			"click .btn-switch6": "toggleSwitch"
+			"click .btn-switch6": "toggleSwitch",
+			"change @ui.equSrc": "getSelectEquSrc"
 		},
 		toggleSwitch: function(e) {
 			$(e.target).toggleClass("active").parents(".fieldBox").eq(0).next(".fieldBox").slideToggle();
 		},
+		getSelectEquSrc: function() {
+			var lxr = this.ui.equSrc.find("option:selected").data();
+			if(_.isEmpty(lxr)) return;
+			this.model.set({
+				"equSrc.camPort": lxr.camPort,
+				"equSrc.equType": lxr.equType,
+				"equSrc.recordId": lxr.recordId,
+				"equSrc.vgaPort": lxr.vgaPort
+			});
+		},
+		setSelectEquSrc: function() {
+			var lxr = _.pick(this.model.toJSON(), "equSrc.camPort", "equSrc.equType", "equSrc.recordId", "equSrc.vgaPort");
+			var isMatch = false;
+			this.ui.equSrc.find("option").each(function() {
+				var $this = $(this);
+				var optData = $this.data();
+				if(lxr["equSrc.camPort"] === optData["camPort"] &&
+				lxr["equSrc.equType"] === optData["equType"] &&
+				lxr["equSrc.recordId"] === optData["recordId"] &&
+				lxr["equSrc.vgaPort"] === optData["vgaPort"]) {
+					isMatch = true;
+					$this.attr("selected", true);
+				}
+			});
+			if(!isMatch) {
+				this.ui.equSrc.get(0).selectedIndex = 0;
+				this.getSelectEquSrc();
+			}
+		},
 		
 		initialize: function() {
+//			this.setSelectBindings(this.bindings);
+		},
+		
+		addVidSrc: function(lxrArr) {
+			this.ui.equSrc.append(this._getOptions(lxrArr)).selectmenu("refresh");
+		},
+		_getOptions: function(lxrArr) {
+			if(_.isEmpty(lxrArr)) return;
+			
+			var $option = $('<option></option>');
+			var $curOption;
+			
+			return _.map(lxrArr, function(lxr) {
+				$curOption = $option.clone();
+				$curOption.data(lxr);
+				$curOption.text(lxr.addrName);
+				return $curOption;
+			});
+		},
+		
+		subVidSrc: function(lxrArr) {
+			if(_.isEmpty(lxrArr)) return;
+			
+			var self = this;
+			this.ui.equSrc.children().each(function() {
+				var $this = $(this);
+				var lxrObj = $this.data();
+				if(self._isLxrInArr(lxrObj, lxrArr)) {
+					$this.remove();
+				}
+			}).end().selectmenu("refresh");
+		},
+		
+		_isLxrInArr: function(lxrObj, lxrArr) {
+			var equType = lxrObj.equType;
+			var recordId = lxrObj.recordId;
+			
+			return _.some(lxrArr, function(lxr) {
+				if(equType === lxr.equType && (equType === Const.EquType_MP || recordId === lxr.recordId)) {
+					return true;
+				}
+			});
 		},
 		
 		onRender: function() {
+			//注册事件放在这里而不是initialize方法中是因为
+			//先调用了initialize方法，后调用了destroy方法
+			//这样导致卸载了所有事件，因为Radio事件是全局的
+			Radio.channel("yhz").on("addLxr", this.addVidSrc, this);
+			Radio.channel("yhz").on("subLxr", this.subVidSrc, this);
+			
 			this.stickit().fixCheckbox();
+			this.ui.equSrc.append(this._getOptions(this._getVidSrcArr()));
+			this.setSelectEquSrc();
 		},
+		_getVidSrcArr: function() {
+			return [{equType: Const.EquType_MP, addrName: "多画面"}].concat(this.options.vidSrcArr);
+		},
+		
 		onAttach: function() {
 			this.selectmenu();
+		},
+		
+		onDestroy: function() {
+			Radio.channel("yhz").off("addLxr", this.addVidSrc);
+			Radio.channel("yhz").off("subLxr", this.subVidSrc);
 		}
 	});
 	

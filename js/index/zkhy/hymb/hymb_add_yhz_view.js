@@ -50,8 +50,11 @@ define(function(require) {
 			});
 			
 			var addLxrArr = this._getLxrDataById(addLxrIdArr);
-			Radio.channel("dhm").command("addDhmlxr", addLxrArr);
-			Radio.channel("spjz").command("addMatrix", addLxrArr);
+//			Radio.channel("dhm").command("addDhmlxr", addLxrArr);
+//			Radio.channel("spjz").command("addMatrix", addLxrArr);
+//			Radio.channel("lylx").command("addVidSrc", addLxrArr);
+			
+			Radio.channel("yhz").trigger("addLxr", addLxrArr);
 		},
 		delLxr: function() {
 			var subLxrIdArr = this.ui.box_right.find(".active").map(function() {
@@ -62,8 +65,11 @@ define(function(require) {
 			}).get();
 			
 			var subLxrArr = this._getLxrDataById(subLxrIdArr);
-			Radio.channel("dhm").command("subDhmlxr", subLxrArr);
-			Radio.channel("spjz").command("subMatrix", subLxrArr);
+//			Radio.channel("dhm").command("subDhmlxr", subLxrArr);
+//			Radio.channel("spjz").command("subMatrix", subLxrArr);
+//			Radio.channel("lylx").command("subVidSrc", subLxrArr);
+
+			Radio.channel("yhz").trigger("subLxr", subLxrArr);
 		},
 		_getLxrDataById: function(idArr) {
 			var allLxr = this.options.allLxr;
@@ -132,7 +138,7 @@ define(function(require) {
 		onRender: function() {
 			//初始化与会者页面右侧已经选择的联系人
 			//由于页面复用，有些页面不需要初始化，所以需要做判断
-//			this.loadHymb(this.model.get("venueId"));
+			this.loadHymb(this.model.get("venueId"));
 		},
 		
 		onDestroy: function() {

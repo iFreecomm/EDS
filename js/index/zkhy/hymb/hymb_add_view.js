@@ -36,6 +36,7 @@ define(function(require) {
 			var subPicInfo = Radio.channel("dhm").request("getSubPicInfo");
 			
 			var matrixInOut = Radio.channel("spjz").request("getMatrixInOut");
+			var recList = Radio.channel("lzbm").request("getRecList");
 			
 			this.model.set({
 				"venueId": yhzArr,
@@ -45,7 +46,8 @@ define(function(require) {
 				"subPicCnt": subPicInfo.length,
 				
 				"matrixInOut": matrixInOut,
-				"matrixNum": matrixInOut.length
+				"matrixNum": matrixInOut.length,
+				"recorder": {recList:recList,recNum:recList.length}
 			})
 			.save()
 			.done(function() {

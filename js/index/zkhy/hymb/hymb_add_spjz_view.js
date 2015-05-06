@@ -60,8 +60,8 @@ define(function(require) {
 			Radio.channel("spjz").reset();
 			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
 			
-			Radio.channel("spjz").comply("addMatrix", this.addMatrix, this);
-			Radio.channel("spjz").comply("subMatrix", this.subMatrix, this);
+			Radio.channel("yhz").on("addLxr", this.addMatrix, this);
+			Radio.channel("yhz").on("subLxr", this.subMatrix, this);
 		},
 		
 		getMatrixInOut: function() {
