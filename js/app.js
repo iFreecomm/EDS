@@ -13,6 +13,7 @@ define(function(require) {
 	var ZkhyRouter = require("web/index/zkhy/zkhy_router");
 	var HykzRouter = require("web/index/hykz/hykz_router");
 	var PzRouter = require("web/index/pz/pz_router");
+	var WjllRouter = require("web/index/wjll/wjll_router");
 	
 	require("stickit");
 	require("jqueryui");
@@ -47,6 +48,7 @@ define(function(require) {
 			new ZkhyRouter(opt);
 			new HykzRouter(opt);
 			new PzRouter(opt);
+			new WjllRouter(opt);
 		},
 		
 		initRenderer: function() {
@@ -100,6 +102,9 @@ define(function(require) {
 			});
 			Handlebars.registerHelper("addOne", function(index) {
 				return index+1; //索引加1
+			});
+			Handlebars.registerHelper("evenOdd", function(index) {
+				return index % 2 === 1 ? "odd" : "even";
 			});
 			Handlebars.registerHelper("isActive", function(active) {
 				if(active === 1) return "active"; //判断按钮是否是on状态

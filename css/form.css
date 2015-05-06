@@ -241,6 +241,19 @@ input[type=radio] {
 .btn-switch6.active {
 	background: url(../img/form/advance2.png) no-repeat right 10px;
 }
+.searchBtn {
+	padding-left: 50px;
+	padding-right: 20px;
+	margin-left: 50px;
+	height: 38px;
+	background: #1E89B5 url(../img/form/search.png) no-repeat 10px center;
+	color: #fff;
+	font-size: 16px;
+	text-shadow: none;
+}
+.searchBtn:hover {
+	background-color: #F47900;
+}
 /******水平slider样式******/
 .slider.ui-slider-horizontal {
 	float: left;

@@ -1,0 +1,127 @@
+{
+	"code": 0,
+	"data": {
+		"fileList": [
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件2",
+				"fileSize": "3M",
+				"playTime": "00:20:30",
+				"recordTime": "2015-06-06 01:00:00",
+				"confNum": 222,
+				"confName": "会议名称2",
+				"convenor": "召集人2",
+				"fileType": "视频文件",
+				"filePath": "硬盘B",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件2",
+				"fileSize": "3M",
+				"playTime": "00:20:30",
+				"recordTime": "2015-06-06 01:00:00",
+				"confNum": 222,
+				"confName": "会议名称2",
+				"convenor": "召集人2",
+				"fileType": "视频文件",
+				"filePath": "硬盘B",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			},
+			{
+				"fileName": "文件1",
+				"fileSize": "300M",
+				"playTime": "00:10:20",
+				"recordTime": "2015-05-05 00:00:00",
+				"confNum": 111,
+				"confName": "会议名称1",
+				"convenor": "召集人1",
+				"fileType": "视频文件",
+				"filePath": "硬盘A",
+				"realPath": "/media/video.m4a"
+			}
+		]
+	}
+}

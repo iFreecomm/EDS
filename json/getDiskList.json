@@ -1,0 +1,27 @@
+{
+	"code": 0,
+	"data": {
+		"diskList": [
+			{
+				"diskName": "硬盘A",
+				"availbleSize": "300M",
+				"totalSize": "1T"
+			},
+			{
+				"diskName": "硬盘B",
+				"availbleSize": "2T",
+				"totalSize": "2T"
+			},
+			{
+				"diskName": "硬盘C",
+				"availbleSize": "3T",
+				"totalSize": "3T"
+			},
+			{
+				"diskName": "硬盘D",
+				"availbleSize": "4T",
+				"totalSize": "4T"
+			}
+		]
+	}
+}
