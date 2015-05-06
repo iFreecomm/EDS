@@ -12,7 +12,7 @@
 		<th>操作</th>
 	</tr>
 	{{#each items}}
-		<tr class="{{evenOdd @index}}">
+		<tr class="{{evenOdd @index}}" data-id="{{filePath}}">
 			<td>
 				<input type="checkbox" name="fileName" id="fileName{{@index}}"/>
 				<label for="fileName{{@index}}" class="checkbox-label">{{fileName}}</label>
@@ -26,9 +26,9 @@
 			<td>{{fileType}}</td>
 			<td>{{filePath}}</td>
 			<td>
-				<a href="javascript:void(0);">播放</a>
-				<a href="{{filePath}}">下载</a>
-				<a href="javascript:void(0);">删除</a>
+				<a href="javascript:void(0);" class="playBtn">播放</a>
+				<a href="{{filePath}}" class="downloadBtn">下载</a>
+				<a href="javascript:void(0);" class="deleteBtn">删除</a>
 			</td>
 		</tr>
 	{{/each}}

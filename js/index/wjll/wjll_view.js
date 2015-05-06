@@ -11,6 +11,42 @@ define(function(require) {
 			container: "#fileListContainer"
 		},
 		
+		events: {
+			"click .burnDisk": "burnDisk",
+			"click .batchDelete": "batchDelete",
+			"click .searchBtn": "searchFile",
+		},
+		
+		burnDisk: function() {
+			var idArr = Radio.channel("fileList").request("getSelectedFiles");
+		},
+		
+		batchDelete: function() {
+			Radio.channel("fileList").command("batchDelete");
+		},
+		
+		searchFile: function() {
+			
+		},
+		
+		_getSearchTerms: function() {
+			return {
+				startTime: this.$("startTime").val(),
+				endTime: this.$("endTime").val(),
+				diskId: +this.$("diskId").val(),
+				fileType: +this.$("fileType").val(),
+				confNum: -1,
+				confName: "",
+				convenor: ""
+			};
+		},
+		_getVal: function(key) {
+			return this.$(key).val();
+		},
+		_getNumberVal: function() {
+			
+		},
+		
 		onBeforeShow: function(view, region, options) {
 			this.showChildView("container", options.fileView);
 		},

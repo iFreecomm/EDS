@@ -1,5 +1,6 @@
 define(function(require) {
 	var $ = require("jquery");
+	var Radio = require("radio");
 	var FormView = require("web/common/formView");
 	var Handlebars = require("handlebars");
 	
@@ -10,18 +11,18 @@ define(function(require) {
 		template: Handlebars.compile(tmpl),
 		
 		events: {
-			"click .delBtn": "delFile"
+			"click .deleteBtn": "deleteFile"
 		},
-		delFile: function(e) {
+		deleteFile: function(e) {
 			e.preventDefault();
-			var $btn = $(e.target);
-			var id = $btn.data("id");
+			var $tr = $(e.target).parents("tr");
+			var id = $tr.data("id");
 			
-			$.getJSON("delAddrBook.psp", JSON.stringify({
-				recordId: id
+			$.getJSON("deleteFile.psp", JSON.stringify({
+				fileId: id
 			})).done(function(res) {
 				if(res.code === 0) {
-					$btn.parents("tr").remove();
+					$tr.remove();
 				} else {
 					alert("删除文件失败！");	
 				}
@@ -31,8 +32,44 @@ define(function(require) {
 			
 		},
 		
+		initialize: function() {
+			Radio.channel("fileList").comply("batchDelete", this.batchDelete, this);
+			Radio.channel("fileList").reply("getSelectedFiles", this.getSelectedFiles, this);
+		},
+		
+		batchDelete: function() {
+			var idArr = this.getSelectedFiles();
+			var self = this;
+			
+			$.getJSON("deleteFile.psp", JSON.stringify({
+				fileIdArr: idArr
+			})).done(function(res) {
+				if(res.code === 0) {
+					self.$("tr").each(function() {
+						var $this = $(this);
+						var id = $this.data("id");
+						if(_.contains(idArr, id)) { $this.remove(); }
+					});
+				} else {
+					alert("批量删除文件失败！");	
+				}
+			}).fail(function() {
+				alert("批量删除文件失败！");
+			});
+		},
+		
+		getSelectedFiles: function() {
+			return this.$("[type=checkbox]:checked").map(function() {
+				return $(this).parents("tr").data("id");
+			}).get();
+		},
+		
 		onRender: function() {
 			this.fixCheckbox();
+		},
+		
+		onDestroy: function() {
+			Radio.channel("fileList").reset();
 		}
 	});
 	
