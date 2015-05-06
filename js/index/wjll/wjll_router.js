@@ -8,7 +8,7 @@ define(function(require) {
 		},
 		
 		routes: {
-			"wjll123": "wjll"
+			"wjll": "wjll"
 		},
 		
 		wjll: function() {

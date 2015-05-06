@@ -32,11 +32,6 @@ define(function(require) {
 			
 		},
 		
-		initialize: function() {
-			Radio.channel("fileList").comply("batchDelete", this.batchDelete, this);
-			Radio.channel("fileList").reply("getSelectedFiles", this.getSelectedFiles, this);
-		},
-		
 		batchDelete: function() {
 			var idArr = this.getSelectedFiles();
 			var self = this;
@@ -65,6 +60,8 @@ define(function(require) {
 		},
 		
 		onRender: function() {
+			Radio.channel("fileList").comply("batchDelete", this.batchDelete, this);
+			Radio.channel("fileList").reply("getSelectedFiles", this.getSelectedFiles, this);
 			this.fixCheckbox();
 		},
 		

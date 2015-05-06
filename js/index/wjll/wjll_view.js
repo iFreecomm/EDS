@@ -4,17 +4,23 @@ define(function(require) {
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/wjll/wjll_template.html");
 	
+	var FileView = require("web/index/wjll/file_view");
+	var FileCollection = require("web/index/wjll/file_collection");
+	
 	var WjllView = Mn.LayoutView.extend({
 		id: "wjll_show",
 		template: Handlebars.compile(tmpl),
 		regions: {
-			container: "#fileListContainer"
+			fileContainer: "#fileContainer",
+			searchTermsContainer: "#searchTermsContainer"
 		},
 		
 		events: {
 			"click .burnDisk": "burnDisk",
 			"click .batchDelete": "batchDelete",
-			"click .searchBtn": "searchFile",
+			
+			"click .prevPage": "prevPage",
+			"click .nextPage": "nextPage"
 		},
 		
 		burnDisk: function() {
@@ -25,48 +31,56 @@ define(function(require) {
 			Radio.channel("fileList").command("batchDelete");
 		},
 		
-		searchFile: function() {
-			
+		prevPage: function() {
+			this.searchTerms = this.searchTerms || this.options.searchTerms;
+			this.pageNum--;
+			this._search();
 		},
 		
-		_getSearchTerms: function() {
-			return {
-				startTime: this.$("startTime").val(),
-				endTime: this.$("endTime").val(),
-				diskId: +this.$("diskId").val(),
-				fileType: +this.$("fileType").val(),
-				confNum: -1,
-				confName: "",
-				convenor: ""
-			};
+		nextPage: function() {
+			this.searchTerms = this.searchTerms || this.options.searchTerms;
+			this.pageNum++;
+			this._search();
 		},
-		_getVal: function(key) {
-			return this.$(key).val();
+		
+		initialize: function() {
+			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
 		},
-		_getNumberVal: function() {
-			
+		
+		searchFile: function(searchTerms) {
+			this.searchTerms = searchTerms;
+			this.pageNum = 0;
+			this._search();
+		},
+		
+		_search: function() {
+			var self = this;
+			var collection = new FileCollection();
+			collection.fetch({
+				reset: true,
+				data: JSON.stringify({
+					searchTerms: this.searchTerms,
+					pageNum: this.pageNum
+				})
+			}).done(function() {
+				self.showChildView("fileContainer", new FileView({
+					collection: collection
+				}));
+			});
 		},
 		
 		onBeforeShow: function(view, region, options) {
-			this.showChildView("container", options.fileView);
+			this.showChildView("searchTermsContainer", options.searchTermsView);
+			this.showChildView("fileContainer", options.fileView);
 		},
 		
 		onAttach: function() {
 			Radio.channel("index").command("activeLink");
-			this.selectmenu();
 		},
 		
-		// 使用jqueryui中的selectmeu控件
-		selectmenu: function() {
-			this.$("select").selectmenu({
-				change: this._selectChangeEvent,
-				appendTo: this.$(".formBox")
-			});
-			return this;
-		},
-		_selectChangeEvent: function(event, ui) {
-			$(this).change();
-		},
+		onDestroy: function() {
+			Radio.channel("wjll").reset();
+		}
 	});
 	
 	return WjllView;
