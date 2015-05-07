@@ -111,8 +111,6 @@ define(function(require) {
 		},
 		addCheckboxEvent: function() {
 			this.$el.on("click", ".checkbox-label", function() {
-				console.log("checkbox");
-				
 				var $label = $(this);
 				var $checkbox = $label.prev();
 				var box = $checkbox.get(0);
@@ -138,8 +136,6 @@ define(function(require) {
 		},
 		addRadioEvent: function() {
 			this.$el.on("click", ".radio-label", function() {
-				console.log("radio");
-				
 				var $label = $(this);
 				if($label.is(".active")) return;
 				
