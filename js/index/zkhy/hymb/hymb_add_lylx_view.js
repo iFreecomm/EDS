@@ -163,7 +163,7 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-//			this.setSelectBindings(this.bindings);
+			this.setSelectBindings(this.bindings);
 		},
 		
 		addVidSrc: function(lxrArr) {
