@@ -31,6 +31,41 @@
 }
 
 #wjll_show .form-btns {
-	text-align: right;
 	padding: 0 50px;
+}
+
+#burnDiskContainer .popup {
+	width: 550px;
+	margin-left: -275px;
+	margin-top: -200px;
+	box-shadow: 0 0 30px #333;
+}
+#burnDiskContainer .popup-head {
+	line-height: 50px;
+	height: 50px;
+	background: #1e89b5;
+}
+#burnDiskContainer .closeBtn {
+	width: 50px;
+	height: 50px;
+	float: right;
+	background: url(../img/del.png) no-repeat center;
+}
+#burnDiskContainer .closeBtn:hover {	
+	background-color: #F47900;
+}
+#burnDiskContainer .popup-body {
+	background: #f4f4f4;
+	overflow: hidden;
+}
+#burnDiskContainer .formLine {
+	margin: 60px 0;
+}	
+#burnDiskContainer .form-btns {
+	text-align: center;
+	margin: 40px 0;
+}
+#burnDiskContainer .diskInfo {
+	line-height: 38px;
+	margin-left: 20px;
 }

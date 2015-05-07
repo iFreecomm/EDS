@@ -19,10 +19,18 @@ html, body { width: 100%; height: 100%; min-width: 1000px; }
 .h100 { height: 100%; }
 
 .tip { padding: 20px 50px; margin: 0; text-align: left; color: #353535; font-size: 18px; }
-.mask { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999; }
+.mask { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999; opacity: .5; filter: alpha(opacity=50); background: #000; }
 .loading { display: none; position: fixed; left: 50%; top: 50%; width: 128px; height: 128px; margin-left: -64px; margin-top: -100px; z-index: 9999; }
 .noText { font-size: 0; }
 .hidden { display: none; }
+
+.popup {
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	z-index: 999;
+}
 
 /*************两端对齐***************/
 .justify-list {
