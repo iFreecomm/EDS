@@ -15,7 +15,7 @@ define(function(require) {
 			this.model.fetch(this.model.getFetchOptions({
 				groupNum: this._getNum()
 			})).done(function() {
-				self.renderData();
+				self.renderData().initCheckboxClass().initRadioClass();
 			});
 		},
 		saveBzhy: function() {
@@ -55,6 +55,7 @@ define(function(require) {
 			$el.find("[name=groupNum][value=" + groupNum + "]").prop("checked", true);
 			var audInPort = model.get("audInPort");
 			var $MICs = $el.find("[name=Mic]");
+			$MICs.prop("checked", false);
 			_.each(audInPort, function(port) {
 				$MICs.filter("[value=" + port + "]").prop("checked", true);
 			});

@@ -15,10 +15,10 @@ define(function(require) {
 		bindings: {
 			"#enbRec":         "enbRec",
 			
-			"#camPort":        "equSrc.camPort",
-			"#equType":        "equSrc.equType",
-			"#recordId":       "equSrc.recordId",
-			"#vgaPort":        "equSrc.vgaPort",
+//			"#camPort":        "equSrc.camPort",
+//			"#equType":        "equSrc.equType",
+//			"#recordId":       "equSrc.recordId",
+//			"#vgaPort":        "equSrc.vgaPort",
 			//"#equSrc":         "equSrc",
 			
 			"#HD_enbHandle":   {

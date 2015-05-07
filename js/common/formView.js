@@ -45,7 +45,7 @@ define(function(require) {
 			this.$("select").selectmenu({
 				change: this._selectChangeEvent,
 				appendTo: this.$(".formBox")
-			});
+			}).change();
 			return this;
 		},
 		_selectChangeEvent: function(event, ui) {
@@ -102,12 +102,12 @@ define(function(require) {
 		
 		//自定义checkbox
 		fixCheckbox: function() {
-			this.initCheckboxClass();
-			this.addCheckboxEvent();
+			this.initCheckboxClass().addCheckboxEvent();
 			return this;
 		},
 		initCheckboxClass: function() {
 			this.$(".checkbox-label").each(this._initClass);
+			return this;
 		},
 		addCheckboxEvent: function() {
 			this.$el.on("click", ".checkbox-label", function() {
@@ -127,12 +127,12 @@ define(function(require) {
 		
 		//自定义radio
 		fixRadio: function() {
-			this.initRadioClass();
-			this.addRadioEvent();
+			this.initRadioClass().addRadioEvent();
 			return this;
 		},
 		initRadioClass: function() {
 			this.$(".radio-label").each(this._initClass);
+			return this;
 		},
 		addRadioEvent: function() {
 			this.$el.on("click", ".radio-label", function() {
