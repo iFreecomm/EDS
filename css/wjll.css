@@ -69,3 +69,20 @@
 	line-height: 38px;
 	margin-left: 20px;
 }
+
+#videoView,
+#audioView {
+	position: fixed;
+	left: 3px;
+	bottom: 1px;
+}
+
+.jp-audio,
+.jp-video,
+.jp-progress,
+.jp-current-time,
+.jp-duration,
+.jp-controls,
+.jp-volume-bar {
+	box-sizing: content-box;
+}

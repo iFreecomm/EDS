@@ -4,6 +4,7 @@ requirejs.config({
     	web: "../../../js",
         jquery: "jquery",
         mousewheel: "jquery.mousewheel",
+        jplayer: "jplayer/jquery.jplayer",
         jqueryui: "jqueryui/jquery-ui",
         datepickerzhCN: "jqueryui/datepicker-zh-CN",
         timepicker: "jqueryui/jquery-ui-timepicker-addon",

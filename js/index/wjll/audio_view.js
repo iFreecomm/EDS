@@ -1,51 +1,58 @@
 define(function(require) {
-	var $ = require("jquery");
-	var Radio = require("radio");
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var tmpl = require("text!web/index/wjll/audio_template.html");
 	
-	var tmpl = require("text!web/index/wjll/burnDisk_template.html");
-	
-	var BurnDiskView = FormView.extend({
+	var AudioView = Mn.ItemView.extend({
+		id: "audioView",
 		template: tmpl,
 		
-		events: {
-			"click .burnDiskBtn": "burnDisk",
-			"click .cancelBtn": "cancel",
-			"click .closeBtn": "cancel",
-			"change #diskId": "changeAvailableSize"
+		play: function(opt) {
+			this.show();
+			$("#audio_jplayer").jPlayer("setMedia", {
+				title: opt.title,
+				m4a: opt.path
+			}).jPlayer("play");
 		},
-		burnDisk: function() {
-			var selectedFiles = Radio.channel("fileList").request("getSelectedFiles");
-			var diskId = this.$("#diskId").val();
-			
-			$.getJSON("burnDisk.psp", JSON.stringify({
-				pathInfo: selectedFiles,
-				diskId: diskId
-			})).done(function() {
-				
-			}).fail(function() {
-				
+		
+		pause: function() {
+			$("#audio_jplayer").jPlayer("pause");
+		},
+		
+		hide: function() {
+			this.$el.css({
+				width: 0,
+				height: 0
 			});
-		},
-		cancel: function() {
-			this.$(".mask").hide();
-			this.$(".popup").hide();
-		},
-		changeAvailableSize: function() {
-			var size = this.$("#diskId").find("option:selected").data("availablesize");
-			this.$(".diskInfo").children("strong").text(size);
 		},
 		
 		show: function() {
-			this.$(".mask").show();
-			this.$(".popup").show();
+			this.$el.css({
+				width: "auto",
+				height: "auto"
+			});
 		},
 		
 		onAttach: function() {
-			this.selectmenu();
+			var self = this;
+			$("#audio_jplayer").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						title: self.options.opt.title,
+						m4a: self.options.opt.path,
+					}).jPlayer("play");
+				},
+				cssSelectorAncestor: "#audio_container",
+				swfPath: "js/lib/pro/jplayer",
+				supplied: "m4a",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+			});
 		}
-		
 	});
 	
-	return BurnDiskView;
+	return AudioView;
 });

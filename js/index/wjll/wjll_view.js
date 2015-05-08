@@ -8,6 +8,8 @@ define(function(require) {
 	var FileCollection = require("web/index/wjll/file_collection");
 	
 	var BurnDiskView = require("web/index/wjll/burnDisk_view");
+	var VideoView = require("web/index/wjll/video_view");
+	var AudioView = require("web/index/wjll/audio_view");
 	
 	var WjllView = Mn.LayoutView.extend({
 		id: "wjll_show",
@@ -15,7 +17,9 @@ define(function(require) {
 		regions: {
 			fileContainer: "#fileContainer",
 			searchTermsContainer: "#searchTermsContainer",
-			burnDiskContainer: "#burnDiskContainer"
+			burnDiskContainer: "#burnDiskContainer",
+			videoViewContainer: "#videoViewContainer",
+			audioViewContainer: "#audioViewContainer"
 		},
 		
 		events: {
@@ -27,16 +31,11 @@ define(function(require) {
 		},
 		
 		burnDisk: function() {
-			var idArr = Radio.channel("fileList").request("getSelectedFiles");
-			if(_.isEmpty(idArr)) {
-				alert("请至少选择一个文件后刻录！");
-				return;
-			}
 			if(!this.burnDiskView) {
 				this.burnDiskView = new BurnDiskView();
 				this.showChildView("burnDiskContainer", this.burnDiskView);
 			}
-			this.burnDiskView.show();
+			this.burnDiskView.preBurnDisk();
 		},
 		
 		batchDelete: function() {
@@ -57,12 +56,66 @@ define(function(require) {
 		
 		initialize: function() {
 			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
+			Radio.channel("wjll").comply("playFile", this.playFile, this);
 		},
 		
 		searchFile: function(searchTerms) {
 			this.searchTerms = searchTerms;
 			this.pageNum = 0;
 			this._search();
+		},
+		
+		playFile: function(opt) {
+			var path = opt.path;
+			if(this._isVideo(path)) {
+				this.closeAudio();
+				this.playVideoFile(opt);
+			} else if(this._isAudio(path)) {
+				this.closeVideo();
+				this.playAudioFile(opt);
+			}
+		},
+		_isVideo: function(path) {
+			return /\.mp4/.test(path);
+		},
+		_isAudio: function(path) {
+			return /\.mp3/.test(path);
+		},
+		
+		closeVideo: function() {
+			if(this.videoView) {
+				this.videoView.pause();
+				this.videoView.hide();
+			}
+		},
+		
+		closeAudio: function() {
+			if(this.audioView) {
+				this.audioView.pause();
+				this.audioView.hide();
+			}
+		},
+		
+		playVideoFile: function(opt) {
+			if(!this.videoView) {
+				this.videoView = new VideoView({
+					opt: opt
+				});
+				this.showChildView("videoViewContainer", this.videoView);
+			} else {
+				this.videoView.play(opt);
+			}
+		},
+		
+		playAudioFile: function(opt) {
+			if(!this.audioView) {
+				this.audioView = new AudioView({
+					opt: opt
+				});
+				this.showChildView("audioViewContainer", this.audioView);
+			} else {
+				this.audioView.play(opt);
+			}
 		},
 		
 		_search: function() {

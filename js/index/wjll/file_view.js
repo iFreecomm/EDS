@@ -11,7 +11,18 @@ define(function(require) {
 		template: Handlebars.compile(tmpl),
 		
 		events: {
+			"click .playBtn": "playFile",
 			"click .deleteBtn": "deleteFile"
+		},
+		playFile: function(e) {
+			e.preventDefault();
+			var index = $(e.target).parents("tr").index() - 1;
+			var model = this.collection.at(index);
+			
+			Radio.channel("wjll").command("playFile", {
+				title: model.get("fileName"),
+				path: model.get("realPath")
+			});
 		},
 		deleteFile: function(e) {
 			e.preventDefault();

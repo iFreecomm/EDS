@@ -14,12 +14,21 @@ define(function(require) {
 			"click .closeBtn": "cancel",
 			"change #diskId": "changeAvailableSize"
 		},
+		preBurnDisk: function() {
+			this.selectedFiles = Radio.channel("fileList").request("getSelectedFiles");
+			
+			if(_.isEmpty(this.selectedFiles)) {
+				alert("请至少选择一个文件后刻录！");
+				return;
+			}
+			
+			this.show();
+		},
 		burnDisk: function() {
-			var selectedFiles = Radio.channel("fileList").request("getSelectedFiles");
 			var diskId = this.$("#diskId").val();
 			
 			$.getJSON("burnDisk.psp", JSON.stringify({
-				pathInfo: selectedFiles,
+				pathInfo: this.selectedFiles,
 				diskId: diskId
 			})).done(function() {
 				

@@ -20,6 +20,7 @@ define(function(require) {
 	require("timepicker");
 	require("datepickerzhCN");
 	require("mousewheel");
+	require("jplayer");
 	
 	var AppView = Mn.LayoutView.extend({
 		el: document,

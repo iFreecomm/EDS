@@ -12,7 +12,7 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A1",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video1.mp4"
 			},
 			{
 				"fileName": "文件2",
@@ -24,7 +24,7 @@
 				"convenor": "召集人2",
 				"fileType": "视频文件",
 				"filePath": "硬盘B2",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video2.mp4"
 			},
 			{
 				"fileName": "文件1",
@@ -36,7 +36,7 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A3",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video3.mp4"
 			},
 			{
 				"fileName": "文件1",
@@ -48,10 +48,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A4",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video4.mp4"
 			},
 			{
-				"fileName": "文件1",
+				"fileName": "安迪",
 				"fileSize": "300M",
 				"playTime": "00:10:20",
 				"recordTime": "2015-05-05 00:00:00",
@@ -60,10 +60,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A5",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/audio/Andy.mp3"
 			},
 			{
-				"fileName": "文件1",
+				"fileName": "死不了",
 				"fileSize": "300M",
 				"playTime": "00:10:20",
 				"recordTime": "2015-05-05 00:00:00",
@@ -72,10 +72,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A6",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/audio/sbl.mp3"
 			},
 			{
-				"fileName": "文件2",
+				"fileName": "忘忧草",
 				"fileSize": "3M",
 				"playTime": "00:20:30",
 				"recordTime": "2015-06-06 01:00:00",
@@ -84,7 +84,7 @@
 				"convenor": "召集人2",
 				"fileType": "视频文件",
 				"filePath": "硬盘B7",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/audio/wyc.mp3"
 			},
 			{
 				"fileName": "文件1",
@@ -96,7 +96,7 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A8",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video4.mp4"
 			},
 			{
 				"fileName": "文件1",
@@ -108,7 +108,7 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A9",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video1.mp4"
 			},
 			{
 				"fileName": "文件1",
@@ -120,7 +120,7 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "硬盘A10",
-				"realPath": "/media/video.m4a"
+				"realPath": "media/video/video2.mp4"
 			}
 		]
 	}
