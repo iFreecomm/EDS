@@ -6,7 +6,8 @@ define(function(require) {
 		defaults: {
 			addrName: "",
 			equType: 0,
-			camPort: 0,
+			camPort: 3,
+			vagPort:0,
 			presetNum: 0,
 			voiIncentive: 1,
 			micPort: [],

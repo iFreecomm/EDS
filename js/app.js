@@ -3,6 +3,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
+	var Const = require("web/common/const");
 	
 	var Radio = require("radio");
 	var SelectObj = require("web/common/select");
@@ -82,7 +83,15 @@ define(function(require) {
 			Handlebars.registerHelper("getLxrInfo", function(equType) {
 				var result;
 				if(equType === 0) {
-					result = this.camPort;
+					if(this.camPort != Const.VidInPort_Cnt)
+					{
+						result = this.camName;
+					}
+					if(this.vgaPort != Const.VidInPort_Cnt)
+					{
+						result = result?(result+"<br/>"+this.vgaName):this.vgaName;
+					}
+					
 				} else if(equType === 1 || equType === 2) {
 					result = "IP:"+this.ip+"<br/>号码:"+this.e164;
 				} else if(equType === 3) {

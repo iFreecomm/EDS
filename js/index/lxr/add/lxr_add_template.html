@@ -16,8 +16,20 @@
 			<span class="lineName">摄像机：</span>
 			<div class="fieldBox">
 				<select name="camPort" id="camPort">
+					<option data-stickit-bind-val={{vidInCnt}}>--请选择--</option>
 					{{#each sdiInfo}}
 						<option data-stickit-bind-val={{camPort}}>{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>
+		<div class="formLine" equType="0">
+			<span class="lineName">VGA：</span>
+			<div class="fieldBox">
+				<select name="vgaPort" id="vgaPort">
+					<option data-stickit-bind-val={{vidInCnt}}>--请选择--</option>
+					{{#each vgaInfo}}
+						<option data-stickit-bind-val={{vgaPort}}>{{name}}</option>
 					{{/each}}
 				</select>
 			</div>

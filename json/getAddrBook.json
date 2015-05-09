@@ -3,7 +3,7 @@
   "data": {
     "bookInfo": [
       {
-        "addrName": "name1",
+        "addrName": "我是中文",
         "camPort": 0,
         "equType": 0,
         "initial": 0,
@@ -11,7 +11,7 @@
         "vgaPort": 0
       },
       {
-        "addrName": "name2",
+        "addrName": "我要乱码",
         "equType": 1,
         "initial": 0,
         "ip": "0.0.0.0",

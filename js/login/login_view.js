@@ -35,7 +35,7 @@ define(function(require) {
 			if(res.code === 0) {
     			Backbone.history.navigate("portal", {trigger: true});
     		} else {
-    			console.log("login failed");
+    			//console.log("login failed");
     		}
 		}
 	});

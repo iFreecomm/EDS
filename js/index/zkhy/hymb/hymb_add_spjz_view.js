@@ -78,8 +78,8 @@ define(function(require) {
 					"equSrc": {
 						equType: _.isNumber(src.equType) ? src.equType : Const.EquType_Cnt,
 						recordId: src.recordId || 0,
-						camPort: src.camPort || 0,
-						vgaPort: src.vgaPort || 0
+						camPort: src.camPort || Const.VidInPort_Cnt,
+						vgaPort: src.vgaPort || Const.VidInPort_Cnt
 					},
 					"equDst": {
 						equType: _.isNumber(dest.equType) ? dest.equType : Const.EquType_Cnt,
@@ -201,6 +201,18 @@ define(function(require) {
 				
 				switch (equType) {
 					case Const.EquType_SDI:
+						if(src.recordId === curRow.recordId){
+							if(src.camPort != Const.VidInPort_Cnt && src.camPort == curRow.camPort)
+			    			{
+			    				return i;
+			    			}
+			    			
+			    			if(src.vgaPort != Const.VidInPort_Cnt && src.vgaPort == curRow.vgaPort)
+			    			{
+			    				return i;
+			    			}
+						}
+						break;
 					case Const.EquType_H323:
 					case Const.EquType_SIP:
 					case Const.EquType_RTSP:
@@ -275,7 +287,33 @@ define(function(require) {
 		},
 		
 		_getRowHead: function() {
-			var srcArr = [].concat(this.lxrArr || []);
+			var addrArr = [].concat(this.lxrArr || []);
+			var srcArr = [];
+			_.each(addrArr, function(lxr) {
+			    if(lxr.equType == Const.EquType_SDI) {
+			    	var addrName = lxr.addrName;
+			    	var camInfo = _.extend({}, lxr);
+			    	var vgaInfo = _.extend({}, lxr);
+			    	
+			    	if(lxr.camPort != Const.VidInPort_Cnt && lxr.vgaPort != Const.VidInPort_Cnt)
+			    	{
+			    		camInfo.addrName = addrName+" \r"+lxr.camName;
+			    		camInfo.vgaPort = Const.VidInPort_Cnt;
+			    		srcArr.push(camInfo);
+			    		
+			    		vgaInfo.addrName = addrName+" \r"+lxr.vgaName;
+			    		vgaInfo.camPort = Const.VidInPort_Cnt;
+			    		srcArr.push(vgaInfo);
+			    	}
+			 		else
+			 		{
+			 			srcArr.push(lxr);
+			 		}
+				}else{
+					srcArr.push(lxr);
+				}
+			});
+			
 			srcArr.push({equType:Const.EquType_MP,addrName:"多画面"});
 			srcArr.push({equType:Const.EquType_PLAYER,addrName:"播放器"});
 			return srcArr;

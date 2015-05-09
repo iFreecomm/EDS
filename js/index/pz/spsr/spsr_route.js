@@ -15,9 +15,9 @@ define(function(require) {
 			this.spsrModel = new SpsrModel();
 			
 			$.when(
-				$.getJSON("getSdiPort.psp"),
+				$.getJSON("getSdiPort.psp"),//sdi ‰»Î
 				
-				$.getJSON("getVgaPort.psp")
+				$.getJSON("getVgaPort.psp")//vga ‰»Î
 			).done(function(sdi,vga) {
 				self.SDI = [];
 				if(sdi[0].data && sdi[0].data.sdiInfo)

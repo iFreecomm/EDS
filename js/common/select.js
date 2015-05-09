@@ -38,7 +38,7 @@ define(function(require) {
 			{label: "8M",   value: 7680000}
 		],
 		"audProt":[
-			{label: "AUTO",     value: Const.AudCode_Auto},
+			//{label: "AUTO",     value: Const.AudCode_Auto},
 			{label: "G.711A",   value: Const.AudCode_G711A},
 			{label: "G.711C",   value: Const.AudCode_G711C},
 			{label: "G.722",    value: Const.AudCode_G722},
@@ -47,14 +47,14 @@ define(function(require) {
 			{label: "G.722.1C", value: Const.AudCode_G722_1C}
 		],
 		"vidProt":[
-			{label: "AUTO",    value: Const.VidProt_Auto},
+			//{label: "AUTO",    value: Const.VidProt_Auto},
 			{label: "H.263",   value: Const.VidProt_H263},
 			{label: "H.263+",  value: Const.VidProt_H263P},
 			{label: "H.264",   value: Const.VidProt_H264},
 			{label: "H.264HP", value: Const.VidProt_H264HP}
 		],
 		"vidFmt":[
-			{label: "AUTO",             value: Const.VidFmt_Auto},
+			//{label: "AUTO",             value: Const.VidFmt_Auto},
 			{label: "1080P(1920x1080)", value: Const.VidFmt_1080},
 			{label: "SXGA(1280x1024)",  value: Const.VidFmt_1280X1024},
 			{label: "720P(1280x720)",   value: Const.VidFmt_720},
@@ -66,7 +66,7 @@ define(function(require) {
 			{label: "QCIF(176x144)",    value: Const.VidFmt_QCif}
 		],
 		"frameRate":[
-			{label: "AUTO", value: 0},
+			//{label: "AUTO", value: 0},
 			{label: "15",   value: 15},
 			{label: "20",   value: 20},
 			{label: "25",   value: 25},
@@ -79,14 +79,14 @@ define(function(require) {
 			{label: "清晰", value: Const.VidQuality_Clear}
 		],
 		"secProt":[
-			{label: "AUTO",    value: Const.VidProt_Auto},
+			//{label: "AUTO",    value: Const.VidProt_Auto},
 			{label: "H.263",   value: Const.VidProt_H263},
 			{label: "H.263+",  value: Const.VidProt_H263P},
 			{label: "H.264",   value: Const.VidProt_H264},
 			{label: "H.264HP", value: Const.VidProt_H264HP}
 		],
 		"secFmt":[
-			{label: "AUTO",             value: Const.VidFmt_Auto},
+			//{label: "AUTO",             value: Const.VidFmt_Auto},
 			{label: "1080P(1920x1080)", value: Const.VidFmt_1080},
 			{label: "SXGA(1280x1024)",  value: Const.VidFmt_1280X1024},
 			{label: "720P(1280x720)",   value: Const.VidFmt_720},
@@ -98,7 +98,7 @@ define(function(require) {
 			{label: "QCIF(176x144)",    value: Const.VidFmt_QCif}
 		],
 		"secFrameRate":[
-			{label: "AUTO", value: 0},
+			//{label: "AUTO", value: 0},
 			{label: "15",   value: 15},
 			{label: "20",   value: 20},
 			{label: "25",   value: 25},
@@ -113,6 +113,40 @@ define(function(require) {
 		"secVidSend":[
 			{label: "自动", value: 0},
 			{label: "手动", value: 1}
+		],
+		"sampleRate":[
+			{label: "8KHz", value: 8000},
+			{label: "16KHz", value: 16000},
+			{label: "32KHz", value: 32000},
+			{label: "44.1KHz", value: 44100},
+			{label: "48KHz", value: 48000}
+		],
+		"bitRate":[
+			{label: "8K", value: 8000},
+			{label: "16K", value: 16000},
+			{label: "32K", value: 32000},
+			{label: "48K", value: 48000},
+			{label: "64K", value: 64000},
+			{label: "96K", value: 96000},
+			{label: "128K",value: 128000},
+			{label: "256K",value: 256000}
+		],
+		"dispPos":[
+			{label: "左下角", value: 0},
+			{label: "右下角", value: 1},
+			{label: "左上角", value: 2},
+			{label: "右上角", value: 3}
+		],
+		"captionPos":[
+			{label: "左1/3", value: 0},
+			{label: "右1/3", value: 1},
+			{label: "底下单行", value: 2}
+		],
+		"scrollSpeed":[
+			{label: "高", value: 0},
+			{label: "中", value: 1},
+			{label: "低", value: 2},
+			{label: "不滚动", value: 3}
 		]
 	};
 });

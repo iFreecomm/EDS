@@ -8,8 +8,8 @@ define(function(require) {
 			agcEn: 0
 		},
 		urls: {
-			"create": "setAecCfg.psp",
-			"read": "getAecCfg.psp"
+			"create": "setAecAgcCfg.psp",
+			"read": "getAecAgcCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

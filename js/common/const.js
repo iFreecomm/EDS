@@ -69,21 +69,10 @@ define(function() {
 		
 		//视频输入
 		VidInPort_CAMERA_DVI1:0,  //HDMI+Ypbpr+VGA
-	    VidInPort_CAMERA_DVI2:0,  //HDMI+Ypbpr+VGA
-	    VidInPort_CAMERA_CVBS:0,  
-	    VidInPort_CAMERA_3GSDI1:0,
-	    VidInPort_CAMERA_3GSDI2:0,
-	    VidInPort_CAMERA_HDMI1:0,//5
-	    VidInPort_CAMERA_HDMI2:0,
-	    VidInPort_CAMERA_VGA1:0,
-	    VidInPort_CAMERA_VGA2:0,
-	    VidInPort_PC_VGA:0,       //Ypbpr+VGA
-	    VidInPort_PC_HDMI:0,//10  //HDMI+DVI
-	    VidInPort_PC_DVI:0,       //HDMI+Ypbpr+VGA
-	    
-	    VidInPort_FPGA_MP:0,      //新添加,FPGA输入
+	    VidInPort_CAMERA_3GSDI1:1,
+	    VidInPort_PC_VGA:2,       //Ypbpr+VGA
 	
-	    VidInPort_MBSDI1:0,   //主板SDI输入口1
+	    VidInPort_MBSDI1:3,   //主板SDI输入口1
 	    VidInPort_MBSDI2:0,   //主板SDI输入口2
 	    VidInPort_MBSDI3:0,   //主板SDI输入口3
 	    VidInPort_MBVGA1:0,   //主板VGA输入口1
@@ -116,7 +105,7 @@ define(function() {
 	    VidInPort_EXB22VPIN1:0,
 	    VidInPort_EXB22VPIN2:0, 
 	    
-	    VidInPort_Cnt:0,
+	    VidInPort_Cnt:30,
 	    
 	    
 	    //视频输出

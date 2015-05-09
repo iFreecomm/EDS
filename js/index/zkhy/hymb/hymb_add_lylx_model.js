@@ -38,7 +38,7 @@ define(function(require) {
 			"audCfg.audEncParam.sampleRate": 48000,
 			"audCfg.audEncParam.bitRate": 128000,
 			
-			"osdCfg.enbShowTheme": 0,
+			"osdCfg.endShowTheme": 0,
 			"osdCfg.enbShowVolume": 0,
 			"osdCfg.volPos": 0,
 			"osdCfg.enbShowMark": 0,
@@ -46,7 +46,7 @@ define(function(require) {
 			"osdCfg.enbShowCaption": 0,
 			"osdCfg.capPos": 0,
 			"osdCfg.scrollSpeed": 0,
-			"osdCfg.caption": 0,
+			"osdCfg.caption": "",
 			
 			"osdCfg.capParam.bgColor":0,
 			"osdCfg.capParam.bgTrans":0,

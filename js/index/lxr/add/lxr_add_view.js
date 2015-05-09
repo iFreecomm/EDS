@@ -2,6 +2,7 @@ define(function(require) {
 	var FormView = require("web/common/formView");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/lxr/add/lxr_add_template.html");
+	var Const = require("web/common/const");
 	
 	var LxrAddView = FormView.extend({
 		id: "lxr_add",
@@ -10,6 +11,7 @@ define(function(require) {
 		bindings: {
 			"#addrName": "addrName",
 			"#camPort": "camPort",
+			"#vgaPort": "vgaPort",
 			"#voiIncentive": "voiIncentive",
 			"[name=micPort]": "micPort",
 			"#e164": "e164",

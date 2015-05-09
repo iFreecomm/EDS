@@ -40,8 +40,8 @@ define(function(require) {
 		initialize: function(options) {
 			var self = this;
 			$.when(
-				$.getJSON("getMuteFlag.psp"),
-				$.getJSON("getShieldFlag.psp")
+				$.getJSON("getMuteFlag.psp"),//静音
+				$.getJSON("getShieldFlag.psp")//闭音
 			).done(function(mute,shield) {
 				if(mute[0].data.enable == 1)
 				{

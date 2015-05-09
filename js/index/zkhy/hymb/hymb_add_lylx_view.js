@@ -94,7 +94,7 @@ define(function(require) {
 				selectName: "bitRate"
 			},
 			
-			"#enbShowTheme":   "osdCfg.enbShowTheme",
+			"#enbShowTheme":   "osdCfg.endShowTheme",
 			"#enbShowMark":    "osdCfg.enbShowMark",
 			"#dispPos": {
 				observe: "osdCfg.dispPos",
@@ -173,14 +173,44 @@ define(function(require) {
 			if(_.isEmpty(lxrArr)) return;
 			
 			var $option = $('<option></option>');
-			var $curOption;
-			
-			return _.map(lxrArr, function(lxr) {
-				$curOption = $option.clone();
-				$curOption.data(lxr);
-				$curOption.text(lxr.addrName);
-				return $curOption;
+			var $curOption,$vgaOption;
+			var self = this;
+			var srcArr = [];
+			_.each(lxrArr, function(lxr) {
+			    if(lxr.equType == Const.EquType_SDI) {
+			    	var addrName = lxr.addrName;
+			    	var camInfo = _.extend({}, lxr);
+			    	var vgaInfo = _.extend({}, lxr);
+			    	
+			    	if(lxr.camPort != Const.VidInPort_Cnt && lxr.vgaPort != Const.VidInPort_Cnt)
+			    	{
+			    		camInfo.addrName = addrName+" \r"+lxr.camName;
+			    		camInfo.vgaPort = Const.VidInPort_Cnt;
+						srcArr.push(self._getOption($curOption,camInfo));
+			    		
+			    		vgaInfo.addrName = addrName+" \r"+lxr.vgaName;
+			    		vgaInfo.camPort = Const.VidInPort_Cnt;
+						srcArr.push(self._getOption($vgaOption,vgaInfo));
+			    	}
+			 		else
+			 		{
+			 			srcArr.push(self._getOption($curOption,lxr));
+			 		}
+				}else{
+					
+					srcArr.push(self._getOption($curOption,lxr));
+				}
 			});
+			return srcArr;
+		},
+		
+		_getOption:function($curOption,lxr)
+		{
+			var $option = $('<option></option>');
+			$curOption = $option.clone();
+			$curOption.data(lxr);
+			$curOption.text(lxr.addrName);
+			return $curOption;
 		},
 		
 		subVidSrc: function(lxrArr) {
@@ -201,10 +231,46 @@ define(function(require) {
 			var recordId = lxrObj.recordId;
 			
 			return _.some(lxrArr, function(lxr) {
-				if(equType === lxr.equType && (equType === Const.EquType_MP || recordId === lxr.recordId)) {
+				if(equType === Const.EquType_PLAYER )
+				{
 					return true;
 				}
+				if(equType === lxr.equType)
+				{
+					if(equType == Const.EquType_SDI)
+					{
+						if(recordId === lxr.recordId)
+						{
+							if(lxrObj.camPort != Const.VidInPort_Cnt && lxrObj.camPort == lxr.camPort)
+			    			{
+			    				return true;
+			    			}
+			    			
+			    			if(lxrObj.vgaPort != Const.VidInPort_Cnt && lxrObj.vgaPort == lxr.vgaPort)
+			    			{
+			    				return true;
+			    			}
+						}
+					}
+					else
+					{
+						if(recordId === lxr.recordId)
+						{
+							return true;
+						}
+					}
+				}
+				return false;
+//				if(equType === lxr.equType && (equType === Const.EquType_PLAYER || recordId === lxr.recordId)) {
+//					return true;
+//				}
 			});
+			
+//			return _.some(lxrArr, function(lxr) {
+//				if(equType === lxr.equType && (equType === Const.EquType_MP || recordId === lxr.recordId)) {
+//					return true;
+//				}
+//			});
 		},
 		
 		onRender: function() {
