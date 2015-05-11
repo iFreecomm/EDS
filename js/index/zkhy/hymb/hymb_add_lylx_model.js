@@ -74,7 +74,7 @@ define(function(require) {
 //			"audCfg":{"enbHandle":0,
 //			"audEncParam":{"audProt":8,"sampleRate":8000,"bitRate":8000}},
 //			
-//			"osdCfg":{"enbShowTheme":0,"enbShowVolume":0,"volPos":0,"enbShowMark":0,"dispPos":1,"enbShowCaption":0,"capPos":1,"scrollSpeed":1,"caption":""}
+//			"osdCfg":{"endShowTheme":0,"enbShowVolume":0,"volPos":0,"enbShowMark":0,"dispPos":1,"enbShowCaption":0,"capPos":1,"scrollSpeed":1,"caption":""}
 		},
 		urls: {
 			"create": "addAddr.psp",

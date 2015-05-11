@@ -94,7 +94,7 @@ define(function(require) {
 				selectName: "bitRate"
 			},
 			
-			"#enbShowTheme":   "osdCfg.endShowTheme",
+			"#endShowTheme":   "osdCfg.endShowTheme",
 			"#enbShowMark":    "osdCfg.enbShowMark",
 			"#dispPos": {
 				observe: "osdCfg.dispPos",

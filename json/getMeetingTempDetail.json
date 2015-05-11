@@ -123,7 +123,7 @@
 					}
 				},
 				"osdCfg": {
-					"enbShowTheme": 1,
+					"endShowTheme": 1,
 					"enbShowMark": 1,
 					"dispPos": 1,
 					"enbShowVolume": 1,
@@ -183,7 +183,7 @@
 					}
 				},
 				"osdCfg": {
-					"enbShowTheme": 0,
+					"endShowTheme": 0,
 					"enbShowMark": 0,
 					"dispPos": 0,
 					"enbShowVolume": 0,
