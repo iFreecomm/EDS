@@ -97,30 +97,6 @@
 				"fileType": "视频文件",
 				"filePath": "硬盘A8",
 				"realPath": "media/video/video4.mp4"
-			},
-			{
-				"fileName": "文件1",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
-				"recordTime": "2015-05-05 00:00:00",
-				"confNum": 111,
-				"confName": "会议名称1",
-				"convenor": "召集人1",
-				"fileType": "视频文件",
-				"filePath": "硬盘A9",
-				"realPath": "media/video/video1.mp4"
-			},
-			{
-				"fileName": "文件1",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
-				"recordTime": "2015-05-05 00:00:00",
-				"confNum": 111,
-				"confName": "会议名称1",
-				"convenor": "召集人1",
-				"fileType": "视频文件",
-				"filePath": "硬盘A10",
-				"realPath": "media/video/video2.mp4"
 			}
 		]
 	}

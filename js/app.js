@@ -113,9 +113,6 @@ define(function(require) {
 			Handlebars.registerHelper("addOne", function(index) {
 				return index+1; //索引加1
 			});
-			Handlebars.registerHelper("evenOdd", function(index) {
-				return index % 2 === 1 ? "odd" : "even";
-			});
 			Handlebars.registerHelper("isActive", function(active) {
 				if(active === 1) return "active"; //判断按钮是否是on状态
 				return "";

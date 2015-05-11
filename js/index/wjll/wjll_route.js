@@ -42,7 +42,10 @@ define(function(require) {
 					}
 				}),
 				searchTermsView: new SearchTermsView({
-					model: this.searchTermsModel
+					model: this.searchTermsModel,
+					templateHelpers: {
+						diskList: this.diskList
+					}
 				}),
 				fileView: new FileView({
 					collection: this.fileCollection

@@ -2,17 +2,17 @@ define(function(require) {
 	var $ = require("jquery");
 	var Radio = require("radio");
 	var FormView = require("web/common/formView");
-	
+	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/wjll/searchTerms_template.html");
 	
 	var SearchTermsView = FormView.extend({
 		id: "wjll_searchTerms",
-		template: tmpl,
+		template: Handlebars.compile(tmpl),
 		
 		bindings: {
 			"#startTime": "startTime",
 			"#endTime": "endTime",
-			"#diskId": "diskId",
+			"#diskPath": "diskPath",
 			"#fileType": "fileType",
 			"#confNum": "confNum",
 			"#confName": "confName",
@@ -32,6 +32,10 @@ define(function(require) {
 		
 		onAttach: function() {
 			this.selectmenu();
+			
+			$("#startTime").add($("#endTime")).datetimepicker({
+				timeFormat: "HH:mm:ss"
+			});
 		}
 	});
 	

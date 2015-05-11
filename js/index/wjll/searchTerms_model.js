@@ -5,9 +5,9 @@ define(function(require) {
 		defaults: {		
 			startTime: "",
 			endTime: "",
-			diskId: 0,
-			fileType: 0,
-			confNum: -1,
+			diskPath: "",
+			fileType: 4,
+			confNum: "",
 			confName: "",
 			convenor: ""
 		}

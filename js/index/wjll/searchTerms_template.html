@@ -4,18 +4,23 @@
 			<span class="cellName">文件类型</span>
 			<div class="fieldBox">
 				<select name="fileType" id="fileType">
-					<option value="4">请选择文件类型...</option>
-					<option value="0">文件类型1</option>
-					<option value="1">文件类型2</option>
-					<option value="2">文件类型3</option>
-					<option value="3">文件类型4</option>
+					<option data-stickit-bind-val="4">请选择文件类型...</option>
+					<option data-stickit-bind-val="0">文件类型1</option>
+					<option data-stickit-bind-val="1">文件类型2</option>
+					<option data-stickit-bind-val="2">文件类型3</option>
+					<option data-stickit-bind-val="3">文件类型4</option>
 				</select>
 			</div>
 		</div>
 		<div class="formCell">
 			<span class="cellName">磁盘</span>
 			<div class="fieldBox">
-				<input type="text" name="diskId" id="diskId" />
+				<select name="diskPath" id="diskPath">
+					<option value="">请选择磁盘...</option>
+					{{#each diskList}}
+						<option data-stickit-bind-val="{{diskPath}}">{{diskName}}</option>
+					{{/each}}
+				</select>
 			</div>
 		</div>
 		<div class="formCell">
