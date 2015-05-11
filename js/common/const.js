@@ -1,5 +1,11 @@
 define(function() {
 	return {
+		/***********会议状态************/
+		MeetingState_Idle: 0,       //未开会议
+		MeetingState_UnderWay: 1,   //正在召开
+		MeetingState_Waiting: 2,    //预约中
+		MeetingState_End: 3,        //会议已结束
+		
 		/***********以下是设备类型常量************/
 		EquType_SDI: 0,    //SDI摄像机
 		EquType_H323: 1,   //远程H323会场

@@ -17,7 +17,8 @@
 			"secFrameRate": 2,
 			"secQuality": 2,
 			"secVidSend": 2,
-			"enbTransGuard": 1
+			"enbTransGuard": 1,
+			"meetingState": 1
 		},
 		{
 			"recordId": 222,
@@ -34,7 +35,8 @@
 			"secFrameRate": 2,
 			"secQuality": 2,
 			"secVidSend": 2,
-			"enbTransGuard": 1
+			"enbTransGuard": 1,
+			"meetingState": 1
 		},
 		{
 			"recordId": 333,

@@ -43,7 +43,10 @@
 }
 .box-container li:hover .delBtn {
 	opacity: 1;
-	transition: opacity 3s;
+	transition: opacity .2s .5s;
+}
+.box-container li .delBtn:hover {
+	transition: none;
 }
 /*********召开/结束会议*********/
 

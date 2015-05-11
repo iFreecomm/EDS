@@ -10,19 +10,21 @@ define(function(require) {
 		
 		routes: {
 			"hykz": "spjz",
-			"hykz/spjz": "spjz",
-			"hykz/dhm": "dhm"
+			"hykz/spjz(/:id)": "spjz",
+			"hykz/dhm(/:id)": "dhm"
 		},
 		
-		spjz: function() {
+		spjz: function(id) {
 			new SpjzRoute({
-				container: this.container
+				container: this.container,
+				id: id
 			});
 		},
 		
-		dhm: function() {
+		dhm: function(id) {
 			new DhmRoute({
-				container: this.container
+				container: this.container,
+				id: id
 			});
 		}
 	});
