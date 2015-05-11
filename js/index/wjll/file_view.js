@@ -77,7 +77,7 @@ define(function(require) {
 			var $table = this.$("table");
 			var $trs = $table.find("tr");
 			var length = $trs.length - 1;
-			var $tr = $("<tr><td colspan='10'>&nbsp;</td></tr>");
+			var $tr = $("<tr><td colspan='10'></td></tr>").css({height:50});
 			while(length++ < 10) {
 				$table.append($tr.clone());
 			}
