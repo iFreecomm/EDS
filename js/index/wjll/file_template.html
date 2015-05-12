@@ -1,19 +1,19 @@
 <table>
 	<tr>
 		<th>案名</th>
-		<th>文件大小</th>
-		<th>文件时长</th>
-		<th>录制时间</th>
-		<th>会议号</th>
+		<th width="100">文件大小</th>
+		<th width="100">文件时长</th>
+		<th width="200">录制时间</th>
+		<th width="80">会议号</th>
 		<th>会议名</th>
 		<th>召集人</th>
-		<th>文件类型</th>
+		<th width="100">文件类型</th>
 		<th>存储路径</th>
-		<th>操作</th>
+		<th width="180">操作</th>
 	</tr>
 	{{#each items}}
 		<tr data-path="{{filePath}}">
-			<td class="tal">
+			<td class="tal" title="{{fileName}}">
 				<input type="checkbox" name="fileName" id="fileName{{@index}}"/>
 				<label for="fileName{{@index}}" class="checkbox-label">{{fileName}}</label>
 			</td>
@@ -24,7 +24,7 @@
 			<td>{{confName}}</td>
 			<td>{{convenor}}</td>
 			<td>{{fileType}}</td>
-			<td>{{filePath}}</td>
+			<td title="{{filePath}}">{{filePath}}</td>
 			<td>
 				<a href="javascript:void(0);" class="playBtn">播放</a>
 				<a href="{{filePath}}" class="downloadBtn">下载</a>
