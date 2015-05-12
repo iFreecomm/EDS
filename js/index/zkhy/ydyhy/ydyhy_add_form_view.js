@@ -183,11 +183,12 @@ define(function(require) {
 			}
 			else
 			{
-				Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
+//				Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
 			}
 			this.stickit().changeHylx();
 		},
 		onAttach: function() {
+			//selectmenu方法中触发了change事件，导致触发changeHymb方法，从而覆盖了原始数据
 			this.selectmenu();
 			this.initYyrqAndJsrq();
 			$.timepicker.datetimeRange(

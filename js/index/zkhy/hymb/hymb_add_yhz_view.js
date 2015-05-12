@@ -1,3 +1,14 @@
+/**
+ * 目前有两个地方复用：
+ * （1）会议模板：
+ * 		（1）新建会议模板：右侧为空
+ * 		（2）编辑会议模板：右侧加载hymbModel.venueId数组
+ * （2）预定义会议：
+ * 		（1）新建预定义会议：右侧是下方表单中第一个模板所对应的数据
+ * 		（2）编辑预定义会议：右侧加载ydyhyModel.venueId数组
+ * 所以目前的流程是在onRender期间初始化model中的venueId数据
+ * 如果是新建预定义会议，则会通过Radio加载第一个模板数据
+ */
 define(function(require) {
 	var $ = require("jquery");
 	var _ = require("underscore");
@@ -50,9 +61,6 @@ define(function(require) {
 			});
 			
 			var addLxrArr = this._getLxrDataById(addLxrIdArr);
-//			Radio.channel("dhm").command("addDhmlxr", addLxrArr);
-//			Radio.channel("spjz").command("addMatrix", addLxrArr);
-//			Radio.channel("lylx").command("addVidSrc", addLxrArr);
 			
 			Radio.channel("yhz").trigger("addLxr", addLxrArr);
 		},
@@ -65,9 +73,6 @@ define(function(require) {
 			}).get();
 			
 			var subLxrArr = this._getLxrDataById(subLxrIdArr);
-//			Radio.channel("dhm").command("subDhmlxr", subLxrArr);
-//			Radio.channel("spjz").command("subMatrix", subLxrArr);
-//			Radio.channel("lylx").command("subVidSrc", subLxrArr);
 
 			Radio.channel("yhz").trigger("subLxr", subLxrArr);
 		},
@@ -84,7 +89,6 @@ define(function(require) {
 		initialize: function() {
 			this.setTemplateHelpers();
 			
-			Radio.channel("yhz").reset();
 			Radio.channel("yhz").reply("getYhzArr", this.getYhzArr, this);
 			Radio.channel("yhz").comply("loadHymb", this.loadHymb, this);
 		},
@@ -136,8 +140,6 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			//初始化与会者页面右侧已经选择的联系人
-			//由于页面复用，有些页面不需要初始化，所以需要做判断
 			this.loadHymb(this.model.get("venueId"));
 		},
 		

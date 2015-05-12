@@ -3,7 +3,7 @@
 	"data": {
 		"fileList": [
 			{
-				"fileName": "文件1",
+				"fileName": "media/video/video1.mp4media/video/video1.mp4media/video/video1.mp4",
 				"fileSize": "300M",
 				"playTime": "00:10:20",
 				"recordTime": "2015-05-05 00:00:00",
@@ -11,7 +11,7 @@
 				"confName": "会议名称1",
 				"convenor": "召集人1",
 				"fileType": "视频文件",
-				"filePath": "硬盘A1",
+				"filePath": "media/video/video1.mp4media/video/video1.mp4",
 				"realPath": "media/video/video1.mp4"
 			},
 			{

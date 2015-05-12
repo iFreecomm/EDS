@@ -150,7 +150,10 @@ define(function(require) {
 					$radio.siblings(".radio-label").removeClass("active");
 				}
 				
+				$radio.prop("checked", true);
 				$label.addClass("active");
+				$radio.change();
+				return false;
 			});
 		}
   		
