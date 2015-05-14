@@ -21,7 +21,7 @@ define(function(require) {
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				
 				$.getJSON("getVenueCfg.psp"),//会场
-				this.dhmModel.myFetch(options)
+				this.dhmModel.mayFetch(options)
 			).done(function(allLxr,venue) {
 				self.dhmModel.set({
 					"venueId": venue[0].data.venueId

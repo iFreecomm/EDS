@@ -1,10 +1,9 @@
 define(function(require) {
 	var $ = require("jquery");
 	var Mn = require("marionette");
-	var Handlebars = require("handlebars");
-	
-	var tmpl = require("text!web/index/lxr/show/lxr_show_template.html");
 	var Util = require("web/common/util");
+	var Handlebars = require("handlebars");
+	var tmpl = require("text!web/index/lxr/show/lxr_show_template.html");
 	
 	var LxrShowView = Mn.ItemView.extend({
 		id: "lxr_show",

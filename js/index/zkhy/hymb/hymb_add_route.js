@@ -25,7 +25,7 @@ define(function(require) {
 				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
 				$.getJSON("getRecNum.psp"),//录制编码路数
 				
-				this.hymbModel.myFetch(options)
+				this.hymbModel.mayFetch(options)
 			).done(function(allLxr, outPort, recNum) {
 				self.allLxr = allLxr[0].data.bookInfo;
 				

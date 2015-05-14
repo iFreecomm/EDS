@@ -20,7 +20,7 @@ define(function(require) {
 				$.getJSON("getAllMeetingTemp.psp"),
 				$.getJSON("getAllAddrBook.psp"),
 				$.getJSON("getDateTime.psp"),
-				this.ydyhyModel.myFetch(options)
+				this.ydyhyModel.mayFetch(options)
 			).done(function(allTemp,allLxr,dateTime) {
 				self.ydyhyModel.set({
 					"date": dateTime[0].data.date,

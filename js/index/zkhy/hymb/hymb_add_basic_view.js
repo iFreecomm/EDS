@@ -10,7 +10,7 @@ define(function(require) {
 		ui: {
 			formBox: ".formBox",
 			select: "select"
-		}
+		},
 		bindings: {
 			"#name": "name",
 			"#desc": "desc",

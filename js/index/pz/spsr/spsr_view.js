@@ -35,7 +35,7 @@ define(function(require) {
 			var $lxr = $tar.is(".lxr") ? $tar : $tar.parents(".lxr");
 			$lxr.addClass("active").siblings().removeClass("active");
 			
-			this.model.myFetch({
+			this.model.mayFetch({
 				id: $lxr.data("id")
 			}).done(function() {
 				//TODO
