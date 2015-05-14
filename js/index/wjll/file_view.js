@@ -1,12 +1,12 @@
 define(function(require) {
 	var $ = require("jquery");
 	var Radio = require("radio");
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
-	
 	var tmpl = require("text!web/index/wjll/file_template.html");
+	var Util = require("web/common/util");
 	
-	var LxrShowView = FormView.extend({
+	var LxrShowView = Mn.ItemView.extend({
 		id: "wjll_file_list",
 		template: Handlebars.compile(tmpl),
 		
@@ -89,7 +89,8 @@ define(function(require) {
 		onRender: function() {
 			Radio.channel("fileList").comply("batchDelete", this.batchDelete, this);
 			Radio.channel("fileList").reply("getSelectedFiles", this.getSelectedFiles, this);
-			this.fixCheckbox().fixTable();
+			this.fixTable();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 		},
 		
 		onDestroy: function() {

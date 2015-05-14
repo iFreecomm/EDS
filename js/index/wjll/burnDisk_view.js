@@ -1,12 +1,17 @@
 define(function(require) {
 	var $ = require("jquery");
 	var Radio = require("radio");
-	var FormView = require("web/common/formView");
-	
+	var Mn = require("marionette");
 	var tmpl = require("text!web/index/wjll/burnDisk_template.html");
+	var Util = require("web/common/util");
 	
-	var BurnDiskView = FormView.extend({
+	var BurnDiskView = Mn.ItemView.extend({
 		template: tmpl,
+		
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		
 		events: {
 			"click .burnDiskBtn": "burnDisk",
@@ -51,7 +56,8 @@ define(function(require) {
 		},
 		
 		onAttach: function() {
-			this.selectmenu();
+			Util.selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
 		}
 		
 	});
