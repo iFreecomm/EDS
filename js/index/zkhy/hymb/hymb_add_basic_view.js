@@ -1,12 +1,16 @@
 define(function(require) {
 	var _ = require("underscore");
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_basic_template.html");
 	
-	var BasicView = FormView.extend({
+	var BasicView = Mn.ItemView.extend({
 		id: "hymb_add_basic",
 		template: tmpl,
-		
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		}
 		bindings: {
 			"#name": "name",
 			"#desc": "desc",
@@ -56,13 +60,15 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-			this.setSelectBindings(this.bindings);
+			Util.setSelectBindings(this.bindings);
 		},
 		onRender: function() {
-			this.stickit().fixCheckbox();
+			this.stickit();
+			Util.initCheckboxClass(this.$el)
+				.addCheckboxEvent(this.$el);
 		},
 		onAttach: function() {
-			this.selectmenu();
+			Util.selectmenu(this.ui.select, this.ui.formBox);
 		}
 	});
 	

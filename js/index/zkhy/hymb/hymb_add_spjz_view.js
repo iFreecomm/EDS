@@ -2,11 +2,11 @@ define(function(require) {
 	var $ = require("jquery");
 	var Radio = require("radio");
 	var Mn = require("marionette");
-	var FormView = require("web/common/formView");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_spjz_template.html");
 	var Const = require("web/common/const");
 	
-	var SpjzView = FormView.extend({
+	var SpjzView = Mn.ItemView.extend({
 		id: "hymb_add_spjz",
 		template: tmpl,
 		bindings: {
@@ -336,7 +336,9 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.stickit().fixCheckbox();
+			this.stickit();
+			Util.initCheckboxClass(this.$el).
+				addCheckboxEvent(this.$el);
 			//初始化视频矩阵表格
 			this.addMatrix(this.getMatrixLxr());
 		},

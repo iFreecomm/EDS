@@ -1,10 +1,15 @@
 define(function(require) {
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/wlsz/qos/qos_template.html");
 	
-	var QosView = FormView.extend({
+	var QosView = Mn.ItemView.extend({
 		id: "pz_wlsz_qos",
 		template: tmpl,
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		bindings: {
 			"#swzwk": "swzwk",
 			"#wllx":  "wllx",
@@ -29,10 +34,12 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.stickit().fixCheckbox();
+			this.stickit();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 		},
 		onAttach: function() {
-			this.selectmenu();
+			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
 		}
 	});
 	

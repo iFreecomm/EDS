@@ -1,13 +1,19 @@
 define(function(require) {
 	var $ = require("jquery");
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
-	
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/spsc/spsc_template.html");
 	
-	var SpscView = FormView.extend({
+	var SpscView = Mn.ItemView.extend({
 		id: "pz_spsc",
 		template: Handlebars.compile(tmpl),
+		
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
+		
 		bindings: {
 			"#name": "name",
 			"#szxh": "szxh",
@@ -33,15 +39,18 @@ define(function(require) {
 			this.model.myFetch({
 				id: $lxr.data("id")
 			}).done(function() {
-				self.refreshForm();
+				// TODO
+//				self.refreshForm();
 			});
 		},
 		
 		onRender: function() {
-			this.stickit().initSlider();
+			this.stickit();
+			Util.initSlider(this.$el);
 		},
 		onAttach: function() {
-			this.activeLink().selectmenu();
+			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
 		}
 	});
 	

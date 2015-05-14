@@ -1,10 +1,10 @@
 define(function(require) {
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var Handlebars = require("handlebars");
-	
 	var tmpl = require("text!web/index/pz/yppz/bdsr/bdsr_template.html");
 	
-	var BdsrView = FormView.extend({
+	var BdsrView = Mn.ItemView.extend({
 		id: "pz_yppz_bdsr",
 		template: Handlebars.compile(tmpl),
 		
@@ -46,10 +46,10 @@ define(function(require) {
 			};
 		},
 		onRender: function() {
-			this.initSlider();
+			Util.initSlider(this.$el);
 		},
 		onAttach: function() {
-			this.activeLink();
+			Util.activeLink();
 		}
 	});
 	

@@ -3,13 +3,16 @@ define(function(require) {
 	var Moment = require("moment");
 	var Handlebars = require("handlebars");
 	var Radio = require("radio");
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_add_form_template.html");
 	
-	var YdyhyAddFormView = FormView.extend({
+	var YdyhyAddFormView = Mn.ItemView.extend({
 		id: "ydyhy_add_form",
 		template: Handlebars.compile(tmpl),
 		ui: {
+			formBox: ".formBox",
+			select: "select",
 			yyrq_con: "#yyrq_container",
 			jsrq_con: "#jsrq_container",
 			yyrq: "#yyrq",
@@ -64,7 +67,7 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-			this.setSelectBindings(this.bindings);
+			Util.setSelectBindings(this.bindings);
 			
 			this.listenTo(this.model, "change:tempRecordId", this.changeHymb);
 			this.listenTo(this.model, "change:meetingType", this.changeHylx);
@@ -189,7 +192,8 @@ define(function(require) {
 		},
 		onAttach: function() {
 			//selectmenu方法中触发了change事件，导致触发changeHymb方法，从而覆盖了原始数据
-			this.selectmenu();
+			//TODO
+			Util.selectmenu(this.ui.select, this.ui.formBox);
 			this.initYyrqAndJsrq();
 			$.timepicker.datetimeRange(
 				this.ui.yyrq,

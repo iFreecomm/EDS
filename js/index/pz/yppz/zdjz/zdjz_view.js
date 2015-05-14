@@ -1,9 +1,9 @@
 define(function(require) {
-	var FormView = require("web/common/formView");
-	
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/yppz/zdjz/zdjz_template.html");
 	
-	var ZdjzView = FormView.extend({
+	var ZdjzView = Mn.ItemView.extend({
 		id: "pz_yppz_zdjz",
 		template: tmpl,
 		
@@ -30,7 +30,9 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.renderData().fixRadio();
+			this.renderData();
+			Util.initRadioClass(this.$el)
+				.addRadioEvent(this.$el);
 		},
 		renderData: function() {
 			var $el = this.$el;
@@ -41,7 +43,7 @@ define(function(require) {
 			return this;
 		},
 		onAttach: function() {
-			this.activeLink();
+			Util.activeLink();
 		}
 	});
 	

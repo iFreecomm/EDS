@@ -1,15 +1,18 @@
 define(function(require) {
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var Radio = require("radio");
 	var Const = require("web/common/const");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_lylx_template.html");
 	
-	var LzbmView = FormView.extend({
+	var LzbmView = Mn.ItemView.extend({
 		id: "hymb_add_lxly",
 		template: tmpl,
 		
 		ui: {
-			"equSrc": "#equSrc"
+			formBox: ".formBox",
+			select: "select",
+			equSrc: "#equSrc"
 		},
 		
 		bindings: {
@@ -163,7 +166,7 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-			this.setSelectBindings(this.bindings);
+			Util.setSelectBindings(this.bindings);
 		},
 		
 		addVidSrc: function(lxrArr) {
@@ -280,7 +283,9 @@ define(function(require) {
 			Radio.channel("yhz").on("addLxr", this.addVidSrc, this);
 			Radio.channel("yhz").on("subLxr", this.subVidSrc, this);
 			
-			this.stickit().fixCheckbox();
+			this.stickit();
+			Util.initCheckboxClass(this.$el)
+				.addCheckboxEvent(this.$el);
 			this.ui.equSrc.append(this._getOptions(this._getVidSrcArr()));
 			this.setSelectEquSrc();
 		},
@@ -289,7 +294,8 @@ define(function(require) {
 		},
 		
 		onAttach: function() {
-			this.selectmenu();
+			Util.selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
 		},
 		
 		onDestroy: function() {

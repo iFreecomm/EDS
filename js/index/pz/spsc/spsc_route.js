@@ -21,7 +21,7 @@ define(function(require) {
 					self.VGA = vga.data.outPortInfo;
 				}
 				
-				$.when(self.spscModel.myFetch({
+				$.when(self.spscModel.mayFetch({
 					id: self.VGA[0].vidOutPort
 				})).done(function() {
 					self.showView();

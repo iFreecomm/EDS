@@ -7,12 +7,13 @@ define(function(require) {
 	var $ = require("jquery");
 	var _ = require("underscore");
 	var Radio = require("radio");
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_dhm_template.html");
 	var Const = require("web/common/const");
 	
-	var DhmView = FormView.extend({
+	var DhmView = Mn.ItemView.extend({
 		id: "hymb_add_dhm",
 		template: Handlebars.compile(tmpl),
 		
@@ -300,7 +301,9 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.stickit().fixCheckbox();
+			this.stickit();
+			Util.initCheckboxClass(this.$el)
+				.addCheckboxEvent(this.$el);
 			
 			//初始化多画面左侧可以拖拽的联系人
 			this.addDhmlxr(this.getDhmLxr());

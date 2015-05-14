@@ -15,9 +15,9 @@ define(function(require) {
 			this.spsrModel = new SpsrModel();
 			
 			$.when(
-				$.getJSON("getSdiPort.psp"),//sdi ‰»Î
+				$.getJSON("getSdiPort.psp"),
 				
-				$.getJSON("getVgaPort.psp")//vga ‰»Î
+				$.getJSON("getVgaPort.psp")
 			).done(function(sdi,vga) {
 				self.SDI = [];
 				if(sdi[0].data && sdi[0].data.sdiInfo)
@@ -31,7 +31,7 @@ define(function(require) {
 					self.VGA = vga[0].data.vgaInfo;
 				}
 				
-				$.when(self.spsrModel.myFetch({
+				$.when(self.spsrModel.mayFetch({
 					id: self.SDI[0].camPort || self.VGA[0].vgaPort
 				})).done(function() {
 					self.showView();

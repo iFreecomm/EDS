@@ -1,9 +1,9 @@
 define(function(require) {
-	var FormView = require("web/common/formView");
-	
+	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/yppz/bdsc/bdsc_template.html");
 	
-	var BdsrView = FormView.extend({
+	var BdsrView = Mn.ItemView.extend({
 		id: "pz_yppz_bdsc",
 		template: tmpl,
 		
@@ -37,7 +37,10 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.renderData().fixRadio().initSlider();
+			this.renderData();
+			Util.initRadioClass(this.$el)
+				.addRadioEvent(this.$el)
+				.initSlider(this.$el);
 		},
 		renderData: function() {
 			var output = this.model.get("volumeSingleOutPut");
@@ -55,7 +58,7 @@ define(function(require) {
 			return this;
 		},
 		onAttach: function() {
-			this.activeLink();
+			Util.activeLink();
 		}
 	});
 	
