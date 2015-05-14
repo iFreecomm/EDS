@@ -17,7 +17,7 @@ define(function(require) {
 				$.getJSON("getMicPort.psp"),
 				$.getJSON("getSdiPort.psp"),
 				$.getJSON("getVgaPort.psp"),
-				this.lxrModel.myFetch(options)
+				this.lxrModel.mayFetch(options)
 			).done(function(camMic,sdiInfo,vgaInfo) {
 				self.micInfo = [];
 				if(camMic[0].data && camMic[0].data.micInfo)

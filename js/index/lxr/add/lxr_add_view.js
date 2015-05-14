@@ -1,12 +1,17 @@
 define(function(require) {
-	var FormView = require("web/common/formView");
+	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/lxr/add/lxr_add_template.html");
-	var Const = require("web/common/const");
+	var Util = require("web/common/util");
 	
-	var LxrAddView = FormView.extend({
+	var LxrAddView = Mn.ItemView.extend({
 		id: "lxr_add",
 		template: Handlebars.compile(tmpl),
+		
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		
 		bindings: {
 			"#addrName": "addrName",
@@ -57,13 +62,13 @@ define(function(require) {
 			alert("保存联系人失败！");
 		},
 		cancelLxr: function() {
-			this.navigate("lxr", {trigger: true});
+			Util.navigate("lxr", {trigger: true});
 		},
 		
 		initialize: function(opt) {
 			this.listenTo(this.model, "change:equType", this.changeEquType);
 			
-			this.setSelectBindings(this.bindings);
+			Util.setSelectBindings(this.bindings);
 		},
 		changeEquType: function() {
 			var curHclx = this.model.get("equType");
@@ -72,10 +77,14 @@ define(function(require) {
 			this.$("[equType*="+curHclx+"]").show();
 		},
 		onRender: function() {
-			this.stickit().fixCheckbox().changeEquType();
+			this.stickit();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.changeEquType();
 		},
 		onAttach: function() {
-			this.activeLink().selectmenu();
+			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+			//同步select默认值到model中
+			this.ui.select.change();
 		}
 	});
 	

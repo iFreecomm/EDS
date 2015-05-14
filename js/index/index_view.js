@@ -14,11 +14,10 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-			Radio.channel("index").reset();
 			Radio.channel("index").comply("activeLink", this.activeLink, this);
 		},
 		
-		activeLink: function() {
+		activeLink: function(path) {
 			var hash = Backbone.history.getHash();
 			var num = hash.indexOf("/");
 			var hashRoot = num === -1 ? hash : hash.slice(0, num);
