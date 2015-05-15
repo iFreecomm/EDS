@@ -30,6 +30,46 @@ define(function() {
 	    Backbone.history.loadURL(url);
 	}
 	
+	/**
+	 * 通过联系人id获取详细信息
+	 * @param {Object} idArr 联系人id数组
+	 * @param {Object} allLxr 所有联系人信息数组
+	 */
+	Util.getLxrDataById = function(idArr, allLxr) {
+		if(_.isEmpty(idArr) || _.isEmpty(allLxr)) return [];
+		
+		return _.filter(allLxr, function(lxr) {
+			return _.contains(idArr, lxr.recordId);
+		});
+	}
+	
+	Util.isLxrInArr = function(lxrObj, lxrArr) {
+		var recordId = lxrObj.recordId;
+		var equType = lxrObj.equType;
+		var camPort = lxrObj.camPort;
+		var vgaPort = lxrObj.vgaPort;
+		
+		return _.some(lxrArr, function(lxr) {
+			if(equType === lxr.equType) {
+				if(equType === Const.EquType_PLAYER || equType === Const.EquType_MP) {
+					return true;
+				} else if(equType === Const.EquType_SDI) {
+					if(recordId === lxr.recordId) {
+						if(camPort !== Const.VidInPort_Cnt && camPort === lxr.camPort) {
+		    				return true;
+		    			}
+		    			if(vgaPort !== Const.VidInPort_Cnt && vgaPort === lxr.vgaPort) {
+		    				return true;
+		    			}
+					}
+				} else if(recordId === lxr.recordId) {
+					return true;
+				}
+			}
+			return false;
+		});
+	}
+	
 	/*************下面基本都是和表单相关的工具方法***********/
 	
 	/**

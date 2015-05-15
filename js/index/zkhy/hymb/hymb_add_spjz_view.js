@@ -19,6 +19,34 @@ define(function(require) {
 			"mouseover @ui.spjz_table_container": "mouseoverTD",
 			"click @ui.spjz_table_container": "clickTD"
 		},
+		onRender: function() {
+			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
+			
+			Radio.channel("yhz").on("addLxr", this.addMatrix, this);
+			Radio.channel("yhz").on("subLxr", this.subMatrix, this);
+			
+			this.stickit();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			
+			//初始化视频矩阵表格
+			this.addMatrix(this.getMatrixLxr());
+		},
+		onDestroy: function() {
+			Radio.channel("spjz").reset();
+		},
+		
+		/**
+		 * @onRender
+		 * 获取生成表格的联系人
+		 */
+		getMatrixLxr: function() {
+			return Util.getLxrDataById(this.model.get("venueId"), this.options.allLxr);
+		},
+		
+		/************************************/
+		/*************页面交互事件**************/
+		/************************************/
+		
 		mouseoverTD: function(e) {
 			var $td = $(e.target);
 			this.$tds.removeClass("hover hoverIn");
@@ -39,6 +67,7 @@ define(function(require) {
 			
 			$td.addClass("hoverIn");
 		},
+		
 		clickTD: function(e) {
 			var $td = $(e.target);
 			if(!$td.is("td")) return;
@@ -56,13 +85,9 @@ define(function(require) {
 			}
 		},
 		
-		initialize: function() {
-			Radio.channel("spjz").reset();
-			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
-			
-			Radio.channel("yhz").on("addLxr", this.addMatrix, this);
-			Radio.channel("yhz").on("subLxr", this.subMatrix, this);
-		},
+		/************************************/
+		/*************对外接口事件**************/
+		/************************************/
 		
 		getMatrixInOut: function() {
 			var rowHeadArr = this._getRowHead();
@@ -104,7 +129,6 @@ define(function(require) {
 			//重新绘制表格
 			this.renderMatrix();
 		},
-		
 		_getAddLxrArr: function(addLxrArr) {
 			var lxrArr = this.lxrArr || [];
 			return lxrArr.concat(addLxrArr);
@@ -120,23 +144,10 @@ define(function(require) {
 			//重新绘制表格
 			this.renderMatrix();
 		},
-		
 		_getSubLxrArr: function(subLxrArr) {
 			var lxrArr = this.lxrArr || [];
-			var self = this;
 			return _.reject(lxrArr, function(lxr) {
-				return self._isLxrInArr(lxr, subLxrArr);
-			});
-		},
-		
-		_isLxrInArr: function(lxrObj, lxrArr) {
-			var equType = lxrObj.equType;
-			var recordId = lxrObj.recordId;
-			
-			return _.some(lxrArr, function(lxr) {
-				if(equType === lxr.equType && (equType === Const.EquType_PLAYER || recordId === lxr.recordId)) {
-					return true;
-				}
+				return Util.isLxrInArr(lxr, subLxrArr);
 			});
 		},
 		
@@ -152,7 +163,6 @@ define(function(require) {
 			
 			this.ui.spjz_table_container.append($table);
 		},
-		
 		renderTableHead: function($table) {
 			var rowHeadArr = this._getRowHead();
 			var colHeadArr = this._getColHead();
@@ -170,7 +180,6 @@ define(function(require) {
 				ele.innerText = rowHeadArr[i].addrName;
 			});
 		},
-		
 		renderTableBody: function($table) {
 			var rowHeadArr = this._getRowHead();
 			var colHeadArr = this._getColHead();
@@ -188,7 +197,6 @@ define(function(require) {
 				$tds.eq(dstIndex + srcIndex * cols).addClass("active");
 			}
 		},
-		
 		getSrcIndex: function(src, rowHeadArr) {
 			src = src || {};
 			rowHeadArr = rowHeadArr || [];
@@ -230,7 +238,6 @@ define(function(require) {
 			
 			return -1;
 		},
-		
 		getDstIndex: function(dst, colHeadArr) {
 			dst = dst || {};
 			colHeadArr = colHeadArr || [];
@@ -259,7 +266,6 @@ define(function(require) {
 			
 			return -1;
 		},
-		
 		/* 
 		 * 增加了列表头和行表头
 		 * 所以实际上表格的行数和列数是rows+1,cols+1
@@ -285,7 +291,6 @@ define(function(require) {
 			
 			return $(table);
 		},
-		
 		_getRowHead: function() {
 			var addrArr = [].concat(this.lxrArr || []);
 			var srcArr = [];
@@ -333,33 +338,6 @@ define(function(require) {
 			});
 			
 			return dstArr;
-		},
-		
-		onRender: function() {
-			this.stickit();
-			Util.initCheckboxClass(this.$el).
-				addCheckboxEvent(this.$el);
-			//初始化视频矩阵表格
-			this.addMatrix(this.getMatrixLxr());
-		},
-		//获取生成表格的联系人
-		getMatrixLxr: function() {
-			return this._getLxrDataById();
-		},
-		//表格行头和表格列头需要联系人
-		_getLxrDataById: function() {
-			var allLxr = this.options.allLxr;
-			var venueIdArr = this.model.get("venueId");
-			
-			if(_.isEmpty(allLxr) || _.isEmpty(venueIdArr)) return [];
-			
-			return _.filter(allLxr, function(lxr) {
-				return _.contains(venueIdArr, lxr.recordId);
-			});
-		},
-		
-		onDestroy: function() {
-			Radio.channel("spjz").reset();
 		}
 	});
 	

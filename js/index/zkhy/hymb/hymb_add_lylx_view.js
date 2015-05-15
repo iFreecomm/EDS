@@ -1,20 +1,13 @@
 define(function(require) {
+	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
-	var Radio = require("radio");
 	var Const = require("web/common/const");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_lylx_template.html");
 	
 	var LzbmView = Mn.ItemView.extend({
 		id: "hymb_add_lxly",
 		template: tmpl,
-		
-		ui: {
-			formBox: ".formBox",
-			select: "select",
-			equSrc: "#equSrc"
-		},
-		
 		bindings: {
 			"#enbRec":         "enbRec",
 			
@@ -122,29 +115,48 @@ define(function(require) {
 			
 			"#caption":        "osdCfg.caption"
 		},
-		
-		showMore: function($el, isVisible) {
-			var $nextFieldBox = $el.parents(".fieldBox").eq(0).next(".fieldBox");
-			isVisible && $nextFieldBox.slideDown() || $nextFieldBox.slideUp();
+		ui: {
+			formBox: ".formBox",
+			select: "select",
+			equSrc: "#equSrc"
 		},
-		
 		events: {
 			"click .btn-switch6": "toggleSwitch",
 			"change @ui.equSrc": "getSelectEquSrc"
 		},
-		toggleSwitch: function(e) {
-			$(e.target).toggleClass("active").parents(".fieldBox").eq(0).next(".fieldBox").slideToggle();
+		initialize: function() {
+			Util.setSelectBindings(this.bindings);
 		},
-		getSelectEquSrc: function() {
-			var lxr = this.ui.equSrc.find("option:selected").data();
-			if(_.isEmpty(lxr)) return;
-			this.model.set({
-				"equSrc.camPort": lxr.camPort,
-				"equSrc.equType": lxr.equType,
-				"equSrc.recordId": lxr.recordId,
-				"equSrc.vgaPort": lxr.vgaPort
-			});
+		onRender: function() {
+			Radio.channel("yhz").on("addLxr", this.addVidSrc, this);
+			Radio.channel("yhz").on("subLxr", this.subVidSrc, this);
+			
+			this.stickit();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.ui.equSrc.append(this._getOptions(this.getVidSrcArr()));
+			this.setSelectEquSrc();
 		},
+		onAttach: function() {
+			Util.selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
+		},
+		onDestroy: function() {
+			Radio.channel("yhz").off("addLxr", this.addVidSrc);
+			Radio.channel("yhz").off("subLxr", this.subVidSrc);
+		},
+		
+		/**
+		 * @onRender
+		 * 获取录制视频源的数组
+		 */
+		getVidSrcArr: function() {
+			return [{equType: Const.EquType_MP, addrName: "多画面"}].concat(this.options.vidSrcArr);
+		},
+		
+		/**
+		 * @onRender
+		 * 修改录制视频源的DOM结构
+		 */
 		setSelectEquSrc: function() {
 			var lxr = _.pick(this.model.toJSON(), "equSrc.camPort", "equSrc.equType", "equSrc.recordId", "equSrc.vgaPort");
 			var isMatch = false;
@@ -165,9 +177,45 @@ define(function(require) {
 			}
 		},
 		
-		initialize: function() {
-			Util.setSelectBindings(this.bindings);
+		/************************************/
+		/*************页面交互事件**************/
+		/************************************/
+		
+		/**
+		 * 复选框是否选中决定相应配置选项是否显示
+		 * @param {Object} $el
+		 * @param {Object} isVisible
+		 */
+		showMore: function($el, isVisible) {
+			var $nextFieldBox = $el.parents(".fieldBox").eq(0).next(".fieldBox");
+			isVisible && $nextFieldBox.slideDown() || $nextFieldBox.slideUp();
 		},
+		
+		/**
+		 * 点击高级按钮，显示高级配置选项
+		 * @param {Object} e
+		 */
+		toggleSwitch: function(e) {
+			$(e.target).toggleClass("active").parents(".fieldBox").eq(0).next(".fieldBox").slideToggle();
+		},
+		
+		/**
+		 * 修改录制视频源的model数据
+		 */
+		getSelectEquSrc: function() {
+			var lxr = this.ui.equSrc.find("option:selected").data();
+			if(_.isEmpty(lxr)) return;
+			this.model.set({
+				"equSrc.camPort": lxr.camPort,
+				"equSrc.equType": lxr.equType,
+				"equSrc.recordId": lxr.recordId,
+				"equSrc.vgaPort": lxr.vgaPort
+			});
+		},
+		
+		/************************************/
+		/*************对外接口事件**************/
+		/************************************/
 		
 		addVidSrc: function(lxrArr) {
 			this.ui.equSrc.append(this._getOptions(lxrArr)).selectmenu("refresh");
@@ -206,7 +254,6 @@ define(function(require) {
 			});
 			return srcArr;
 		},
-		
 		_getOption:function($curOption,lxr)
 		{
 			var $option = $('<option></option>');
@@ -219,88 +266,13 @@ define(function(require) {
 		subVidSrc: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
 			
-			var self = this;
 			this.ui.equSrc.children().each(function() {
 				var $this = $(this);
 				var lxrObj = $this.data();
-				if(self._isLxrInArr(lxrObj, lxrArr)) {
+				if(Util.isLxrInArr(lxrObj, lxrArr)) {
 					$this.remove();
 				}
 			}).end().selectmenu("refresh");
-		},
-		
-		_isLxrInArr: function(lxrObj, lxrArr) {
-			var equType = lxrObj.equType;
-			var recordId = lxrObj.recordId;
-			
-			return _.some(lxrArr, function(lxr) {
-				if(equType === Const.EquType_PLAYER )
-				{
-					return true;
-				}
-				if(equType === lxr.equType)
-				{
-					if(equType == Const.EquType_SDI)
-					{
-						if(recordId === lxr.recordId)
-						{
-							if(lxrObj.camPort != Const.VidInPort_Cnt && lxrObj.camPort == lxr.camPort)
-			    			{
-			    				return true;
-			    			}
-			    			
-			    			if(lxrObj.vgaPort != Const.VidInPort_Cnt && lxrObj.vgaPort == lxr.vgaPort)
-			    			{
-			    				return true;
-			    			}
-						}
-					}
-					else
-					{
-						if(recordId === lxr.recordId)
-						{
-							return true;
-						}
-					}
-				}
-				return false;
-//				if(equType === lxr.equType && (equType === Const.EquType_PLAYER || recordId === lxr.recordId)) {
-//					return true;
-//				}
-			});
-			
-//			return _.some(lxrArr, function(lxr) {
-//				if(equType === lxr.equType && (equType === Const.EquType_MP || recordId === lxr.recordId)) {
-//					return true;
-//				}
-//			});
-		},
-		
-		onRender: function() {
-			//注册事件放在这里而不是initialize方法中是因为
-			//先调用了initialize方法，后调用了destroy方法
-			//这样导致卸载了所有事件，因为Radio事件是全局的
-			Radio.channel("yhz").on("addLxr", this.addVidSrc, this);
-			Radio.channel("yhz").on("subLxr", this.subVidSrc, this);
-			
-			this.stickit();
-			Util.initCheckboxClass(this.$el)
-				.addCheckboxEvent(this.$el);
-			this.ui.equSrc.append(this._getOptions(this._getVidSrcArr()));
-			this.setSelectEquSrc();
-		},
-		_getVidSrcArr: function() {
-			return [{equType: Const.EquType_MP, addrName: "多画面"}].concat(this.options.vidSrcArr);
-		},
-		
-		onAttach: function() {
-			Util.selectmenu(this.ui.select, this.ui.formBox);
-			this.ui.select.change();
-		},
-		
-		onDestroy: function() {
-			Radio.channel("yhz").off("addLxr", this.addVidSrc);
-			Radio.channel("yhz").off("subLxr", this.subVidSrc);
 		}
 	});
 	
