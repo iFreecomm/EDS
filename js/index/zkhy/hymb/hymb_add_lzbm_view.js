@@ -97,10 +97,12 @@ define(function(require) {
 				return Util.fat(attr);
 			});
 		},
+		
 		addVidSrc: function(addLxrArr) {
 			var vidSrcArr = this.vidSrcArr || [];
 			this.vidSrcArr = vidSrcArr.concat(addLxrArr);
 		},
+		
 		subVidSrc: function(subLxrArr) {
 			var vidSrcArr = this.vidSrcArr || [];
 			this.vidSrcArr = _.reject(vidSrcArr, function(lxr) {

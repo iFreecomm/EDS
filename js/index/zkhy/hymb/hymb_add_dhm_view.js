@@ -69,54 +69,10 @@ define(function(require) {
 		fixSubPicInfo: function() {
 			var allLxr = this.options.allLxr;
 			var subPicInfo = this.model.get("subPicInfo");
-			var self = this;
 			
 			if(_.isEmpty(allLxr) || _.isEmpty(subPicInfo)) return;
 			
-			_.each(subPicInfo, function(curSubPic) {
-				var equType = curSubPic.equType;
-				var recordId = curSubPic.recordId;
-				_.some(allLxr, function(curLxr) {
-					
-					if(equType === curLxr.equType)
-					{
-						if(equType === Const.EquType_PLAYER )
-						{
-							curSubPic.addrName = curLxr.addrName;
-							return true;
-						}
-						if(recordId === curLxr.recordId)
-						{
-							if(equType == Const.EquType_SDI && curLxr.camPort != Const.VidInPort_Cnt && curLxr.vgaPort != Const.VidInPort_Cnt)
-							{
-								if(curSubPic.camPort != Const.VidInPort_Cnt && curLxr.camPort == curSubPic.camPort)
-				    			{
-				    				curSubPic.addrName = curLxr.addrName+" \r"+curLxr.camName;
-				    				return true;
-				    			}
-				    			
-				    			if(curSubPic.vgaPort != Const.VidInPort_Cnt && curLxr.vgaPort == curSubPic.vgaPort)
-				    			{
-				    				curSubPic.addrName = curLxr.addrName+" \r"+curLxr.vgaName;
-				    				return true;
-				    			}
-							}
-							else
-							{
-								curSubPic.addrName = curLxr.addrName;
-								return true;
-							}
-						}
-					}
-				});
-				
-				/*_.some(allLxr, function(curLxr) {
-					if(equType === curLxr.equType && (equType === Const.EquType_PLAYER || recordId === curLxr.recordId)) {
-						curSubPic.addrName = curLxr.addrName;
-						return true; //结束循环
-					}
-				});*/
-			});
+			Util.addAddrName(subPicInfo, allLxr);
 		},
 		
 		/**
@@ -236,51 +192,25 @@ define(function(require) {
 		
 		addDhmlxr: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
+			lxrArr = Util.transSDI2Lxr(lxrArr);
 			
+			var $li = $('<li class="lxr-li"></li>');
+			var $span = $('<span class="lxr-span"></span>');
+			var $curLi, $curSpan;
 			var curView = this;
 			
-			var $liArr = [];
-			_.each(lxrArr, function(lxr) {
-			    if(lxr.equType == Const.EquType_SDI) {
-			    	var addrName = lxr.addrName;
-			    	var camInfo = _.extend({}, lxr);
-			    	var vgaInfo = _.extend({}, lxr);
-			    	
-			    	if(lxr.camPort != Const.VidInPort_Cnt && lxr.vgaPort != Const.VidInPort_Cnt)
-			    	{
-			    		camInfo.addrName = addrName+" \r"+lxr.camName;
-			    		camInfo.vgaPort = Const.VidInPort_Cnt;
-
-						$liArr.push(curView._getCurLi(camInfo));
-			    		
-			    		vgaInfo.addrName = addrName+" \r"+lxr.vgaName;
-			    		vgaInfo.camPort = Const.VidInPort_Cnt;
-			    		
-						$liArr.push(curView._getCurLi(vgaInfo));
-			    	}
-			 		else
-			 		{
-						$liArr.push(curView._getCurLi(lxr));
-			 		}
-				}else{
-					$liArr.push(curView._getCurLi(lxr));
-				}
+			var $liArr = _.map(lxrArr, function(lxr) {
+				$curSpan = $span.clone();
+				$curSpan.data(lxr);
+				$curSpan.text(lxr.addrName);
+				
+				$curLi = $li.clone().append($curSpan);
+				curView.enableDraggable($curLi);
+				
+				return $curLi;
 			});
 			
 			this.ui.dhmLxrs.append($liArr);
-		},
-		_getCurLi:function(lxr)
-		{
-			var $li = $('<li class="lxr-li"></li>');
-			var $span = $('<span class="lxr-span"></span>');
-			var $curLi, $curSpan
-			$curSpan = $span.clone();
-			$curSpan.data(lxr);
-			$curSpan.text(lxr.addrName);
-			
-			$curLi = $li.clone().append($curSpan);
-			this.enableDraggable($curLi);
-			return $curLi;
 		},
 		
 		subDhmlxr: function(lxrArr) {

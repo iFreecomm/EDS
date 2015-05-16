@@ -42,7 +42,11 @@ define(function() {
 			return _.contains(idArr, lxr.recordId);
 		});
 	}
-	
+	/**
+	 * 判断联系人对象是否在数组中
+	 * @param {Object} lxrObj 联系人对象
+	 * @param {Array} lxrArr 联系人信息数组
+	 */
 	Util.isLxrInArr = function(lxrObj, lxrArr) {
 		var recordId = lxrObj.recordId;
 		var equType = lxrObj.equType;
@@ -66,8 +70,76 @@ define(function() {
 					return true;
 				}
 			}
-			return false;
 		});
+	}
+	/**
+	 * 给联系人添加addrName字段，目前只有多画面页面需要
+	 * @param {Array} lxrArr 需要添加addrName字段的数组
+	 * @param {Array} allLxr 所有联系人的数组
+	 */
+	Util.addAddrName = function(lxrArr, allLxr) {
+		var equType, recordId, NONE = Const.VidInPort_Cnt;
+		
+		_.each(lxrArr, function(noNameLxr) {
+			equType = noNameLxr.equType;
+			recordId = noNameLxr.recordId;
+			
+			_.some(allLxr, function(curLxr) {
+				if(equType === curLxr.equType) {
+					if(equType === Const.EquType_PLAYER || equType === Const.EquType_MP) {
+						noNameLxr.addrName = curLxr.addrName;
+						return true;
+					}
+					
+					if(recordId === curLxr.recordId) {
+						if(equType == Const.EquType_SDI && curLxr.camPort != NONE && curLxr.vgaPort != NONE) {
+							if(noNameLxr.camPort != NONE && curLxr.camPort == noNameLxr.camPort) {
+			    				noNameLxr.addrName = curLxr.addrName+" \r"+curLxr.camName;
+			    				return true;
+			    			}
+			    			
+			    			if(noNameLxr.vgaPort != NONE && curLxr.vgaPort == noNameLxr.vgaPort) {
+			    				noNameLxr.addrName = curLxr.addrName+" \r"+curLxr.vgaName;
+			    				return true;
+			    			}
+						} else {
+							noNameLxr.addrName = curLxr.addrName;
+							return true;
+						}
+					}
+				}
+			});
+		});
+	}
+	/**
+	 * 如果联系人类型是SDI，那么转换成2个联系人
+	 * @param {Array} lxrArr 待转换联系人数组
+	 */
+	Util.transSDI2Lxr = function(lxrArr) {
+		var result = [], camLxr, vgaLxr, NONE = Const.VidInPort_Cnt;
+		
+		_.each(lxrArr, function(lxr) {
+		    if(lxr.equType == Const.EquType_SDI) {
+		    	//TODO 如果只选择了其中一个，为什么没有转换呢？
+		    	// \r连接符需要换成\n
+		    	if(lxr.camPort != NONE && lxr.vgaPort != NONE) {
+			    	camLxr = _.extend({}, lxr);
+		    		camLxr.addrName = lxr.addrName + " \r" + lxr.camName;
+		    		camLxr.vgaPort = NONE;
+		    		result.push(camLxr);
+		    		
+			    	vgaLxr = _.extend({}, lxr);
+		    		vgaLxr.addrName = lxr.addrName + " \r" + lxr.vgaName;
+		    		vgaLxr.camPort = NONE;
+		    		result.push(vgaLxr);
+		    		
+			    	return true;
+		    	}
+			}
+			result.push(lxr);
+		});
+		
+		return result;
 	}
 	
 	/*************下面基本都是和表单相关的工具方法***********/

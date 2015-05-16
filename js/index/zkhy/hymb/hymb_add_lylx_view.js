@@ -222,45 +222,17 @@ define(function(require) {
 		},
 		_getOptions: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
+			lxrArr = Util.transSDI2Lxr(lxrArr);
 			
 			var $option = $('<option></option>');
-			var $curOption,$vgaOption;
-			var self = this;
-			var srcArr = [];
-			_.each(lxrArr, function(lxr) {
-			    if(lxr.equType == Const.EquType_SDI) {
-			    	var addrName = lxr.addrName;
-			    	var camInfo = _.extend({}, lxr);
-			    	var vgaInfo = _.extend({}, lxr);
-			    	
-			    	if(lxr.camPort != Const.VidInPort_Cnt && lxr.vgaPort != Const.VidInPort_Cnt)
-			    	{
-			    		camInfo.addrName = addrName+" \r"+lxr.camName;
-			    		camInfo.vgaPort = Const.VidInPort_Cnt;
-						srcArr.push(self._getOption($curOption,camInfo));
-			    		
-			    		vgaInfo.addrName = addrName+" \r"+lxr.vgaName;
-			    		vgaInfo.camPort = Const.VidInPort_Cnt;
-						srcArr.push(self._getOption($vgaOption,vgaInfo));
-			    	}
-			 		else
-			 		{
-			 			srcArr.push(self._getOption($curOption,lxr));
-			 		}
-				}else{
-					
-					srcArr.push(self._getOption($curOption,lxr));
-				}
+			var $curOption;
+			
+			return _.map(lxrArr, function(lxr) {
+				$curOption = $option.clone();
+				$curOption.data(lxr);
+				$curOption.text(lxr.addrName);
+				return $curOption;
 			});
-			return srcArr;
-		},
-		_getOption:function($curOption,lxr)
-		{
-			var $option = $('<option></option>');
-			$curOption = $option.clone();
-			$curOption.data(lxr);
-			$curOption.text(lxr.addrName);
-			return $curOption;
 		},
 		
 		subVidSrc: function(lxrArr) {
