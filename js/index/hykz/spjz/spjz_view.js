@@ -48,7 +48,7 @@ define(function(require) {
 			this.showChildView("spjz", options.hykzHymbAddSpjzView);
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Radio.channel("index").command("activeLink", "hykz/spjz");
 		}
 	});
 	

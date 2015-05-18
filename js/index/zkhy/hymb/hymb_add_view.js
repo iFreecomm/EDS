@@ -75,7 +75,7 @@ define(function(require) {
 			this.showChildView("lzbm", options.zkhyHymbAddLzbmView);
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Radio.channel("index").command("activeLink", "zkhy/showHymb");
 		}
 	});
 	

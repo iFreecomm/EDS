@@ -64,8 +64,7 @@ define(function(require) {
 		},
 		onRender: function() {
 			this.stickit();
-			Util.initCheckboxClass(this.$el)
-				.addCheckboxEvent(this.$el);
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 		},
 		onAttach: function() {
 			Util.selectmenu(this.ui.select, this.ui.formBox);

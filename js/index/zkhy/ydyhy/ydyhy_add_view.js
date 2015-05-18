@@ -16,7 +16,7 @@ define(function(require) {
 			this.showChildView("form", options.zkhyYdyhyAddFormView);
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Radio.channel("index").command("activeLink", "zkhy/showYdyhy");
 		}
 	});
 	

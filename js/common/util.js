@@ -3,6 +3,7 @@ define(function() {
 	var _ = require("underscore");
 	var Radio = require("radio");
 	var Backbone = require("backbone");
+	var Const = require("web/common/const");
 	
 	var Util = {};
 	
@@ -159,7 +160,7 @@ define(function() {
 				keyArr.push(key);
 				value = obj[key];
 				if(value instanceof Object) {
-					flat(value, keyArr, resultObj);
+					this.flat(value, keyArr, resultObj);
 				} else {
 					resultObj[keyArr.join(".")] = value;
 				}

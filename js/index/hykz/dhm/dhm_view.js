@@ -50,7 +50,7 @@ define(function(require) {
 			this.showChildView("dhm", options.hykzHymbAddDhmView);
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Radio.channel("index").command("activeLink", "hykz/dhm");
 		}
 	});
 	

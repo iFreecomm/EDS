@@ -60,6 +60,8 @@ define(function(require) {
 		},
 		onDestroy: function() {
 			Radio.channel("dhm").reset();
+			Radio.channel("yhz").off("addLxr", this.addDhmlxr);
+			Radio.channel("yhz").off("subLxr", this.subDhmlxr);
 		},
 		
 		/**

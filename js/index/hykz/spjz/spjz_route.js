@@ -24,11 +24,13 @@ define(function(require) {
 				$.getJSON("getVenueCfg.psp"),//会场
 				//$.getJSON("getVidMatrix.psp"),//视频矩阵
 				
-				this.spjzModel.mayFetch(options)
+				this.spjzModel.mustFetch({
+					"recordId": options.id
+				})
 			).done(function(allLxr,outPort,venue) {
 				self.spjzModel.set({
-						"venueId": venue[0].data.venueId,
-						//"matrixInOut": matrixInOut[0].data.matrixInOut
+					"venueId": venue[0].data.venueId,
+					//"matrixInOut": matrixInOut[0].data.matrixInOut
 				});
 				
 				self.allLxr = allLxr[0].data.bookInfo;

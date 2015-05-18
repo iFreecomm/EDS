@@ -33,6 +33,8 @@ define(function(require) {
 		},
 		onDestroy: function() {
 			Radio.channel("spjz").reset();
+			Radio.channel("yhz").off("addLxr", this.addMatrix);
+			Radio.channel("yhz").off("subLxr", this.subMatrix);
 		},
 		
 		/**

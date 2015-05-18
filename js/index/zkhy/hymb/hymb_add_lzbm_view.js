@@ -54,6 +54,8 @@ define(function(require) {
 		},
 		onDestroy: function() {
 			Radio.channel("lzbm").reset();
+			Radio.channel("yhz").off("addLxr", this.addVidSrc);
+			Radio.channel("yhz").off("subLxr", this.subVidSrc);
 		},
 		
 		/**

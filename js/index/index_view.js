@@ -18,7 +18,7 @@ define(function(require) {
 		},
 		
 		activeLink: function(path) {
-			var hash = Backbone.history.getHash();
+			var hash = path || Backbone.history.getHash();
 			var num = hash.indexOf("/");
 			var hashRoot = num === -1 ? hash : hash.slice(0, num);
 			this.$(".navTop").find("a").removeClass("active").filter("[href='#"+hashRoot+"']").addClass("active");
