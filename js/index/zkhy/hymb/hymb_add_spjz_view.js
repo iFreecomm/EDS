@@ -90,8 +90,8 @@ define(function(require) {
 		/************************************/
 		
 		getMatrixInOut: function() {
-			var rowHeadArr = this._getRowHead();
-			var colHeadArr = this._getColHead();
+			var rowHeadArr = this.rowHeadArr;
+			var colHeadArr = this.colHeadArr;
 			return this.ui.spjz_table_container.find(".active").map(function() {
 				var $td = $(this);
 				var colIndex = $td.index() - 1;
@@ -152,11 +152,11 @@ define(function(require) {
 		},
 		
 		renderMatrix: function() {
-			var rowHeadArr = this._getRowHead();
-			var colHeadArr = this._getColHead();
-			var rows = this.rows = rowHeadArr.length;
-			var cols = this.cols = colHeadArr.length;
-			var $table = this.getTable(rows, cols);
+			this.rowHeadArr = this._getRowHead();
+			this.colHeadArr = this._getColHead();
+			this.rows = this.rowHeadArr.length;
+			this.cols = this.colHeadArr.length;
+			var $table = this.getTable(this.rows, this.cols);
 			
 			this.renderTableHead($table);
 			this.renderTableBody($table);
@@ -164,8 +164,8 @@ define(function(require) {
 			this.ui.spjz_table_container.append($table);
 		},
 		renderTableHead: function($table) {
-			var rowHeadArr = this._getRowHead();
-			var colHeadArr = this._getColHead();
+			var rowHeadArr = this.rowHeadArr;
+			var colHeadArr = this.colHeadArr;
 			var $trs = $table.find("tr");
 			var $colTH = $trs.eq(0).find("th");
 			var $rowTH = $trs.slice(1).find("th");
@@ -181,8 +181,8 @@ define(function(require) {
 			});
 		},
 		renderTableBody: function($table) {
-			var rowHeadArr = this._getRowHead();
-			var colHeadArr = this._getColHead();
+			var rowHeadArr = this.rowHeadArr;
+			var colHeadArr = this.colHeadArr;
 			var cols = colHeadArr.length;
 			var $tds = this.$tds = $table.find("td");
 			var matrixInOut = this.matrixInOut;
@@ -300,19 +300,12 @@ define(function(require) {
 			return srcArr;
 		},
 		_getColHead: function() {
-/*			var dstArr = [{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI1,addrName:"DVI1"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI2,addrName:"DVI2"},
-			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI3,addrName:"DVI3"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_MBDVI4,addrName:"DVI4"},
-			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI1,addrName:"DVI5"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI2,addrName:"DVI6"},
-			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI3,addrName:"DVI7"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB1DVI4,addrName:"DVI8"},
-			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI1,addrName:"DVI9"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI2,addrName:"DVI10"},
-			{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI3,addrName:"DVI11"},{equType:Const.EquType_OUTPUT,dviPort:Const.VidOutPort_EXB2DVI4,addrName:"DVI12"}];*/
 			var dstArr = [].concat(this.options.dviArr || []);
 			_.each(this.lxrArr || [], function(lxr) {
 			    if(lxr.equType == Const.EquType_H323 || lxr.equType == Const.EquType_SIP) {
 					dstArr.push(lxr);
 				}  
 			});
-			
 			return dstArr;
 		}
 	});

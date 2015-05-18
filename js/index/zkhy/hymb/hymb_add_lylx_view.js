@@ -155,7 +155,8 @@ define(function(require) {
 		
 		/**
 		 * @onRender
-		 * 修改录制视频源的DOM结构
+		 * 修改录制视频源的select哪个选项被选中
+		 * 如果一个选项都没有命中，则默认选择第一个，并且写回model中
 		 */
 		setSelectEquSrc: function() {
 			var lxr = _.pick(this.model.toJSON(), "equSrc.camPort", "equSrc.equType", "equSrc.recordId", "equSrc.vgaPort");
@@ -244,7 +245,11 @@ define(function(require) {
 				if(Util.isLxrInArr(lxrObj, lxrArr)) {
 					$this.remove();
 				}
-			}).end().selectmenu("refresh");
+			});
+			
+			this.setSelectEquSrc();
+			
+			this.ui.equSrc.selectmenu("refresh");
 		}
 	});
 	
