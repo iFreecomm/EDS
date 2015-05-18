@@ -22,6 +22,7 @@ define(function(require) {
 				}
 				
 				$.when(self.spscModel.mayFetch({
+					// TODO 这里的id有问题
 					id: self.VGA[0].vidOutPort
 				})).done(function() {
 					self.showView();

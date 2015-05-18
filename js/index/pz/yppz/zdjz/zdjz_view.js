@@ -11,6 +11,9 @@ define(function(require) {
 			"click .btn-switch3": "toggleSwitch",
 			"click .saveBtn" : "saveZdjz"
 		},
+		toggleSwitch: function(e) {
+			$(e.target).toggleClass("active");
+		},
 		saveZdjz: function() {
 			this.model.set(this._getZdjz())
 			.save()

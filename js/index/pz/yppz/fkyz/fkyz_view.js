@@ -11,6 +11,9 @@ define(function(require) {
 			"click .btn-switch3": "toggleSwitch",
 			"click .saveBtn" : "saveFkyz"
 		},
+		toggleSwitch: function(e) {
+			$(e.target).toggleClass("active");
+		},
 		saveFkyz: function(e) {
 			this.model.set(this._getFkyz())
 			.save()

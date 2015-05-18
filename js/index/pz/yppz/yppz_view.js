@@ -107,7 +107,7 @@ define(function(require) {
 		yppz: function(e) {
 			var self = this;
 			var ModelView = this.modelViewMap[e.target.id];
-			
+			if(!ModelView) return;
 			var Model = ModelView[0];
 			var View = ModelView[1];
 			

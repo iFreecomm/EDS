@@ -35,11 +35,10 @@ define(function(require) {
 			var $lxr = $tar.is(".lxr") ? $tar : $tar.parents(".lxr");
 			$lxr.addClass("active").siblings().removeClass("active");
 			
-			this.model.mayFetch({
-				id: $lxr.data("id")
+			this.model.mustFetch({
+				"recordId": $lxr.data("id")
 			}).done(function() {
-				//TODO
-//				self.refreshForm();
+				Util.refreshSelectmenu(self.$el).refreshSlider(self.$el);
 			});
 		},
 		

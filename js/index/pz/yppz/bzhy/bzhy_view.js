@@ -12,10 +12,11 @@ define(function(require) {
 		},
 		changeNum:function(){
 			var self = this;
-			this.model.fetch(this.model.getFetchOptions({
+			this.model.mustFetch({
 				groupNum: this._getNum()
-			})).done(function() {
-				self.renderData().initCheckboxClass().initRadioClass();
+			}).done(function() {
+				self.renderData();
+				Util.initCheckboxClass(self.$el).initRadioClass(self.$el);
 			});
 		},
 		saveBzhy: function() {

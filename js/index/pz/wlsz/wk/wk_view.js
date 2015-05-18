@@ -38,6 +38,7 @@ define(function(require) {
 		onRender: function() {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.$("h3").children("span").text(this.model.get("device")+1);
 			this.changeNetType();
 		},
 		onAttach: function() {

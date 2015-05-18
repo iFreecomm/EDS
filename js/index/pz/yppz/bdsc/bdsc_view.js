@@ -11,6 +11,9 @@ define(function(require) {
 			"click .btn-switch1": "toggleSwitch",
 			"click .saveBtn" : "saveBdsc"
 		},
+		toggleSwitch: function(e) {
+			$(e.target).toggleClass("active");
+		},
 		saveBdsc: function(e) {
 			this.model.set({
 				"volumeSingleOutPut": this._getOutput()

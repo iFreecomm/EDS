@@ -214,6 +214,7 @@ define(function() {
 	 */
 	Util.refreshSelectmenu = function($select) {
 		this._getReal($select, "select").selectmenu("refresh");
+		return this;
 	}
 	/**
 	 * 刷新jqueryui中的slider
@@ -224,6 +225,7 @@ define(function() {
 			var $this = $(this);
 			$this.slider("value", $this.siblings(".sliderValue").text());
 		});
+		return this;
 	}
 	
 	/**

@@ -32,6 +32,7 @@ define(function(require) {
 				}
 				
 				$.when(self.spsrModel.mayFetch({
+					// TODO 这里的id有问题
 					id: self.SDI[0].camPort || self.VGA[0].vgaPort
 				})).done(function() {
 					self.showView();

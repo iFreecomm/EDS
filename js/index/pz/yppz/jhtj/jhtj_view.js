@@ -13,9 +13,9 @@ define(function(require) {
 		},
 		changeOutport:function(){
 			var self = this;
-			this.model.fetch(this.model.getFetchOptions({
+			this.model.mustFetch({
 				outPort: this._getOutport()
-			})).done(function() {
+			}).done(function() {
 				self.renderData();
 			});
 		},

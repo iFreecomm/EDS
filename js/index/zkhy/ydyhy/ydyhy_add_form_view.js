@@ -63,7 +63,7 @@ define(function(require) {
 			alert("保存会议失败！");
 		},
 		cancelMeeting: function() {
-			this.navigate("zkhy/showYdyhy", {trigger: true});
+			Util.navigate("zkhy/showYdyhy", {trigger: true});
 		},
 		
 		initialize: function() {
