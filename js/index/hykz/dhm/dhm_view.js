@@ -24,12 +24,11 @@ define(function(require) {
 			var self = this;
 			
 			var showMpMode = Radio.channel("dhm").request("getShowMpMode");
-			var subPicInfo = Radio.channel("dhm").request("getSubPicInfo");
+			var mpMode = Radio.channel("dhm").request("getMpMode");
 			
 			this.model.set({
 				"showMpMode": showMpMode,
-				"subPicInfo": subPicInfo,
-				"subPicCnt": subPicInfo.length
+				"mpMode": mpMode
 			})
 			.save()
 			.done(function() {
