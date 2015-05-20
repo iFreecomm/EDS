@@ -16,7 +16,7 @@ define(function(require) {
 			this.model.fetch(this.model.getFetchOptions({
 				outPort: this._getOutport()
 			})).done(function() {
-				self.renderData();
+				self.renderData().refreshSlider();
 			});
 		},
 		saveJhtj: function(e) {

@@ -76,6 +76,7 @@ define(function(require) {
 				options.orientation = "vertical";
 				options.slide = this._slideVerticalEvent;
 				options.create = this._slideVerticalEvent;
+				options.change = this._slideVerticalEvent;
 			} else {
 				options.slide = this._slideHorizontalEvent;
 				options.change = this._slideHorizontalChangeEvent;
