@@ -39,13 +39,13 @@ define(function(require) {
 				.addRadioEvent(this.$el);
 		},
 		renderData: function() {
-			var $el = this.$el;
-			var model = this.model;
-			model.get("afrEn") && $el.find("#afrEn").addClass("active");
-			var afrMode = model.get("afrMode");
-			$el.find("[name=afrMode][value=" + afrMode + "]").prop("checked", true);
-			var afrRange = model.get("afrRange");
-			$el.find("[name=afrRange][value=" + afrRange + "]").prop("checked", true);
+//			var $el = this.$el;
+//			var model = this.model;
+//			model.get("afrEn") && $el.find("#afrEn").addClass("active");
+//			var afrMode = model.get("afrMode");
+//			$el.find("[name=afrMode][value=" + afrMode + "]").prop("checked", true);
+//			var afrRange = model.get("afrRange");
+//			$el.find("[name=afrRange][value=" + afrRange + "]").prop("checked", true);
 			return this;
 		},
 		onAttach: function() {

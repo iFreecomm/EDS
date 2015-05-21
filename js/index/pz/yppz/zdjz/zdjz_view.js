@@ -38,11 +38,11 @@ define(function(require) {
 				.addRadioEvent(this.$el);
 		},
 		renderData: function() {
-			var $el = this.$el;
-			var model = this.model;
-			model.get("ansEn") && $el.find("#ansEn").addClass("active");
-			var ansMode = model.get("ansMode");
-			$el.find("[name=ansMode][value=" + ansMode + "]").prop("checked", true);
+//			var $el = this.$el;
+//			var model = this.model;
+//			model.get("ansEn") && $el.find("#ansEn").addClass("active");
+//			var ansMode = model.get("ansMode");
+//			$el.find("[name=ansMode][value=" + ansMode + "]").prop("checked", true);
 			return this;
 		},
 		onAttach: function() {

@@ -51,6 +51,7 @@
 /**********音频配置样式开始**********/
 .yppz .panel-blue {
 	background: #244959;
+	overflow: hidden;
 }
 .yppz .panel-head {
 	position: relative;

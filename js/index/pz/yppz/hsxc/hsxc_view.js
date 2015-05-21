@@ -36,12 +36,12 @@ define(function(require) {
 				.addRadioEvent(this.$el);
 		},
 		renderData: function() {
-			var $el = this.$el;
-			var model = this.model;
-			model.get("agcEn") && $el.find("#agcEn").addClass("active");
-			model.get("aecEn") && $el.find("#aecEn").addClass("active");
-			var aecMode = model.get("aecMode");
-			$el.find("[name=aecMode][value=" + aecMode + "]").prop("checked", true);
+//			var $el = this.$el;
+//			var model = this.model;
+//			model.get("agcEn") && $el.find("#agcEn").addClass("active");
+//			model.get("aecEn") && $el.find("#aecEn").addClass("active");
+//			var aecMode = model.get("aecMode");
+//			$el.find("[name=aecMode][value=" + aecMode + "]").prop("checked", true);
 			return this;
 		},
 		onAttach: function() {

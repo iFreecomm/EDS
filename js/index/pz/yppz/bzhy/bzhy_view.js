@@ -54,16 +54,16 @@ define(function(require) {
 				.addCheckboxEvent(this.$el);
 		},
 		renderData: function() {
-			var $el = this.$el;
-			var model = this.model;
-			var groupNum = model.get("groupNum");
-			$el.find("[name=groupNum][value=" + groupNum + "]").prop("checked", true);
-			var audInPort = model.get("audInPort");
-			var $MICs = $el.find("[name=Mic]");
-			$MICs.prop("checked", false);
-			_.each(audInPort, function(port) {
-				$MICs.filter("[value=" + port + "]").prop("checked", true);
-			});
+//			var $el = this.$el;
+//			var model = this.model;
+//			var groupNum = model.get("groupNum");
+//			$el.find("[name=groupNum][value=" + groupNum + "]").prop("checked", true);
+//			var audInPort = model.get("audInPort");
+//			var $MICs = $el.find("[name=Mic]");
+//			$MICs.prop("checked", false);
+//			_.each(audInPort, function(port) {
+//				$MICs.filter("[value=" + port + "]").prop("checked", true);
+//			});
 			return this;
 		},
 		onAttach: function() {

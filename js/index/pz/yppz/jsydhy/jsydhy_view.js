@@ -21,7 +21,7 @@ define(function(require) {
 		},
 		
 		onRender: function() {
-			this.stickit();
+//			this.stickit();
 			Util.initSlider(this.$el);
 		},
 		onAttach: function() {

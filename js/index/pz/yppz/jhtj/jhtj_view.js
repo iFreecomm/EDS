@@ -49,13 +49,13 @@ define(function(require) {
 			return  +$el.find("[name=outPort]:checked").val();
 		},
 		renderData: function() {
-			var outPort = this.model.get("outPort");
-			this.$el.find("[name=outPort][value=" + outPort + "]").prop("checked", true);
-			
-			var output = this.model.get("eqGain");
-			this.$(".slide-vertical-box").each(function(i) {
-				$(this).find(".sliderValue").text(output[i] || 0);
-			});
+//			var outPort = this.model.get("outPort");
+//			this.$el.find("[name=outPort][value=" + outPort + "]").prop("checked", true);
+//			
+//			var output = this.model.get("eqGain");
+//			this.$(".slide-vertical-box").each(function(i) {
+//				$(this).find(".sliderValue").text(output[i] || 0);
+//			});
 			return this;
 		},
 		onAttach: function() { 
