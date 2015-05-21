@@ -9,7 +9,7 @@ define(function(require) {
 		},
 		
 		routes: {
-			"hykz": "spjz",
+			"hykz": "dhm",
 			"hykz/spjz(/:id)": "spjz",
 			"hykz/dhm(/:id)": "dhm"
 		},

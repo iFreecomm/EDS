@@ -13,12 +13,17 @@ define(function(require) {
 			"#startTime": "startTime",
 			"#endTime": "endTime",
 			"#diskPath": "diskPath",
-			"#fileType": "fileType",
+			"#fileType": {
+				observe: "fileType",
+				selectName: "fileType"
+			},
 			"#confNum": "confNum",
 			"#confName": "confName",
 			"#convenor": "convenor"
 		},
-		
+		initialize: function(opt) {			
+			this.setSelectBindings(this.bindings);
+		},
 		events: {
 			"click .searchBtn": "searchFile"
 		},

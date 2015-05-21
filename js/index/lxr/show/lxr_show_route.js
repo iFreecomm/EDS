@@ -10,18 +10,6 @@ define(function(require) {
 			var self = this;
 			this.container = options.container;
 			this.lxrCollection = new LxrCollection();
-		/*	$.when(
-				$.getJSON("getSdiPort.psp"),
-				this.lxrCollection.fetch({
-				reset: true})
-			).done(function(sdiInfo) {
-				self.sdiInfo = [];
-				if(sdiInfo[0].data && sdiInfo[0].data.sdiInfo)
-				{
-					self.sdiInfo = sdiInfo[0].data.sdiInfo;
-				}
-				self.showView();
-			});*/
 			
 			this.lxrCollection.fetch({
 				reset: true
@@ -33,10 +21,7 @@ define(function(require) {
 		showView: function() {
 			this.show({
 				contentRightView: new LxrShowView({
-					collection: this.lxrCollection,
-					templateHelpers:{
-						sdiInfo:this.sdiInfo
-					}
+					collection: this.lxrCollection
 				})
 			});
 		}

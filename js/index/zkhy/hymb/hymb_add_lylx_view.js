@@ -148,13 +148,44 @@ define(function(require) {
 			this.ui.equSrc.find("option").each(function() {
 				var $this = $(this);
 				var optData = $this.data();
-				if(lxr["equSrc.camPort"] === optData["camPort"] &&
-				lxr["equSrc.equType"] === optData["equType"] &&
-				lxr["equSrc.recordId"] === optData["recordId"] &&
-				lxr["equSrc.vgaPort"] === optData["vgaPort"]) {
-					isMatch = true;
-					$this.attr("selected", true);
+				if((lxr["equSrc.camPort"] === optData["camPort"] || lxr["equSrc.vgaPort"] === optData["vgaPort"])  &&
+					lxr["equSrc.equType"] === optData["equType"] &&
+					lxr["equSrc.recordId"] === optData["recordId"]) {
+						isMatch = true;
+						$this.attr("selected", true);
+						return;
 				}
+				/*if(lxr["equSrc.equType"] == Const.EquType_SDI)
+				{
+					if(lxr["equSrc.recordId"] === optData["recordId"])
+					{
+						if(lxr["equSrc.camPort"] != Const.VidInPort_Cnt && lxr["equSrc.camPort"] == optData["camPort"])
+		    			{
+		    				isMatch = true;
+							$this.attr("selected", true);
+							return;
+		    			}
+		    			
+		    			if(lxr["equSrc.vgaPort"] != Const.VidInPort_Cnt && lxr["equSrc.vgaPort"] == optData["vgaPort"])
+		    			{
+		    				isMatch = true;
+							$this.attr("selected", true);
+							return;
+		    			}
+					}
+				}
+				else
+				{
+					if(lxr["equSrc.camPort"] === optData["camPort"] &&
+					lxr["equSrc.equType"] === optData["equType"] &&
+					lxr["equSrc.recordId"] === optData["recordId"] &&
+					lxr["equSrc.vgaPort"] === optData["vgaPort"]) {
+						isMatch = true;
+						$this.attr("selected", true);
+						return;
+					}
+				}*/
+				
 			});
 			if(!isMatch) {
 				this.ui.equSrc.get(0).selectedIndex = 0;

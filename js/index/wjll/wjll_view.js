@@ -21,7 +21,10 @@ define(function(require) {
 			videoViewContainer: "#videoViewContainer",
 			audioViewContainer: "#audioViewContainer"
 		},
-		
+		ui: {
+			"prevPageBtn": ".prevPage",
+			"nextPageBtn": ".nextPage"
+		},
 		events: {
 			"click .burnDisk": "burnDisk",
 			"click .batchDelete": "batchDelete",
@@ -54,14 +57,31 @@ define(function(require) {
 			this._search();
 		},
 		
+		showPageBtns: function() {
+			if(this.pageNum === 1) {
+				this.ui.prevPageBtn.hide();
+			} else {
+				this.ui.prevPageBtn.show();
+			}
+			
+			if(this.endFlag === 1) {
+				this.ui.nextPageBtn.hide();
+			} else {
+				this.ui.nextPageBtn.show();
+			}
+		},
+		
 		initialize: function() {
+			this.searchTerms = this.options.searchTerms;
+			this.pageNum = this.options.pageNum;
+			this.endFlag = this.options.endFlag;
 			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
 			Radio.channel("wjll").comply("playFile", this.playFile, this);
 		},
 		
 		searchFile: function(searchTerms) {
 			this.searchTerms = searchTerms;
-			this.pageNum = 0;
+			this.pageNum = 1;
 			this._search();
 		},
 		
@@ -121,22 +141,27 @@ define(function(require) {
 		_search: function() {
 			var self = this;
 			var collection = new FileCollection();
-			collection.fetch({
-				reset: true,
-				data: JSON.stringify({
-					searchTerms: this.searchTerms,
-					pageNum: this.pageNum
-				})
-			}).done(function() {
+			
+			$.getJSON("getFileList.psp", JSON.stringify({
+				searchTerms: this.searchTerms,
+				pageNum: this.pageNum
+			})).done(function(fileList) {
+				self.endFlag = fileList.data.endFlag;
+				collection.reset(fileList.data.fileList);
 				self.showChildView("fileContainer", new FileView({
 					collection: collection
 				}));
+				self.showPageBtns();
 			});
 		},
 		
 		onBeforeShow: function(view, region, options) {
 			this.showChildView("searchTermsContainer", options.searchTermsView);
 			this.showChildView("fileContainer", options.fileView);
+		},
+		
+		onRender: function() {
+			this.showPageBtns();
 		},
 		
 		onAttach: function() {

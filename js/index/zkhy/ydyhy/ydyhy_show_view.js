@@ -1,6 +1,7 @@
 define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
+	var Backbone = require("backbone");
 	var Handlebars = require("handlebars");
 	
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_show_template.html");
@@ -46,10 +47,11 @@ define(function(require) {
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {
-					alert(tip+"成功");	
+					alert(tip+"成功");
 				} else {
 					alert(tip+"失败");	
 				}
+				Backbone.history.loadUrl();
 			}).fail(function() {
 				
 			});

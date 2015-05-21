@@ -97,8 +97,9 @@ define(function(require) {
 			var value = _.isNumber(ui.value) ? ui.value : $this.slider("value");
 			var height = $this.data("height") || 261;
 			var max = $this.data("max");
+			var min = $this.data("min");
 			
-			$this.siblings(".color").height(value * height / max);
+			$this.siblings(".color").height((value-min) * height / (max-min));
 		},
 		
 		//自定义checkbox
@@ -151,7 +152,10 @@ define(function(require) {
 					$radio.siblings(".radio-label").removeClass("active");
 				}
 				
+				$radio.prop("checked", true);
 				$label.addClass("active");
+				$radio.change();
+				return false;
 			});
 		}
   		

@@ -1,6 +1,7 @@
 {
 	"code": 0,
 	"data": {
+		"endFlag": 0,
 		"fileList": [
 			{
 				"fileName": "media/video/video1.mp4media/video/video1.mp4media/video/video1.mp4",

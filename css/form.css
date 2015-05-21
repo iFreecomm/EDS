@@ -177,14 +177,16 @@ input[type=radio] {
 	text-shadow: 0 2px 1px #555;
 }
 .btn-default {
-	padding: .8em 1.5em;
+	/*padding: .8em 1.5em;*/
+	padding: .5em 1.1em;
 }
 .btn-default:hover {
 	background:  #F47900;
 }
 .btn-ls {
 	letter-spacing: 1em;
-	padding: .8em .5em .8em 1.5em;
+	/*padding: .8em .5em .8em 1.5em;*/
+	padding: .5em .3em .5em 1.3em;
 }
 .btn-ls:hover {
 	background:  #F47900;

@@ -19,15 +19,14 @@ define(function(require) {
 
 			$.when(
 				$.getJSON("getDiskList.psp"),
-				this.fileCollection.fetch({
-					reset: true,
-					data: JSON.stringify({
-						searchTerms: this.searchTerms,
-						pageNum: this.pageNum
-					})
-				})
-			).done(function(diskList) {
+				$.getJSON("getFileList.psp", JSON.stringify({
+					searchTerms: this.searchTerms,
+					pageNum: this.pageNum
+				}))
+			).done(function(diskList, fileList) {
 				self.diskList = diskList[0].data.diskList;
+				self.endFlag = fileList[0].data.endFlag;
+				self.fileCollection.reset(fileList[0].data.fileList);
 				self.showView();
 			});
 		},
@@ -37,6 +36,7 @@ define(function(require) {
 				contentRightView: new WjllView({
 					searchTerms: this.searchTerms,
 					pageNum: this.pageNum,
+					endFlag: this.endFlag,
 					templateHelpers: {
 						diskList: this.diskList
 					}

@@ -12,7 +12,24 @@ define(function(require) {
 		
 		events: {
 			"click .playBtn": "playFile",
-			"click .deleteBtn": "deleteFile"
+			"click .deleteBtn": "deleteFile",
+			"click .downloadBtn": "downloadFile"
+		},
+		downloadFile:function(e){
+			//e.preventDefault();
+			var $tr = $(e.target).parents("tr");
+			var path = $tr.data("path");
+			//var fileName = "Alias0"+path.substr(path.lastIndexOf("\/"));
+			var fileName = "Alias0"+path;
+			var href = "downloadFile.psp?" + JSON.stringify({
+				filePath: fileName
+			});
+			
+			$(e.target).attr("href", href);
+			
+//			$.getJSON("downloadFile.psp", JSON.stringify({
+//				filePath: fileName
+//			}));
 		},
 		playFile: function(e) {
 			e.preventDefault();

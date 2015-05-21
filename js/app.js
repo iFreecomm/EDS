@@ -33,7 +33,9 @@ define(function(require) {
 	var App = Mn.Application.extend({
 		initialize: function() {
 			this.layout = new AppView();
-			
+			$.ajaxSetup({
+				cache: false
+			});
 			this.initRouters(this.layout.container);
 			this.initRenderer();
 			this.initChannel();
@@ -132,6 +134,39 @@ define(function(require) {
 				}
 				return out;
 			});
+			
+			Handlebars.registerHelper("getFileType", function(fileType) {
+				if(fileType === 0) {
+					return "音频";
+				} else if(fileType === 1) {
+					return "视频";
+				} 
+				return "";
+			});
+			
+			Handlebars.registerHelper("getFileSize", function(fileSize) {
+				if(fileSize == 0)
+				{
+					return "0KB";
+				}
+				if(fileSize < 1024*1024)
+				{
+					var size = (fileSize/1024).toFixed(0);
+					size = size > 0?size :1;
+					return size+"KB";
+				} else{
+					return (fileSize/(1024*1024)).toFixed(2)+"MB";
+				} 
+				return "";
+			});
+			
+			Handlebars.registerHelper("getPlayTime", function(playTime) {
+				var hour = parseInt(playTime/3600);
+				var minute = parseInt((playTime-3600*hour)/60);
+				var second = (playTime-3600*hour)%60;
+				return hour+":"+minute+":"+second;
+			});
+			
 		},
 		
 		initStickitHandler: function() {
