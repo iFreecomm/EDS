@@ -42,11 +42,11 @@ define(function(require) {
 		},
 		
 		initialize: function() {
-//			var model = this.model.get("volumeSingleInPut");
-//			this.options.templateHelpers = {
-//				MIC: model.slice(0, 12),
-//				LineIn: model.slice(12)
-//			};
+			var model = this.model.get("volumeSingleInPut");
+			this.options.templateHelpers = {
+				MIC: model.slice(0, 12),
+				LineIn: model.slice(12)
+			};
 		},
 		onRender: function() {
 			Util.initSlider(this.$el);

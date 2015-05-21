@@ -1,8 +1,10 @@
+<h3>本地输入</h3>
+
 <div class="formBox">
 	<div class="formCell">
 		<div class="fieldBox pb10">
 			<div class="fl ml10 mr20">
-				{{#loop 12}}
+				{{#each MIC}}
 					<div class="slide-vertical-box">
 						<div class="slide-vertical-box-sm">
 							<input type="hidden" name="audInPort" value="{{audInPort}}" />
@@ -14,11 +16,11 @@
 							<span class="sliderValue" contenteditable="true">{{involume}}</span>
 						</div>
 					</div>
-				{{/loop}}
+				{{/each}}
 			</div>
 			
 			<div class="fl ml10">
-				{{#loop 4}}
+				{{#each LineIn}}
 					<div class="slide-vertical-box">
 						<div class="slide-vertical-box-sm">
 							<input type="hidden" name="audInPort" value="{{audInPort}}" />
@@ -29,8 +31,12 @@
 							<span class="sliderValue" contenteditable="true">{{involume}}</span>
 						</div>
 					</div>
-				{{/loop}}
+				{{/each}}
 			</div>
 		</div>
+	</div>
+	
+	<div class="form-btns">
+		<button type="button" class="btn btn-ls saveBtn">保存</button>
 	</div>
 </div>
