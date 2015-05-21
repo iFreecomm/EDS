@@ -49,6 +49,126 @@
 /**********网络设置样式结束**********/
 
 /**********音频配置样式开始**********/
+.yppz .panel-blue {
+	background: #244959;
+}
+.yppz .panel-head {
+	position: relative;
+	height: 40px;
+	background: url(../img/yppz/blue.png) repeat-x;
+	text-align: center;
+	color: #FFF;
+	font-size: 22px;
+}
+.yppz .panel-head:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 45px;
+	height: 40px;
+	background: url(../img/yppz/blue-left.png) no-repeat;
+}
+.yppz .panel-head:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 45px;
+	height: 40px;
+	background: url(../img/yppz/blue-right.png) no-repeat;
+}
+
+.yppz .glow-blue {
+	position: relative;
+	height: 72px;
+	background: url(../img/yppz/glow.png) repeat-x;
+}
+.yppz .glow-blue:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 20px;
+	height: 72px;
+	background: url(../img/yppz/glow-left.png) no-repeat;
+}
+.yppz .glow-blue:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20px;
+	height: 72px;
+	background: url(../img/yppz/glow-right.png) no-repeat;
+}
+
+.yppz {
+	margin: 10px;
+	min-width: 1680px;
+}
+.yppz .line {
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+#bdsr_container {
+	width: 1280px;
+	height: 430px;
+	float: left;
+	margin-right: 10px;
+}
+#bdsc_yl_container {
+	overflow: hidden;
+	height: 430px;
+}
+#jsydhy_container {
+	width: 50%;
+	height: 405px;
+	float: left;
+	margin-right: 10px;
+}
+#fsydhy_container {
+	overflow: hidden;
+	height: 405px;
+}
+#bzhy_container {
+	width: 50%;
+	height: 215px;
+	float: left;
+	margin-right: 10px;
+}
+#yyjl_container {
+	overflow: hidden;
+	height: 215px;
+}
+#fkyz_container,
+#zdjz_container,
+#hsxc_container,
+#yx_container,
+#xf_container,
+#bdsc_bz_container {
+	width: 350px;
+	height: 230px;
+	float: left;
+	margin-right: 10px;
+}
+#fkyz_container,
+#zdjz_container,
+#hsxc_container {
+	margin-bottom: 10px;
+}
+#jhtj_container {
+	width: 600px;
+	height: 470px;
+	float: right;
+}
+
+.yppz .jyby-btns {
+	padding: 16px 0 0 30px;
+}
+
+
+
 .yppz-box-name {
 	margin-bottom: 5px;
 }
