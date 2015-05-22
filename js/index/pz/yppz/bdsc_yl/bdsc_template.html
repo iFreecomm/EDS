@@ -1,31 +1,10 @@
-<div class="formBox">
-	<div class="fieldBox">
-			<div class="slide-vertical-box">
-				<div class="slide-vertical-box-sm">
-					<h4 class="slide-vertical-box-name">输出1</h4>
-					<button type="button" name="enable" class="btn btn-switch1" title="开关"></button>
-					<div class="color"></div>
-					<div class="slider" data-min="0" data-max="32" data-vertical="true"></div>
-					<span class="sliderValue" contenteditable="true"></span>
-				</div>
-			</div>
-			<div class="slide-vertical-box">
-				<div class="slide-vertical-box-sm">
-					<h4 class="slide-vertical-box-name">输出2</h4>
-					<button type="button" name="enable" class="btn btn-switch1" title="开关"></button>
-					<div class="color"></div>
-					<div class="slider" data-min="0" data-max="32" data-vertical="true"></div>
-					<span class="sliderValue" contenteditable="true"></span>
-				</div>
-			</div>
-			<div class="slide-vertical-box">
-				<div class="slide-vertical-box-sm">
-					<h4 class="slide-vertical-box-name">输出3</h4>
-					<button type="button" name="enable" class="btn btn-switch1" title="开关"></button>
-					<div class="color"></div>
-					<div class="slider" data-min="0" data-max="32" data-vertical="true"></div>
-					<span class="sliderValue" contenteditable="true"></span>
-				</div>
-			</div>
+{{#loop 3}}
+	<div class="slide-vertical-box-2">
+		<input type="hidden" name="audInPort" value="{{audInPort}}" />
+		<input type="text" name="audInName" class="slide-vertical-box-name" value="MIC{{index}}"/>
+		<button type="button" name="enable" class="btn btn-switch1 {{isActive enable}}" title="开关"></button>
+		<div class="color"></div>
+		<div class="slider" data-min="0" data-max="32" data-vertical="true"></div>
+		<span class="sliderValue" contenteditable="true">{{involume}}</span>
 	</div>
-</div>
+{{/loop}}

@@ -1,0 +1,272 @@
+/******水平slider样式******/
+.slider.ui-slider-horizontal {
+	float: left;
+	width: 480px;
+	margin: 11px 10px;
+}
+.slider.ui-slider-horizontal .ui-slider-range {
+	background: #1c94c4;
+}
+.slider.ui-slider-horizontal+.sliderValue {
+	line-height: 2.2;
+	font-size: 16px;
+	margin-left: 10px;
+}
+/******slide-vertical-box-1样式******/
+.slide-vertical-box-1 {
+	position: relative;
+	float: left;
+	width: 75px;
+	height: 362px;
+	background: url(../img/slider/slider1/panel.png);
+}
+
+.slide-vertical-box-1 h4 {
+	margin: 0;
+	text-align: center;
+	height: 18px;
+}
+.slide-vertical-box-1 .slide-vertical-box-name {
+	display: block;
+	width: 100%;
+	height: 18px;
+	line-height: 12px;
+	padding: 0;
+	border: 1px solid transparent;
+	margin: 0;
+	font-size: 12px;
+	color: #EAEAEA;
+	text-align: center;
+	background: none;
+}
+
+.slide-vertical-box-1 .btn-switch1 {
+	display: block;
+	margin: 28px auto 0;
+	width: 53px;
+	height: 36px;
+	background: url(../img/slider/switch1_off.png) no-repeat;
+}
+.slide-vertical-box-1 .btn-switch1.active {
+	background: url(../img/slider/switch1_on.png) no-repeat;
+}
+.slide-vertical-box-1 .btn-switch1.mt2 {
+	margin-top: 2px;
+}
+.slide-vertical-box-1 .btn-switch2 {
+	display: block;
+	margin: auto;
+	width: 47px;
+	height: 49px;
+	background: url(../img/slider/switch2_off.png) no-repeat;
+}
+.slide-vertical-box-1 .btn-switch2.active {
+	background: url(../img/slider/switch2_on.png) no-repeat;
+}
+
+.slide-vertical-box-1 .color {
+	position: absolute;
+	left: 9px;
+	bottom: 8px;
+	width: 9px;
+	background: url(../img/slider/slider1/color.png) no-repeat bottom;
+}
+
+.slide-vertical-box-1 .ui-slider-vertical {
+	position: absolute;
+	right: 20px;
+	bottom: 8px;
+	width: 6px;
+	height: 225px;
+	border: none;
+	margin: 0;
+	background: transparent;
+}
+.slide-vertical-box-1 .ui-slider-range {
+	background: transparent;
+}
+.slide-vertical-box-1 .ui-slider-handle {
+	width: 48px;
+	height: 38px;
+	border: none;
+	left: -30px;
+	margin-bottom: -22px;
+	background: url(../img/slider/slider1/handler.png) no-repeat;
+	outline: none;
+	cursor: pointer;
+}
+.slide-vertical-box-1 .sliderValue {
+	display: none;
+}
+/******slide-vertical-box-2样式******/
+.slide-vertical-box-2 {
+	position: relative;
+	float: left;
+	width: 75px;
+	height: 345px;
+	background: url(../img/slider/slider2/panel.png);
+}
+
+.slide-vertical-box-2 h4 {
+	margin: 0;
+	text-align: center;
+	height: 18px;
+}
+.slide-vertical-box-2 .slide-vertical-box-name {
+	display: block;
+	width: 100%;
+	height: 18px;
+	line-height: 12px;
+	padding: 0;
+	border: 1px solid transparent;
+	margin: 0;
+	font-size: 12px;
+	color: #EAEAEA;
+	text-align: center;
+	background: none;
+}
+
+.slide-vertical-box-2 .btn-switch1 {
+	display: block;
+	margin: 28px auto 0;
+	width: 53px;
+	height: 36px;
+	background: url(../img/slider/switch1_off.png) no-repeat;
+}
+.slide-vertical-box-2 .btn-switch1.active {
+	background: url(../img/slider/switch1_on.png) no-repeat;
+}
+.slide-vertical-box-2 .btn-switch1.mt2 {
+	margin-top: 2px;
+}
+.slide-vertical-box-2 .btn-switch2 {
+	display: block;
+	margin: auto;
+	width: 47px;
+	height: 49px;
+	background: url(../img/slider/switch2_off.png) no-repeat;
+}
+.slide-vertical-box-2 .btn-switch2.active {
+	background: url(../img/slider/switch2_on.png) no-repeat;
+}
+
+.slide-vertical-box-2 .color {
+	position: absolute;
+	left: 9px;
+	bottom: 8px;
+	width: 9px;
+	background: url(../img/slider/slider1/color.png) no-repeat bottom;
+}
+
+.slide-vertical-box-2 .ui-slider-vertical {
+	position: absolute;
+	right: 20px;
+	bottom: 8px;
+	width: 6px;
+	height: 225px;
+	border: none;
+	margin: 0;
+	background: transparent;
+}
+.slide-vertical-box-2 .ui-slider-range {
+	background: transparent;
+}
+.slide-vertical-box-2 .ui-slider-handle {
+	width: 48px;
+	height: 38px;
+	border: none;
+	left: -30px;
+	margin-bottom: -22px;
+	background: url(../img/slider/slider1/handler.png) no-repeat;
+	outline: none;
+	cursor: pointer;
+}
+.slide-vertical-box-2 .sliderValue {
+	display: none;
+}
+/******slide-vertical-box-3样式******/
+.slide-vertical-box-3 {
+	position: relative;
+	float: left;
+	width: 67px;
+	height: 342px;
+	background: url(../img/slider/slider3/panel.png);
+}
+
+.slide-vertical-box-3 h4 {
+	margin: 0;
+	text-align: center;
+	height: 18px;
+}
+.slide-vertical-box-3 .slide-vertical-box-name {
+	display: block;
+	width: 100%;
+	height: 18px;
+	line-height: 12px;
+	padding: 0;
+	border: 1px solid transparent;
+	margin: 0;
+	font-size: 12px;
+	color: #EAEAEA;
+	text-align: center;
+	background: none;
+}
+
+.slide-vertical-box-3 .btn-switch1 {
+	display: block;
+	margin: 28px auto 0;
+	width: 53px;
+	height: 36px;
+	background: url(../img/slider/switch1_off.png) no-repeat;
+}
+.slide-vertical-box-3 .btn-switch1.active {
+	background: url(../img/slider/switch1_on.png) no-repeat;
+}
+.slide-vertical-box-3 .btn-switch1.mt2 {
+	margin-top: 2px;
+}
+.slide-vertical-box-3 .btn-switch2 {
+	display: block;
+	margin: auto;
+	width: 47px;
+	height: 49px;
+	background: url(../img/slider/switch2_off.png) no-repeat;
+}
+.slide-vertical-box-3 .btn-switch2.active {
+	background: url(../img/slider/switch2_on.png) no-repeat;
+}
+
+.slide-vertical-box-3 .color {
+	position: absolute;
+	left: 9px;
+	bottom: 8px;
+	width: 9px;
+	background: url(../img/slider/slider1/color.png) no-repeat bottom;
+}
+
+.slide-vertical-box-3 .ui-slider-vertical {
+	position: absolute;
+	left: 15px;
+	bottom: 13px;
+	width: 5px;
+	height: 292px;
+	border: none;
+	margin: 0;
+	background: transparent;
+}
+.slide-vertical-box-3 .ui-slider-range {
+	background: transparent;
+}
+.slide-vertical-box-3 .ui-slider-handle {
+	width: 40px;
+	height: 55px;
+	border: none;
+	left: -14px;
+	margin-bottom: -28px;
+	background: url(../img/slider/slider3/handler.png) no-repeat;
+	outline: none;
+	cursor: pointer;
+}
+.slide-vertical-box-3 .sliderValue {
+	display: none;
+}

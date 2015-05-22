@@ -1,11 +1,12 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
+	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/pz/yppz/jhtj/jhtj_template.html");
 	
 	var JhtjView = Mn.ItemView.extend({
 		id: "pz_yppz_jhtj",
-		template: tmpl,
+		template: Handlebars.compile(tmpl),
 		
 		events: {
 			"click .saveBtn" : "saveJhtj",

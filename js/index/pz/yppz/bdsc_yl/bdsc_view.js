@@ -1,11 +1,12 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
+	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/pz/yppz/bdsc_yl/bdsc_template.html");
 	
 	var BdsrView = Mn.ItemView.extend({
-		id: "pz_yppz_bdsc",
-		template: tmpl,
+		id: "pz_yppz_bdsc_yl",
+		template: Handlebars.compile(tmpl),
 		
 		events: {
 			"click .btn-switch1": "toggleSwitch",

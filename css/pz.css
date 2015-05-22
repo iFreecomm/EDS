@@ -114,23 +114,23 @@
 }
 #bdsr_container {
 	width: 1280px;
-	height: 430px;
+	height: 432px;
 	float: left;
 	margin-right: 10px;
 }
 #bdsc_yl_container {
 	overflow: hidden;
-	height: 430px;
+	height: 432px;
 }
 #jsydhy_container {
 	width: 50%;
-	height: 405px;
+	height: 432px;
 	float: left;
 	margin-right: 10px;
 }
 #fsydhy_container {
 	overflow: hidden;
-	height: 405px;
+	height: 432px;
 }
 #bzhy_container {
 	width: 50%;
@@ -164,11 +164,25 @@
 	float: right;
 }
 
-.yppz .jyby-btns {
+#pz_yppz_jyby {
 	padding: 16px 0 0 30px;
 }
-
-
+#pz_yppz_bdsr {
+    width: 1220px;
+    margin: 10px auto;	
+}
+#pz_yppz_jsydhy {
+	width: 750px;
+	margin: 10px auto;
+}
+#pz_yppz_bdsc_yl {
+	width: 225px;
+	margin: 20px auto;
+}
+#pz_yppz_fsydhy {
+	width: 750px;
+	margin: 20px auto;
+}
 
 .yppz-box-name {
 	margin-bottom: 5px;

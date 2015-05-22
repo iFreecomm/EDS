@@ -4,7 +4,7 @@ define(function(require) {
 	var tmpl = require("text!web/index/pz/yppz/bdsc_bz/bdsc_template.html");
 	
 	var BdsrView = Mn.ItemView.extend({
-		id: "pz_yppz_bdsc",
+		id: "pz_yppz_bdsc_bz",
 		template: tmpl,
 		
 		events: {

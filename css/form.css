@@ -115,56 +115,61 @@ input[type=radio] {
 	display: inline-block;
 	position: relative;
 	font-size: 0;
-	height: 52px;
 }
 .radio-set .radio-label {
-	height: 52px;
-	line-height: 52px;
-	padding: 0 1.5em;
-	font-size: 21px;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 10px;
+	font-size: 14px;
 	background: url(../img/form/radio/mid1.png) repeat-x 0 0;
 	color: #373737;
 	text-align: center;
 	vertical-align: top;
 	cursor: pointer;
 }
-.radio-label-first {
-	margin-left: 15px;
+.radio-first {
+	position: relative;
+	padding-left: 5px !important;
+	margin-left: 10px;
 }
-.radio-label-last {
-	margin-right: 15px;
+.radio-first:before {
+	content: "";
+	position: absolute;
+	left: -10px;
+	top: 0;
+	width: 10px;
+	height: 100%;
+	background: url(../img/form/radio/left1.png) no-repeat;
+}
+.radio-last {
+	position: relative;
+	padding-right: 5px !important;
+	margin-right: 10px;
+}
+.radio-last:after {
+	content: "";
+	position: absolute;
+	right: -10px;
+	top: 0;
+	width: 10px;
+	height: 100%;
+	background: url(../img/form/radio/right1.png) no-repeat;
 }
 .radio-split {
 	display: inline-block;
-	width: 4px;
-	height: 52px;
-	background: url(../img/form/radio/split.png) repeat-x 0 0;
-}
-.radio-left {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 15px;
-	height: 100%;
-	background: url(../img/form/radio/left1.png) repeat-x 0 0;
-}
-.radio-right {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 15px;
-	height: 100%;
-	background: url(../img/form/radio/right1.png) repeat-x 0 0;
+	width: 1px;
+	height: 32px;
+	background: url(../img/form/radio/split.png) no-repeat;
 }
 .radio-set .radio-label.active {
 	color: #FFF;
 	background: url(../img/form/radio/mid2.png) repeat-x 0 0;
 }
-.radio-set .radio-label.active+.radio-left {
-	background: url(../img/form/radio/left2.png) repeat-x 0 0;
+.radio-set .radio-first.active:before {
+	background: url(../img/form/radio/left2.png) no-repeat;
 }
-.radio-set .radio-label.active+.radio-right {
-	background: url(../img/form/radio/right2.png) repeat-x 0 0;
+.radio-set .radio-last.active:after {
+	background: url(../img/form/radio/right2.png) no-repeat;
 }
 /******按钮样式******/
 .btn {
@@ -189,25 +194,9 @@ input[type=radio] {
 .btn-ls:hover {
 	background:  #F47900;
 }
-.btn-switch1 {
-	width: 65px;
-	height: 31px;
-	background: url(../img/form/slider/switch1_off.png) no-repeat;
-}
-.btn-switch1.active {
-	background: url(../img/form/slider/switch1_on.png) no-repeat;
-}
-.btn-switch2 {
-	width: 47px;
-	height: 49px;
-	background: url(../img/form/slider/switch2_off.png) no-repeat;
-}
-.btn-switch2.active {
-	background: url(../img/form/slider/switch2_on.png) no-repeat;
-}
 .btn-switch3 {
-	width: 108px;
-	height: 52px;
+	width: 60px;
+	height: 30px;
 	background: url(../img/form/switch3_off.png) no-repeat;
 }
 .btn-switch3.active {
@@ -252,102 +241,4 @@ input[type=radio] {
 }
 .searchBtn:hover {
 	background-color: #F47900;
-}
-/******水平slider样式******/
-.slider.ui-slider-horizontal {
-	float: left;
-	width: 480px;
-	margin: 11px 10px;
-}
-.slider.ui-slider-horizontal .ui-slider-range {
-	background: #1c94c4;
-}
-.slider.ui-slider-horizontal+.sliderValue {
-	line-height: 2.2;
-	font-size: 16px;
-	margin-left: 10px;
-}
-/******音频配置中垂直slider组件样式******/
-.slide-vertical-box {
-	float: left;
-	width: 96px;
-	height: 412px;
-}
-.slide-vertical-box .slide-vertical-box-name {
-	width: 100%;
-	height: 27px;
-	line-height: 30px;
-	padding: 0;
-	border: 1px solid transparent;
-	margin: 0;
-	font-size: 14px;
-	font-weight: bold;
-	color: #EAEAEA;
-	text-align: center;
-	background: none;
-}
-.slide-vertical-box .btn-switch1 {
-	display: block;
-	margin: 28px auto 8px auto;
-}
-.slide-vertical-box .btn-switch1.mt8 {
-	margin-top: 8px;
-}
-.slide-vertical-box .btn-switch2 {
-	display: block;
-	margin: auto;
-}
-.slide-vertical-box .color {
-	position: absolute;
-	left: 14px;
-	bottom: 16px;
-	width: 10px;
-	background: url(../img/form/slider/color1.png) no-repeat bottom;
-}
-.slide-vertical-box .ui-slider-vertical {
-	position: absolute;
-	right: 26px;
-	bottom: 16px;
-	width: 11px;
-	height: 261px;
-	border: none;
-	margin: 0;
-	background: transparent;
-}
-.slide-vertical-box .ui-slider-range {
-	background: transparent;
-}
-.slide-vertical-box .ui-slider-handle {
-	width: 66px;
-	height: 44px;
-	border: none;
-	left: -30px;
-	margin-bottom: -22px;
-	background: url(../img/form/slider/handler.png) no-repeat;
-	outline: none;
-	cursor: pointer;
-}
-.slide-vertical-box .sliderValue {
-	display: none;
-}
-/**********不同尺寸slider组件*********/
-.slide-vertical-box-sm {
-	position: relative;
-	width: 96px;
-	height: 412px;
-	background: url(../img/form/slider/panel1.png) no-repeat;
-}
-.slide-vertical-box-lg {
-	position: relative;
-	width: 96px;
-	height: 412px;
-	background: url(../img/form/slider/panel2.png) no-repeat;
-}
-.slide-vertical-box-lg .color {
-	background: url(../img/form/slider/color2.png) no-repeat bottom;
-	bottom: 23px;
-}
-.slide-vertical-box-lg .ui-slider-vertical {
-	height: 336px;
-	bottom: 23px;
 }
