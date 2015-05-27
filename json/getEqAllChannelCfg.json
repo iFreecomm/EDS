@@ -1,12 +1,6 @@
 {
 	"code": 0,
 	"data": {
-		"EqSingleChannelCfgArg": [
-			{ "EqGain": 12 },
-			{ "EqGain": 14 },
-			{ "EqGain": 16 },
-			{ "EqGain": 18 },
-			{ "EqGain": 20 }
-		]
+		"eqGain": [12, 14, 16, 18, 20]
 	}
 }

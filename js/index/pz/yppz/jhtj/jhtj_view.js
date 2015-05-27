@@ -3,28 +3,86 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/pz/yppz/jhtj/jhtj_template.html");
+	var JhtjModel = require("web/index/pz/yppz/jhtj/jhtj_model");
 	
 	var JhtjView = Mn.ItemView.extend({
 		id: "pz_yppz_jhtj",
 		template: Handlebars.compile(tmpl),
-		
-		events: {
-			"click .saveBtn" : "saveJhtj",
-			"change [name=outPort]" : "changeOutport"
+		bindings: {
+			".sliderValue": {
+				observe: "eqGain",
+				getVal: function($el) {
+				    return $el.map(function() {
+						return +$(this).text();
+					}).get();
+				},
+				update: function($el, val) {
+					$el.each(function(i) {
+						$(this).text(val[i] || 0);
+					});
+				}
+			}
 		},
-		changeOutport:function(){
-			var self = this;
-			this.model.mustFetch({
-				outPort: this._getOutport()
-			}).done(function() {
-				self.renderData();
+		events: {
+			"click .btn" : "changeOutport"
+		},
+		initialize: function() {
+			//默认输出端口是第一个
+			this.model = new JhtjModel();
+			this.options.templateHelpers = {
+				slideNameArr: ["低频", "中低频", "中频", "中高频", "高频"]
+			};
+			
+			this.listenTo(this.model, "change:eqGain", this.saveJhtj);
+		},
+		onRender: function() {
+			var view =this;
+			this.model
+			.fetch({
+				silent: true,
+				data: Util.encode({
+					outPort: 0
+				})
+			})
+			.done(function() {
+				view.stickit();
+				Util.initSlider(view.$el);
 			});
 		},
-		saveJhtj: function(e) {
-			this.model.set({
-				"eqGain": this._getCfgArg(),
-				"outPort": this._getOutport()
+		
+		/**
+		 * 改变输出端口
+		 * @param {Object} e
+		 */
+		changeOutport:function(e) {
+			var $btn = $(e.target);
+			if($btn.is(".active")) return;
+			
+			$btn.addClass("active").siblings().removeClass("active");
+			
+			var port = $btn.data("value");
+			this.model.set("outPort", port);
+			
+			var view = this;
+			this.model
+			.fetch({
+				silent: true,
+				data: Util.encode({
+					outPort: port
+				})
 			})
+			.done(function() {
+				Util.refreshSlider(view.$el);
+			});
+		},
+		
+		/**
+		 * 保存表单
+		 */
+		saveJhtj: function() {
+			console.log("save");
+			
+			this.model
 			.save()
 			.done(function() {
 				alert("保存成功！");
@@ -32,35 +90,6 @@ define(function(require) {
 			.fail(function() {
 				alert("保存失败！");
 			});
-		},
-		_getCfgArg: function() {
-			return this.$(".slide-vertical-box").map(function() {
-				return +$(this).find(".slider").slider("value");
-			}).get();
-		},
-		
-		onRender: function() {
-			this.renderData();
-			Util.initRadioClass(this.$el)
-				.addRadioEvent(this.$el)
-				.initSlider(this.$el);
-		},
-		_getOutport:function(){
-			var $el = this.$el;
-			return  +$el.find("[name=outPort]:checked").val();
-		},
-		renderData: function() {
-//			var outPort = this.model.get("outPort");
-//			this.$el.find("[name=outPort][value=" + outPort + "]").prop("checked", true);
-//			
-//			var output = this.model.get("eqGain");
-//			this.$(".slide-vertical-box").each(function(i) {
-//				$(this).find(".sliderValue").text(output[i] || 0);
-//			});
-			return this;
-		},
-		onAttach: function() { 
-			Util.activeLink();
 		}
 	});
 	

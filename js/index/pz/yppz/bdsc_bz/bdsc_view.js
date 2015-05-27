@@ -6,45 +6,31 @@ define(function(require) {
 	var BdsrView = Mn.ItemView.extend({
 		id: "pz_yppz_bdsc_bz",
 		template: tmpl,
-		
 		events: {
-			"click .btn-switch1": "toggleSwitch",
-			"click .saveBtn" : "saveBdsc"
+			"click td": "bz"
 		},
-		toggleSwitch: function(e) {
-			$(e.target).toggleClass("active");
-		},
-		saveBdsc: function(e) {
-			this.model.set({
-				"volumeSingleOutPut": this._getOutput()
-			})
-			.save()
-			.done(function() {
-				alert("保存成功！");
-			})
-			.fail(function() {
-				alert("保存失败！");
-			});
-		},
-		_getOutput: function() {
-			var $el = this.$el;
-			return this.$(".slide-vertical-box").map(function(i) {
-				var groupName = "out" + (i + 1);
-				var $this = $(this);
-				return {
-					groupNum: +$el.find('[name=' + groupName + ']:checked').val(),
-					enable: $this.find("[name=enable]").is(".active") ? 1 : 0,
-					outVol: $this.find(".slider").slider("value")
-				};
-			}).get();
-		},
-		
 		onRender: function() {
 			this.renderData();
-			Util.initRadioClass(this.$el)
-				.addRadioEvent(this.$el)
-				.initSlider(this.$el);
 		},
+		onAttach: function() {
+			Util.activeLink();
+		},
+		
+		bz: function(e) {
+			var $tar = $(e.target);
+			
+			if($tar.is(".active")) {
+				$tar.removeClass("active");
+			} else {
+				var $trs = this.$("tr").slice(1);
+				var index = $tar.index();
+				$trs.each(function() {
+					$(this).children().eq(index).removeClass("active");
+				});
+				$tar.addClass("active");
+			}
+		},
+		
 		renderData: function() {
 //			var output = this.model.get("volumeSingleOutPut");
 //			var $el = this.$el;
@@ -59,9 +45,6 @@ define(function(require) {
 //				$this.find(".sliderValue").text(curOut.outVol || 0);
 //			});
 			return this;
-		},
-		onAttach: function() {
-			Util.activeLink();
 		}
 	});
 	

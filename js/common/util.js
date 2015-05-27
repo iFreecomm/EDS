@@ -276,6 +276,7 @@ define(function() {
 			options.orientation = "vertical";
 			options.slide = this._slideVerticalEvent;
 			options.create = this._slideVerticalEvent;
+			options.change = this._slideVerticalChangeEvent;
 		} else {
 			options.slide = this._slideHorizontalEvent;
 			options.change = this._slideHorizontalChangeEvent;
@@ -298,6 +299,9 @@ define(function() {
 		var max = $this.data("max");
 		
 		$this.siblings(".color").height(value * height / max);
+	}
+	Util._slideVerticalChangeEvent = function(event, ui) {
+		$(this).siblings(".sliderValue").text(ui.value).change();
 	}
 	
 	/**
@@ -346,14 +350,8 @@ define(function() {
 			
 			var $radio = $label.prev();
 			
-			if($radio.parent().is("td")) {
-				//表格布局，比如垂直排列的编组
-				var name = $radio.attr("name");
-				$radio.parents("table").find('[name="' + name + '"]').next().removeClass("active");
-			} else {
-				//多个radio水平排列，比如radio-set
-				$radio.siblings(".radio-label").removeClass("active");
-			}
+			//多个radio水平排列，比如radio-set
+			$radio.siblings(".radio-label").removeClass("active");
 			
 			$label.addClass("active");
 			$radio.prop("checked", true).change();
