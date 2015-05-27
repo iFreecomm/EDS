@@ -10,20 +10,11 @@ define(function(require) {
 		events: {
 			"click td" : "saveBzhy",
 		},
+		
 		onRender: function() {
-			this.modelArr = [];
-			for(var i = 0; i < 4; i ++) {
-				this.modelArr[i] = new BzhyModel();
-			}
-			for(var i = 0; i < 4; i ++) {
-				this._loadModel(i);
-			}
+			this.renderData();
 		},
 		
-		/**
-		 * 保存表单
-		 * @param {Object} e
-		 */
 		saveBzhy: function(e) {
 			var $td = $(e.target);
 			$td.toggleClass("active");
@@ -34,7 +25,7 @@ define(function(require) {
 				return $(this).index() - 1;
 			}).get();
 			
-			this.modelArr[trIndex]
+			this.collection.at(trIndex)
 			.save({
 				audInPort: portArr,
 				inputNum: portArr.length
@@ -47,25 +38,18 @@ define(function(require) {
 			});
 		},
 		
-		_loadModel: function(index) {
-			var view = this;
-			var model = this.modelArr[index];
+		renderData: function() {
+			this.collection.forEach(function(model) {
+				var groupNum = model.get("groupNum");
+				var audInPort = model.get("audInPort");
+				var $tds = this.$(".pzTable").find("tr").eq(groupNum+1).children("td");
+				
+				for(var i = 0, l = audInPort.length; i < l; i ++) {
+					$tds.eq(audInPort[i]).addClass("active");
+				}
+			}, this);
 			
-			model.mustFetch({
-				groupNum: index
-			}).done(function() {
-				view.renderData(model);
-			});
-		},
-		
-		renderData: function(model) {
-			var groupNum = model.get("groupNum");
-			var audInPort = model.get("audInPort");
-			var $tds = this.$(".pzTable").find("tr").eq(groupNum+1).children("td");
 			
-			for(var i = 0, l = audInPort.length; i < l; i ++) {
-				$tds.eq(audInPort[i]).addClass("active");
-			}
 		}
 	});
 	

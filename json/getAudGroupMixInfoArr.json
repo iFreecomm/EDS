@@ -1,0 +1,27 @@
+{
+	"code": 0,
+	"data": {
+		"AudGroupMixInfoArr": [
+			{
+				"groupNum": 0,
+				"inputNum": 10,
+				"audInPort": [0,2,4,6,8,10,12,14,16,18,1]
+			},
+			{
+				"groupNum": 1,
+				"inputNum": 10,
+				"audInPort": [0,2,4,6,8,10,12,14,16,18,3]
+			},
+			{
+				"groupNum": 2,
+				"inputNum": 10,
+				"audInPort": [0,2,4,6,8,10,12,14,16,18,5]
+			},
+			{
+				"groupNum": 3,
+				"inputNum": 10,
+				"audInPort": [0,2,4,6,8,10,12,14,16,18,7]
+			}
+		]
+	}
+}

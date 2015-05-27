@@ -6,7 +6,6 @@ define(function(require) {
 	var JhtjModel = require("web/index/pz/yppz/jhtj/jhtj_model");
 	
 	var JhtjView = Mn.ItemView.extend({
-		id: "pz_yppz_jhtj",
 		template: Handlebars.compile(tmpl),
 		bindings: {
 			".sliderValue": {
@@ -23,72 +22,27 @@ define(function(require) {
 				}
 			}
 		},
-		events: {
-			"click .btn" : "changeOutport"
-		},
+		
 		initialize: function() {
-			//默认输出端口是第一个
-			this.model = new JhtjModel();
 			this.options.templateHelpers = {
 				slideNameArr: ["低频", "中低频", "中频", "中高频", "高频"]
 			};
 			
-			this.listenTo(this.model, "change:eqGain", this.saveJhtj);
+			this.listenTo(this.model, "change:eqGain", this.save);
 		},
 		onRender: function() {
-			var view =this;
-			this.model
-			.fetch({
-				silent: true,
-				data: Util.encode({
-					outPort: 0
-				})
-			})
-			.done(function() {
-				view.stickit();
-				Util.initSlider(view.$el);
-			});
+			this.stickit();
+			Util.initSlider(this.$el);
 		},
-		
-		/**
-		 * 改变输出端口
-		 * @param {Object} e
-		 */
-		changeOutport:function(e) {
-			var $btn = $(e.target);
-			if($btn.is(".active")) return;
-			
-			$btn.addClass("active").siblings().removeClass("active");
-			
-			var port = $btn.data("value");
-			this.model.set("outPort", port);
-			
-			var view = this;
-			this.model
-			.fetch({
-				silent: true,
-				data: Util.encode({
-					outPort: port
-				})
-			})
-			.done(function() {
-				Util.refreshSlider(view.$el);
-			});
-		},
-		
-		/**
-		 * 保存表单
-		 */
-		saveJhtj: function() {
-			console.log("save");
-			
+
+		save: function() {
 			this.model
 			.save()
 			.done(function() {
-				alert("保存成功！");
+//				alert("保存成功！");
 			})
 			.fail(function() {
-				alert("保存失败！");
+//				alert("保存失败！");
 			});
 		}
 	});

@@ -11,8 +11,12 @@ define(function(require) {
 			"create": "setAudGroupMixInfo.psp",
 			"read": "getAudGroupMixInfo.psp"
 		},
-		parse: function(res) {
-			return res.data;
+		parse: function(res, options) {
+			if(options.collection) {
+				return res;
+			} else {
+				return res.data;
+			}
 		}
 	});
 	

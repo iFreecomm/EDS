@@ -95,6 +95,17 @@ input[type=checkbox] {
 .checkbox-label.active {
 	background-position: 0 -61px;
 }
+
+.checkbox-label.onoff {
+	padding: 0;
+	width: 60px;
+	height: 32px;
+	background: url(../img/form/switch3_off.png) no-repeat center;
+	cursor: pointer;
+}
+.checkbox-label.onoff.active {
+	background: url(../img/form/switch3_on.png) no-repeat center;
+}
 /******radio样式******/
 input[type=radio] {
 	display: none;
