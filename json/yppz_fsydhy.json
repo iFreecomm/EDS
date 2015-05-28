@@ -2,16 +2,16 @@
 	"code": 0,
 	"data": {
 		"fsydhy": [
-			{ "audOutPort": 0, "enable": 0, "outVol": 12 },
-			{ "audOutPort": 1, "enable": 1, "outVol": 14 },
-			{ "audOutPort": 2, "enable": 1, "outVol": 22 },
-			{ "audOutPort": 3, "enable": 1, "outVol": 14 },
-			{ "audOutPort": 4, "enable": 1, "outVol": 22 },
-			{ "audOutPort": 5, "enable": 0, "outVol": 14 },
-			{ "audOutPort": 6, "enable": 1, "outVol": 22 },
-			{ "audOutPort": 7, "enable": 1, "outVol": 14 },
-			{ "audOutPort": 8, "enable": 1, "outVol": 22 },
-			{ "audOutPort": 9, "enable": 1, "outVol": 14 }
+			{ "audOutPort": 0, "audOutName": "MIC1", "enable": 0, "outVol": 12 },
+			{ "audOutPort": 1, "audOutName": "MIC2", "enable": 1, "outVol": 14 },
+			{ "audOutPort": 2, "audOutName": "MIC3", "enable": 1, "outVol": 22 },
+			{ "audOutPort": 3, "audOutName": "MIC4", "enable": 1, "outVol": 14 },
+			{ "audOutPort": 4, "audOutName": "MIC5", "enable": 1, "outVol": 22 },
+			{ "audOutPort": 5, "audOutName": "MIC6", "enable": 0, "outVol": 14 },
+			{ "audOutPort": 6, "audOutName": "MIC7", "enable": 1, "outVol": 22 },
+			{ "audOutPort": 7, "audOutName": "MIC8", "enable": 1, "outVol": 14 },
+			{ "audOutPort": 8, "audOutName": "MIC9", "enable": 1, "outVol": 22 },
+			{ "audOutPort": 9, "audOutName": "MIC10", "enable": 1, "outVol": 14 }
 		]
 	}
 }

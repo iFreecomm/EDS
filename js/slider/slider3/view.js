@@ -1,7 +1,7 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
-	var tmpl = require("text!web/index/pz/yppz/fsydhy/fsydhy_template.html");
+	var tmpl = require("text!web/slider/slider3/template.html");
 	
 	var FsydhyView = Mn.ItemView.extend({
 		className: "slide-vertical-box-2",

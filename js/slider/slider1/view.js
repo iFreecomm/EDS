@@ -1,19 +1,20 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
-	var tmpl = require("text!web/index/pz/yppz/fsydhy/fsydhy_template.html");
+	var tmpl = require("text!web/slider/slider1/template.html");
 	
-	var FsydhyView = Mn.ItemView.extend({
-		className: "slide-vertical-box-2",
+	var BdsrView = Mn.ItemView.extend({
+		className: "slide-vertical-box-1",
 		template: tmpl,
 		bindings: {
-			"[name=audOutPort]": "audOutPort",
-			"[name=audOutName]": "audOutName",
+			"[name=audInPort]": "audInPort",
+			"[name=audInName]": "audInName",
 			"[name=enable]": "enable",
-			".sliderValue": "outVol"
+			"[name=phtPwrEn]": "phtPwrEn",
+			".sliderValue": "involume"
 		},
 		initialize: function() {
-			this.listenTo(this.model, "change", this.saveYl);
+			this.listenTo(this.model, "change", this.save);
 		},
 		onRender: function() {
 			this.stickit();
@@ -22,7 +23,7 @@ define(function(require) {
 				.initSlider(this.$el);
 		},
 		
-		saveYl: function() {
+		save: function() {
 			this.model
 			.save()
 			.done(function() {
@@ -34,5 +35,5 @@ define(function(require) {
 		}
 	});
 	
-	return FsydhyView;
+	return BdsrView;
 });

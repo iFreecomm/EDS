@@ -7,6 +7,8 @@ define(function(require) {
 		className: "slide-vertical-box-2",
 		template: tmpl,
 		bindings: {
+			"[name=audOutPort]": "audOutPort",
+			"[name=audOutName]": "audOutName",
 			"[name=enable]": "enable",
 			".sliderValue": "outVol"
 		},

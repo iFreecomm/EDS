@@ -2,9 +2,9 @@
 	"code": 0,
 	"data": {
 		"volumeSingleOutPut": [
-			{ "groupNum": 1, "audOutPort": 0, "enable": 0, "outVol": 12 },
-			{ "groupNum": 2, "audOutPort": 1, "enable": 1, "outVol": 14 },
-			{ "groupNum": 0, "audOutPort": 2, "enable": 1, "outVol": 22 }
+			{ "audOutPort": 0, "audOutName": "MIC1", "groupNum": 1, "enable": 0, "outVol": 12 },
+			{ "audOutPort": 1, "audOutName": "MIC2", "groupNum": 2, "enable": 1, "outVol": 14 },
+			{ "audOutPort": 2, "audOutName": "MIC3", "groupNum": 0, "enable": 1, "outVol": 22 }
 		]
 	}
 }

@@ -1,0 +1,17 @@
+{
+	"code": 0,
+	"data": {
+		"jsydhy": [
+			{ "audInPort": 0, "audInName": "MIC1", "enable": 0, "involume": 12 },
+			{ "audInPort": 1, "audInName": "MIC2", "enable": 1, "involume": 14 },
+			{ "audInPort": 2, "audInName": "MIC3", "enable": 1, "involume": 22 },
+			{ "audInPort": 3, "audInName": "MIC4", "enable": 1, "involume": 14 },
+			{ "audInPort": 4, "audInName": "MIC5", "enable": 1, "involume": 22 },
+			{ "audInPort": 5, "audInName": "MIC6", "enable": 0, "involume": 14 },
+			{ "audInPort": 6, "audInName": "MIC7", "enable": 1, "involume": 22 },
+			{ "audInPort": 7, "audInName": "MIC8", "enable": 1, "involume": 14 },
+			{ "audInPort": 8, "audInName": "MIC9", "enable": 1, "involume": 22 },
+			{ "audInPort": 9, "audInName": "MIC10", "enable": 1, "involume": 14 }
+		]
+	}
+}

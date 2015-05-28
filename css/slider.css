@@ -19,6 +19,7 @@
 	width: 75px;
 	height: 362px;
 	background: url(../img/slider/slider1/panel.png);
+	text-align: center;
 }
 
 .slide-vertical-box-1 h4 {
@@ -40,28 +41,11 @@
 	background: none;
 }
 
-.slide-vertical-box-1 .btn-switch1 {
-	display: block;
-	margin: 28px auto 0;
-	width: 53px;
-	height: 36px;
-	background: url(../img/slider/switch1_off.png) no-repeat;
+.slide-vertical-box-1 .onoff2 {
+	margin-top: 10px;
 }
-.slide-vertical-box-1 .btn-switch1.active {
-	background: url(../img/slider/switch1_on.png) no-repeat;
-}
-.slide-vertical-box-1 .btn-switch1.mt2 {
-	margin-top: 2px;
-}
-.slide-vertical-box-1 .btn-switch2 {
-	display: block;
-	margin: auto;
-	width: 47px;
-	height: 49px;
-	background: url(../img/slider/switch2_off.png) no-repeat;
-}
-.slide-vertical-box-1 .btn-switch2.active {
-	background: url(../img/slider/switch2_on.png) no-repeat;
+.slide-vertical-box-1 .onoff2.mt30 {
+	margin-top: 30px;
 }
 
 .slide-vertical-box-1 .color {
@@ -105,6 +89,7 @@
 	width: 75px;
 	height: 345px;
 	background: url(../img/slider/slider2/panel.png);
+	text-align: center;
 }
 
 .slide-vertical-box-2 h4 {
@@ -126,28 +111,8 @@
 	background: none;
 }
 
-.slide-vertical-box-2 .btn-switch1 {
-	display: block;
-	margin: 28px auto 0;
-	width: 53px;
-	height: 36px;
-	background: url(../img/slider/switch1_off.png) no-repeat;
-}
-.slide-vertical-box-2 .btn-switch1.active {
-	background: url(../img/slider/switch1_on.png) no-repeat;
-}
-.slide-vertical-box-2 .btn-switch1.mt2 {
-	margin-top: 2px;
-}
-.slide-vertical-box-2 .btn-switch2 {
-	display: block;
-	margin: auto;
-	width: 47px;
-	height: 49px;
-	background: url(../img/slider/switch2_off.png) no-repeat;
-}
-.slide-vertical-box-2 .btn-switch2.active {
-	background: url(../img/slider/switch2_on.png) no-repeat;
+.slide-vertical-box-2 .onoff2 {
+	margin-top: 30px;
 }
 
 .slide-vertical-box-2 .color {
@@ -210,30 +175,6 @@
 	color: #EAEAEA;
 	text-align: center;
 	background: none;
-}
-
-.slide-vertical-box-3 .btn-switch1 {
-	display: block;
-	margin: 28px auto 0;
-	width: 53px;
-	height: 36px;
-	background: url(../img/slider/switch1_off.png) no-repeat;
-}
-.slide-vertical-box-3 .btn-switch1.active {
-	background: url(../img/slider/switch1_on.png) no-repeat;
-}
-.slide-vertical-box-3 .btn-switch1.mt2 {
-	margin-top: 2px;
-}
-.slide-vertical-box-3 .btn-switch2 {
-	display: block;
-	margin: auto;
-	width: 47px;
-	height: 49px;
-	background: url(../img/slider/switch2_off.png) no-repeat;
-}
-.slide-vertical-box-3 .btn-switch2.active {
-	background: url(../img/slider/switch2_on.png) no-repeat;
 }
 
 .slide-vertical-box-3 .color {

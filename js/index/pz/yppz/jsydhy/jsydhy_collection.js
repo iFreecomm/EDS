@@ -5,11 +5,11 @@ define(function(require) {
 	var JsydhyCollection = Backbone.Collection.extend({
 		model: JsydhyModel,
 		urls: {
-			"read": "yppz_fsydhy.psp"
+			"read": "yppz_jsydhy.psp"
 		},
 		parse: function(res) {
-			if(res && res.data && res.data.fsydhy)
-				return res.data.fsydhy;
+			if(res && res.data && res.data.jsydhy)
+				return res.data.jsydhy;
 			return [];
 		}
 	});

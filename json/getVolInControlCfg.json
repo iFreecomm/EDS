@@ -2,9 +2,9 @@
 	"code": 0,
 	"data": {
 		"volumeSingleInPut": [
-			{ "audInPort": 0, "audInName": "MIC1", "enable": 1, "phtPwrEn": 1, "involume": 2 },
+			{ "audInPort": 0, "audInName": "MIC1", "enable": 1, "phtPwrEn": 0, "involume": 2 },
 			{ "audInPort": 1, "audInName": "MIC2", "enable": 1, "phtPwrEn": 1, "involume": 4 },
-			{ "audInPort": 2, "audInName": "MIC3", "enable": 1, "phtPwrEn": 1, "involume": 6 },
+			{ "audInPort": 2, "audInName": "MIC3", "enable": 1, "phtPwrEn": 0, "involume": 6 },
 			{ "audInPort": 3, "audInName": "MIC4", "enable": 1, "phtPwrEn": 1, "involume": 8 },
 			{ "audInPort": 4, "audInName": "MIC5", "enable": 1, "phtPwrEn": 1, "involume": 10 },
 			{ "audInPort": 5, "audInName": "MIC6", "enable": 1, "phtPwrEn": 1, "involume": 12 },
