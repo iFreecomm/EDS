@@ -3,14 +3,21 @@ define(function(require) {
 	
 	var BdscModel = Model.extend({
 		defaults: {
-			volumeSingleOutPut : []
+			groupNum: 0,
+			audOutPort: 0,
+			enable: 0,
+			outVol: 0
 		},
 		urls: {
 			"create": "setVolOutControlCfg.psp",
 			"read": "getVolOutControlCfg.psp"
 		},
-		parse: function(res) {
-			return res.data;
+		parse: function(res, options) {
+			if(options.collection) {
+				return res;
+			} else {
+				return res.data;
+			}
 		}
 	});
 	

@@ -1,26 +1,17 @@
 {
-	"huiyi": [
-		{"switch":1, "value":10},
-		{"switch":1, "value":12},
-		{"switch":1, "value":14},
-		{"switch":1, "value":16},
-		{"switch":1, "value":18},
-		{"switch":1, "value":20},
-		{"switch":1, "value":22},
-		{"switch":1, "value":24},
-		{"switch":1, "value":26},
-		{"switch":1, "value":28}
-	],
-	"dianbo": [
-		{"switch":1, "value":28},
-		{"switch":1, "value":26},
-		{"switch":1, "value":24},
-		{"switch":1, "value":22},
-		{"switch":1, "value":20},
-		{"switch":1, "value":18},
-		{"switch":1, "value":16},
-		{"switch":1, "value":14},
-		{"switch":1, "value":12},
-		{"switch":1, "value":10}
-	]
+	"code": 0,
+	"data": {
+		"fsydhy": [
+			{ "audOutPort": 0, "enable": 0, "outVol": 12 },
+			{ "audOutPort": 1, "enable": 1, "outVol": 14 },
+			{ "audOutPort": 2, "enable": 1, "outVol": 22 },
+			{ "audOutPort": 3, "enable": 1, "outVol": 14 },
+			{ "audOutPort": 4, "enable": 1, "outVol": 22 },
+			{ "audOutPort": 5, "enable": 0, "outVol": 14 },
+			{ "audOutPort": 6, "enable": 1, "outVol": 22 },
+			{ "audOutPort": 7, "enable": 1, "outVol": 14 },
+			{ "audOutPort": 8, "enable": 1, "outVol": 22 },
+			{ "audOutPort": 9, "enable": 1, "outVol": 14 }
+		]
+	}
 }

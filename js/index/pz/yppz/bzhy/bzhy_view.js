@@ -2,7 +2,6 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/yppz/bzhy/bzhy_template.html");
-	var BzhyModel = require("web/index/pz/yppz/bzhy/bzhy_model");
 	
 	var BzhyView = Mn.ItemView.extend({
 		id: "pz_yppz_bzhy",
@@ -39,17 +38,17 @@ define(function(require) {
 		},
 		
 		renderData: function() {
+			var $trs = this.$("tr").slice(1);
+			
 			this.collection.forEach(function(model) {
 				var groupNum = model.get("groupNum");
 				var audInPort = model.get("audInPort");
-				var $tds = this.$(".pzTable").find("tr").eq(groupNum+1).children("td");
+				var $tds = $trs.eq(groupNum).children("td");
 				
 				for(var i = 0, l = audInPort.length; i < l; i ++) {
 					$tds.eq(audInPort[i]).addClass("active");
 				}
 			}, this);
-			
-			
 		}
 	});
 	

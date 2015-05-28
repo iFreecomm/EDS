@@ -9,7 +9,7 @@ define(function(require) {
 	var JybyView = require("web/index/pz/yppz/jyby/jyby_view");
 	
 	var BdsrView = require("web/index/pz/yppz/bdsr/panel_view");
-	var BdscYlView = require("web/index/pz/yppz/bdsc_yl/panel_view");
+	var BdscYlView = require("web/index/pz/yppz/bdsc/yl/panel_view");
 	
 	var JsydhyView = require("web/index/pz/yppz/jsydhy/panel_view");
 	var FsydhyView = require("web/index/pz/yppz/fsydhy/panel_view");
@@ -20,7 +20,7 @@ define(function(require) {
 	
 	var YxView = require("web/index/pz/yppz/yx/panel_view");
 	var XfView = require("web/index/pz/yppz/xf/panel_view");
-	var BdscBzView = require("web/index/pz/yppz/bdsc_bz/panel_view");
+	var BdscBzView = require("web/index/pz/yppz/bdsc/bz/panel_view");
 	
 	var JhtjView = require("web/index/pz/yppz/jhtj/panel_view");
 	

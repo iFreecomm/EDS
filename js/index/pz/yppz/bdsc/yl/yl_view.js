@@ -1,17 +1,17 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
-	var tmpl = require("text!web/index/pz/yppz/bdsr/bdsr_template.html");
+	var tmpl = require("text!web/index/pz/yppz/bdsc/yl/yl_template.html");
 	
-	var BdsrView = Mn.ItemView.extend({
-		className: "slide-vertical-box-1",
+	var YlView = Mn.ItemView.extend({
+		className: "slide-vertical-box-2",
 		template: tmpl,
 		bindings: {
 			"[name=enable]": "enable",
-			".sliderValue": "involume"
+			".sliderValue": "outVol"
 		},
 		initialize: function() {
-			this.listenTo(this.model, "change", this.save);
+			this.listenTo(this.model, "change", this.saveYl);
 		},
 		onRender: function() {
 			this.stickit();
@@ -20,7 +20,7 @@ define(function(require) {
 				.initSlider(this.$el);
 		},
 		
-		save: function() {
+		saveYl: function() {
 			this.model
 			.save()
 			.done(function() {
@@ -32,5 +32,5 @@ define(function(require) {
 		}
 	});
 	
-	return BdsrView;
+	return YlView;
 });

@@ -1,9 +1,9 @@
 define(function(require) {
 	var Mn = require("marionette");
-	var tmpl = require("text!web/index/pz/yppz/bdsr/panel_template.html");
+	var tmpl = require("text!web/index/pz/yppz/bdsc/yl/panel_template.html");
 	
-	var BdsrCollection = require("web/index/pz/yppz/bdsr/bdsr_collection");
-	var BdsrCollectionView = require("web/index/pz/yppz/bdsr/bdsr_collection_view");
+	var BdscCollection = require("web/index/pz/yppz/bdsc/bdsc_collection");
+	var YlCollectionView = require("web/index/pz/yppz/bdsc/yl/yl_collection_view");
 	
 	var PanelView = Mn.LayoutView.extend({
 		className: "panel-blue",
@@ -14,9 +14,9 @@ define(function(require) {
 		
 		onAttach: function() {
 			var self = this;
-			var collection = new BdsrCollection();
+			var collection = new BdscCollection();
 			collection.fetch().done(function() {
-				self.showChildView("container", new BdsrCollectionView({
+				self.showChildView("container", new YlCollectionView({
 					collection: collection
 				}));
 			});

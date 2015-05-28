@@ -96,15 +96,37 @@ input[type=checkbox] {
 	background-position: 0 -61px;
 }
 
-.checkbox-label.onoff {
+.checkbox-label.onoff1 {
 	padding: 0;
 	width: 60px;
 	height: 32px;
-	background: url(../img/form/switch3_off.png) no-repeat center;
+	background: url(../img/form/switch_off.png) no-repeat center;
 	cursor: pointer;
 }
-.checkbox-label.onoff.active {
-	background: url(../img/form/switch3_on.png) no-repeat center;
+.checkbox-label.onoff1.active {
+	background: url(../img/form/switch_on.png) no-repeat center;
+}
+
+.checkbox-label.onoff2 {
+	padding: 0;
+	width: 53px;
+	height: 36px;
+	background: url(../img/slider/switch1_off.png) no-repeat center;
+	cursor: pointer;
+}
+.checkbox-label.onoff2.active {
+	background: url(../img/slider/switch1_on.png) no-repeat center;
+}
+
+.checkbox-label.onoff3 {
+	padding: 0;
+	width: 30px;
+	height: 30px;
+	background: url(../img/slider/switch2_off.png) no-repeat center;
+	cursor: pointer;
+}
+.checkbox-label.onoff3.active {
+	background: url(../img/slider/switch2_on.png) no-repeat center;
 }
 /******radio样式******/
 input[type=radio] {

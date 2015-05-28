@@ -1,28 +1,24 @@
 define(function(require) {
 	var Model = require("web/common/model");
 	
-	var BdsrModel = Model.extend({
+	var JsydhyModel = Model.extend({
 		defaults: {
-			name: "默认名称000",
-			kzck: 0,
-			ydsd: 0,
-			srjkxh: 0,
-			
-			ld: 123,
-			dbd: 124,
-			bhd: 125,
-			sppy: 126,
-			czpy: 127,
-			
-			abc: 16
+			audOutPort: 0,
+			enable: 0,
+			outVol: 0
 		},
 		urls: {
 			"create": "yppz_fsydhy.psp",
-			"update": "yppz_fsydhy.psp",
-			"delete": "yppz_fsydhy.psp",
 			"read": "yppz_fsydhy.psp"
+		},
+		parse: function(res, options) {
+			if(options.collection) {
+				return res;
+			} else {
+				return res.data;
+			}
 		}
 	});
 	
-	return BdsrModel;
+	return JsydhyModel;
 });

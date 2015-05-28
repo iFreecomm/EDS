@@ -3,14 +3,22 @@ define(function(require) {
 	
 	var BdsrModel = Model.extend({
 		defaults: {
-			volumeSingleInPut: []
+			audInPort: 0,
+			audInName: "",
+			enable: 0,
+			phtPwrEn: 0,
+			involume: 0
 		},
 		urls: {
 			"create": "setVolInControlCfg.psp",
 			"read": "getVolInControlCfg.psp"
 		},
-		parse: function(res) {
-			return res.data;
+		parse: function(res, options) {
+			if(options.collection) {
+				return res;
+			} else {
+				return res.data;
+			}
 		}
 	});
 	

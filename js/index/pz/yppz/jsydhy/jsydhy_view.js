@@ -1,31 +1,34 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
-	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/pz/yppz/jsydhy/jsydhy_template.html");
 	
 	var BdsrView = Mn.ItemView.extend({
-		id: "pz_yppz_jsydhy",
-		template: Handlebars.compile(tmpl),
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
+		className: "slide-vertical-box-1",
+		template: tmpl,
 		bindings: {
+			"[name=enable]": "enable",
+			".sliderValue": "outVol"
 		},
-		events: {
-			"click .btn" : "switchBtn"
+		initialize: function() {
+			this.listenTo(this.model, "change", this.save);
 		},
-		switchBtn: function(e) {
-			$(e.target).toggleClass("active");
+		onRender: function() {
+			this.stickit();
+			Util.initCheckboxClass(this.$el)
+				.addCheckboxEvent(this.$el)
+				.initSlider(this.$el);
 		},
 		
-		onRender: function() {
-//			this.stickit();
-			Util.initSlider(this.$el);
-		},
-		onAttach: function() {
-			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+		save: function() {
+			this.model
+			.save()
+			.done(function() {
+				alert("保存成功！");
+			})
+			.fail(function() {
+				alert("保存失败！");
+			});
 		}
 	});
 	
