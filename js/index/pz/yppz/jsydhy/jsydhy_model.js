@@ -3,13 +3,14 @@ define(function(require) {
 	
 	var JsydhyModel = Model.extend({
 		defaults: {
-			audOutPort: 0,
+			audInPort: 0,
+			audInName: "",
 			enable: 0,
-			outVol: 0
+			involume: 0
 		},
 		urls: {
-			"create": "yppz_fsydhy.psp",
-			"read": "yppz_fsydhy.psp"
+			"create": "yppz_jsydhy_set.psp",
+			"read": "yppz_jsydhy.psp"
 		},
 		parse: function(res, options) {
 			if(options.collection) {

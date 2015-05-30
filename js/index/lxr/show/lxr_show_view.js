@@ -16,7 +16,7 @@ define(function(require) {
 			var $btn = $(e.target);
 			var id = $btn.data("id");
 			
-			$.getJSON("delAddrBook.psp", JSON.stringify({
+			$.getJSON("delAddrBook.psp", Util.encode({
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {

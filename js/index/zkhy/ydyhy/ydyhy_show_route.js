@@ -13,9 +13,7 @@ define(function(require) {
 			this.container = options.container;
 			this.ydyhyCollection = new YdyhyCollection();
 			
-			this.ydyhyCollection.fetch({
-				reset: true
-			}).done(function() {
+			this.ydyhyCollection.fetch().done(function() {
 				self.showView();
 			});
 		},

@@ -34,7 +34,7 @@ define(function(require) {
 			var $this = $(e.target);
   			var index = $this.index();
   			var value = $this.is(".active") ? 1 : 0;
-  			$.getJSON(this.urls[index], JSON.stringify({
+  			$.getJSON(this.urls[index], Util.encode({
   				enable: value
   			})).done(function(res){
   				if(res.code == 0)

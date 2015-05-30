@@ -2,6 +2,7 @@ define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
+	var Util = require("web/common/util");
 	
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_show_template.html");
 	
@@ -17,7 +18,7 @@ define(function(require) {
 			var $btn = $(e.target);
 			var id = $btn.data("id");
 			
-			$.getJSON("delMeeting.psp", JSON.stringify({
+			$.getJSON("delMeeting.psp", Util.encode({
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {
@@ -42,7 +43,7 @@ define(function(require) {
 				url = "endMeeting.psp";
 				tip = "结束会议";
 			}
-			$.getJSON(url, JSON.stringify({
+			$.getJSON(url, Util.encode({
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {

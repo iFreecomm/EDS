@@ -3,15 +3,18 @@ define(function(require) {
 	
 	var JhtjModel = Model.extend({
 		defaults: {
-			outPort: 0,
-			eqGain: []
+			volume: 0
 		},
 		urls: {
 			"create": "setEqAllChannelCfg.psp",
 			"read": "getEqAllChannelCfg.psp"
 		},
-		parse: function(res) {
-			return res.data;
+		parse: function(res, options) {
+			if(options.collection) {
+				return res;
+			} else {
+				return res.data;
+			}
 		}
 	});
 	

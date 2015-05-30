@@ -12,8 +12,7 @@ define(function(require) {
 			this.lxrCollection = new LxrCollection();
 		/*	$.when(
 				$.getJSON("getSdiPort.psp"),
-				this.lxrCollection.fetch({
-				reset: true})
+				this.lxrCollection.fetch()
 			).done(function(sdiInfo) {
 				self.sdiInfo = [];
 				if(sdiInfo[0].data && sdiInfo[0].data.sdiInfo)
@@ -23,9 +22,7 @@ define(function(require) {
 				self.showView();
 			});*/
 			
-			this.lxrCollection.fetch({
-				reset: true
-			}).done(function() {
+			this.lxrCollection.fetch().done(function() {
 				self.showView();
 			});
 		},

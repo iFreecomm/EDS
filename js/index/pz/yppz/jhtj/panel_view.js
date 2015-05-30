@@ -3,8 +3,8 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/yppz/jhtj/panel_template.html");
 	
-	var JhtjModel = require("web/index/pz/yppz/jhtj/jhtj_model");
-	var JhtjView = require("web/index/pz/yppz/jhtj/jhtj_view");
+	var JhtjCollection = require("web/index/pz/yppz/jhtj/jhtj_collection");
+	var JhtjCollectionView = require("web/index/pz/yppz/jhtj/jhtj_collection_view");
 	
 	var PanelView = Mn.LayoutView.extend({
 		className: "panel-blue",
@@ -27,14 +27,17 @@ define(function(require) {
 			
 			var port = $btn.data("value");
 			var view = this;
-			var model = new JhtjModel();
+			var collection = new JhtjCollection();
 			
-			model.mustFetch({
-				outPort: port
+			collection.fetch({
+				data: Util.encode({
+					outPort: port
+				})
 			})
 			.done(function() {
-				view.showChildView("container", new JhtjView({
-					model: model
+				view.showChildView("container", new JhtjCollectionView({
+					collection: collection,
+					outPort: port
 				}));
 			});
 		}

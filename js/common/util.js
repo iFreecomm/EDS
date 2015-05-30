@@ -290,15 +290,14 @@ define(function() {
 		$(this).siblings(".sliderValue").change();
 	}
 	Util._slideVerticalEvent = function(event, ui) {
-		//不同slider的高度以及取值范围不一样
-		//由于现在大多数的高度都是261所以当作默认值
 		var $this = $(this);
-		
 		var value = _.isNumber(ui.value) ? ui.value : $this.slider("value");
-		var height = $this.data("height") || 261;
-		var max = $this.data("max");
 		
-		$this.siblings(".color").height(value * height / max);
+		var min = $this.data("min");
+		var max = $this.data("max");
+		var height = $this.data("height");
+		
+		$this.siblings(".color").height((value - min) * height / (max - min));
 	}
 	Util._slideVerticalChangeEvent = function(event, ui) {
 		$(this).siblings(".sliderValue").text(ui.value).change();
@@ -348,13 +347,10 @@ define(function() {
 			var $label = $(this);
 			if($label.is(".active")) return;
 			
-			var $radio = $label.prev();
+			$label.addClass("active").siblings(".radio-label").removeClass("active");
 			
-			//多个radio水平排列，比如radio-set
-			$radio.siblings(".radio-label").removeClass("active");
+			$label.prev().prop("checked", true).change();
 			
-			$label.addClass("active");
-			$radio.prop("checked", true).change();
 			return false;
 		});
 		return this;

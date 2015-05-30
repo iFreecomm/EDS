@@ -30,7 +30,7 @@ define(function(require) {
 			var path = $tr.data("path");
 			
 			var self = this;
-			$.getJSON("deleteFile.psp", JSON.stringify({
+			$.getJSON("deleteFile.psp", Util.encode({
 				filePath: path
 			})).done(function(res) {
 				if(res.code === 0) {
@@ -49,7 +49,7 @@ define(function(require) {
 			var pathArr = this.getSelectedFiles();
 			var self = this;
 			
-			$.getJSON("deleteFile.psp", JSON.stringify({
+			$.getJSON("deleteFile.psp", Util.encode({
 				filePathArr: pathArr
 			})).done(function(res) {
 				if(res.code === 0) {

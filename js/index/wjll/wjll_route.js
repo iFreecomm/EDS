@@ -1,4 +1,5 @@
 define(function(require) {
+	var Util = require("web/common/util");
 	var Route = require("web/common/route");
 	
 	var WjllView = require("web/index/wjll/wjll_view");
@@ -20,8 +21,7 @@ define(function(require) {
 			$.when(
 				$.getJSON("getDiskList.psp"),
 				this.fileCollection.fetch({
-					reset: true,
-					data: JSON.stringify({
+					data: Util.encode({
 						searchTerms: this.searchTerms,
 						pageNum: this.pageNum
 					})

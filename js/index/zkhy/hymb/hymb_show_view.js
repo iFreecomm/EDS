@@ -3,6 +3,7 @@ define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
+	var Util = require("web/common/util");
 	
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_show_template.html");
 	
@@ -17,7 +18,7 @@ define(function(require) {
 			var $btn = $(e.target);
 			var id = $btn.data("id");
 			
-			$.getJSON("delMeetingTemp.psp", JSON.stringify({
+			$.getJSON("delMeetingTemp.psp", Util.encode({
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {

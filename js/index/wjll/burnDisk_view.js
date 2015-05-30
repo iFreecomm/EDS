@@ -32,7 +32,7 @@ define(function(require) {
 		burnDisk: function() {
 			var diskId = this.$("#diskId").val();
 			
-			$.getJSON("burnDisk.psp", JSON.stringify({
+			$.getJSON("burnDisk.psp", Util.encode({
 				pathInfo: this.selectedFiles,
 				diskId: diskId
 			})).done(function() {

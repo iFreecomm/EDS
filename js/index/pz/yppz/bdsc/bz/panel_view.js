@@ -15,9 +15,7 @@ define(function(require) {
 		onAttach: function() {
 			var self = this;
 			var collection = new BdscCollection();
-			collection.fetch({
-				reset: true
-			}).done(function() {
+			collection.fetch().done(function() {
 				self.showChildView("container", new BzView({
 					collection: collection
 				}));

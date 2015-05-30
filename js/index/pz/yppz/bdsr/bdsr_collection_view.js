@@ -12,6 +12,14 @@ define(function(require) {
 			} else {
 				return Slider2View;
 			}
+		},
+		
+		onRender: function() {
+			this.$el.children().each(function(i) {
+				$(this).find("h4").text(i+1);
+			}).eq(12).css({
+				marginLeft: "20px"
+			});
 		}
 	});
 	

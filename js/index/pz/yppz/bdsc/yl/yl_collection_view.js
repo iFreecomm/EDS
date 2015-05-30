@@ -4,7 +4,14 @@ define(function(require) {
 	
 	var YlCollectionView = Mn.CollectionView.extend({
 		id: "pz_yppz_bdsc_yl",
-		childView: Slider3View
+		childView: Slider3View,
+		
+		onRender: function() {
+			var prefix = "输出";
+			this.$el.children().each(function(i) {
+				$(this).find("h4").text(prefix + (i + 1));
+			});
+		}
 	});
 	
 	return YlCollectionView;

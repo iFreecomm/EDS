@@ -149,7 +149,7 @@ define(function(require) {
 			return -1;
 		},
 		changeHymb: function() {
-			$.getJSON("getMeetingTempVenue.psp", JSON.stringify({
+			$.getJSON("getMeetingTempVenue.psp", Util.encode({
 				recordId: this.getTempRecordId()
 			})).done(function(yhzIdArr) {
 				var venueId = [];

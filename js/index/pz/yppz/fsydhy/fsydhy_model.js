@@ -4,11 +4,12 @@ define(function(require) {
 	var FsydhyModel = Model.extend({
 		defaults: {
 			audOutPort: 0,
+			audOutName: "",
 			enable: 0,
 			outVol: 0
 		},
 		urls: {
-			"create": "yppz_fsydhy.psp",
+			"create": "yppz_fsydhy_set.psp",
 			"read": "yppz_fsydhy.psp"
 		},
 		parse: function(res, options) {

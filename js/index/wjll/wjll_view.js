@@ -2,6 +2,7 @@ define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/wjll/wjll_template.html");
 	
 	var FileView = require("web/index/wjll/file_view");
@@ -122,8 +123,7 @@ define(function(require) {
 			var self = this;
 			var collection = new FileCollection();
 			collection.fetch({
-				reset: true,
-				data: JSON.stringify({
+				data: Util.encode({
 					searchTerms: this.searchTerms,
 					pageNum: this.pageNum
 				})

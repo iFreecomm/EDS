@@ -3,7 +3,7 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/slider/slider1/template.html");
 	
-	var BdsrView = Mn.ItemView.extend({
+	var SliderView = Mn.ItemView.extend({
 		className: "slide-vertical-box-1",
 		template: tmpl,
 		bindings: {
@@ -35,5 +35,5 @@ define(function(require) {
 		}
 	});
 	
-	return BdsrView;
+	return SliderView;
 });

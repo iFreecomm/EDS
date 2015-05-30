@@ -3,14 +3,13 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/slider/slider2/template.html");
 	
-	var BdsrView = Mn.ItemView.extend({
+	var SliderView = Mn.ItemView.extend({
 		className: "slide-vertical-box-1",
 		template: tmpl,
 		bindings: {
 			"[name=audInPort]": "audInPort",
 			"[name=audInName]": "audInName",
 			"[name=enable]": "enable",
-			"[name=phtPwrEn]": "phtPwrEn",
 			".sliderValue": "involume"
 		},
 		initialize: function() {
@@ -35,5 +34,5 @@ define(function(require) {
 		}
 	});
 	
-	return BdsrView;
+	return SliderView;
 });

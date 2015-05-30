@@ -13,9 +13,7 @@ define(function(require) {
 			this.container = options.container;
 			this.hymbCollection = new HymbCollection();
 			
-			this.hymbCollection.fetch({
-				reset: true
-			}).done(function() {
+			this.hymbCollection.fetch().done(function() {
 				self.showView();
 			});
 		},

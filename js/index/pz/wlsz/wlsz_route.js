@@ -1,4 +1,5 @@
 define(function(require) {
+	var Util = require("web/common/util");
 	var Route = require("web/common/route");
 	
 	var NavLeftView = require("web/index/pz/navLeft/navLeft_view");
@@ -15,7 +16,7 @@ define(function(require) {
 			
 			this.wkModel = new WkModel();
 			this.wkModel.fetch({
-				data: JSON.stringify({ device: 0 }) //网卡1
+				data: Util.encode({ device: 0 }) //网卡1
 			}).done(function() {
 				self.showView();
 			});

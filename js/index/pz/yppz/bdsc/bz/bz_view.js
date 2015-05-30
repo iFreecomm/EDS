@@ -16,7 +16,7 @@ define(function(require) {
 		saveBz: function(e) {
 			var $td = $(e.target);
 			
-			var outport = $td.index() - 1;
+			var outPort = $td.index() - 1;
 			var groupNum = $td.parent().index();
 			
 			if($td.is(".active")) {
@@ -24,12 +24,12 @@ define(function(require) {
 			} else {
 				var $trs = this.$("tr").slice(1);
 				$trs.each(function() {
-					$(this).children("td").eq(outport).removeClass("active");
+					$(this).children("td").eq(outPort).removeClass("active");
 				});
 				$td.addClass("active");
 			}
 			
-			this.collection.at(outport)
+			this.collection.at(outPort)
 			.save({
 				groupNum: groupNum
 			})
@@ -49,7 +49,7 @@ define(function(require) {
 				var audOutPort = model.get("audOutPort");
 				
 				$trs.eq(groupNum).children("td").eq(audOutPort).addClass("active");
-			}, this);
+			});
 		}
 	});
 	

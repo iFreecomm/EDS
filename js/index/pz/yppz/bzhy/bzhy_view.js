@@ -18,9 +18,10 @@ define(function(require) {
 			var $td = $(e.target);
 			$td.toggleClass("active");
 			
-			var trIndex = $td.parent().index();
+			var $tr = $td.parent();
+			var trIndex = $tr.index();
 			
-			var portArr = $td.siblings(".active").map(function() {
+			var portArr = $tr.find(".active").map(function() {
 				return $(this).index() - 1;
 			}).get();
 			
@@ -48,7 +49,7 @@ define(function(require) {
 				for(var i = 0, l = audInPort.length; i < l; i ++) {
 					$tds.eq(audInPort[i]).addClass("active");
 				}
-			}, this);
+			});
 		}
 	});
 	

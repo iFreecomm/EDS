@@ -15,9 +15,7 @@ define(function(require) {
 		onAttach: function() {
 			var self = this;
 			var collection = new BzhyCollection();
-			collection.fetch({
-				reset: true
-			}).done(function() {
+			collection.fetch().done(function() {
 				self.showChildView("container", new BzhyView({
 					collection: collection
 				}));

@@ -3,7 +3,7 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/slider/slider3/template.html");
 	
-	var FsydhyView = Mn.ItemView.extend({
+	var SliderView = Mn.ItemView.extend({
 		className: "slide-vertical-box-2",
 		template: tmpl,
 		bindings: {
@@ -13,7 +13,7 @@ define(function(require) {
 			".sliderValue": "outVol"
 		},
 		initialize: function() {
-			this.listenTo(this.model, "change", this.saveYl);
+			this.listenTo(this.model, "change", this.save);
 		},
 		onRender: function() {
 			this.stickit();
@@ -22,7 +22,7 @@ define(function(require) {
 				.initSlider(this.$el);
 		},
 		
-		saveYl: function() {
+		save: function() {
 			this.model
 			.save()
 			.done(function() {
@@ -34,5 +34,5 @@ define(function(require) {
 		}
 	});
 	
-	return FsydhyView;
+	return SliderView;
 });

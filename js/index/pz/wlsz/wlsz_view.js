@@ -1,6 +1,7 @@
 define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/wlsz/wlsz_template.html");
 	
 	var WkModel = require("web/index/pz/wlsz/wk/wk_model");
@@ -61,7 +62,7 @@ define(function(require) {
 		_getWkOption: function(btn) {
 			if(btn.id === "wk1" || btn.id === "wk2") {
 				return {
-					data: JSON.stringify({
+					data: Util.encode({
 						device: btn.id === "wk1" ? 0 : 1
 					})
 				};
