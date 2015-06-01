@@ -16,11 +16,11 @@
 	margin-left: 50px;
 }
 
-#zkhy_ydyhy_show .begin {
-	background-color: #F47900;
+#zkhy_ydyhy_show .begin .box-head {
+	background-color: #1E89B5;
 }
-#zkhy_ydyhy_show .end {
-	background-color: #A9A9A9;
+#zkhy_ydyhy_show .end .box-head {
+	background-color: #838383;
 }
 /************预定义会议样式结束*************/
 
