@@ -34,11 +34,16 @@ define(function(require) {
 		},
 		
 		burnDisk: function() {
+			var idArr = Radio.channel("fileList").request("getSelectedFiles");
+			if(_.isEmpty(idArr)) {
+				alert("请至少选择一个文件后刻录！");
+				return;
+			}
 			if(!this.burnDiskView) {
 				this.burnDiskView = new BurnDiskView();
 				this.showChildView("burnDiskContainer", this.burnDiskView);
 			}
-			this.burnDiskView.preBurnDisk();
+			this.burnDiskView.show();
 		},
 		
 		batchDelete: function() {
@@ -76,12 +81,17 @@ define(function(require) {
 			this.pageNum = this.options.pageNum;
 			this.endFlag = this.options.endFlag;
 			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
+			Radio.channel("wjll").comply("deleteSearchFile", this.deleteSearchFile, this);
 			Radio.channel("wjll").comply("playFile", this.playFile, this);
 		},
 		
 		searchFile: function(searchTerms) {
 			this.searchTerms = searchTerms;
 			this.pageNum = 1;
+			this._search();
+		},
+		
+		deleteSearchFile: function() {
 			this._search();
 		},
 		

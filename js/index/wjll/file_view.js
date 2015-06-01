@@ -26,10 +26,6 @@ define(function(require) {
 			});
 			
 			$(e.target).attr("href", href);
-			
-//			$.getJSON("downloadFile.psp", JSON.stringify({
-//				filePath: fileName
-//			}));
 		},
 		playFile: function(e) {
 			e.preventDefault();
@@ -42,40 +38,24 @@ define(function(require) {
 			});
 		},
 		deleteFile: function(e) {
+            //单个文件删除
 			e.preventDefault();
-			var $tr = $(e.target).parents("tr");
-			var path = $tr.data("path");
-			
-			var self = this;
-			$.getJSON("deleteFile.psp", JSON.stringify({
-				filePath: path
-			})).done(function(res) {
-				if(res.code === 0) {
-					$tr.remove();
-					self.fixTable();
-				} else {
-					alert("删除文件失败！");	
-				}
-			}).fail(function() {
-				alert("删除文件失败！");
-			});
-			
+			var path = $(e.target).parents("tr").data("path");
+			this._delete([path]);
 		},
-		
 		batchDelete: function() {
+            //多文件删除
 			var pathArr = this.getSelectedFiles();
-			var self = this;
-			
-			$.getJSON("deleteFile.psp", JSON.stringify({
-				filePathArr: pathArr
+			this._delete(path);
+		},
+		_delete: function(pathInfo) {
+			$.getJSON("fileOperate.psp", JSON.stringify({
+                fileNum: pathInfo.length,
+                opCmd: 2,
+                pathInfo: pathInfo
 			})).done(function(res) {
 				if(res.code === 0) {
-					self.$("tr").each(function() {
-						var $this = $(this);
-						var path = $this.data("path");
-						if(_.contains(pathArr, path)) { $this.remove(); }
-					});
-					self.fixTable();
+					Radio.channel("wjll").command("deleteSearchFile");
 				} else {
 					alert("批量删除文件失败！");	
 				}
@@ -83,11 +63,10 @@ define(function(require) {
 				alert("批量删除文件失败！");
 			});
 		},
-		
 		getSelectedFiles: function() {
-			return this.$("[type=checkbox]:checked").map(function() {
-				return $(this).parents("tr").data("path");
-			}).get();
+            return this.$("[type=checkbox]:checked").map(function() {
+                return $(this).parents("tr").data("path");
+            }).get();    
 		},
 		
 		fixTable: function() {
