@@ -5,7 +5,7 @@ define(function(require) {
 		defaults: {
 			prot: 0,
 			device: 0,
-			mainDevice: 1,
+			mainDevice: 0,
 			netType: 0,
 			ip: "172.0.0.1",
 			mask: "255.255.255.0",

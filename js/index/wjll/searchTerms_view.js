@@ -38,9 +38,13 @@ define(function(require) {
 		onAttach: function() {
 			this.selectmenu();
 			
-			$("#startTime").add($("#endTime")).datetimepicker({
-				timeFormat: "HH:mm:ss"
-			});
+			$.timepicker.datetimeRange(
+				$("#startTime"),
+				$("#endTime"),
+				{
+					timeFormat: "HH:mm:ss"
+				}
+			);
 		}
 	});
 	

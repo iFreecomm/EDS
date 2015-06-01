@@ -25,6 +25,8 @@ define(function(require) {
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {
+			this.showKdbh();
+			this.refreshSelectmenu();
 			//alert("保存成功！");
 		},
 		saveError: function() {
@@ -32,6 +34,19 @@ define(function(require) {
 		},
 		onRender: function() {
 			this.stickit().fixCheckbox().changeNetType();
+			this.showKdbh();
+		},
+		showKdbh: function() {
+			if(this.model.get("mainDevice")) {
+				if(this.$kdbh) {
+					this.$("#netType").append(this.$kdbh);
+					this.$kdbh = null;
+				}
+			} else {
+				if(!this.$kdbh) {
+					this.$kdbh = this.$("#netType").children().last().detach();
+				}
+			}
 		},
 		onAttach: function() {
 			this.selectmenu();
