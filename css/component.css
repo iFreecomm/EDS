@@ -4,6 +4,7 @@
 	margin: 0;
 }
 .box-container li {
+	position: relative;
 	width: 180px;
 }
 .box-container a {
@@ -13,16 +14,31 @@
 }
 /*********小盒子头部样式*********/
 .box-container .box-head {
-	position: relative;
 	height: 32px;
 	line-height: 32px;
 	font-size: 18px;
 	text-align: center;
 	color: #FFF;
 	background: #1E89B5;
+	overflow: hidden;
 }
 .box-container a:hover .box-head {
 	background: #F47900;
+}
+/*********小盒子主体样式*********/
+.box-container .box-body {
+	box-sizing: border-box;
+	height: 155px;
+	padding-top: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+	word-wrap: break-word;
+	color: #000;
+	background: #A9A9A9;
+	overflow: hidden;
+}
+.box-container .add .box-body {
+	background: #A9A9A9 url(../img/lxr/plus.png) no-repeat center;
 }
 /*********小盒子删除按钮样式*********/
 .box-container .delBtn {
@@ -35,24 +51,23 @@
 	border: none;
 	margin: 0;
 	outline: 0;
-	background: url(../img/del.png) no-repeat center;
+	background: #F47900 url(../img/del.png) no-repeat center;
 	opacity: 0;
 }
-.box-container .delBtn:hover {
-	background-color: #1E89B5;
-}
-.box-container li:hover .delBtn {
+.box-container a:hover+.delBtn {
 	opacity: 1;
 	transition: opacity .2s .5s;
 }
-.box-container li .delBtn:hover {
-	transition: none;
+.box-container .delBtn:hover {
+	opacity: 1;
 }
 /*********召开/结束会议*********/
-
-.box-container .beginBtn {	
-	width: 120px;
-	height: 42px;
+.box-container .beginBtn {
+	position: absolute;
+	bottom: 30px;
+	left: 45px;
+	width: 90px;
+	height: 26px;
 	padding: 0;
 	border: none;
 	margin: 0;
@@ -61,21 +76,7 @@
 	background: #1E89B5;
 }
 .box-container .beginBtn:hover {
-	background-color: #F47900;
-}
-/*********小盒子主体样式*********/
-.box-container .box-body {
-	box-sizing: border-box;
-	height: 155px;
-	padding-top: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
-	word-wrap: break-word;
-	color: #000;
-	background: #A9A9A9;
-}
-.box-container .add .box-body {
-	background: #A9A9A9 url(../img/lxr/plus.png) no-repeat center;
+	background: #F47900;
 }
 
 /*************联系人小盒子样式***************/
@@ -109,6 +110,7 @@
 	background: #1E89B5;
 	font-size: 18px;
 	text-align: center;
+	overflow: hidden;
 }
 .lxr-box .lxr.active .lxr-head {
 	background: #F47900;
@@ -121,6 +123,7 @@
 	word-wrap: break-word;
 	background: #A9A9A9;
 	font-size: 16px;
+	overflow: hidden;
 }
 
 /*************tab标签样式***************/

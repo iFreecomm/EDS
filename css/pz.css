@@ -302,16 +302,19 @@
 	padding-top: 20px;
 }
 #pz_yppz_jhtj .jhtj-btns .btn {
-	width: 100%;
+	width: 90px;
 	height: 35px;
+	margin-right: 10px;
 	margin-bottom: 20px;
-	border-right: 10px solid #244959;
 }
 #pz_yppz_jhtj .jhtj-btns .btn.active {
-	background: #F47900;
-	border-right: 10px solid #F47900;
+	width: 100px;
+	padding-right: 10px;
 	box-shadow: 0 1px 3px #000;
+	background: #F47900;
+	margin-right: 0;
 }
+
 #pz_yppz_jhtj .slide-container {
 	float: left;
 	border: 3px solid #F47900;
