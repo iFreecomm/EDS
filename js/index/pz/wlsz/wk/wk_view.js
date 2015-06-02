@@ -44,7 +44,8 @@ define(function(require) {
 				}
 			} else {
 				if(!this.$kdbh) {
-					this.$kdbh = this.$("#netType").children().last().detach();
+					this.$kdbh = this.$("#netType").children().last().detach().prop("selected", false);
+					this.$("#netType").change();
 				}
 			}
 		},
@@ -53,6 +54,9 @@ define(function(require) {
 		},
 		initialize: function() {
 			this.listenTo(this.model, "change:netType", this.changeNetType);
+			if(this.model.get("mainDevice")) {
+				this.listenTo(this.model, "change:mainDevice", this.changeMainDevice);
+			}
 		},
 		changeNetType: function() {
 			var curNet = this.model.get("netType");
@@ -69,6 +73,10 @@ define(function(require) {
 			}
 			var netCnnt = this.model.get("netCnnt");
 			this.model.set(netCnnt[curNet]);
+		},
+		changeMainDevice: function() {
+			this.showKdbh();
+			this.refreshSelectmenu();
 		}
 	});
 	
