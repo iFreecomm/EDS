@@ -362,5 +362,16 @@
 	padding-left: 50px;
 }
 
+.lzbm .btn-advance {
+	padding-right: 30px;
+	height: 40px;
+	background: url(../img/form/btn/advance1.png) no-repeat right 13px;
+	color: #373737;
+	font-size: 16px;
+	text-shadow: none;
+}
+.lzbm .btn-advance.active {
+	background: url(../img/form/btn/advance2.png) no-repeat right 10px;
+}
 /************录制编码样式结束*************/
 /********添加会议模板样式结束***********/

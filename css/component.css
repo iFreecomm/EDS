@@ -51,7 +51,7 @@
 	border: none;
 	margin: 0;
 	outline: 0;
-	background: #F47900 url(../img/del.png) no-repeat center;
+	background: #F47900 url(../img/form/btn/del.png) no-repeat center;
 	opacity: 0;
 }
 .box-container a:hover+.delBtn {

@@ -19,12 +19,12 @@ define(function(require) {
 			).done(function(mute,shield) {
 				if(mute[0].data.enable == 1)
 				{
-					self.$(".btn-switch4").addClass("active");
+					self.$(".btn-jy").addClass("active");
 				}
 				
 				if(shield[0].data.enable == 1)
 				{
-					self.$(".btn-switch5").addClass("active");
+					self.$(".btn-by").addClass("active");
 				}
 			});
 		},

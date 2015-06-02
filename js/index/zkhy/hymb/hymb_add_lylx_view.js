@@ -121,7 +121,7 @@ define(function(require) {
 			equSrc: "#equSrc"
 		},
 		events: {
-			"click .btn-switch6": "toggleSwitch",
+			"click .btn-advance": "toggleAdvance",
 			"change @ui.equSrc": "getSelectEquSrc"
 		},
 		
@@ -197,7 +197,7 @@ define(function(require) {
 		 * 点击高级按钮，显示高级配置选项
 		 * @param {Object} e
 		 */
-		toggleSwitch: function(e) {
+		toggleAdvance: function(e) {
 			$(e.target).toggleClass("active").parents(".fieldBox").eq(0).next(".fieldBox").slideToggle();
 		},
 		

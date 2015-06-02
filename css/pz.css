@@ -158,6 +158,23 @@
 #pz_yppz_jyby .btn {
 	font-size: 16px;
 }
+
+#pz_yppz_jyby .btn-jy {
+	padding-left: 30px;
+	height: 40px;
+	background: url(../img/form/btn/jy1.png) no-repeat 0 5px;
+}
+#pz_yppz_jyby .btn-jy.active {
+	background: url(../img/form/btn/jy2.png) no-repeat 1px 5px;
+}
+#pz_yppz_jyby .btn-by {
+	padding-left: 28px;
+	height: 40px;
+	background: url(../img/form/btn/by1.png) no-repeat 0 5px;
+}
+#pz_yppz_jyby .btn-by.active {
+	background: url(../img/form/btn/by2.png) no-repeat 5px 5px;
+}
 	/**********音频配置中静音闭音模块样式结束**********/
 
 	/**********音频配置中本地输入模块样式开始**********/

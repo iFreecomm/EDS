@@ -1,3 +1,17 @@
+#wjll_searchTerms .searchBtn {
+	padding-left: 50px;
+	padding-right: 20px;
+	margin-left: 50px;
+	height: 38px;
+	background: #1E89B5 url(../img/form/btn/search.png) no-repeat 10px center;
+	color: #fff;
+	font-size: 16px;
+	text-shadow: none;
+}
+#wjll_searchTerms .searchBtn:hover {
+	background-color: #F47900;
+}
+
 #wjll_file_list {
 	margin: 10px 50px;
 }
@@ -61,7 +75,7 @@
 	width: 50px;
 	height: 50px;
 	float: right;
-	background: url(../img/del.png) no-repeat center;
+	background: url(../img/form/btn/del.png) no-repeat center;
 }
 #burnDiskContainer .closeBtn:hover {	
 	background-color: #F47900;
