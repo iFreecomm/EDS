@@ -21,6 +21,18 @@ define(function(require) {
 			"click .saveBtn": "saveTemp",
 			"click .cancelBtn": "cancelTemp"
 		},
+		
+		onBeforeShow: function(view, region, options) {
+			this.showChildView("basic", options.zkhyHymbAddBasicView);
+			this.showChildView("yhz", options.zkhyHymbAddYhzView);
+			this.showChildView("dhm", options.zkhyHymbAddDhmView);
+			this.showChildView("spjz", options.zkhyHymbAddSpjzView);
+			this.showChildView("lzbm", options.zkhyHymbAddLzbmView);
+		},
+		onAttach: function() {
+			Radio.channel("index").command("activeLink", "zkhy/showHymb");
+		},
+		
 		selectTab: function(e) {
 			var $tar = $(e.target);
 			$tar.addClass("active").siblings().removeClass("active");
@@ -65,17 +77,6 @@ define(function(require) {
 		},
 		cancelTemp: function() {
 			Backbone.history.navigate("zkhy/showHymb", {trigger: true});
-		},
-		
-		onBeforeShow: function(view, region, options) {
-			this.showChildView("basic", options.zkhyHymbAddBasicView);
-			this.showChildView("yhz", options.zkhyHymbAddYhzView);
-			this.showChildView("dhm", options.zkhyHymbAddDhmView);
-			this.showChildView("spjz", options.zkhyHymbAddSpjzView);
-			this.showChildView("lzbm", options.zkhyHymbAddLzbmView);
-		},
-		onAttach: function() {
-			Radio.channel("index").command("activeLink", "zkhy/showHymb");
 		}
 	});
 	

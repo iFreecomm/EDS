@@ -13,6 +13,11 @@ define(function(require) {
 		events: {
 			"click .delBtn": "delHymb"
 		},
+		
+		onAttach: function() {
+			Radio.channel("index").command("activeLink");
+		},
+		
 		delHymb: function(e) {
 			e.preventDefault();
 			var $btn = $(e.target);
@@ -30,10 +35,6 @@ define(function(require) {
 				alert("删除会议模板失败！");
 			});
 			
-		},
-		
-		onAttach: function() {
-			Radio.channel("index").command("activeLink");
 		}
 	});
 	

@@ -7,10 +7,6 @@ define(function(require) {
 	var BasicView = Mn.ItemView.extend({
 		id: "hymb_add_basic",
 		template: tmpl,
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
 		bindings: {
 			"#name": "name",
 			"#desc": "desc",
@@ -57,6 +53,10 @@ define(function(require) {
 				observe: "secVidSend",
 				selectName: "secVidSend"
 			}
+		},
+		ui: {
+			formBox: ".formBox",
+			select: "select"
 		},
 		
 		initialize: function() {

@@ -6,6 +6,27 @@ define(function(require) {
 		id: "audioView",
 		template: tmpl,
 		
+		onAttach: function() {
+			var self = this;
+			$("#audio_jplayer").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						title: self.options.opt.title,
+						m4a: self.options.opt.path,
+					}).jPlayer("play");
+				},
+				cssSelectorAncestor: "#audio_container",
+				swfPath: "js/lib/pro/jplayer",
+				supplied: "m4a",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+			});
+		},
+		
 		play: function(opt) {
 			this.show();
 			$("#audio_jplayer").jPlayer("setMedia", {
@@ -29,27 +50,6 @@ define(function(require) {
 			this.$el.css({
 				width: "auto",
 				height: "auto"
-			});
-		},
-		
-		onAttach: function() {
-			var self = this;
-			$("#audio_jplayer").jPlayer({
-				ready: function () {
-					$(this).jPlayer("setMedia", {
-						title: self.options.opt.title,
-						m4a: self.options.opt.path,
-					}).jPlayer("play");
-				},
-				cssSelectorAncestor: "#audio_container",
-				swfPath: "js/lib/pro/jplayer",
-				supplied: "m4a",
-				useStateClassSkin: true,
-				autoBlur: false,
-				smoothPlayBar: true,
-				keyEnabled: true,
-				remainingDuration: true,
-				toggleDuration: true
 			});
 		}
 	});

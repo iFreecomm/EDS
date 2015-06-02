@@ -11,7 +11,6 @@ define(function(require) {
 		initialize: function() {
 			this.on("childview:save:collection", this.save);
 		},
-		
 		onRender: function() {
 			var names = ["低频", "中低频", "中频", "中高频", "高频"];
 			

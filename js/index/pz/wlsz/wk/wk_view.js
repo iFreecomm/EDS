@@ -6,10 +6,6 @@ define(function(require) {
 	var WkView = Mn.ItemView.extend({
 		id: "pz_wlsz_wk",
 		template: tmpl,
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
 		bindings: {
 			"#prot":  "prot",
 			"#device":  "device",
@@ -23,17 +19,16 @@ define(function(require) {
 			"#user":  "user",
 			"#pwd":  "pwd" 
 		},
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		events: {
 			"click .saveBtn" : "saveModel"
 		},
-		saveModel: function(e) {
-			this.model.save().done(this.saveSuccess).fail(this.saveError);
-		},
-		saveSuccess: function() {
-			//alert("保存成功！");
-		},
-		saveError: function() {
-			alert("保存失败！");
+		
+		initialize: function() {
+			this.listenTo(this.model, "change:netType", this.changeNetType);
 		},
 		onRender: function() {
 			this.stickit();
@@ -45,9 +40,17 @@ define(function(require) {
 			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
 			this.ui.select.change();
 		},
-		initialize: function() {
-			this.listenTo(this.model, "change:netType", this.changeNetType);
+		
+		saveModel: function(e) {
+			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
+		saveSuccess: function() {
+			//alert("保存成功！");
+		},
+		saveError: function() {
+			alert("保存失败！");
+		},
+		
 		changeNetType: function() {
 			var curNet = this.model.get("netType");
 			var preNet = this.model.previous("netType");

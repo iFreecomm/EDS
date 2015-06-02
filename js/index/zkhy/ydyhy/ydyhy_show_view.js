@@ -13,6 +13,11 @@ define(function(require) {
 			"click .delBtn": "delMeeting",
 			"click .beginBtn": "beginMeeting"
 		},
+		
+		onAttach: function() {
+			Radio.channel("index").command("activeLink");
+		},
+		
 		delMeeting: function(e) {
 			e.preventDefault();
 			var $btn = $(e.target);
@@ -54,10 +59,6 @@ define(function(require) {
 			}).fail(function() {
 				
 			});
-		},
-		
-		onAttach: function() {
-			Radio.channel("index").command("activeLink");
 		}
 	});
 	

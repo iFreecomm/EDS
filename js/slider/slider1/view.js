@@ -13,6 +13,7 @@ define(function(require) {
 			"[name=phtPwrEn]": "phtPwrEn",
 			".sliderValue": "involume"
 		},
+		
 		initialize: function() {
 			this.listenTo(this.model, "change", this.save);
 		},

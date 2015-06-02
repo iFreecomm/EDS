@@ -9,11 +9,21 @@ define(function(require) {
 	var LxrShowView = Mn.ItemView.extend({
 		id: "wjll_file_list",
 		template: Handlebars.compile(tmpl),
-		
 		events: {
 			"click .playBtn": "playFile",
 			"click .deleteBtn": "deleteFile"
 		},
+		
+		onRender: function() {
+			Radio.channel("fileList").comply("batchDelete", this.batchDelete, this);
+			Radio.channel("fileList").reply("getSelectedFiles", this.getSelectedFiles, this);
+			this.fixTable();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+		},
+		onDestroy: function() {
+			Radio.channel("fileList").reset();
+		},
+		
 		playFile: function(e) {
 			e.preventDefault();
 			var index = $(e.target).parents("tr").index() - 1;
@@ -84,17 +94,6 @@ define(function(require) {
 			$table.find("tr").slice(1).each(function(index, obj) {
 				index % 2 === 0 ? obj.className="even" : obj.className="odd";
 			});
-		},
-		
-		onRender: function() {
-			Radio.channel("fileList").comply("batchDelete", this.batchDelete, this);
-			Radio.channel("fileList").reply("getSelectedFiles", this.getSelectedFiles, this);
-			this.fixTable();
-			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
-		},
-		
-		onDestroy: function() {
-			Radio.channel("fileList").reset();
 		}
 	});
 	

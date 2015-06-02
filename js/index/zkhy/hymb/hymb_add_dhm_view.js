@@ -28,6 +28,7 @@ define(function(require) {
 		events: {
 			"click @ui.mode_box": "selectMode"
 		},
+		
 		initialize: function() {
 			this.fixSubPicInfo();
 		},

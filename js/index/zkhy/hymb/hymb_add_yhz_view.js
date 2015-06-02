@@ -33,6 +33,7 @@ define(function(require) {
 			"click .btn-add": "addLxr",
 			"click .btn-del": "delLxr"
 		},
+		
 		initialize: function() {
 			this.setTemplateHelpers();
 		},

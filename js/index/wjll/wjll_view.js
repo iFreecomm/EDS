@@ -22,13 +22,27 @@ define(function(require) {
 			videoViewContainer: "#videoViewContainer",
 			audioViewContainer: "#audioViewContainer"
 		},
-		
 		events: {
 			"click .burnDisk": "burnDisk",
 			"click .batchDelete": "batchDelete",
 			
 			"click .prevPage": "prevPage",
 			"click .nextPage": "nextPage"
+		},
+		
+		initialize: function() {
+			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
+			Radio.channel("wjll").comply("playFile", this.playFile, this);
+		},
+		onBeforeShow: function(view, region, options) {
+			this.showChildView("searchTermsContainer", options.searchTermsView);
+			this.showChildView("fileContainer", options.fileView);
+		},
+		onAttach: function() {
+			Radio.channel("index").command("activeLink");
+		},
+		onDestroy: function() {
+			Radio.channel("wjll").reset();
 		},
 		
 		burnDisk: function() {
@@ -53,11 +67,6 @@ define(function(require) {
 			this.searchTerms = this.searchTerms || this.options.searchTerms;
 			this.pageNum++;
 			this._search();
-		},
-		
-		initialize: function() {
-			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
-			Radio.channel("wjll").comply("playFile", this.playFile, this);
 		},
 		
 		searchFile: function(searchTerms) {
@@ -132,19 +141,6 @@ define(function(require) {
 					collection: collection
 				}));
 			});
-		},
-		
-		onBeforeShow: function(view, region, options) {
-			this.showChildView("searchTermsContainer", options.searchTermsView);
-			this.showChildView("fileContainer", options.fileView);
-		},
-		
-		onAttach: function() {
-			Radio.channel("index").command("activeLink");
-		},
-		
-		onDestroy: function() {
-			Radio.channel("wjll").reset();
 		}
 	});
 	

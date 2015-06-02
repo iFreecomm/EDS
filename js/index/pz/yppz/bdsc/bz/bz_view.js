@@ -9,6 +9,7 @@ define(function(require) {
 		events: {
 			"click td": "saveBz"
 		},
+		
 		onRender: function() {
 			this.renderData();
 		},

@@ -12,13 +12,14 @@ define(function(require) {
 	var LoginView = Mn.ItemView.extend({
 		id: "wrapper",
 		template: tmpl,
-		events: {
-			"click [type=submit]": "login"
-		},
 		bindings: {
 			"#username": "username",
     		"#password": "password"
 		},
+		events: {
+			"click [type=submit]": "login"
+		},
+		
 		initialize: function() {
 			this.model = new LoginModel();
 		},

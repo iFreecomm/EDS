@@ -7,18 +7,24 @@ define(function(require) {
 	var SpjzView = Mn.LayoutView.extend({
 		id: "hykz_dhm",
 		template: tmpl,
-		regions: {
-			dhm: "#hykz_dhm_container"
-		},
-		
 		bindings: {
 			"#subPicInfo": "subPicInfo",
 			"#showMpMode": "showMpMode"
 		},
-		
+		regions: {
+			dhm: "#hykz_dhm_container"
+		},
 		events: {
 			"click .saveBtn": "saveSpjz"
 		},
+		
+		onBeforeShow: function(view, region, options) {
+			this.showChildView("dhm", options.hykzHymbAddDhmView);
+		},
+		onAttach: function() {
+			Radio.channel("index").command("activeLink", "hykz/dhm");
+		},
+		
 		saveSpjz: function(e) {
 			e.preventDefault();
 			var self = this;
@@ -44,13 +50,6 @@ define(function(require) {
 		},
 		saveError: function() {
 			alert("保存失败！");
-		},
-		
-		onBeforeShow: function(view, region, options) {
-			this.showChildView("dhm", options.hykzHymbAddDhmView);
-		},
-		onAttach: function() {
-			Radio.channel("index").command("activeLink", "hykz/dhm");
 		}
 	});
 	

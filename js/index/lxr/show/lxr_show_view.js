@@ -11,6 +11,11 @@ define(function(require) {
 		events: {
 			"click .delBtn": "delLxr"
 		},
+		
+		onAttach: function() {
+			Util.activeLink();
+		},
+		
 		delLxr: function(e) {
 			e.preventDefault();
 			var $btn = $(e.target);
@@ -28,10 +33,6 @@ define(function(require) {
 				alert("删除联系人失败！");
 			});
 			
-		},
-		
-		onAttach: function() {
-			Util.activeLink();
 		}
 	});
 	

@@ -10,15 +10,6 @@ define(function(require) {
 	var YdyhyAddFormView = Mn.ItemView.extend({
 		id: "ydyhy_add_form",
 		template: Handlebars.compile(tmpl),
-		ui: {
-			formBox: ".formBox",
-			select: "select",
-			yyrq_con: "#yyrq_container",
-			jsrq_con: "#jsrq_container",
-			yyrq: "#yyrq",
-			jsrq: "#jsrq"
-		},
-		
 		bindings: {
 			"#name": "name",
 			"#number": "number",
@@ -36,11 +27,52 @@ define(function(require) {
 				selectName: "bandwidth"
 			}
 		},
-		
+		ui: {
+			formBox: ".formBox",
+			select: "select",
+			yyrq_con: "#yyrq_container",
+			jsrq_con: "#jsrq_container",
+			yyrq: "#yyrq",
+			jsrq: "#jsrq"
+		},
 		events: {
 			"click .saveBtn": "saveMeeting",
 			"click .cancelBtn": "cancelMeeting"
 		},
+		
+		initialize: function() {
+			Util.setSelectBindings(this.bindings);
+			
+			this.listenTo(this.model, "change:tempRecordId", this.changeHymb);
+			this.listenTo(this.model, "change:meetingType", this.changeHylx);
+		},
+		onRender: function() {
+			if(this.model.isNew())
+			{
+				this.stickit().changeHymb();
+			}
+			else
+			{
+//				Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
+			}
+			this.stickit().changeHylx();
+		},
+		onAttach: function() {
+			//selectmenu方法中触发了change事件，导致触发changeHymb方法，从而覆盖了原始数据
+			//TODO
+			Util.selectmenu(this.ui.select, this.ui.formBox);
+			this.initYyrqAndJsrq();
+			$.timepicker.datetimeRange(
+				this.ui.yyrq,
+				this.ui.jsrq
+			);
+			
+			if(!this.model.isNew()) {
+				this.$("#name").prop("disabled", true).css({"opacity":0.5});
+				this.$("#tempRecordId").selectmenu("option", "disabled", true);
+			}
+		},
+		
 		saveMeeting: function(e) {
 			e.preventDefault();
 			var self = this;
@@ -62,16 +94,11 @@ define(function(require) {
 		saveError: function() {
 			alert("保存会议失败！");
 		},
+		
 		cancelMeeting: function() {
 			Util.navigate("zkhy/showYdyhy", {trigger: true});
 		},
 		
-		initialize: function() {
-			Util.setSelectBindings(this.bindings);
-			
-			this.listenTo(this.model, "change:tempRecordId", this.changeHymb);
-			this.listenTo(this.model, "change:meetingType", this.changeHylx);
-		},
 		initYyrqAndJsrq: function() {
 			this.model.set({
 				yyrq: this.getYyrqString(),
@@ -178,33 +205,7 @@ define(function(require) {
 				this.ui.yyrq_con.removeAttr("disabled").css({"opacity":1});
 			}
 			return this;
-		},
-		onRender: function() {
-			if(this.model.isNew())
-			{
-				this.stickit().changeHymb();
-			}
-			else
-			{
-//				Radio.channel("yhz").command("loadHymb", this.model.get("venueId"));
-			}
-			this.stickit().changeHylx();
-		},
-		onAttach: function() {
-			//selectmenu方法中触发了change事件，导致触发changeHymb方法，从而覆盖了原始数据
-			//TODO
-			Util.selectmenu(this.ui.select, this.ui.formBox);
-			this.initYyrqAndJsrq();
-			$.timepicker.datetimeRange(
-				this.ui.yyrq,
-				this.ui.jsrq
-			);
-			
-			if(!this.model.isNew()) {
-				this.$("#name").prop("disabled", true).css({"opacity":0.5});
-				this.$("#tempRecordId").selectmenu("option", "disabled", true);
-			}
-		},
+		}
 	});
 	
 	return YdyhyAddFormView;

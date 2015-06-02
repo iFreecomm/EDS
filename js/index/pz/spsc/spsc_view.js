@@ -8,12 +8,6 @@ define(function(require) {
 	var SpscView = Mn.ItemView.extend({
 		id: "pz_spsc",
 		template: Handlebars.compile(tmpl),
-		
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
-		
 		bindings: {
 			"#name": "name",
 			"#szxh": "szxh",
@@ -27,9 +21,23 @@ define(function(require) {
 			"#sppy": "sppy",
 			"#czpy": "czpy"
 		},
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		events: {
 			"click .lxr" : "selectLxr"
 		},
+		
+		onRender: function() {
+			this.stickit();
+			Util.initSlider(this.$el);
+		},
+		onAttach: function() {
+			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
+		},
+		
 		selectLxr: function(e) {
 			var self = this;
 			var $tar = $(e.target);
@@ -41,15 +49,6 @@ define(function(require) {
 			}).done(function() {
 				Util.refreshSelectmenu(self.$el).refreshSlider(self.$el);
 			});
-		},
-		
-		onRender: function() {
-			this.stickit();
-			Util.initSlider(this.$el);
-		},
-		onAttach: function() {
-			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
-			this.ui.select.change();
 		}
 	});
 	

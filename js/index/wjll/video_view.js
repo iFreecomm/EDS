@@ -6,6 +6,28 @@ define(function(require) {
 		id: "videoView",
 		template: tmpl,
 		
+		onAttach: function() {
+			var self = this;
+			$("#video_jplayer").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						title: self.options.opt.title,
+						m4v: self.options.opt.path,
+						poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+					}).jPlayer("play");
+				},
+				cssSelectorAncestor: "#video_container",
+				swfPath: "js/lib/pro/jplayer",
+				supplied: "m4v",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+			});
+		},
+		
 		play: function(opt) {
 			this.show();
 			$("#video_jplayer").jPlayer("setMedia", {
@@ -30,28 +52,6 @@ define(function(require) {
 			this.$el.css({
 				width: "auto",
 				height: "auto"
-			});
-		},
-		
-		onAttach: function() {
-			var self = this;
-			$("#video_jplayer").jPlayer({
-				ready: function () {
-					$(this).jPlayer("setMedia", {
-						title: self.options.opt.title,
-						m4v: self.options.opt.path,
-						poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
-					}).jPlayer("play");
-				},
-				cssSelectorAncestor: "#video_container",
-				swfPath: "js/lib/pro/jplayer",
-				supplied: "m4v",
-				useStateClassSkin: true,
-				autoBlur: false,
-				smoothPlayBar: true,
-				keyEnabled: true,
-				remainingDuration: true,
-				toggleDuration: true
 			});
 		}
 	});

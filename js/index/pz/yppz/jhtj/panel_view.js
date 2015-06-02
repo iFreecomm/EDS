@@ -15,6 +15,7 @@ define(function(require) {
 		events: {
 			"click .btn" : "changeOutport"
 		},
+		
 		onAttach: function() {
 			this.$(".btn").eq(0).click();
 		},

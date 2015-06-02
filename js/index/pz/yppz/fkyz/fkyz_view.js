@@ -12,6 +12,7 @@ define(function(require) {
 			"[name=afrRange]": "afrRange",
 			"[name=afrMode]": "afrMode"
 		},
+		
 		initialize: function() {
 			this.listenTo(this.model, "change:afrEn", this.save);
 			this.listenTo(this.model, "change:afrRange", this.save);

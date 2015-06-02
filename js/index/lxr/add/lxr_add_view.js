@@ -7,12 +7,6 @@ define(function(require) {
 	var LxrAddView = Mn.ItemView.extend({
 		id: "lxr_add",
 		template: Handlebars.compile(tmpl),
-		
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
-		
 		bindings: {
 			"#addrName": "addrName",
 			"#camPort": "camPort",
@@ -41,11 +35,31 @@ define(function(require) {
 				selectName: "bandwidth"
 			}
 		},
-		
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		events: {
 			"click .saveBtn": "saveLxr",
 			"click .cancelBtn": "cancelLxr"
 		},
+		
+		initialize: function(opt) {
+			this.listenTo(this.model, "change:equType", this.changeEquType);
+			
+			Util.setSelectBindings(this.bindings);
+		},
+		onRender: function() {
+			this.stickit();
+			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.changeEquType();
+		},
+		onAttach: function() {
+			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+			//同步select默认值到model中
+			this.ui.select.change();
+		},
+		
 		saveLxr: function(e) {
 			e.preventDefault();
 			var self = this;
@@ -65,26 +79,11 @@ define(function(require) {
 			Util.navigate("lxr", {trigger: true});
 		},
 		
-		initialize: function(opt) {
-			this.listenTo(this.model, "change:equType", this.changeEquType);
-			
-			Util.setSelectBindings(this.bindings);
-		},
 		changeEquType: function() {
 			var curHclx = this.model.get("equType");
 			var preHclx = this.model.previous("equType");
 			this.$("[equType*="+preHclx+"]").hide();
 			this.$("[equType*="+curHclx+"]").show();
-		},
-		onRender: function() {
-			this.stickit();
-			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
-			this.changeEquType();
-		},
-		onAttach: function() {
-			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
-			//同步select默认值到model中
-			this.ui.select.change();
 		}
 	});
 	

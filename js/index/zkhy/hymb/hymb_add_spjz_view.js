@@ -19,6 +19,7 @@ define(function(require) {
 			"mouseover @ui.spjz_table_container": "mouseoverTD",
 			"click @ui.spjz_table_container": "clickTD"
 		},
+		
 		onRender: function() {
 			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
 			

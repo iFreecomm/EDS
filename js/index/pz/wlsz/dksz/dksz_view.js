@@ -6,10 +6,6 @@ define(function(require) {
 	var DkszView = Mn.ItemView.extend({
 		id: "pz_wlsz_dksz",
 		template: tmpl,
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
 		bindings: {
 			"#gkdk": "gkdk",
 			"#hjjtdk": "hjjtdk",
@@ -18,17 +14,12 @@ define(function(require) {
 			"#mtdk_min": "mtdk_min",
 			"#mtdk_max": "mtdk_max"
 		},
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		events: {
 			"click .saveBtn" : "saveModel"
-		},
-		saveModel: function(e) {
-			this.model.save().done(this.saveSuccess).fail(this.saveError);
-		},
-		saveSuccess: function() {
-			alert("保存成功！");
-		},
-		saveError: function() {
-			alert("保存失败！");
 		},
 		
 		onRender: function() {
@@ -39,6 +30,16 @@ define(function(require) {
 		onAttach: function() {
 			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
 			this.ui.select.change();
+		},
+		
+		saveModel: function(e) {
+			this.model.save().done(this.saveSuccess).fail(this.saveError);
+		},
+		saveSuccess: function() {
+			alert("保存成功！");
+		},
+		saveError: function() {
+			alert("保存失败！");
 		}
 	});
 	

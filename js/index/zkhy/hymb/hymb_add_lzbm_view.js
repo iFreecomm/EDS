@@ -22,6 +22,7 @@ define(function(require) {
 		events: {
 			"click .lzbm-box .btn": "clickLylx"
 		},
+		
 		initialize: function() {
 			// 初始化录制视频源数组
 			this.vidSrcArr = this.getLzbmLxr();

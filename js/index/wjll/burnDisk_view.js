@@ -7,18 +7,22 @@ define(function(require) {
 	
 	var BurnDiskView = Mn.ItemView.extend({
 		template: tmpl,
-		
 		ui: {
 			formBox: ".formBox",
 			select: "select"
 		},
-		
 		events: {
 			"click .burnDiskBtn": "burnDisk",
 			"click .cancelBtn": "cancel",
 			"click .closeBtn": "cancel",
 			"change #diskId": "changeAvailableSize"
 		},
+		
+		onAttach: function() {
+			Util.selectmenu(this.ui.select, this.ui.formBox);
+			this.ui.select.change();
+		},
+		
 		preBurnDisk: function() {
 			this.selectedFiles = Radio.channel("fileList").request("getSelectedFiles");
 			
@@ -49,17 +53,10 @@ define(function(require) {
 			var size = this.$("#diskId").find("option:selected").data("availablesize");
 			this.$(".diskInfo").children("strong").text(size);
 		},
-		
 		show: function() {
 			this.$(".mask").show();
 			this.$(".popup").show();
-		},
-		
-		onAttach: function() {
-			Util.selectmenu(this.ui.select, this.ui.formBox);
-			this.ui.select.change();
 		}
-		
 	});
 	
 	return BurnDiskView;

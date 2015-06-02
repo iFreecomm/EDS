@@ -34,6 +34,14 @@ define(function(require) {
 		events: {
 			"click .wlsz-box .btn" : "wlsz",
 		},
+		
+		onBeforeShow: function(view, region, options) {
+			this.showChildView("container", options.pzWlszWkView);
+		},
+		onAttach: function() {
+			Radio.channel("index").command("activeLink");
+		},
+		
 		modelViewMap: {
 			"wk" : [WkModel, WkView],
 			"dksz" : [DkszModel, DkszView],
@@ -67,13 +75,6 @@ define(function(require) {
 					})
 				};
 			}
-		},
-		
-		onBeforeShow: function(view, region, options) {
-			this.showChildView("container", options.pzWlszWkView);
-		},
-		onAttach: function() {
-			Radio.channel("index").command("activeLink");
 		}
 	});
 	

@@ -124,6 +124,7 @@ define(function(require) {
 			"click .btn-switch6": "toggleSwitch",
 			"change @ui.equSrc": "getSelectEquSrc"
 		},
+		
 		initialize: function() {
 			Util.setSelectBindings(this.bindings);
 		},

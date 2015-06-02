@@ -4,7 +4,7 @@ define(function(require) {
 	
 	var NavLeftView = Mn.ItemView.extend({
 		tagName: "ul",
-		template: tmpl,
+		template: tmpl
 	});
 	
 	return NavLeftView;

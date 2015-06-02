@@ -12,6 +12,7 @@ define(function(require) {
 			"[name=enable]": "enable",
 			".sliderValue": "outVol"
 		},
+		
 		initialize: function() {
 			this.listenTo(this.model, "change", this.save);
 		},

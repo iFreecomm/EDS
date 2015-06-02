@@ -9,11 +9,6 @@ define(function(require) {
 	var SearchTermsView = Mn.ItemView.extend({
 		id: "wjll_searchTerms",
 		template: Handlebars.compile(tmpl),
-		
-		ui: {
-			formBox: ".formBox",
-			select: "select"
-		},
 		bindings: {
 			"#startTime": "startTime",
 			"#endTime": "endTime",
@@ -23,18 +18,17 @@ define(function(require) {
 			"#confName": "confName",
 			"#convenor": "convenor"
 		},
-		
+		ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
 		events: {
 			"click .searchBtn": "searchFile"
-		},
-		searchFile: function() {
-			Radio.channel("wjll").command("searchFile", this.model.toJSON());
 		},
 		
 		onRender: function() {
 			this.stickit();
 		},
-		
 		onAttach: function() {
 			Util.selectmenu(this.ui.select, this.ui.formBox);
 			this.ui.select.change();
@@ -42,6 +36,10 @@ define(function(require) {
 			$("#startTime").add($("#endTime")).datetimepicker({
 				timeFormat: "HH:mm:ss"
 			});
+		},
+		
+		searchFile: function() {
+			Radio.channel("wjll").command("searchFile", this.model.toJSON());
 		}
 	});
 	

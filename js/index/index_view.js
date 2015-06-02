@@ -16,6 +16,14 @@ define(function(require) {
 		initialize: function() {
 			Radio.channel("index").comply("activeLink", this.activeLink, this);
 		},
+		onBeforeShow: function(view, region, options) {
+			var navLeftRegion = this.getRegion("navLeft");
+			options.navLeftView && navLeftRegion.show(new options.navLeftView()) || navLeftRegion.empty();
+			this.getRegion("contentRight").show(options.contentRightView, options);
+		},
+		onDestroy: function() {
+			Radio.channel("index").reset();
+		},
 		
 		activeLink: function(path) {
 			var hash = path || Backbone.history.getHash();
@@ -25,16 +33,6 @@ define(function(require) {
 			var $a = this.$(".navLeft").find("a");
 			if($a.length === 0) return;
 			$a.removeClass("active").filter("[href*='"+hash+"']").eq(0).addClass("active");
-		},
-
-		onBeforeShow: function(view, region, options) {
-			var navLeftRegion = this.getRegion("navLeft");
-			options.navLeftView && navLeftRegion.show(new options.navLeftView()) || navLeftRegion.empty();
-			this.getRegion("contentRight").show(options.contentRightView, options);
-		},
-		
-		onDestroy: function() {
-			Radio.channel("index").reset();
 		}
 	});
 	

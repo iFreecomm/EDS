@@ -9,6 +9,7 @@ define(function(require) {
 		bindings: {
 			".sliderValue": "volume"
 		},
+		
 		initialize: function() {
 			this.listenTo(this.model, "change", function() {
 				this.trigger("save:collection");
