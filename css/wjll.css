@@ -45,6 +45,9 @@
 #wjll_show .form-btns {
 	padding: 0 50px;
 }
+#wjll_show .pageNum {
+	margin: 12px 0 0 10px;
+}
 
 #burnDiskContainer .popup {
 	width: 550px;

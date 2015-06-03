@@ -23,7 +23,8 @@ define(function(require) {
 		},
 		ui: {
 			"prevPageBtn": ".prevPage",
-			"nextPageBtn": ".nextPage"
+			"nextPageBtn": ".nextPage",
+			"curPage": ".curPage"
 		},
 		events: {
 			"click .burnDisk": "burnDisk",
@@ -69,6 +70,8 @@ define(function(require) {
 			} else {
 				this.ui.nextPageBtn.show();
 			}
+			
+			this.ui.curPage.text(this.pageNum);
 		},
 		
 		initialize: function() {
