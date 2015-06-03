@@ -34,16 +34,11 @@ define(function(require) {
 		},
 		
 		burnDisk: function() {
-			var idArr = Radio.channel("fileList").request("getSelectedFiles");
-			if(_.isEmpty(idArr)) {
-				alert("请至少选择一个文件后刻录！");
-				return;
-			}
 			if(!this.burnDiskView) {
 				this.burnDiskView = new BurnDiskView();
 				this.showChildView("burnDiskContainer", this.burnDiskView);
 			}
-			this.burnDiskView.show();
+			this.burnDiskView.preBurnDisk();
 		},
 		
 		batchDelete: function() {
@@ -91,7 +86,11 @@ define(function(require) {
 			this._search();
 		},
 		
-		deleteSearchFile: function() {
+		deleteSearchFile: function(fileNum) {
+			//如果是最后一页并且所有文件被删除，那么请求前一页
+			if(this.endFlag === 1 && fileNum === 0) {
+				this.pageNum = (this.pageNum - 1) || 1;
+			}
 			this._search();
 		},
 		

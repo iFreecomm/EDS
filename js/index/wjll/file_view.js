@@ -11,9 +11,15 @@ define(function(require) {
 		template: Handlebars.compile(tmpl),
 		
 		events: {
+			"change #checkAll": "checkAll",
 			"click .playBtn": "playFile",
 			"click .deleteBtn": "deleteFile",
 			"click .downloadBtn": "downloadFile"
+		},
+		checkAll: function(e) {
+			var isChecked = $(e.target).prop("checked");
+			this.$("[type=checkbox]").prop("checked", isChecked);
+			this.initCheckboxClass();
 		},
 		downloadFile:function(e){
 			//e.preventDefault();
@@ -41,30 +47,39 @@ define(function(require) {
             //单个文件删除
 			e.preventDefault();
 			var path = $(e.target).parents("tr").data("path");
+//			path = {srcPath: path};
 			this._delete([path]);
 		},
 		batchDelete: function() {
             //多文件删除
 			var pathArr = this.getSelectedFiles();
-			this._delete(path);
+//			pathArr = _.map(pathArr, function(path) {
+//				return { srcPath: path };
+//			});
+			this._delete(pathArr);
 		},
 		_delete: function(pathInfo) {
+			var self = this;
 			$.getJSON("fileOperate.psp", JSON.stringify({
                 fileNum: pathInfo.length,
                 opCmd: 2,
                 pathInfo: pathInfo
 			})).done(function(res) {
 				if(res.code === 0) {
-					Radio.channel("wjll").command("deleteSearchFile");
+					var curFileNum = self.getAllFileNum() - pathInfo.length;
+					Radio.channel("wjll").command("deleteSearchFile", curFileNum);
 				} else {
-					alert("批量删除文件失败！");	
+					alert("删除文件失败！");	
 				}
 			}).fail(function() {
-				alert("批量删除文件失败！");
+				alert("删除文件失败！");
 			});
 		},
+		getAllFileNum: function() {
+            return self.$("[type=checkbox]").length - 1;    
+		},
 		getSelectedFiles: function() {
-            return this.$("[type=checkbox]:checked").map(function() {
+            return this.$("[type=checkbox]").slice(1).filter(":checked").map(function() {
                 return $(this).parents("tr").data("path");
             }).get();    
 		},
@@ -73,7 +88,7 @@ define(function(require) {
 			var $table = this.$("table");
 			var $trs = $table.find("tr");
 			var length = $trs.length - 1;
-			var $tr = $("<tr><td colspan='10'></td></tr>").css({height:50});
+			var $tr = $("<tr><td colspan='10'></td></tr>").css({height:44});
 			while(length++ < 10) {
 				$table.append($tr.clone());
 			}

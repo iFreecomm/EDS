@@ -12,7 +12,7 @@
 				"confName": "会议名称1",
 				"convenor": "召集人1",
 				"fileType": "视频文件",
-				"filePath": "media/video/video1.mp4media/video/video1.mp4",
+				"filePath": "media/video/video1.mp4",
 				"realPath": "media/video/video1.mp4"
 			},
 			{
@@ -24,7 +24,7 @@
 				"confName": "会议名称2",
 				"convenor": "召集人2",
 				"fileType": "视频文件",
-				"filePath": "硬盘B2",
+				"filePath": "media/video/video2.mp4",
 				"realPath": "media/video/video2.mp4"
 			},
 			{
@@ -36,7 +36,7 @@
 				"confName": "会议名称1",
 				"convenor": "召集人1",
 				"fileType": "视频文件",
-				"filePath": "硬盘A3",
+				"filePath": "media/video/video3.mp4",
 				"realPath": "media/video/video3.mp4"
 			},
 			{
@@ -48,7 +48,7 @@
 				"confName": "会议名称1",
 				"convenor": "召集人1",
 				"fileType": "视频文件",
-				"filePath": "硬盘A4",
+				"filePath": "media/video/video4.mp4",
 				"realPath": "media/video/video4.mp4"
 			},
 			{

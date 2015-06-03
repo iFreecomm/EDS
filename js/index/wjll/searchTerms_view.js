@@ -22,7 +22,7 @@ define(function(require) {
 			"#confName": "confName",
 			"#convenor": "convenor"
 		},
-		initialize: function(opt) {			
+		initialize: function(opt) {
 			this.setSelectBindings(this.bindings);
 		},
 		events: {
@@ -33,7 +33,7 @@ define(function(require) {
 			Radio.channel("wjll").command("searchFile", this.model.toJSON());
 		},
 		resetFile: function() {
-			this.model = new SearchTermsModel();
+			this.model.clear().set(new SearchTermsModel().toJSON());
 			this.refreshSelectmenu();
 			Radio.channel("wjll").command("searchFile", this.model.toJSON());
 		},
