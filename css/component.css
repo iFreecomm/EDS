@@ -23,7 +23,7 @@
 	overflow: hidden;
 }
 .box-container a:hover .box-head {
-	background: #F47900;
+	background: #F47900 !important;
 }
 /*********小盒子主体样式*********/
 .box-container .box-body {
