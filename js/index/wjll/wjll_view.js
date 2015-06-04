@@ -108,7 +108,7 @@ define(function(require) {
 			}
 		},
 		_isVideo: function(path) {
-			return /\.mp4/.test(path);
+			return /^rtsp:|\.mp4$/.test(path);
 		},
 		_isAudio: function(path) {
 			return /\.mp3/.test(path);

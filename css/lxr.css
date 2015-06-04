@@ -1,10 +1,10 @@
-#lxr_show .sxj .box-body {
+.sxj .box-body {
 	background: #A9A9A9 url(../img/lxr/sxj.png) no-repeat 110px 110px;
 }
-#lxr_show .zk .box-body {
+.zk .box-body {
 	background: #A9A9A9 url(../img/lxr/zk.png) no-repeat 103px 110px;
 }
-#lxr_show .zkhy .box-body {
+.zkhy .box-body {
 	background: #A9A9A9 url(../img/lxr/zkhy.png) no-repeat 96px 98px;
 }
 
