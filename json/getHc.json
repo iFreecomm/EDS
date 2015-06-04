@@ -1,0 +1,121 @@
+{
+  "code": 0,
+  "data": {
+    "bookInfo": [
+      {
+        "addrName": "我是中文",
+        "camPort": 0,
+        "camName": "camName",
+        "equType": 0,
+        "initial": 0,
+        "recordId": 0,
+        "vgaPort": 0
+      },
+      {
+        "addrName": "我要乱码1",
+        "equType": 1,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 1,
+        "e164": "007"
+      },
+      {
+        "addrName": "name31",
+        "equType": 2,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 2,
+        "e164": "008"
+      },
+      {
+        "addrName": "我要乱码2",
+        "equType": 1,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 3,
+        "e164": "007"
+      },
+      {
+        "addrName": "name32",
+        "equType": 2,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 4,
+        "e164": "008"
+      },
+      {
+        "addrName": "我要乱码3",
+        "equType": 1,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 5,
+        "e164": "007"
+      },
+      {
+        "addrName": "name33",
+        "equType": 2,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 6,
+        "e164": "008"
+      },
+      {
+        "addrName": "我要乱码4",
+        "equType": 1,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 7,
+        "e164": "007"
+      },
+      {
+        "addrName": "name34",
+        "equType": 2,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 8,
+        "e164": "008"
+      },
+      {
+        "addrName": "我要乱码4",
+        "equType": 1,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 9,
+        "e164": "007"
+      },
+      {
+        "addrName": "name34",
+        "equType": 2,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 10,
+        "e164": "008"
+      },
+      {
+        "addrName": "我要乱码4",
+        "equType": 1,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 11,
+        "e164": "007"
+      },
+      {
+        "addrName": "name34",
+        "equType": 2,
+        "initial": 0,
+        "ip": "0.0.0.0",
+        "recordId": 12,
+        "e164": "008"
+      },
+      {
+        "addrName": "name4",
+        "equType": 3,
+        "initial": 0,
+        "recordId": 13,
+        "url": "http://www.baidu.com/"
+      }
+    ],
+    "count": 10,
+    "endFlag": 1
+  }
+}

@@ -18,29 +18,48 @@
 	"enbTransGuard": 1,
 	"venueId": [1, 2, 4, 5, 7, 11, 12, 16],
 	
-	"enableDhm": 0,
+	"enableMp": 0,
 	"showMpMode": 8,
-	"subPicCnt": 4,
-	"subPicInfo": [
+	"mpMode": [
 		{
-			"equType": 1,
-			"recordId": 17
+			"mpMode": 1,
+			"subPicCnt": 2,
+			"subPicInfo": [
+				{
+					"equType": 1,
+					"recordId": 17
+				},
+				{
+					"equType": 2,
+					"recordId": 5
+				}
+			]
 		},
 		{
-			"equType": 2,
-			"recordId": 5
-		},
-		{
-			"equType": 3,
-			"recordId": 16
-		},
-		{
-			"equType": 0,
-			"recordId": 11
+			"mpMode": 8,
+			"subPicCnt": 4,
+			"subPicInfo": [
+				{
+					"equType": 1,
+					"recordId": 17
+				},
+				{
+					"equType": 2,
+					"recordId": 5
+				},
+				{
+					"equType": 3,
+					"recordId": 16
+				},
+				{
+					"equType": 0,
+					"recordId": 11
+				}
+			]
 		}
 	],
 	
-	"enableSpjz": 0,
+	"enableVM": 0,
 	"matrixNum": 2,
 	"matrixInOut": [
 		{

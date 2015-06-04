@@ -2,7 +2,6 @@ define(function(require) {
 	var Model = require("web/common/model");
 	
 	var SpjzModel = Model.extend({
-		idAttribute: "recordId",
 		defaults: {
 			venueId: [],
 			matrixInOut:[],

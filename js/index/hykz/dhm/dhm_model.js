@@ -2,7 +2,6 @@ define(function(require) {
 	var Model = require("web/common/model");
 	
 	var DhmModel = Model.extend({
-		idAttribute: "recordId",
 		defaults: {
 			venueId: [],
 			subPicInfo: [],

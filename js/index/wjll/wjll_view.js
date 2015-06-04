@@ -22,6 +22,11 @@ define(function(require) {
 			videoViewContainer: "#videoViewContainer",
 			audioViewContainer: "#audioViewContainer"
 		},
+		ui: {
+			"prevPageBtn": ".prevPage",
+			"nextPageBtn": ".nextPage",
+			"curPage": ".curPage"
+		},
 		events: {
 			"click .burnDisk": "burnDisk",
 			"click .batchDelete": "batchDelete",
@@ -31,12 +36,19 @@ define(function(require) {
 		},
 		
 		initialize: function() {
+			this.searchTerms = this.options.searchTerms;
+			this.pageNum = this.options.pageNum;
+			this.endFlag = this.options.endFlag;
 			Radio.channel("wjll").comply("searchFile", this.searchFile, this);
+			Radio.channel("wjll").comply("deleteSearchFile", this.deleteSearchFile, this);
 			Radio.channel("wjll").comply("playFile", this.playFile, this);
 		},
 		onBeforeShow: function(view, region, options) {
 			this.showChildView("searchTermsContainer", options.searchTermsView);
 			this.showChildView("fileContainer", options.fileView);
+		},
+		onRender: function() {
+			this.showPageBtns();
 		},
 		onAttach: function() {
 			Radio.channel("index").command("activeLink");
@@ -69,9 +81,33 @@ define(function(require) {
 			this._search();
 		},
 		
+		showPageBtns: function() {
+			if(this.pageNum === 1) {
+				this.ui.prevPageBtn.hide();
+			} else {
+				this.ui.prevPageBtn.show();
+			}
+			
+			if(this.endFlag === 1) {
+				this.ui.nextPageBtn.hide();
+			} else {
+				this.ui.nextPageBtn.show();
+			}
+			
+			this.ui.curPage.text(this.pageNum);
+		},
+				
 		searchFile: function(searchTerms) {
 			this.searchTerms = searchTerms;
-			this.pageNum = 0;
+			this.pageNum = 1;
+			this._search();
+		},
+		
+		deleteSearchFile: function(fileNum) {
+			//如果是最后一页并且所有文件被删除，那么请求前一页
+			if(this.endFlag === 1 && fileNum === 0) {
+				this.pageNum = (this.pageNum - 1) || 1;
+			}
 			this._search();
 		},
 		
@@ -86,7 +122,7 @@ define(function(require) {
 			}
 		},
 		_isVideo: function(path) {
-			return /\.mp4/.test(path);
+			return /^rtsp:|\.mp4$/.test(path);
 		},
 		_isAudio: function(path) {
 			return /\.mp3/.test(path);
@@ -131,15 +167,17 @@ define(function(require) {
 		_search: function() {
 			var self = this;
 			var collection = new FileCollection();
-			collection.fetch({
-				data: Util.encode({
-					searchTerms: this.searchTerms,
-					pageNum: this.pageNum
-				})
-			}).done(function() {
+			
+			$.getJSON("getFileList.psp", JSON.stringify({
+				searchTerms: this.searchTerms,
+				pageNum: this.pageNum
+			})).done(function(fileList) {
+				self.endFlag = fileList.data.endFlag;
+				collection.reset(fileList.data.fileList);
 				self.showChildView("fileContainer", new FileView({
 					collection: collection
 				}));
+				self.showPageBtns();
 			});
 		}
 	});

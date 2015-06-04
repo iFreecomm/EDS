@@ -147,6 +147,11 @@ define(function(require) {
 			{label: "中", value: 1},
 			{label: "低", value: 2},
 			{label: "不滚动", value: 3}
+		],
+		"fileType":[
+			{label: "所有类型", value: 2},
+			{label: "音频", value: 0},
+			{label: "视频", value: 1}
 		]
 	};
 });

@@ -29,16 +29,15 @@ define(function(require) {
 			"click @ui.mode_box": "selectMode"
 		},
 		
-		initialize: function() {
-			this.fixSubPicInfo();
-		},
 		onRender: function() {
 			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
-			Radio.channel("dhm").reply("getSubPicInfo", this.getSubPicInfo, this);
+			Radio.channel("dhm").reply("getMpMode", this.getMpMode, this);
 			
 			Radio.channel("yhz").on("addLxr", this.addDhmlxr, this);
 			Radio.channel("yhz").on("subLxr", this.subDhmlxr, this);
 			
+			this.initMpMode();
+			this.fixMpMode();
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 			
@@ -69,19 +68,70 @@ define(function(require) {
 		 * @initialize
 		 * 修复多画面中的subPicInfo字段，缺少用来显示的addrName字段
 		 */
-		fixSubPicInfo: function() {
+		fixMpMode: function() {
 			var allLxr = this.options.allLxr;
-			var subPicInfo = this.model.get("subPicInfo");
+			var mpMode = this.mpMode;
+			var self = this;
 			
-			if(_.isEmpty(allLxr) || _.isEmpty(subPicInfo)) return;
+			if(_.isEmpty(allLxr) || _.isEmpty(mpMode)) return;
 			
-			Util.addAddrName(subPicInfo, allLxr);
+			_.each(mpMode, function(curMode) {
+				var subPicInfo = curMode.subPicInfo;
+				Util.addAddrName(subPicInfo, allLxr);
+			}
 		},
 		
 		/**
 		 * @onRender
 		 * 添加播放器这个联系人
 		 */
+		initMpMode: function() {
+			var mpMode = this.model.get("mpMode") || [];
+			//填充空数据，否则后台出错
+			var tempArr = [], curView = this;
+			this.ui.mode_box.each(function() {
+				var $this = $(this);
+				var curMode = $this.data("mode");
+				var isExist = _.some(mpMode, function(obj) {
+					if(obj.mpMode === curMode) return true;
+				});
+				if(!isExist) {
+					var length = $this.find("td").not(".unvisible").length;
+					tempArr.push(curView.getEmptyMode(curMode, length));
+				}
+			});
+			this.mpMode = mpMode.concat(tempArr);
+		},
+		getEmptyMode: function(mode, num) {
+			var result = {};
+			result.mpMode = mode;
+			result.subPicCnt = num;
+			result.subPicInfo = [];
+			for(var i = 0; i < num; i ++) {
+				result.subPicInfo.push(this.getEmptyLxr());
+			}
+			return result;
+		},
+		getEmptyLxr: function() {
+			return {
+				equType: Const.EquType_Cnt,
+				recordId: 0,
+				vgaPort: 0,
+				camPort: 0
+			}
+		},
+		getMode: function(mode) {
+			if(!mode) return;
+			var result = null;
+			_.some(this.mpMode, function(curMode) {
+				if(curMode.mpMode === mode) {
+					result = curMode;
+					return true;
+				}
+			});
+			return result;
+		},
+		
 		getDhmLxr: function() {
 			return [
 				{
@@ -96,6 +146,8 @@ define(function(require) {
 		/************************************/
 		
 		selectMode: function(e) {
+			this.saveCurrentSubPicInfo();
+			
 			var $tar = $(e.target);
 			var $box = $tar.is(".mode-box") ? $tar : $tar.parents(".mode-box");
 			$box.addClass("active").siblings().removeClass("active");
@@ -105,14 +157,10 @@ define(function(require) {
 			this.enableTdDroppable();
 			
 			// 渲染子画面信息
-			if($box.data("mode") === this.model.get("showMpMode")) {
-				this.renderSubPicInfo();
-			}
+			var mode = $box.data("mode");
+			this.renderSubPicInfo(this.getMode(mode)["subPicInfo"]);
 		},
-		renderSubPicInfo: function() {
-			var subPicInfo = this.model.get("subPicInfo");
-			if(_.isEmpty(subPicInfo)) return;
-			
+		renderSubPicInfo: function(subPicInfo) {
 			var curView = this;
 			var $span = $('<span class="lxr-span"></span>');
 			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
@@ -170,6 +218,7 @@ define(function(require) {
 			temp = $obj.data("vgaPort");
 			_.isNumber(temp) && (result.vgaPort = temp);
 			
+			result.addrName = $obj.text();
 			return result;
 		},
 				
@@ -181,17 +230,26 @@ define(function(require) {
 			return this.ui.mode_box.filter(".active").data("mode");
 		},
 		
-		getSubPicInfo: function() {
-			var result = [];
-			var curView = this;
-			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
-				var $this = $(this);
-				var ch = $this.data("ch"); //当前TD元素的序号
-				var $span = $this.children(".lxr-span");
-				result[ch] = curView._getDataInfo($span);
-			});
-			return result;
+		getMpMode: function() {
+			this.saveCurrentSubPicInfo();
+			return this.mpMode;
 		},
+		
+		saveCurrentSubPicInfo: function() {
+			var curMode = this.getMode(this.getShowMpMode());
+			if(!curMode) return;
+			
+			var subPic = curMode["subPicInfo"];
+ 			var curView = this;
+ 			this.ui.mode_box_big.find("td").not(".unvisible").each(function() {
+ 				var $this = $(this);
+ 				var ch = $this.data("ch"); //当前TD元素的序号
+ 				var $span = $this.children(".lxr-span");
+				var newInfo = curView._getDataInfo($span);
+				
+				_.extend(subPic[ch], newInfo);
+ 			});
+ 		},
 		
 		addDhmlxr: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
@@ -229,6 +287,18 @@ define(function(require) {
 						$this.parent().removeClass("active").end().remove();
 					}
 				}
+			});
+			
+			_.each(this.mpMode, function(curMode) {
+				var subPicInfo = curMode.subPicInfo;
+				_.each(subPicInfo, function(info) {
+					if(self._isLxrInArr(info, lxrArr)) {
+						info.equType = Const.EquType_Cnt;
+						info.recordId = 0;
+						info.vgaPort = 0;
+						info.camPort = 0;
+					}
+				});
 			});
 		}
 	});

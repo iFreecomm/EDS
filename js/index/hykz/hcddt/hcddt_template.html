@@ -1,0 +1,31 @@
+<div class="btn-area">
+	<button type="button" class="btn btn-default">开始语音激励</button>
+	<button type="button" class="btn btn-default">开始录音录像</button>
+	<button type="button" class="btn btn-default">会议主题设置</button>
+	<button type="button" class="btn btn-default">播放会场纪律</button>
+	<button type="button" class="btn btn-default">闭音</button>
+	<button type="button" class="btn btn-default">静音</button>
+	<button type="button" class="btn btn-default">结束会议</button>
+</div>
+<ul class="box-container cf">
+	<li class="video-container fl"></li>
+	{{#each items}}
+		<li class="fl">
+			<a class="{{getLxrClass equType}}" href="###">
+				<div class="box-head">{{addrName}}</div>
+				<div class="box-body">{{getLxrInfo equType}}</div>
+			</a>
+		</li>
+	{{/each}}
+</ul>
+
+<div class="circleMenu">
+	<ul>
+		<li><img src="img/form/circle/delicious.png" alt="" /></li>
+		<li><img src="img/form/circle/digg.png" alt="" /></li>
+		<li><img src="img/form/circle/google.png" alt="" /></li>
+		<li><img src="img/form/circle/stumbleupon.png" alt="" /></li>
+		<li><img src="img/form/circle/technorati.png" alt="" /></li>
+		<li><img src="img/form/circle/twitter.png" alt="" /></li>
+	</ul>			
+</div>

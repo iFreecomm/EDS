@@ -28,9 +28,14 @@ define(function(require) {
 					"recordId": options.id
 				})
 			).done(function(allLxr,outPort,venue) {
+				var venueId = [];
+				if(venue && venue[0].data && venue[0].data.venueId)
+				{
+					venueId = venue[0].data.venueId;
+				}
 				self.spjzModel.set({
-					"venueId": venue[0].data.venueId,
-					//"matrixInOut": matrixInOut[0].data.matrixInOut
+						"venueId": venueId,
+						//"matrixInOut": matrixInOut[0].data.matrixInOut
 				});
 				
 				self.allLxr = allLxr[0].data.bookInfo;

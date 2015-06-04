@@ -40,9 +40,17 @@ define(function(require) {
 				observe: "vidHdCfg.vidEncParam.bitRate",
 				selectName: "bandwidth"
 			},
-			"#HD_RTSP_enable": "vidHdCfg.vodServeParam.enable",
+			"#HD_RTSP_enable": {
+				observe: "vidHdCfg.vodServeParam.enable",
+				visible: true,
+				visibleFn: "disableText"
+			},
 			"#HD_RTSP_name":   "vidHdCfg.vodServeParam.name",
-			"#HD_RTMP_enable": "vidHdCfg.pushDumpParam.enable",
+			"#HD_RTMP_enable": {
+				observe: "vidHdCfg.pushDumpParam.enable",
+				visible: true,
+				visibleFn: "disableText"
+			},
 			"#HD_RTMP_url":    "vidHdCfg.pushDumpParam.url",
 			
 			"#SD_enbHandle":   {
@@ -70,9 +78,17 @@ define(function(require) {
 				selectName: "bandwidth"
 			},
 			
-			"#SD_RTSP_enable": "vidSdCfg.vodServeParam.enable",
+			"#SD_RTSP_enable": {
+				observe: "vidSdCfg.vodServeParam.enable",
+				visible: true,
+				visibleFn: "disableText"
+			},
 			"#SD_RTSP_name":   "vidSdCfg.vodServeParam.name",
-			"#SD_RTMP_enable": "vidSdCfg.pushDumpParam.enable",
+			"#SD_RTMP_enable": {
+				observe: "vidSdCfg.pushDumpParam.enable",
+				visible: true,
+				visibleFn: "disableText"
+			},
 			"#SD_RTMP_url":    "vidSdCfg.pushDumpParam.url",
 			
 			"#YP_enbHandle":   "audCfg.enbHandle",
@@ -171,6 +187,7 @@ define(function(require) {
 				lxr["equSrc.vgaPort"] === optData["vgaPort"]) {
 					isMatch = true;
 					$this.attr("selected", true);
+					return;
 				}
 			});
 			if(!isMatch) {
@@ -191,6 +208,14 @@ define(function(require) {
 		showMore: function($el, isVisible) {
 			var $nextFieldBox = $el.parents(".fieldBox").eq(0).next(".fieldBox");
 			isVisible && $nextFieldBox.slideDown() || $nextFieldBox.slideUp();
+		},
+		
+		disableText: function($el, isVisible) {
+			if(isVisible) {
+				$el.next().next().removeClass("disabled").prop("disabled", false);
+			} else {
+				$el.next().next().addClass("disabled").prop("disabled", true);
+			}
 		},
 		
 		/**

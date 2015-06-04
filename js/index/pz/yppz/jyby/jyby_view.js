@@ -17,12 +17,12 @@ define(function(require) {
 				$.getJSON("getMuteFlag.psp"),//静音
 				$.getJSON("getShieldFlag.psp")//闭音
 			).done(function(mute,shield) {
-				if(mute[0].data.enable == 1)
+				if(mute[0].data.enable == 0)
 				{
 					self.$(".btn-jy").addClass("active");
 				}
 				
-				if(shield[0].data.enable == 1)
+				if(shield[0].data.enable == 0)
 				{
 					self.$(".btn-by").addClass("active");
 				}

@@ -110,8 +110,10 @@ define(function() {
 	    VidInPort_EXB21VPIN2:0,
 	    VidInPort_EXB22VPIN1:0,
 	    VidInPort_EXB22VPIN2:0, 
+	    VidInPort_FPGA_MP:30,
+	    VidInPort_FPGA_MP2:31,
 	    
-	    VidInPort_Cnt:30,
+	    VidInPort_Cnt:32,
 	    
 	    
 	    //视频输出

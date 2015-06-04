@@ -45,7 +45,7 @@ define(function(require) {
 			var yhzArr = Radio.channel("yhz").request("getYhzArr");
 			
 			var showMpMode = Radio.channel("dhm").request("getShowMpMode");
-			var subPicInfo = Radio.channel("dhm").request("getSubPicInfo");
+			var mpMode = Radio.channel("dhm").request("getMpMode");
 			
 			var matrixInOut = Radio.channel("spjz").request("getMatrixInOut");
 			var recList = Radio.channel("lzbm").request("getRecList");
@@ -54,8 +54,7 @@ define(function(require) {
 				"venueId": yhzArr,
 				
 				"showMpMode": showMpMode,
-				"subPicInfo": subPicInfo,
-				"subPicCnt": subPicInfo.length,
+				"mpMode": mpMode,
 				
 				"matrixInOut": matrixInOut,
 				"matrixNum": matrixInOut.length,

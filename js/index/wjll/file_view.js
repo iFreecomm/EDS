@@ -10,8 +10,10 @@ define(function(require) {
 		id: "wjll_file_list",
 		template: Handlebars.compile(tmpl),
 		events: {
+			"change #checkAll": "checkAll",
 			"click .playBtn": "playFile",
-			"click .deleteBtn": "deleteFile"
+			"click .deleteBtn": "deleteFile",
+			"click .downloadBtn": "downloadFile"
 		},
 		
 		onRender: function() {
@@ -22,6 +24,24 @@ define(function(require) {
 		},
 		onDestroy: function() {
 			Radio.channel("fileList").reset();
+		},
+		
+		checkAll: function(e) {
+			var isChecked = $(e.target).prop("checked");
+			this.$("[type=checkbox]").prop("checked", isChecked);
+			Util.initCheckboxClass(this.$el);
+		},
+		downloadFile:function(e){
+			//e.preventDefault();
+			var $tr = $(e.target).parents("tr");
+			var path = $tr.data("path");
+			//var fileName = "Alias0"+path.substr(path.lastIndexOf("\/"));
+			var fileName = "Alias0"+path;
+			var href = "downloadFile.psp?" + JSON.stringify({
+				filePath: fileName
+			});
+			
+			$(e.target).attr("href", href);
 		},
 		
 		playFile: function(e) {
@@ -35,59 +55,51 @@ define(function(require) {
 			});
 		},
 		deleteFile: function(e) {
+            //单个文件删除
 			e.preventDefault();
-			var $tr = $(e.target).parents("tr");
-			var path = $tr.data("path");
-			
+			var path = $(e.target).parents("tr").data("path");
+//			path = {srcPath: path};
+			this._delete([path]);
+		},
+		batchDelete: function() {
+            //多文件删除
+			var pathArr = this.getSelectedFiles();
+//			pathArr = _.map(pathArr, function(path) {
+//				return { srcPath: path };
+//			});
+			this._delete(pathArr);
+		},
+		_delete: function(pathInfo) {
 			var self = this;
-			$.getJSON("deleteFile.psp", Util.encode({
-				filePath: path
+			$.getJSON("fileOperate.psp", JSON.stringify({
+                fileNum: pathInfo.length,
+                opCmd: 2,
+                pathInfo: pathInfo
 			})).done(function(res) {
 				if(res.code === 0) {
-					$tr.remove();
-					self.fixTable();
+					var curFileNum = self.getAllFileNum() - pathInfo.length;
+					Radio.channel("wjll").command("deleteSearchFile", curFileNum);
 				} else {
 					alert("删除文件失败！");	
 				}
 			}).fail(function() {
 				alert("删除文件失败！");
 			});
-			
 		},
-		
-		batchDelete: function() {
-			var pathArr = this.getSelectedFiles();
-			var self = this;
-			
-			$.getJSON("deleteFile.psp", Util.encode({
-				filePathArr: pathArr
-			})).done(function(res) {
-				if(res.code === 0) {
-					self.$("tr").each(function() {
-						var $this = $(this);
-						var path = $this.data("path");
-						if(_.contains(pathArr, path)) { $this.remove(); }
-					});
-					self.fixTable();
-				} else {
-					alert("批量删除文件失败！");	
-				}
-			}).fail(function() {
-				alert("批量删除文件失败！");
-			});
+		getAllFileNum: function() {
+            return self.$("[type=checkbox]").length - 1;    
 		},
-		
 		getSelectedFiles: function() {
-			return this.$("[type=checkbox]:checked").map(function() {
-				return $(this).parents("tr").data("path");
-			}).get();
+            return this.$("[type=checkbox]").slice(1).filter(":checked").map(function() {
+                return $(this).parents("tr").data("path");
+            }).get();    
 		},
 		
 		fixTable: function() {
 			var $table = this.$("table");
 			var $trs = $table.find("tr");
 			var length = $trs.length - 1;
-			var $tr = $("<tr><td colspan='10'></td></tr>").css({height:50});
+			var $tr = $("<tr><td colspan='10'></td></tr>").css({height:44});
 			while(length++ < 10) {
 				$table.append($tr.clone());
 			}

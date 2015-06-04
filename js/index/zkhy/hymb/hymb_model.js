@@ -21,6 +21,7 @@ define(function(require) {
 			enbTransGuard: true,
 			enableMp:0,
 			showMpMode:1,
+			mpMode: [],
 			enableVM:0,
 			
 			recorder: {

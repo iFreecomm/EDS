@@ -4,6 +4,7 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/wjll/searchTerms_template.html");
+	var SearchTermsModel = require("web/index/wjll/searchTerms_model");
 	var Util = require("web/common/util");
 	
 	var SearchTermsView = Mn.ItemView.extend({
@@ -13,7 +14,10 @@ define(function(require) {
 			"#startTime": "startTime",
 			"#endTime": "endTime",
 			"#diskPath": "diskPath",
-			"#fileType": "fileType",
+			"#fileType": {
+				observe: "fileType",
+				selectName: "fileType"
+			},
 			"#confNum": "confNum",
 			"#confName": "confName",
 			"#convenor": "convenor"
@@ -23,7 +27,11 @@ define(function(require) {
 			select: "select"
 		},
 		events: {
-			"click .searchBtn": "searchFile"
+			"click .searchBtn": "searchFile",
+			"click .resetBtn": "resetFile"
+		},
+		initialize: function() {
+			this.setSelectBindings(this.bindings);
 		},
 		
 		onRender: function() {
@@ -33,12 +41,21 @@ define(function(require) {
 			Util.selectmenu(this.ui.select, this.ui.formBox);
 			this.ui.select.change();
 			
-			$("#startTime").add($("#endTime")).datetimepicker({
-				timeFormat: "HH:mm:ss"
-			});
+			$.timepicker.datetimeRange(
+				$("#startTime"),
+				$("#endTime"),
+				{
+					timeFormat: "HH:mm:ss"
+				}
+			);
 		},
 		
 		searchFile: function() {
+			Radio.channel("wjll").command("searchFile", this.model.toJSON());
+		},
+		resetFile: function() {
+			this.model.clear().set(new SearchTermsModel().toJSON());
+			this.refreshSelectmenu();
 			Radio.channel("wjll").command("searchFile", this.model.toJSON());
 		}
 	});

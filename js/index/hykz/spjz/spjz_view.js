@@ -44,7 +44,7 @@ define(function(require) {
 			});
 		},
 		saveSuccess: function() {
-			alert("保存成功！");
+			//alert("保存成功！");
 		},
 		saveError: function() {
 			alert("保存失败！");

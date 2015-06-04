@@ -25,8 +25,13 @@ define(function(require) {
 					"recordId": options.id
 				})
 			).done(function(allLxr,venue) {
+				var venueId = [];
+				if(venue && venue[0].data && venue[0].data.venueId)
+				{
+					venueId = venue[0].data.venueId;
+				}
 				self.dhmModel.set({
-					"venueId": venue[0].data.venueId
+					"venueId": venueId
 				});
 				
 				self.allLxr = allLxr[0].data.bookInfo;

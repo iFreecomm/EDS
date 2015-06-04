@@ -29,10 +29,14 @@ define(function(require) {
 		
 		initialize: function() {
 			this.listenTo(this.model, "change:netType", this.changeNetType);
+			if(this.model.get("mainDevice")) {
+				this.listenTo(this.model, "change:mainDevice", this.changeMainDevice);
+			}
 		},
 		onRender: function() {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.showKdbh();
 			this.$("h3").children("span").text(this.model.get("device")+1);
 			this.changeNetType();
 		},
@@ -45,10 +49,26 @@ define(function(require) {
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {
+			this.showKdbh();
+			Util.refreshSelectmenu(this.$el);
 			//alert("保存成功！");
 		},
 		saveError: function() {
 			alert("保存失败！");
+		},
+		
+		showKdbh: function() {
+			if(this.model.get("mainDevice")) {
+				if(this.$kdbh) {
+					this.$("#netType").append(this.$kdbh);
+					this.$kdbh = null;
+				}
+			} else {
+				if(!this.$kdbh) {
+					this.$kdbh = this.$("#netType").children().last().detach().prop("selected", false);
+					this.$("#netType").change();
+				}
+			}
 		},
 		
 		changeNetType: function() {
@@ -66,6 +86,11 @@ define(function(require) {
 			}
 			var netCnnt = this.model.get("netCnnt");
 			this.model.set(netCnnt[curNet]);
+		},
+		
+		changeMainDevice: function() {
+			this.showKdbh();
+			this.refreshSelectmenu();
 		}
 	});
 	
