@@ -1,7 +1,7 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var HcddtRoute = require("web/index/hykz/hcddt/hcddt_route");
-	
+	var TjhcRoute = require("web/index/hykz/tjhc/tjhc_route");
 	var SpjzRoute = require("web/index/hykz/spjz/spjz_route");
 	var DhmRoute = require("web/index/hykz/dhm/dhm_route");
 	
@@ -26,7 +26,9 @@ define(function(require) {
 		},
 		
 		tjhc: function() {
-			
+			new TjhcRoute({
+				container: this.container
+			});
 		},
 		
 		spjz: function() {
