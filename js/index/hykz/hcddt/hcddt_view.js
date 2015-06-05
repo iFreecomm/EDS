@@ -14,16 +14,17 @@ define(function(require) {
 		events: {
 			"click .circleMenu img": "circleMenu"
 		},
+		
+		onAttach: function() {
+			this.$(".circleMenu").mobilyblocks();
+			Radio.channel("index").command("activeLink");
+		},
+		
 		circleMenu: function(e) {
 			e.preventDefault();
 			
 			var src = $(e.target).attr("src");
 			console.log(src);
-		},
-		
-		onAttach: function() {
-			this.$(".circleMenu").mobilyblocks();
-			Radio.channel("index").command("activeLink");
 		}
 	});
 	

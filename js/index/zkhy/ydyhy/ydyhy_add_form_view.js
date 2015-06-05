@@ -68,7 +68,7 @@ define(function(require) {
 			);
 			
 			if(!this.model.isNew()) {
-				this.$("#name").prop("disabled", true).css({"opacity":0.5});
+				this.$("#name").prop("disabled", true).addClass("disabled");
 				this.$("#tempRecordId").selectmenu("option", "disabled", true);
 			}
 		},
@@ -198,11 +198,11 @@ define(function(require) {
 			}
 			if(hylx === 0)
 			{
-				this.ui.yyrq_con.prop("disabled", true).css({"opacity":0.5});
+				this.ui.yyrq.prop("disabled", true).addClass("disabled");
 			}
 			else
 			{
-				this.ui.yyrq_con.removeAttr("disabled").css({"opacity":1});
+				this.ui.yyrq.prop("disabled", false).removeClass("disabled");
 			}
 			return this;
 		}

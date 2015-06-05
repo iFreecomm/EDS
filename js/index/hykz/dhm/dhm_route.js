@@ -21,9 +21,7 @@ define(function(require) {
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				
 				$.getJSON("getVenueCfg.psp"),//会场
-				this.dhmModel.mustFetch({
-					"recordId": options.id
-				})
+				this.dhmModel.fetch()
 			).done(function(allLxr,venue) {
 				var venueId = [];
 				if(venue && venue[0].data && venue[0].data.venueId)

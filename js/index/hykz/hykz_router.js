@@ -14,8 +14,8 @@ define(function(require) {
 			"hykz": "hcddt",
 			"hykz/hcddt": "hcddt",
 			"hykz/tjhc": "tjhc",
-			"hykz/spjz(/:id)": "spjz",
-			"hykz/dhm(/:id)": "dhm",
+			"hykz/spjz": "spjz",
+			"hykz/dhm": "dhm",
 			"hykz/ypclq": "ypclq"
 		},
 		
@@ -29,17 +29,15 @@ define(function(require) {
 			
 		},
 		
-		spjz: function(id) {
+		spjz: function() {
 			new SpjzRoute({
-				container: this.container,
-				id: id
+				container: this.container
 			});
 		},
 		
-		dhm: function(id) {
+		dhm: function() {
 			new DhmRoute({
-				container: this.container,
-				id: id
+				container: this.container
 			});
 		},
 		

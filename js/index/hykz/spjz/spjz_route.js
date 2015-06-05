@@ -24,9 +24,7 @@ define(function(require) {
 				$.getJSON("getVenueCfg.psp"),//会场
 				//$.getJSON("getVidMatrix.psp"),//视频矩阵
 				
-				this.spjzModel.mustFetch({
-					"recordId": options.id
-				})
+				this.spjzModel.fetch()
 			).done(function(allLxr,outPort,venue) {
 				var venueId = [];
 				if(venue && venue[0].data && venue[0].data.venueId)

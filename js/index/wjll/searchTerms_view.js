@@ -30,10 +30,10 @@ define(function(require) {
 			"click .searchBtn": "searchFile",
 			"click .resetBtn": "resetFile"
 		},
-		initialize: function() {
-			this.setSelectBindings(this.bindings);
-		},
 		
+		initialize: function() {
+			Util.setSelectBindings(this.bindings);
+		},
 		onRender: function() {
 			this.stickit();
 		},
@@ -55,7 +55,7 @@ define(function(require) {
 		},
 		resetFile: function() {
 			this.model.clear().set(new SearchTermsModel().toJSON());
-			this.refreshSelectmenu();
+			Util.refreshSelectmenu(this.$el);
 			Radio.channel("wjll").command("searchFile", this.model.toJSON());
 		}
 	});

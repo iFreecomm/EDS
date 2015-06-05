@@ -78,7 +78,7 @@ define(function(require) {
 			this.$("[netType*="+curNet+"]").show();			
 			if(curNet == 1)
 			{
-				this.$("[netType*=4]").prop("disabled", true).css({"opacity":0.5});
+				this.$("[netType*=4]").prop("disabled", true).addClass("disabled");
 			}
 			else
 			{
@@ -90,7 +90,7 @@ define(function(require) {
 		
 		changeMainDevice: function() {
 			this.showKdbh();
-			this.refreshSelectmenu();
+			Util.refreshSelectmenu(this.$el);
 		}
 	});
 	

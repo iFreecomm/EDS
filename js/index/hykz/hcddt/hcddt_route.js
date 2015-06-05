@@ -13,9 +13,7 @@ define(function(require) {
 			this.container = options.container;
 			this.lxrCollection = new LxrCollection();
 			
-			this.lxrCollection.fetch({
-				reset: true
-			}).done(function() {
+			this.lxrCollection.fetch().done(function() {
 				self.showView();
 			});
 		},

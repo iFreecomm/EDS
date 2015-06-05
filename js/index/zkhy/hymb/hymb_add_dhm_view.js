@@ -78,7 +78,7 @@ define(function(require) {
 			_.each(mpMode, function(curMode) {
 				var subPicInfo = curMode.subPicInfo;
 				Util.addAddrName(subPicInfo, allLxr);
-			}
+			});
 		},
 		
 		/**
@@ -292,7 +292,7 @@ define(function(require) {
 			_.each(this.mpMode, function(curMode) {
 				var subPicInfo = curMode.subPicInfo;
 				_.each(subPicInfo, function(info) {
-					if(self._isLxrInArr(info, lxrArr)) {
+					if(Util.isLxrInArr(info, lxrArr)) {
 						info.equType = Const.EquType_Cnt;
 						info.recordId = 0;
 						info.vgaPort = 0;
