@@ -1,6 +1,6 @@
 define(function(require) {
-	var Radio = require("radio");
 	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_add_template.html");
 	
 	var YdyhyAddView = Mn.LayoutView.extend({
@@ -16,7 +16,7 @@ define(function(require) {
 			this.showChildView("form", options.zkhyYdyhyAddFormView);
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink", "zkhy/showYdyhy");
+			Util.activeLink("zkhy/showYdyhy");
 		}
 	});
 	

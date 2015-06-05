@@ -1,6 +1,6 @@
 define(function(require) {
-	var Radio = require("radio");
 	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/yppz/yppz_template.html");
 	
 	var BzhyView = require("web/index/pz/yppz/bzhy/panel_view");
@@ -68,7 +68,7 @@ define(function(require) {
 		},
 		
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Util.activeLink();
 		}
 	});
 	

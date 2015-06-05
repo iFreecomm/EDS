@@ -1,6 +1,5 @@
 define(function(require) {
 	var $ = require("jquery");
-	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
@@ -15,7 +14,7 @@ define(function(require) {
 		},
 		
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Util.activeLink();
 		},
 		
 		delHymb: function(e) {

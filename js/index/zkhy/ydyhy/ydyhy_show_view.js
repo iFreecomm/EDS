@@ -1,5 +1,4 @@
 define(function(require) {
-	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Backbone = require("backbone");
 	var Handlebars = require("handlebars");
@@ -16,7 +15,7 @@ define(function(require) {
 		},
 		
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Util.activeLink();
 		},
 		
 		delMeeting: function(e) {

@@ -232,7 +232,7 @@
 	/**********音频配置中编组混音模块样式开始**********/
 #bzhy_container {
 	width: 50%;
-	height: 215px;
+	height: 240px;
 	float: left;
 	margin-right: 5px;
 }
@@ -240,18 +240,20 @@
 #pz_yppz_bzhy {
 	position: relative;
 	width: 790px;
-	margin: 20px auto;
+	margin: 10px auto;
 }
 #pz_yppz_bzhy th:first-child {
 	width: 50px;
 }
+#pz_yppz_bzhy .borderMaskTd {
+	vertical-align: top;
+}
 #pz_yppz_bzhy .borderMask {
 	position: absolute;
 	width: 3px;
-	height: 108px;
-	left: 499px;
-	left: 505px \9;
-	top: 24px;
+	height: 162px;
+	margin-left: -3px;
+	margin-top: -3px;
 	background: #FFF;
 }
 	/**********音频配置中编组混音模块样式结束**********/
@@ -259,7 +261,7 @@
 	/**********音频配置中语音激励模块样式开始**********/
 #yyjl_container {
 	overflow: hidden;
-	height: 215px;
+	height: 240px;
 }
 	/**********音频配置中语音激励模块样式结束**********/
 
@@ -268,21 +270,22 @@
 	width: 1065px;
 	float: left;
 }
-	
-#fkyz_container,
-#zdjz_container,
-#hsxc_container,
+
 #yx_container,
 #xf_container,
 #bdsc_bz_container {
 	width: 350px;
-	height: 230px;
+	height: 240px;
 	float: left;
 	margin-right: 5px;
 }
 #fkyz_container,
 #zdjz_container,
 #hsxc_container {
+	width: 350px;
+	height: 220px;
+	float: left;
+	margin-right: 5px;
 	margin-bottom: 5px;
 }
 
@@ -295,9 +298,6 @@
 #pz_yppz_bdsc_bz {
 	width: 260px;
 	margin: 10px auto;
-}
-#pz_yppz_bdsc_bz .pzTable {
-	line-height: 2;
 }
 #pz_yppz_bdsc_bz th:first-child {
 	width: 80px;

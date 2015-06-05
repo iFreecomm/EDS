@@ -2,6 +2,7 @@ define(function(require) {
 	var $ = require("jquery");
 	var Radio = require("radio");
 	var Mn = require("marionette");
+	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/hykz/dhm/dhm_template.html");
 	
 	var SpjzView = Mn.LayoutView.extend({
@@ -22,7 +23,7 @@ define(function(require) {
 			this.showChildView("dhm", options.hykzHymbAddDhmView);
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink", "hykz/dhm");
+			Util.activeLink("hykz/dhm");
 		},
 		
 		saveSpjz: function(e) {

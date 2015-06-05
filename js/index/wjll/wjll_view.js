@@ -51,7 +51,7 @@ define(function(require) {
 			this.showPageBtns();
 		},
 		onAttach: function() {
-			Radio.channel("index").command("activeLink");
+			Util.activeLink();
 		},
 		onDestroy: function() {
 			Radio.channel("wjll").reset();

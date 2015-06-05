@@ -1,8 +1,8 @@
 define(function(require) {
 	var $ = require("jquery");
-	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
+	var Util = require("web/common/util");
 	
 	var tmpl = require("text!web/index/hykz/hcddt/hcddt_template.html");
 	
@@ -17,7 +17,7 @@ define(function(require) {
 		
 		onAttach: function() {
 			this.$(".circleMenu").mobilyblocks();
-			Radio.channel("index").command("activeLink");
+			Util.activeLink();
 		},
 		
 		circleMenu: function(e) {
