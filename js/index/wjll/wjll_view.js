@@ -70,12 +70,14 @@ define(function(require) {
 		},
 		
 		prevPage: function() {
+			Util.loading();
 			this.searchTerms = this.searchTerms || this.options.searchTerms;
 			this.pageNum--;
 			this._search();
 		},
 		
 		nextPage: function() {
+			Util.loading();
 			this.searchTerms = this.searchTerms || this.options.searchTerms;
 			this.pageNum++;
 			this._search();
@@ -178,6 +180,8 @@ define(function(require) {
 					collection: collection
 				}));
 				self.showPageBtns();
+			}).always(function() {
+				Util.close();
 			});
 		}
 	});

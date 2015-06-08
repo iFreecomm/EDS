@@ -7,6 +7,29 @@ define(function() {
 	
 	var Util = {};
 	
+	Util.close = function() {
+		return Radio.channel("modal").request("close");
+	}
+	Util.loading = function() {
+		return Radio.channel("modal").request("loading");
+	}
+	Util.alert = function(options) {
+		if(typeof options === "string") {
+			options = {
+				content: options
+			};
+		}
+		return Radio.channel("modal").request("alert", options);
+	}
+	Util.confirm = function(options) {
+		if(typeof options === "string") {
+			options = {
+				content: options
+			};
+		}
+		return Radio.channel("modal").request("confirm", options);
+	}
+	
 	/**
 	 * 设置链接被选中
 	 * @param {Object} path

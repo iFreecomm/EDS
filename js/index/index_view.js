@@ -4,13 +4,16 @@ define(function(require) {
 	var Mn = require("marionette");
 	var tmpl = require("text!web/index/index_template.html");
 	
+	var ModalView = require("web/index/modal/view");
+	
 	var LayoutView = Mn.LayoutView.extend({
 		id: "wrapper",
 		template: tmpl,
 		regions: {
 			container: "#c1",
 			navLeft: ".navLeft",
-			contentRight: ".contentRight"
+			contentRight: ".contentRight",
+			modalContainer: ".modal_container"
 		},
 		
 		initialize: function() {
@@ -19,7 +22,9 @@ define(function(require) {
 		onBeforeShow: function(view, region, options) {
 			var navLeftRegion = this.getRegion("navLeft");
 			options.navLeftView && navLeftRegion.show(new options.navLeftView()) || navLeftRegion.empty();
+			
 			this.getRegion("contentRight").show(options.contentRightView, options);
+			this.showChildView("modalContainer", new ModalView());
 		},
 		onDestroy: function() {
 			Radio.channel("index").reset();

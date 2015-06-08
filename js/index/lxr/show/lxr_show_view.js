@@ -9,30 +9,34 @@ define(function(require) {
 		id: "lxr_show",
 		template: Handlebars.compile(tmpl),
 		events: {
-			"click .delBtn": "delLxr"
+			"click .delBtn": "confirmDelLxr"
 		},
 		
 		onAttach: function() {
 			Util.activeLink();
 		},
 		
-		delLxr: function(e) {
+		confirmDelLxr: function(e) {
 			e.preventDefault();
 			var $btn = $(e.target);
 			var id = $btn.data("id");
 			
+			Util.confirm("确认删除吗？").then(_.bind(this.delLxr, this, id));
+		},
+		
+		delLxr: function(id) {
 			$.getJSON("delAddrBook.psp", Util.encode({
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {
 					$btn.parents("li").remove();
+					Util.alert("删除联系人成功！");
 				} else {
-					alert("删除联系人失败！");	
+					Util.alert("删除联系人失败！");
 				}
 			}).fail(function() {
-				alert("删除联系人失败！");
+				Util.alert("删除联系人失败！");
 			});
-			
 		}
 	});
 	
