@@ -5,6 +5,9 @@
 	margin: 20px auto;
 	width: 90%;
 }
+#zkhy_ydyhy_add .formLine {
+	margin-bottom: 0;
+}
 #zkhy_ydyhy_add input[name=desc] {
 	width: 96%;
 	max-width: 1220px;
@@ -344,14 +347,23 @@
 	font-size: 18px;
 	padding-right: 20px;
 }
+.lzbm .fieldBox.lg {
+	padding-left: 146px;
+}
 .lzbm .formCell {
 	margin-right: 50px;
 }
 .lzbm .cellName {
 	width: 100px;
 }
+.lzbm .fieldBox.sm {
+	padding-left: 100px;
+}
 .lzbm-sppz .cellName {
 	width: 84px;
+}
+.lzbm-sppz .fieldBox.sm {
+	padding-left: 84px;
 }
 .lzbm-djtbzm .checkbox-label {
 	width: 126px;

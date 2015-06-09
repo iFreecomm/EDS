@@ -3,71 +3,68 @@
 <div class="formBox">
 	<div class="formLine">
 		<span class="cellName">设为主网口：</span>
-		<div class="fieldBox noText">
+		<div class="fieldBox">
 			<input type="checkbox" name="mainDevice" id="mainDevice"/>
 			<label for="mainDevice" class="checkbox-label"></label>
 		</div>
 	</div>
 	
-	<div class="formLine">
-		<div class="fieldBox">
-			<div class="formCell fl">
-				<span class="cellName">网络类型：</span>
-				<div class="fieldBox">
-					<select name="netType" id="netType">
-						<option data-stickit-bind-val="0">手动设置</option>
-						<option data-stickit-bind-val="1">动态获取(DHCP)</option>
-						<option data-stickit-bind-val="2">宽带拨号(PPPoE/ADSL)</option>
-					</select>
-				</div>
-			</div>
-			<div class="formCell fl" netType="014">
-				<span class="cellName">IP地址：</span>
-				<div class="fieldBox">
-					<input type="text" name="ip" id="ip" autocomplete="off"/>
-				</div>
-			</div>
-			<div class="formCell fl" netType="014">
-				<span class="cellName">子网掩码：</span>
-				<div class="fieldBox">
-					<input type="text" name="mask" id="mask" autocomplete="off"/>
-				</div>
-			</div>
-			<div class="formCell fl" netType="014">
-				<span class="cellName">网关地址：</span>
-				<div class="fieldBox">
-					<input type="text" name="gateway" id="gateway" autocomplete="off"/>
-				</div>
-			</div>
-			<div class="formCell fl" netType="01">
-				<span class="cellName">DNS服务器：</span>
-				<div class="fieldBox">
-					<input type="text" name="mainDns" id="mainDns" autocomplete="off"/>
-				</div>
-			</div>
-			
-			<div class="formCell fl" netType="2">
-				<span class="cellName">自动拨号：</span>
-				<div class="fieldBox">
-					<input type="checkbox" name="autoDial" id="autoDial"/>
-					<label for="autoDial" class="checkbox-label">&nbsp;</label>
-				</div>
-			</div>
-			
-			<div class="formCell fl" netType="2">
-				<span class="cellName">用户名：</span>
-				<div class="fieldBox">
-					<input type="text" name="user" id="user" autocomplete="off"/>
-				</div>
-			</div>
-			<div class="formCell fl" netType="2">
-				<span class="cellName">密码：</span>
-				<div class="fieldBox">
-					<input type="text" name="pwd" id="pwd" autocomplete="off"/>
-				</div>
+	<div class="formLine cf">
+		<div class="formCell fl">
+			<span class="cellName">网络类型：</span>
+			<div class="fieldBox sm">
+				<select name="netType" id="netType">
+					<option data-stickit-bind-val="0">手动设置</option>
+					<option data-stickit-bind-val="1">动态获取(DHCP)</option>
+					<option data-stickit-bind-val="2">宽带拨号(PPPoE/ADSL)</option>
+				</select>
 			</div>
 		</div>
-			
+		<div class="formCell fl" netType="014">
+			<span class="cellName">IP地址：</span>
+			<div class="fieldBox sm">
+				<input type="text" name="ip" id="ip" autocomplete="off"/>
+			</div>
+		</div>
+		<div class="formCell fl" netType="014">
+			<span class="cellName">子网掩码：</span>
+			<div class="fieldBox sm">
+				<input type="text" name="mask" id="mask" autocomplete="off"/>
+			</div>
+		</div>
+		<div class="formCell fl" netType="014">
+			<span class="cellName">网关地址：</span>
+			<div class="fieldBox sm">
+				<input type="text" name="gateway" id="gateway" autocomplete="off"/>
+			</div>
+		</div>
+		<div class="formCell fl" netType="01">
+			<span class="cellName">DNS服务器：</span>
+			<div class="fieldBox sm">
+				<input type="text" name="mainDns" id="mainDns" autocomplete="off"/>
+			</div>
+		</div>
+		
+		<div class="formCell fl" netType="2">
+			<span class="cellName">自动拨号：</span>
+			<div class="fieldBox sm">
+				<input type="checkbox" name="autoDial" id="autoDial"/>
+				<label for="autoDial" class="checkbox-label">&nbsp;</label>
+			</div>
+		</div>
+		
+		<div class="formCell fl" netType="2">
+			<span class="cellName">用户名：</span>
+			<div class="fieldBox sm">
+				<input type="text" name="user" id="user" autocomplete="off"/>
+			</div>
+		</div>
+		<div class="formCell fl" netType="2">
+			<span class="cellName">密码：</span>
+			<div class="fieldBox sm">
+				<input type="text" name="pwd" id="pwd" autocomplete="off"/>
+			</div>
+		</div>
 	</div>
 
 	<div class="form-btns">

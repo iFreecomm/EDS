@@ -7,6 +7,9 @@
 .formLine {
 	margin-bottom: 20px;
 }
+.formLine.cf {
+	margin-bottom: 10px;
+}
 .lineName {
 	float: left;
 	width: 260px;
@@ -31,7 +34,12 @@
 	text-align: right;
 }
 .fieldBox {
-	overflow: hidden;
+}
+.fieldBox.sm {
+	padding-left: 140px;
+}
+.fieldBox.lg {
+	padding-left: 260px;
 }
 /******text文本输入框样式******/
 input[type=text],
@@ -90,6 +98,7 @@ input[type=checkbox] {
 	line-height: 38px;
 	font-weight: normal;
 	background: url(../img/form/checkbox/checkbox.png) no-repeat 0 3px;
+	vertical-align: middle;
 }
 .checkbox-label.active {
 	background-position: 0 -61px;

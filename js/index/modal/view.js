@@ -24,6 +24,9 @@ define(function(require) {
 				"close": this.close
 			}, this);
 		},
+		onDestroy: function() {
+			Radio.channel("modal").reset();
+		},
 		
 		loading: function() {
 			var view = new LoadingView();

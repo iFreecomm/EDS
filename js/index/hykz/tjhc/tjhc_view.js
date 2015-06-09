@@ -17,6 +17,7 @@ define(function(require) {
 		
 		onBeforeShow: function(view, region, options) {
 			this.showChildView("tjhc", options.hykzHymbAddYhzView);
+			this.$(".btn-del").remove();
 		},
 		onAttach: function() {
 			Util.activeLink("hykz/tjhc");

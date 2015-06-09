@@ -38,6 +38,10 @@
 #pz_wlsz_sip .cellName {
 	width: 160px;
 }
+#pz_wlsz_nat .fieldBox.sm,
+#pz_wlsz_sip .fieldBox.sm {
+	padding-left: 160px;
+}
 #pz_wlsz_nat .form-btns .btn,
 #pz_wlsz_sip .form-btns .btn {
 	margin-left: 160px;

@@ -15,7 +15,7 @@ define(function(require) {
 			"hykz/hcddt": "hcddt",
 			"hykz/tjhc": "tjhc",
 			"hykz/spjz": "spjz",
-			"hykz/dhm": "dhm",
+			"hykz/dhm(/:id)": "dhm",
 			"hykz/ypclq": "ypclq"
 		},
 		
