@@ -1,6 +1,8 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Backbone = require("backbone");
 	var Mn = require("marionette");
+	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/login/login_template.html");
 	
 	var LoginModel = Backbone.Model.extend({
@@ -16,12 +18,30 @@ define(function(require) {
 			"#username": "username",
     		"#password": "password"
 		},
+		checkOptions: {
+			"#username": {
+				constraint: ["notNull", "trimCheck"],
+				appendTo: ".login-box",
+				offsetLeft: 425
+			},
+    		"#password": {
+    			constraint: ["notNull", "passCheck"],
+    			appendTo: ".login-box",
+    			offsetLeft: 425
+    		}
+		},
 		events: {
 			"click [type=submit]": "login"
 		},
 		
 		initialize: function() {
 			this.model = new LoginModel();
+		},
+		onRender: function() {
+			var self = this;
+			this.$el.on("keyup", function(e) {
+				FormUtil.checkInput($(e.target), self.checkOptions);
+			});
 		},
 		
 		login: function(e) {
