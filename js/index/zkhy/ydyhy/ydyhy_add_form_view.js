@@ -5,6 +5,7 @@ define(function(require) {
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
+	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_add_form_template.html");
 	
 	var YdyhyAddFormView = Mn.ItemView.extend({
@@ -27,6 +28,28 @@ define(function(require) {
 				selectName: "bandwidth"
 			}
 		},
+		checkOptions: {
+			"#name": {
+				constraint: ["notNull", "trimCheck"],
+				appendTo: ".formCell"
+			},
+			"#number": {
+				constraint: ["notNull", "numberCheck"],
+				appendTo: ".formCell"
+			},
+    		"#pwMeeting": {
+    			constraint: ["passCheck"],
+    			appendTo: ".formCell"
+    		},
+    		"#pwChairman": {
+				constraint: ["passCheck"],
+				appendTo: ".formCell"
+			},
+    		"#desc": {
+    			constraint: ["trimCheck"],
+    			appendTo: ".formCell"
+    		}
+		},
 		ui: {
 			formBox: ".formBox",
 			select: "select",
@@ -36,6 +59,7 @@ define(function(require) {
 			jsrq: "#jsrq"
 		},
 		events: {
+			"keyup": "checkInput",
 			"click .saveBtn": "saveMeeting",
 			"click .cancelBtn": "cancelMeeting"
 		},
@@ -73,8 +97,14 @@ define(function(require) {
 			}
 		},
 		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
+		},
+		
 		saveMeeting: function(e) {
 			e.preventDefault();
+			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
+			
 			var self = this;
 			
 			this.saveDateTimeDurationToModel();

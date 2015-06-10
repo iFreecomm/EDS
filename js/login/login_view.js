@@ -22,15 +22,18 @@ define(function(require) {
 			"#username": {
 				constraint: ["notNull", "trimCheck"],
 				appendTo: ".login-box",
-				offsetLeft: 425
+				offsetLeft: 200,
+				offsetTop: 10
 			},
     		"#password": {
     			constraint: ["notNull", "passCheck"],
     			appendTo: ".login-box",
-    			offsetLeft: 425
+    			offsetLeft: 200,
+    			offsetTop: 10
     		}
 		},
 		events: {
+			"keyup": "checkInput",
 			"click [type=submit]": "login"
 		},
 		
@@ -44,8 +47,14 @@ define(function(require) {
 			});
 		},
 		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
+		},
+		
 		login: function(e) {
 			e.preventDefault();
+			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
+			
 			var self = this;
 			this.model.set("version","super");
 			this.model.save().done(function(res) {

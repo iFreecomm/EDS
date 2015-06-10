@@ -43,13 +43,18 @@ define(function(require) {
 			e.preventDefault();
 			var self = this;
 			
+			var isBasicFormValid = Radio.channel("basic").request("isFormValid");
+			if(isBasicFormValid) return;
+			
+			var recList = Radio.channel("lzbm").request("getRecList");
+			if(this.check_RTSP_RTMP(recList)) return;
+			
 			var yhzArr = Radio.channel("yhz").request("getYhzArr");
 			
 			var showMpMode = Radio.channel("dhm").request("getShowMpMode");
 			var mpMode = Radio.channel("dhm").request("getMpMode");
 			
 			var matrixInOut = Radio.channel("spjz").request("getMatrixInOut");
-			var recList = Radio.channel("lzbm").request("getRecList");
 			
 			this.model.set({
 				"venueId": yhzArr,
@@ -68,6 +73,11 @@ define(function(require) {
 			.fail(function() {
 				self.saveError();
 			});
+		},
+		check_RTSP_RTMP: function(list) {
+			//TODO 判断逻辑
+			Util.alert("RTSP有冲突！");
+			return true;
 		},
 		saveSuccess: function() {
 			this.cancelTemp();

@@ -5,6 +5,7 @@
 	position: relative;
 }
 .formLine {
+	position: relative;
 	margin-bottom: 20px;
 }
 .formLine.cf {
@@ -21,6 +22,7 @@
 	text-align: right;
 }
 .formCell {
+	position: relative;
 	margin-bottom: 10px;
 }
 .cellName {

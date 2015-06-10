@@ -1,7 +1,9 @@
 define(function(require) {
 	var _ = require("underscore");
 	var Mn = require("marionette");
+	var Radio = require("radio");
 	var Util = require("web/common/util");
+	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_basic_template.html");
 	
 	var BasicView = Mn.ItemView.extend({
@@ -54,9 +56,23 @@ define(function(require) {
 				selectName: "secVidSend"
 			}
 		},
+		checkOptions: {
+			"#name": {
+				constraint: ["notNull", "trimCheck"],
+				appendTo: ".formLine",
+				offsetTop: 5
+			},
+			"#desc": {
+				constraint: ["trimCheck"],
+				appendTo: ".formLine"
+			}
+		},
 		ui: {
 			formBox: ".formBox",
 			select: "select"
+		},
+		events: {
+			"keyup": "checkInput"
 		},
 		
 		initialize: function() {
@@ -65,9 +81,19 @@ define(function(require) {
 		onRender: function() {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			
+			Radio.channel("basic").reply("isFormValid", this.isFormValid, this);
 		},
 		onAttach: function() {
 			Util.selectmenu(this.ui.select, this.ui.formBox);
+		},
+		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
+		},
+		
+		isFormValid: function() {
+			return FormUtil.checkForm(this.$el, this.checkOptions);
 		}
 	});
 	

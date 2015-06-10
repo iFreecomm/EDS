@@ -1,6 +1,7 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
+	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/pz/wlsz/wk/wk_template.html");
 	
 	var WkView = Mn.ItemView.extend({
@@ -19,11 +20,38 @@ define(function(require) {
 			"#user":  "user",
 			"#pwd":  "pwd" 
 		},
+		checkOptions: {
+			"#fwqdz": {
+				constraint: ["ipCheck"],
+				appendTo: ".formCell"
+			},
+			"#dlfwqdz": {
+				constraint: ["ipCheck"],
+				appendTo: ".formCell"
+			},
+			"#hyfwhm": {
+				constraint: ["numberCheck"],
+				appendTo: ".formCell"
+			},
+			"#hchm": {
+				constraint: ["numberCheck"],
+				appendTo: ".formCell"
+			},
+			"#yhm": {
+				constraint: ["trimCheck"],
+				appendTo: ".formCell"
+			},
+			"#mm": {
+				constraint: ["passCheck"],
+				appendTo: ".formCell"
+			}
+		},
 		ui: {
 			formBox: ".formBox",
 			select: "select"
 		},
 		events: {
+			"keyup": "checkInput",
 			"click .saveBtn" : "saveModel"
 		},
 		
@@ -45,7 +73,13 @@ define(function(require) {
 			this.ui.select.change();
 		},
 		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
+		},
+		
 		saveModel: function(e) {
+			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
+			
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {

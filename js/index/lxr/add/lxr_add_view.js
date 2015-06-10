@@ -3,6 +3,7 @@ define(function(require) {
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/lxr/add/lxr_add_template.html");
 	var Util = require("web/common/util");
+	var FormUtil = require("web/common/formUtil");
 	
 	var LxrAddView = Mn.ItemView.extend({
 		id: "lxr_add",
@@ -35,11 +36,34 @@ define(function(require) {
 				selectName: "bandwidth"
 			}
 		},
+		checkOptions: {
+			"#addrName": {
+				constraint: ["notNull", "trimCheck"],
+				appendTo: ".formLine"
+			},
+    		"#e164": {
+    			constraint: ["e164Check"],
+    			appendTo: ".formLine"
+    		},
+    		"#ip": {
+				constraint: ["ipCheck"],
+				appendTo: ".formLine"
+			},
+			"#url": {
+				constraint: ["urlCheck"],
+				appendTo: ".formLine"
+			},
+			"#storNum": {
+				constraint: ["numberCheck"],
+				appendTo: ".formLine"
+			}
+		},
 		ui: {
 			formBox: ".formBox",
 			select: "select"
 		},
 		events: {
+			"keyup": "checkInput",
 			"click .saveBtn": "saveLxr",
 			"click .cancelBtn": "cancelLxr"
 		},
@@ -60,8 +84,14 @@ define(function(require) {
 			this.ui.select.change();
 		},
 		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
+		},
+		
 		saveLxr: function(e) {
 			e.preventDefault();
+			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
+			
 			var self = this;
 			this.model.save().done(function() {
 				self.saveSuccess();

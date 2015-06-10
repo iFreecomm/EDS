@@ -3,6 +3,7 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
+	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/pz/spsr/spsr_template.html");
 	
 	var SpsrView = Mn.ItemView.extend({
@@ -20,11 +21,18 @@ define(function(require) {
 			"#sppy": "sppy",
 			"#czpy": "czpy"
 		},
+		checkOptions: {
+			"#name": {
+				constraint: ["notNull", "trimCheck"],
+				appendTo: ".formCell"
+			}
+		},
 		ui: {
 			formBox: ".formBox",
 			select: "select"
 		},
 		events: {
+			"keyup": "checkInput",
 			"click .lxr" : "selectLxr"
 		},
 		
@@ -35,6 +43,10 @@ define(function(require) {
 		onAttach: function() {
 			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
 			this.ui.select.change();
+		},
+		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
 		},
 		
 		selectLxr: function(e) {

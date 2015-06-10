@@ -1,6 +1,7 @@
 define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
+	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/pz/wlsz/H323/H323_template.html");
 	
 	var H323View = Mn.ItemView.extend({
@@ -13,11 +14,30 @@ define(function(require) {
 			"#regName": "regName",
 			"#regPwd": "regPwd"
 		},
+		checkOptions: {
+			"#gkIp": {
+				constraint: ["ipCheck"],
+				appendTo: ".formCell"
+			},
+			"#regNum": {
+				constraint: ["numberCheck"],
+				appendTo: ".formCell"
+			},
+			"#regName": {
+				constraint: ["trimCheck"],
+				appendTo: ".formCell"
+			},
+			"#regPwd": {
+				constraint: ["passCheck"],
+				appendTo: ".formCell"
+			},
+		},
 		ui: {
 			formBox: ".formBox",
 			select: "select"
 		},
 		events: {
+			"keyup": "checkInput",
 			"click .saveBtn" : "saveModel"
 		},
 		
@@ -30,7 +50,13 @@ define(function(require) {
 			this.ui.select.change();
 		},
 		
+		checkInput: function(e) {
+			FormUtil.checkInput($(e.target), this.checkOptions);
+		},
+		
 		saveModel: function(e) {
+			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
+			
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {

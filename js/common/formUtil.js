@@ -82,7 +82,7 @@ define(function(require) {
 		var constraint = option.constraint;
 		var promptText = "";
 		
-		_setAppendTo($input, option);
+		var $appendTo = _getAppendTo($input, option);
 		
 		_.some(constraint, function(fnName) {
 			promptText = CheckUtil[fnName](val);
@@ -90,26 +90,31 @@ define(function(require) {
 		});
 		
 		if(promptText) {
-			Prompt.buildPrompt(promptText, $input, option);
+			Prompt.buildPrompt(promptText, $input, $appendTo, option);
 		} else {
-			Prompt.closePrompt($input, option);
+			Prompt.closePrompt($input, $appendTo);
 		}
 		
 		return promptText;
 	}
-	function _setAppendTo($input, option) {
+	function _getAppendTo($input, option) {
 		var appendTo = option.appendTo;
 		if(typeof appendTo === "string") {
-			option.appendTo = $input.parents(appendTo).eq(0);
+			return $input.parents(appendTo).eq(0);
+		} else {
+			return appendTo;
 		}
 	}
 	
 	function checkForm($el, options) {
-		var isValid = true;
+		var isValid = true, $input;
 		for(var key in options) {
-			_checkInput($el.find(key), options[key]) && (isValid = false);
+			$input = $el.find(key);
+			if($input.is(":visible")) {
+				_checkInput($input, options[key]) && (isValid = false);
+			}
 		}
-		return isValid;
+		return !isValid;
 	}
 	
 	return {

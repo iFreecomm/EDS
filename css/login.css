@@ -6,6 +6,7 @@
 }
 /********登录表单********/
 .login-box {
+	position: relative;
 	width: 800px;
 	height: 635px;
 	padding-top: 140px;
