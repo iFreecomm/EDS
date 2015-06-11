@@ -1,0 +1,166 @@
+#camera {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.yzw_container {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	padding-bottom: 50px;
+}
+.yzw_inner_container {
+	height: 100%;
+	overflow: auto;
+}
+.yzw_container ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.yzw_container li {
+	float: left;
+	position: relative;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 230px;
+	height: 125px;
+	border: 3px solid #1E89B5;
+	border-radius: 3px;
+	background: #A4DEFF;
+}
+.yzw_container li:hover,
+.yzw_container li.selected {
+	border-color: #F47900;
+}
+.yzw_container li.active:after {
+	content: "激活";
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 54px;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-weight: bold;
+	background: url(../img/camera/btn_hover.png);
+}
+.yzw_container li span {
+	position: absolute;
+	margin-left: 5px;
+}
+.yzw_container .btn-area {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px solid #D1CFCF;
+	box-shadow: 0 -1px 5px 0 #D1CFCF;
+	font-size: 0;
+	white-space: nowrap;
+	text-align: center;
+}
+.yzw_container .btn-area .btn {
+	margin: 2px 5px;
+}
+
+
+.camera_container {
+	float: right;
+	width: 500px;
+	height: 100%;
+	border-left: 1px solid #d1cfcf;
+	box-shadow: 1px 0 5px 0 #d1cfcf inset;
+	overflow: auto;
+}
+.camera_player {
+	margin: 10px;
+	border: 3px solid #1E89B5;
+	border-radius: 3px;
+}
+.camera_player img {
+	display: block;
+	margin: auto;
+}
+.camera_container .btn-area {
+	position: relative;
+	height: 239px;
+	margin: 15px auto;
+	background: url(../img/camera/btn_bg.png) no-repeat center;
+}
+.camera_container .btn-area .btn {
+	position: absolute;
+	left: 50%;
+	width: 54px;
+	height: 53px;
+	padding: 0;
+	border-radius: 50%;
+	text-align: center;
+	background-color: transparent;
+}
+.camera_container .btn-area .btn:hover {
+	background-image: url(../img/camera/btn_hover.png);
+}
+.camera_container .btn-area img {
+	vertical-align: middle;
+}
+.camera_container .leftBtn {
+	top: 88px;
+	margin-left: -101px;
+}
+.camera_container .rightBtn {
+	top: 88px;
+	margin-left: 45px;
+}
+.camera_container .upBtn {
+	top: 14px;
+	margin-left: -28px;
+}
+.camera_container .upBtn img {
+	margin-top: -5px;
+}
+.camera_container .downBtn {
+	top: 164px;
+	margin-left: -28px;
+}
+.camera_container .OKBtn {
+	font-weight: bold;
+	top: 88px;
+	margin-left: -27.5px;
+}
+.camera_container .btn.zoomOutBtn {
+	width: 118px;
+	height: 60px;
+	top: 166px;
+	margin-left: -160.5px;
+	border-radius: 0;
+}
+.camera_container .btn.zoomOutBtn:hover {
+	background-image: url(../img/camera/zoom_out_hover.png);
+}
+.camera_container .btn.zoomInBtn {
+	width: 118px;
+	height: 60px;
+	top: 166px;
+	margin-left: 41.5px;
+	border-radius: 0;
+}
+.camera_container .btn.zoomInBtn:hover {
+	background-image: url(../img/camera/zoom_in_hover.png);
+}
+
+.camera_container .cellName {
+	width: 100px;
+	padding-right: 5px;
+}
+.camera_container .fieldBox {
+	padding-left: 100px;
+}
+.camera_container input,
+.camera_container select {
+	width: 140px;
+}
+.camera_container .form-btns .btn {
+	margin-left: 408px;
+	margin-bottom: 10px;
+}
+

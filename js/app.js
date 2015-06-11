@@ -15,6 +15,7 @@ define(function(require) {
 	var HykzRouter = require("web/index/hykz/hykz_router");
 	var PzRouter = require("web/index/pz/pz_router");
 	var WjllRouter = require("web/index/wjll/wjll_router");
+	var CameraRouter = require("web/index/camera/router");
 	
 	require("stickit");
 	require("jqueryui");
@@ -53,6 +54,7 @@ define(function(require) {
 			new HykzRouter(opt);
 			new PzRouter(opt);
 			new WjllRouter(opt);
+			new CameraRouter(opt);
 		},
 		
 		initRenderer: function() {
@@ -78,7 +80,7 @@ define(function(require) {
 		},
 		
 		initHandlebarsHelpers: function() {
-			var classes = ["sxj","zkhy","zkhy", "zk"];
+			var classes = ["camera","zkhy","zkhy", "zk"];
 			Handlebars.registerHelper("getLxrClass", function(equType) {
 				return classes[equType];
 			});

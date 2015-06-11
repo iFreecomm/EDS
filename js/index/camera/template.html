@@ -1,0 +1,33 @@
+<div class="camera_container">
+	<div class="camera_player">
+		<img src="img/camera/cover.png" width="100%" alt="player"/>
+	</div>
+	<div class="btn-area">
+		<button type="button" data-optcode="0" class="btn leftBtn"><img src="img/camera/left.png" alt="左"/></button>
+		<button type="button" data-optcode="1" class="btn rightBtn"><img src="img/camera/right.png" alt="右"/></button>
+		<button type="button" data-optcode="2" class="btn upBtn"><img src="img/camera/up.png" alt="上"/></button>
+		<button type="button" data-optcode="3" class="btn downBtn"><img src="img/camera/down.png" alt="下"/></button>
+		<button type="button" data-optcode="4" class="btn OKBtn">OK</button>
+		<button type="button" data-optcode="5" class="btn zoomInBtn"><img src="img/camera/zoom_in.png" alt="缩小"/></button>
+		<button type="button" data-optcode="6" class="btn zoomOutBtn"><img src="img/camera/zoom_out.png" alt="放大"/></button>
+	</div>
+	<div class="formContainer"></div>
+</div>
+
+<div class="yzw_container">
+	<div class="yzw_inner_container">
+		<ul>
+			{{#loop 10}}
+				<li><span>{{index}}</span><img src="img/camera/cover.png" width="224" height="119" alt="cover"/></li>
+			{{/loop}}
+			{{#loop 20}}
+				<li></li>
+			{{/loop}}
+		</ul>
+	</div>
+	<div class="btn-area">
+		<button type="button" class="btn activeBtn">激活预置位</button>
+		<button type="button" class="btn saveBtn">保存预置位</button>
+		<button type="button" class="btn cancelBtn">取消预置位</button>
+	</div>
+</div>
