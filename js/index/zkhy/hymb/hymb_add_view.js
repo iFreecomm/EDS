@@ -75,9 +75,24 @@ define(function(require) {
 			});
 		},
 		check_RTSP_RTMP: function(list) {
-			//TODO 判断逻辑
-			Util.alert("RTSP有冲突！");
-			return true;
+			//TODO 判断逻辑 业务逻辑错误
+			var obj=[];
+			$.each(list, function(i){
+				obj.push( list[i].vidHdCfg.vodServeParam.name + "HN");
+				obj.push( list[i].vidHdCfg.pushDumpParam.url + "HU");
+				obj.push( list[i].vidSdCfg.vodServeParam.name + "SN");
+				obj.push( list[i].vidSdCfg.pushDumpParam.url + "SU");
+			});
+
+			var arr = obj.sort();
+			for(var i=0; i< arr.length; i++){
+				if(arr[i]=="HN" ||arr[i]=="HU" ||arr[i]=="SN" ||arr[i]=="SU"){ continue;}
+				if(arr[i] == arr[i+1]){
+					alert("请不要输入相同的名称");
+					return true;
+				}
+			}
+			return false;
 		},
 		saveSuccess: function() {
 			this.cancelTemp();

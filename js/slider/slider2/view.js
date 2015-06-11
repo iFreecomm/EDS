@@ -8,7 +8,10 @@ define(function(require) {
 		template: tmpl,
 		bindings: {
 			"[name=audInPort]": "audInPort",
-			"[name=audInName]": "audInName",
+			"[name=audInName]": {
+				observe: "audInName",
+				events: ['change']
+			},
 			"[name=enable]": "enable",
 			".sliderValue": "involume"
 		},

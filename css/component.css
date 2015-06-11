@@ -53,13 +53,16 @@
 	outline: 0;
 	background: #F47900 url(../img/form/btn/del.png) no-repeat center;
 	opacity: 0;
+	filter: alpha(opacity=0);
 }
 .box-container a:hover+.delBtn {
 	opacity: 1;
+	filter: alpha(opacity=100);
 	transition: opacity .2s .5s;
 }
 .box-container .delBtn:hover {
 	opacity: 1;
+	filter: alpha(opacity=100);
 }
 /*********召开/结束会议*********/
 .box-container .beginBtn {

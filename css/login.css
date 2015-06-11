@@ -9,7 +9,7 @@
 	position: relative;
 	width: 800px;
 	height: 635px;
-	padding-top: 140px;
+	padding: 140px 210px 0 210px;
 	margin: auto;
 	background: url(../img/login/login.png) no-repeat 0 0;
 	text-align: center;

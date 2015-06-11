@@ -15,8 +15,8 @@ define(function(require) {
 			this.container = options.container;
 			
 			this.wkModel = new WkModel();
-			this.wkModel.fetch({
-				data: Util.encode({ device: 0 }) //网卡1
+			this.wkModel.mustFetch({
+				device: 0 //网卡1
 			}).done(function() {
 				self.showView();
 			});
@@ -27,7 +27,8 @@ define(function(require) {
 				navLeftView: NavLeftView,
 				contentRightView: new WlszView(),
 				pzWlszWkView: new WkView({
-					model: this.wkModel
+					model: this.wkModel,
+					device: 0
 				})
 			});
 		}

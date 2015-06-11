@@ -22,13 +22,13 @@ define(function(require) {
 			"#username": {
 				constraint: ["notNull", "trimCheck"],
 				appendTo: ".login-box",
-				offsetLeft: 200,
+				offsetLeft: -10,
 				offsetTop: 10
 			},
     		"#password": {
     			constraint: ["notNull", "passCheck"],
     			appendTo: ".login-box",
-    			offsetLeft: 200,
+    			offsetLeft: -10,
     			offsetTop: 10
     		}
 		},

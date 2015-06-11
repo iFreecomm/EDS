@@ -52,27 +52,29 @@ define(function(require) {
 		},
 		wlsz: function(e) {
 			var self = this;
-			var btn = e.target;
-			var ModelView = this.modelViewMap[btn.name];
-			var wkOption = this._getWkOption(btn);
-			
+			var $btn = $(e.target);
+			var name = $btn.attr("name");
+			var ModelView = this.modelViewMap[name];
 			var Model = ModelView[0];
 			var View = ModelView[1];
-			
 			var model = new Model();
-			model.fetch(wkOption).done(function() {
-				self.showChildView("container", new View({
-					model: model
-				}));
-			});
-		},
-		_getWkOption: function(btn) {
-			if(btn.id === "wk1" || btn.id === "wk2") {
-				return {
-					data: Util.encode({
-						device: btn.id === "wk1" ? 0 : 1
-					})
-				};
+			
+			if(name === "wk") {
+				var device = $btn.data("device");
+				model.mustFetch({
+					device: device
+				}).done(function() {
+					self.showChildView("container", new View({
+						model: model,
+						device: device
+					}));
+				});
+			} else {
+				model.fetch().done(function() {
+					self.showChildView("container", new View({
+						model: model
+					}));
+				});
 			}
 		}
 	});

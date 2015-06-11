@@ -65,7 +65,7 @@ define(function(require) {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 			this.showKdbh();
-			this.$("h3").children("span").text(this.model.get("device")+1);
+			this.$("h3").children("span").text(this.options.device+1);
 			this.changeNetType();
 		},
 		onAttach: function() {
@@ -78,6 +78,7 @@ define(function(require) {
 		},
 		
 		saveModel: function(e) {
+			this.ipAndGatewayCheck($("#ip").val(), $("#gateway").val(), $("#mask").val());
 			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
 			
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
@@ -104,19 +105,30 @@ define(function(require) {
 				}
 			}
 		},
-		
+		ipAndGatewayCheck: function(ip, gateway, mask) {
+			//TODO 优化
+			//ip和网关要在同一网段
+			var res1 = [], res2 = [];
+			ip = ip.split(".");
+			gateway = gateway.split(".");
+			mask  = mask.split(".");
+			for(var i = 0,ilen = ip.length; i < ilen ; i += 1){
+				res1.push(parseInt(ip[i]) & parseInt(mask[i]));
+				res2.push(parseInt(gateway[i]) & parseInt(mask[i]));
+			}
+			if(res1.join(".") != res2.join(".")){
+				alert("请将IP地址和网关配置成同一网段");
+			}
+		},
 		changeNetType: function() {
 			var curNet = this.model.get("netType");
 			var preNet = this.model.previous("netType");
 			this.$("[netType*="+preNet+"]").hide();
 			this.$("[netType*="+curNet+"]").show();			
-			if(curNet == 1)
-			{
-				this.$("[netType*=4]").prop("disabled", true).addClass("disabled");
-			}
-			else
-			{
-				this.$("[netType*=4]").removeAttr("disabled").css({"opacity":1});
+			if(curNet == 1) {
+				this.$("[netType=4]").prop("disabled", true).addClass("disabled");
+			} else {
+				this.$("[netType=4]").prop("disabled", false).removeClass("disabled");
 			}
 			var netCnnt = this.model.get("netCnnt");
 			this.model.set(netCnnt[curNet]);

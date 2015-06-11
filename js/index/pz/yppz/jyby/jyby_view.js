@@ -17,9 +17,9 @@ define(function(require) {
 				var $btn = $(this);
 				var getHref = $btn.attr("getHref");
 				$.getJSON(getHref).done(function(res) {
-					if(res.data.enable == 0) {
-						$btn.addClass("active");
-					}
+					var enable = res.data.enable;
+					$btn.data("enable", enable);
+					enable && $btn.addClass("active"); 
 				});
 			});
 		},
@@ -28,13 +28,15 @@ define(function(require) {
 			var $btn = $(e.target);
 			var setHref = $btn.attr("setHref");
 			if($btn.attr("getHref")) {
-				var isActive = $btn.is(".active") ? 0 : 1;
+				var enable = $btn.data("enable");
+				enable = enable ? 0 : 1;
+				
 				$.getJSON(setHref, Util.encode({
-	  				enable: isActive
+	  				enable: enable
 	  			})).done(function(res){
 	  				if(res.code == 0)
 	  				{
-	  					$btn.toggleClass("active");
+	  					$btn.data("enable", enable).toggleClass("active");
 	  				}
 	  				else
 	  				{
