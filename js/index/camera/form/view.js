@@ -28,7 +28,7 @@ define(function(require) {
 			this.stickit();
 		},
 		onAttach: function() {
-//			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
+//			Util.selectmenu(this.ui.select, this.ui.formBox);
 		},
 		
 		saveCamera: function() {

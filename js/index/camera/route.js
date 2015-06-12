@@ -16,9 +16,15 @@ define(function(require) {
 			this.cameraId = options.id;
 			
 			this.model = new CameraFormModel();
-			this.model.mustFetch({
-				cameraId: options.id
-			}).done(function() {
+			
+			$.when(
+				$.getJSON("temp.psp"), //预置位状态数组
+				this.model.mustFetch({ //摄像机配置信息
+					cameraId: options.id
+				})
+			).done(function(yzwState) {
+				self.yzwState = yzwState[0].data;
+				self.model.set("cameraId", options.id);
 				self.showView();
 			});
 		},
@@ -27,7 +33,10 @@ define(function(require) {
 			this.show({
 				navLeftView: NavLeftView,
 				contentRightView: new CameraView({
-					cameraId: this.cameraId
+					cameraId: this.cameraId,
+					templateHelpers: {
+						yzwState: this.yzwState
+					}
 				}),
 				cameraFormView: new CameraFormView({
 					model: this.model

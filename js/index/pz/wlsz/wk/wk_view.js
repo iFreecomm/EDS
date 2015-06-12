@@ -78,8 +78,8 @@ define(function(require) {
 		},
 		
 		saveModel: function(e) {
-			this.ipAndGatewayCheck($("#ip").val(), $("#gateway").val(), $("#mask").val());
 			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
+			if(this.ipAndGatewayCheck(this.$("#ip").val(), this.$("#gateway").val(), this.$("#mask").val())) return;
 			
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
@@ -105,20 +105,18 @@ define(function(require) {
 				}
 			}
 		},
-		ipAndGatewayCheck: function(ip, gateway, mask) {
-			//TODO 优化
+		ipAndGatewayCheck: function(ip, gateway, mask){
 			//ip和网关要在同一网段
-			var res1 = [], res2 = [];
 			ip = ip.split(".");
 			gateway = gateway.split(".");
 			mask  = mask.split(".");
-			for(var i = 0,ilen = ip.length; i < ilen ; i += 1){
-				res1.push(parseInt(ip[i]) & parseInt(mask[i]));
-				res2.push(parseInt(gateway[i]) & parseInt(mask[i]));
+			for(var i = 0, ilen = ip.length; i < ilen ; i += 1) {
+				if((ip[i] & mask[i]) != (gateway[i] & mask[i])) {
+					Util.alert("请将IP地址和网关配置成同一网段");
+					return true;
+				}
 			}
-			if(res1.join(".") != res2.join(".")){
-				alert("请将IP地址和网关配置成同一网段");
-			}
+			return false;
 		},
 		changeNetType: function() {
 			var curNet = this.model.get("netType");

@@ -33,7 +33,7 @@
 .yzw_container li.selected {
 	border-color: #F47900;
 }
-.yzw_container li.active:after {
+.yzw_container li.using:after {
 	content: "激活";
 	position: absolute;
 	right: 5px;

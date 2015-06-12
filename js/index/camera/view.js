@@ -23,7 +23,7 @@ define(function(require) {
 			"click .yzw_container .saveBtn": "saveYzw",
 			"click .yzw_container .cancelBtn": "cancelYzw",
 			
-			"click .camera_container .btn-area .btn": "controlCamera"
+			"mousedown .camera_container .btn-area .btn": "startControlCamera"
 		},
 		
 		onBeforeShow: function(view, region, options) {
@@ -47,15 +47,19 @@ define(function(require) {
 			var index = this.selectedYzwIndex;
 			if(!_.isNumber(index)) return;
 			var $li = this.ui.lis.eq(index);
-			if($li.is(".active")) return;
+			if($li.is(".using")) return;
 			
 			var self = this;
 			$.getJSON("temp.psp", Util.encode({
+				cameraId: this.options.cameraId,
 				index: index
 			})).done(function(res) {
 				if(res.code === 0) {
-					self.ui.lis.removeClass("active");
-					$li.addClass("active");
+					self.ui.lis.filter(".using").removeClass("using").addClass("used");
+					if($li.is(".unused")) {
+						$li.append('<img src="img/camera/cover.png" width="224" height="119" alt="cover"/>');
+					}
+					$li.removeClass("unused used").addClass("using");
 				}
 			});
 		},
@@ -66,35 +70,61 @@ define(function(require) {
 			
 			var self = this;
 			$.getJSON("temp.psp", Util.encode({
+				cameraId: this.options.cameraId,
 				index: index
-			}));
+			})).done(function(res) {
+				if(res.code === 0) {
+					var $li = self.ui.lis.eq(index);
+					if($li.is(".unused")) {
+						$li.removeClass("unused").addClass("used").append('<img src="img/camera/cover.png" width="224" height="119" alt="cover"/>');
+					}
+				}
+			});
 		},
 		
 		cancelYzw: function() {
 			var index = this.selectedYzwIndex;
 			if(!_.isNumber(index)) return;
 			var $li = this.ui.lis.eq(index);
-			var $img = $li.find("img");
-			if(!$img.length) return;
+			if($li.is(".unused")) return;
 			
 			var self = this;
 			$.getJSON("temp.psp", Util.encode({
+				cameraId: this.options.cameraId,
 				index: index
 			})).done(function(res) {
 				if(res.code === 0) {
-					$li.removeClass("active");
-					$img.remove();
+					$li.removeClass("using used").addClass("unused").find("img").remove();
 				}
 			});
 		},
 		
-		controlCamera: function(e) {
+		startControlCamera: function(e) {
 			var $btn = $(e.target);
 			if(!$btn.is("button")) {
 				$btn = $btn.parents("button");
 			}
+			
+			$btn.one("mouseup mouseleave", _.bind(this.endControlCamera, this));
+			
+			this.cameraAct = 0; //开始控制摄像机
+			this.ctrlType = $btn.data("ctrltype");
+			
 			$.getJSON("temp.psp", Util.encode({
-				optcode: $btn.data("optcode")
+				vidInPort: this.options.cameraId,
+				ctrlType: this.ctrlType,
+				cameraAct: this.cameraAct
+			}));
+		},
+		
+		endControlCamera: function() {
+			if(this.cameraAct !== 0) return;
+			this.cameraAct = 1; //结束控制摄像机
+			
+			$.getJSON("temp.psp", Util.encode({
+				vidInPort: this.options.cameraId,
+				ctrlType: this.ctrlType,
+				cameraAct: this.cameraAct
 			}));
 		}
 	});

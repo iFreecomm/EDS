@@ -136,6 +136,9 @@ define(function(require) {
 				}
 				return out;
 			});
+			Handlebars.registerHelper('eq', function(num1, num2, options) {
+				if(num1 === num2) return options.fn(this);
+			});
 			
 			Handlebars.registerHelper("getFileType", function(fileType) {
 				if(fileType === 0) {

@@ -75,20 +75,24 @@ define(function(require) {
 			});
 		},
 		check_RTSP_RTMP: function(list) {
-			//TODO 判断逻辑 业务逻辑错误
-			var obj=[];
-			$.each(list, function(i){
-				obj.push( list[i].vidHdCfg.vodServeParam.name + "HN");
-				obj.push( list[i].vidHdCfg.pushDumpParam.url + "HU");
-				obj.push( list[i].vidSdCfg.vodServeParam.name + "SN");
-				obj.push( list[i].vidSdCfg.pushDumpParam.url + "SU");
+			var arrName=[];
+			var arrUrl =[];
+			_.each(list, function(obj) {
+				arrName.push(obj.vidHdCfg.vodServeParam.name);
+				arrName.push(obj.vidSdCfg.vodServeParam.name);
+				arrUrl.push(obj.vidHdCfg.pushDumpParam.url);
+				arrUrl.push(obj.vidSdCfg.pushDumpParam.url );
 			});
+			arrName.sort();
+			arrUrl.sort();
 
-			var arr = obj.sort();
-			for(var i=0; i< arr.length; i++){
-				if(arr[i]=="HN" ||arr[i]=="HU" ||arr[i]=="SN" ||arr[i]=="SU"){ continue;}
-				if(arr[i] == arr[i+1]){
-					alert("请不要输入相同的名称");
+			for(var i = 0; i < arrName.length - 1; i ++) {
+				if(arrUrl[i] != "" && arrUrl[i] == arrUrl[i+1]) {
+					Util.alert("RTSP同名冲突！");
+					return true;
+				}
+				if(arrName[i] != "" && arrName[i] == arrName[i+1]) {
+					Util.alert("RTMP同名冲突！");
 					return true;
 				}
 			}
