@@ -170,7 +170,7 @@ define(function(require) {
 			var self = this;
 			var collection = new FileCollection();
 			
-			$.getJSON("getFileList.psp", JSON.stringify({
+			$.getJSON("getFileList.psp", Util.encode({
 				searchTerms: this.searchTerms,
 				pageNum: this.pageNum
 			})).done(function(fileList) {

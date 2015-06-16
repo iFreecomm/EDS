@@ -1,10 +1,12 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var Backbone = require("backbone");
 	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
 	
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_show_template.html");
+	var AckId = require("web/common/ackid");
 	
 	var YdyhyShowView = Mn.ItemView.extend({
 		id: "zkhy_ydyhy_show",
@@ -32,7 +34,7 @@ define(function(require) {
 					//alert("");	
 				}
 			}).fail(function() {
-				alert("删除会议失败");
+				Util.alert("删除会议失败");
 			});
 		},
 		beginMeeting: function(e) {
@@ -52,9 +54,16 @@ define(function(require) {
 				recordId: id
 			})).done(function(res) {
 				if(res.code === 0) {
-					alert(tip+"成功");
+					//alert(tip+"成功");
 				} else {
-					alert(tip+"失败");	
+					switch (res.code){
+						case AckId.AckId_OverMaxConfNum:
+							Util.alert("当前只允许召开一个会议！");
+							break;
+						default:
+							Util.alert(tip+"失败");
+							break;
+					}		
 				}
 				Backbone.history.loadUrl();
 			}).fail(function() {

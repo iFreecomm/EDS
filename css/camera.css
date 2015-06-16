@@ -62,6 +62,10 @@
 .yzw_container .btn-area .btn {
 	margin: 2px 5px;
 }
+.yzw_container .btn-area .btn.disabled:hover {
+	background: #1E89B5;
+	cursor: default;
+}
 
 
 .camera_container {

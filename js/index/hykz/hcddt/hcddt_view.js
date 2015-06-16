@@ -10,7 +10,8 @@ define(function(require) {
 		id: "hykz_hcddt",
 		template: Handlebars.compile(tmpl),
 		events: {
-			"click .btn": "clickBtn"
+			"click .btn": "clickBtn",
+			"click .delBtn": "delLxr"
 		},
 		
 		onRender: function() {
@@ -45,12 +46,31 @@ define(function(require) {
 	  				}
 	  				else
 	  				{
-	  					alert("保存失败！");
+	  					Util.alert("保存失败！");
 	  				}
 	  			});
 			} else {
 				$.getJSON(setHref);
 			}
+		},
+		
+		delLxr: function(e) {
+			e.preventDefault();
+			var $btn = $(e.target);
+			var id = $btn.data("id");
+			
+			$.getJSON("delSession.psp", Util.encode({
+				recordId: id
+			})).done(function(res) {
+				if(res.code === 0) {
+					$btn.parents("li").remove();
+				} else {
+					Util.alert("删除会场失败！");	
+				}
+			}).fail(function() {
+				Util.alert("删除会场失败！");
+			});
+			
 		}
 	});
 	

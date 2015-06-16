@@ -13,8 +13,8 @@ define(function(require) {
 			cameraProt: 0
 		},
 		urls: {
-			"create": "temp.psp",
-			"read": "temp.psp"
+			"create": "setCameraCfg.psp",
+			"read": "getCameraCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

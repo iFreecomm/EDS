@@ -1,4 +1,5 @@
 define(function(require) {
+	var _ = require("underscore");
 	var Backbone = require("backbone");
 	var Radio = require("radio");
 	var Mn = require("marionette");
@@ -21,7 +22,17 @@ define(function(require) {
 		},
 		onBeforeShow: function(view, region, options) {
 			var navLeftRegion = this.getRegion("navLeft");
-			options.navLeftView && navLeftRegion.show(new options.navLeftView()) || navLeftRegion.empty();
+			var optNavLeftView = options.navLeftView;
+			
+			if(!optNavLeftView) {
+				navLeftRegion.empty();
+			} else {
+				if(_.isFunction(optNavLeftView)) {
+					navLeftRegion.show(new optNavLeftView());
+				} else {
+					navLeftRegion.show(optNavLeftView);
+				}
+			}
 			
 			this.getRegion("contentRight").show(options.contentRightView, options);
 			this.showChildView("modalContainer", new ModalView());

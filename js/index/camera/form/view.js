@@ -7,14 +7,38 @@ define(function(require) {
 		className: "formBox cf",
 		template: tmpl,
 		bindings: {
-			"#comPort": "comPort",
-			"#evenOddCheck": "evenOddCheck",
-			"#comMode": "comMode",
-			"#stopBit": "stopBit",
-			"#baudRate": "baudRate",
-			"#addr": "addr",
-			"#dataBit": "dataBit",
-			"#cameraProt": "cameraProt"
+			"#comPort": {
+				observe: "comPort",
+				selectName: "comPort"
+			},
+			"#evenOddCheck": {
+				observe: "evenOddCheck",
+				selectName: "evenOddCheck"
+			},
+			"#comMode": {
+				observe: "comMode",
+				selectName: "comMode"
+			},
+			"#stopBit": {
+				observe: "stopBit",
+				selectName: "stopBit"
+			},
+			"#baudRate": {
+				observe: "baudRate",
+				selectName: "baudRate"
+			},
+			"#addr": {
+				observe: "addr",
+				selectName: "addr"
+			},
+			"#dataBit": {
+				observe: "dataBit",
+				selectName: "dataBit"
+			},
+			"#cameraProt": {
+				observe: "cameraProt",
+				selectName: "cameraProt"
+			}
 		},
 		ui: {
 			formBox: ".formBox",
@@ -23,12 +47,14 @@ define(function(require) {
 		events: {
 			"click .saveBtn": "saveCamera"
 		},
-		
+		initialize: function(opt) {
+			Util.setSelectBindings(this.bindings);
+		},
 		onRender: function() {
 			this.stickit();
 		},
 		onAttach: function() {
-//			Util.selectmenu(this.ui.select, this.ui.formBox);
+			Util.selectmenu(this.ui.select, this.ui.formBox);
 		},
 		
 		saveCamera: function() {

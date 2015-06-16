@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/wlsz/wlsz_template.html");

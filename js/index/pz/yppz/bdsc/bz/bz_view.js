@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/pz/yppz/bdsc/bz/bz_template.html");
@@ -47,7 +48,7 @@ define(function(require) {
 			
 			this.collection.forEach(function(model) {
 				var groupNum = model.get("groupNum");
-				var audOutPort = model.get("audOutPort");
+				var audOutPort = model.get("outPort");
 				
 				$trs.eq(groupNum).children("td").eq(audOutPort).addClass("active");
 			});

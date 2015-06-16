@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var Slider3View = require("web/slider/slider3/view");
 	

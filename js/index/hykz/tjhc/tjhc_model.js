@@ -6,8 +6,8 @@ define(function(require) {
 			venueId: []
 		},
 		urls: {
-			"create": "setVidMultiPic.psp",
-			"read": "getVidMultiPic.psp"
+			"create": "addSession.psp",
+			"read": "getVenueCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

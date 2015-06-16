@@ -20,7 +20,7 @@ define(function(require) {
 
 			$.when(
 				$.getJSON("getDiskList.psp"),
-				$.getJSON("getFileList.psp", JSON.stringify({
+				$.getJSON("getFileList.psp", Util.encode({
 					searchTerms: this.searchTerms,
 					pageNum: this.pageNum
 				}))

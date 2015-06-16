@@ -1,5 +1,6 @@
 define(function(require) {
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");

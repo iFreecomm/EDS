@@ -10,7 +10,7 @@ define(function(require) {
 			involume: 0
 		},
 		urls: {
-			"create": "setVolInControlCfg.psp",
+			"create": "setVolInSingleCfg.psp",
 			"read": "getVolInControlCfg.psp"
 		},
 		parse: function(res, options) {

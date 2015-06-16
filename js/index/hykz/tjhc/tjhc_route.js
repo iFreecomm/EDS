@@ -20,17 +20,17 @@ define(function(require) {
 			$.when(
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				
-				$.getJSON("getVenueCfg.psp"),//会场
+				//$.getJSON("getVenueCfg.psp"),//会场
 				this.tjhcModel.fetch()
-			).done(function(allLxr,venue) {
-				var venueId = [];
+			).done(function(allLxr) {
+				/*var venueId = [];
 				if(venue && venue[0].data && venue[0].data.venueId)
 				{
 					venueId = venue[0].data.venueId;
 				}
 				self.tjhcModel.set({
 					"venueId": venueId
-				});
+				});*/
 				
 				self.allLxr = allLxr[0].data.bookInfo;
 				

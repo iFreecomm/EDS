@@ -4,6 +4,7 @@ define(function(require) {
 	var tmpl = require("text!web/index/camera/navLeft/navLeft_template.html");
 	
 	var NavLeftView = Mn.ItemView.extend({
+		id: "navLeft_camera",
 		tagName: "ul",
 		template: Handlebars.compile(tmpl)
 	});

@@ -11,17 +11,20 @@ define(function(require) {
 		id: "camera",
 		template: Handlebars.compile(tmpl),
 		ui: {
-			"lis": ".yzw_container li"
+			"lis": ".yzw_container li",
+			"activeBtn": ".yzw_container .activeBtn",
+			"saveBtn": ".yzw_container .saveBtn",
+			"cancelBtn": ".yzw_container .cancelBtn"
 		},
 		regions: {
 			formContainer: ".formContainer"
 		},
 		events: {
-			"click .yzw_container li": "selectLi",
-			
-			"click .yzw_container .activeBtn": "activeYzw",
-			"click .yzw_container .saveBtn": "saveYzw",
-			"click .yzw_container .cancelBtn": "cancelYzw",
+			"click @ui.lis": "selectLi",
+			        
+			"click @ui.activeBtn": "activeYzw",
+			"click @ui.saveBtn": "saveYzw",
+			"click @ui.cancelBtn": "cancelYzw",
 			
 			"mousedown .camera_container .btn-area .btn": "startControlCamera"
 		},
@@ -41,6 +44,17 @@ define(function(require) {
 			}
 			$li.addClass("selected");
 			this.selectedYzwIndex = $li.index();
+			
+			if($li.is(".using")) {
+				this.ui.cancelBtn.removeClass("disabled");
+				this.ui.activeBtn.addClass("disabled");
+			} else if($li.is(".unused")) {
+				this.ui.activeBtn.addClass("disabled");
+				this.ui.cancelBtn.addClass("disabled");
+			} else if($li.is(".used")) {
+				this.ui.cancelBtn.removeClass("disabled");
+				this.ui.activeBtn.removeClass("disabled");
+			}
 		},
 		
 		activeYzw: function() {
@@ -48,11 +62,12 @@ define(function(require) {
 			if(!_.isNumber(index)) return;
 			var $li = this.ui.lis.eq(index);
 			if($li.is(".using")) return;
+			if($li.is(".unused")) return;
 			
 			var self = this;
-			$.getJSON("temp.psp", Util.encode({
-				cameraId: this.options.cameraId,
-				index: index
+			$.getJSON("activeCameraPreset.psp", Util.encode({
+				vidInPort: this.options.cameraId,
+				presetNum: index
 			})).done(function(res) {
 				if(res.code === 0) {
 					self.ui.lis.filter(".using").removeClass("using").addClass("used");
@@ -69,9 +84,9 @@ define(function(require) {
 			if(!_.isNumber(index)) return;
 			
 			var self = this;
-			$.getJSON("temp.psp", Util.encode({
-				cameraId: this.options.cameraId,
-				index: index
+			$.getJSON("setCameraPreset.psp", Util.encode({
+				vidInPort: this.options.cameraId,
+				presetNum: index
 			})).done(function(res) {
 				if(res.code === 0) {
 					var $li = self.ui.lis.eq(index);
@@ -89,9 +104,9 @@ define(function(require) {
 			if($li.is(".unused")) return;
 			
 			var self = this;
-			$.getJSON("temp.psp", Util.encode({
-				cameraId: this.options.cameraId,
-				index: index
+			$.getJSON("delCameraPreset.psp", Util.encode({
+				vidInPort: this.options.cameraId,
+				presetNum: index
 			})).done(function(res) {
 				if(res.code === 0) {
 					$li.removeClass("using used").addClass("unused").find("img").remove();
@@ -110,7 +125,7 @@ define(function(require) {
 			this.cameraAct = 0; //开始控制摄像机
 			this.ctrlType = $btn.data("ctrltype");
 			
-			$.getJSON("temp.psp", Util.encode({
+			$.getJSON("cameraPTZF.psp", Util.encode({
 				vidInPort: this.options.cameraId,
 				ctrlType: this.ctrlType,
 				cameraAct: this.cameraAct
@@ -121,7 +136,7 @@ define(function(require) {
 			if(this.cameraAct !== 0) return;
 			this.cameraAct = 1; //结束控制摄像机
 			
-			$.getJSON("temp.psp", Util.encode({
+			$.getJSON("cameraPTZF.psp", Util.encode({
 				vidInPort: this.options.cameraId,
 				ctrlType: this.ctrlType,
 				cameraAct: this.cameraAct

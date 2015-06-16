@@ -106,7 +106,15 @@ define(function(require) {
 			Handlebars.registerHelper("getPartLxrInfo", function(equType) {
 				var result;
 				if(equType === 0) {
-					result = this.camPort;
+					//result = this.camPort;
+					if(this.camPort != Const.VidInPort_Cnt)
+					{
+						result = this.camName;
+					}
+					if(this.vgaPort != Const.VidInPort_Cnt)
+					{
+						result = result?(result+"<br/>"+this.vgaName):this.vgaName;
+					}
 				} else if(equType === 1 || equType === 2) {
 					result = "IP:"+this.ip;
 				} else if(equType === 3) {
@@ -145,6 +153,8 @@ define(function(require) {
 					return "音频";
 				} else if(fileType === 1) {
 					return "视频";
+				} else if(fileType === 2) {
+					return "图片";
 				} 
 				return "";
 			});

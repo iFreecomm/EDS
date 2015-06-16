@@ -26,11 +26,15 @@ define(function(require) {
 		save: function() {
 			this.model
 			.save()
-			.done(function() {
-				alert("保存成功！");
+			.done(function(res) {
+				if(res.code != 0)
+				{
+					Util.alert("保存失败!");
+				}
+				//alert("保存成功！");
 			})
 			.fail(function() {
-				alert("保存失败！");
+				Util.alert("保存失败！");
 			});
 		}
 	});

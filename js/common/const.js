@@ -167,6 +167,11 @@ define(function() {
 	    VidOutPort_MPOut9:40,
 	    VidOutPort_MPOut:41,
 	
-	    VidOutPort_Cnt:42
+	    VidOutPort_Cnt:42,
+	    //文件类型
+	    FileType_Audio:0,
+	    FileType_Video:1,
+	    FileType_Image:2,
+	    FileType_Cnt:3
 	};
 });

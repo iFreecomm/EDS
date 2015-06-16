@@ -40,7 +40,7 @@ define(function(require) {
 	  				}
 	  				else
 	  				{
-	  					alert("保存失败！");
+	  					Util.alert("保存失败！");
 	  				}
 	  			});
 			} else {

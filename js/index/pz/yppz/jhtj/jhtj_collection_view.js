@@ -1,6 +1,6 @@
 define(function(require) {
-	var _ = require("underscore");
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var Slider4View = require("web/slider/slider4/view");
@@ -25,7 +25,7 @@ define(function(require) {
 			var outPort = this.options.outPort;
 			
 			$.getJSON(
-				"setEqAllChannelCfg.psp",
+				"setEqSingleChannelCfg.psp",
 				Util.encode({
 					outPort: outPort,
 					eqGain: eqGain

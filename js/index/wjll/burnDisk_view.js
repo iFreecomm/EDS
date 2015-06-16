@@ -1,5 +1,6 @@
 define(function(require) {
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var tmpl = require("text!web/index/wjll/burnDisk_template.html");
@@ -27,7 +28,7 @@ define(function(require) {
 			this.selectedFiles = Radio.channel("fileList").request("getSelectedFiles");
 			
 			if(_.isEmpty(this.selectedFiles)) {
-				alert("请至少选择一个文件后刻录！");
+				Util.alert("请至少选择一个文件后刻录！");
 				return;
 			}
 			

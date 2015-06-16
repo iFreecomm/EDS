@@ -1,5 +1,6 @@
 define(function(require) {
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
@@ -37,7 +38,7 @@ define(function(require) {
 			var path = $tr.data("path");
 			//var fileName = "Alias0"+path.substr(path.lastIndexOf("\/"));
 			var fileName = "Alias0"+path;
-			var href = "downloadFile.psp?" + JSON.stringify({
+			var href = "downloadFile.psp?" + Util.encode({
 				filePath: fileName
 			});
 			
@@ -51,27 +52,28 @@ define(function(require) {
 			
 			Radio.channel("wjll").command("playFile", {
 				title: model.get("fileName"),
-				path: model.get("filePath")
+				path: "Alias0"+model.get("filePath")
+				//path: "Alias0/HardDisk1/recordfiles/2015/05/25/video2.mp4"
 			});
 		},
 		deleteFile: function(e) {
             //单个文件删除
 			e.preventDefault();
 			var path = $(e.target).parents("tr").data("path");
-//			path = {srcPath: path};
+			path = {srcPath: path};
 			this._delete([path]);
 		},
 		batchDelete: function() {
             //多文件删除
 			var pathArr = this.getSelectedFiles();
-//			pathArr = _.map(pathArr, function(path) {
-//				return { srcPath: path };
-//			});
+			pathArr = _.map(pathArr, function(path) {
+				return { srcPath: path };
+			});
 			this._delete(pathArr);
 		},
 		_delete: function(pathInfo) {
 			var self = this;
-			$.getJSON("fileOperate.psp", JSON.stringify({
+			$.getJSON("fileOperate.psp", Util.encode({
                 fileNum: pathInfo.length,
                 opCmd: 2,
                 pathInfo: pathInfo
@@ -80,10 +82,10 @@ define(function(require) {
 					var curFileNum = self.getAllFileNum() - pathInfo.length;
 					Radio.channel("wjll").command("deleteSearchFile", curFileNum);
 				} else {
-					alert("删除文件失败！");	
+					Util.alert("删除文件失败！");	
 				}
 			}).fail(function() {
-				alert("删除文件失败！");
+				Util.alert("删除文件失败！");
 			});
 		},
 		getAllFileNum: function() {

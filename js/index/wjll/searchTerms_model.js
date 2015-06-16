@@ -6,7 +6,7 @@ define(function(require) {
 			startTime: "",
 			endTime: "",
 			diskPath: "",
-			fileType: 2,
+			fileType: 3,
 			confNum: "",
 			confName: "",
 			convenor: ""

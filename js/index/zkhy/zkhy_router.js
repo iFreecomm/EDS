@@ -5,8 +5,6 @@ define(function(require) {
 	var HymbShowRoute = require("web/index/zkhy/hymb/hymb_show_route");
 	var HymbAddRoute = require("web/index/zkhy/hymb/hymb_add_route");
 	
-	var DhmRoute = require("web/index/hykz/dhm/dhm_route");
-	
 	var Const = require("web/common/const");
 	
 	var LxrRouter = Mn.AppRouter.extend({
@@ -36,7 +34,8 @@ define(function(require) {
 		modifyYdyhy: function(id, state) {
 			if(state == Const.MeetingState_UnderWay) {
 				//会议控制
-				Backbone.history.navigate("hykz/dhm/"+id, {trigger:true});
+				//Backbone.history.navigate("hykz/dhm/"+id, {trigger:true});
+				Backbone.history.navigate("hykz/hcddt", {trigger:true});
 			} else {
 				new YdyhyAddRoute({
 					container: this.container,

@@ -6,6 +6,7 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_add_template.html");
+	var AckId = require("web/common/ackid");
 	
 	var HymbAddView = Mn.LayoutView.extend({
 		id: "zkhy_hymb_add",
@@ -55,6 +56,7 @@ define(function(require) {
 			var mpMode = Radio.channel("dhm").request("getMpMode");
 			
 			var matrixInOut = Radio.channel("spjz").request("getMatrixInOut");
+			var recList = Radio.channel("lzbm").request("getRecList");
 			
 			this.model.set({
 				"venueId": yhzArr,
@@ -67,8 +69,8 @@ define(function(require) {
 				"recorder": {recList:recList,recNum:recList.length}
 			})
 			.save()
-			.done(function() {
-				self.saveSuccess();
+			.done(function(res) {
+				self.saveSuccess(res);
 			})
 			.fail(function() {
 				self.saveError();
@@ -98,11 +100,25 @@ define(function(require) {
 			}
 			return false;
 		},
-		saveSuccess: function() {
+		saveSuccess: function(res) {
 			this.cancelTemp();
+			if(res.code != AckId.AckId_Suc)
+			{
+				switch (res.code){
+					case AckId.AckId_NameDup:
+						Util.alert("名称重复,保存会议模板失败！");
+						break;
+					case AckId.AckId_SysInCalling:
+						Util.alert("召开的会议使用该模板，不允许修改！");
+						break;
+					default:
+						Util.alert("保存会议模板失败！");
+						break;
+				}
+			}
 		},
 		saveError: function() {
-			alert("保存会议模板失败！");
+			Util.alert("保存会议模板失败！");
 		},
 		cancelTemp: function() {
 			Backbone.history.navigate("zkhy/showHymb", {trigger: true});

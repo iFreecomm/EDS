@@ -1,8 +1,11 @@
 define(function(require) {
 	var $ = require("jquery");
+	var _ = require("underscore");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var Handlebars = require("handlebars");
+	var AckId = require("web/common/ackid");
+	
 	var tmpl = require("text!web/index/lxr/show/lxr_show_template.html");
 	
 	var LxrShowView = Mn.ItemView.extend({
@@ -32,7 +35,14 @@ define(function(require) {
 					$btn.parents("li").remove();
 					Util.alert("删除联系人成功！");
 				} else {
-					Util.alert("删除联系人失败！");
+					if(res.code == AckId.AckId_SysInCalling)
+					{
+						Util.alert("在召开的会议中，不允许删除!");
+					}
+					else
+					{
+						Util.alert("删除联系人失败！");	
+					}
 				}
 			}).fail(function() {
 				Util.alert("删除联系人失败！");

@@ -71,10 +71,10 @@ define(function(require) {
 			this.model.save().done(this.saveSuccess).fail(this.saveError);
 		},
 		saveSuccess: function() {
-			alert("保存成功！");
+			Util.alert("保存成功！");
 		},
 		saveError: function() {
-			alert("保存失败！");
+			Util.alert("保存失败！");
 		}
 	});
 	

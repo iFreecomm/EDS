@@ -18,20 +18,33 @@ define(function(require) {
 			this.model = new CameraFormModel();
 			
 			$.when(
-				$.getJSON("temp.psp"), //预置位状态数组
+				$.getJSON("getCameraPreset.psp"), //预置位状态数组
+				$.getJSON("getSdiPort.psp"),
 				this.model.mustFetch({ //摄像机配置信息
-					cameraId: options.id
+					vidInPort: options.id
 				})
-			).done(function(yzwState) {
+			).done(function(yzwState,sdi) {
 				self.yzwState = yzwState[0].data;
 				self.model.set("cameraId", options.id);
+				
+				self.SDI = [];
+				if(sdi[0].data && sdi[0].data.sdiInfo)
+				{
+					self.SDI = sdi[0].data.sdiInfo;
+				}
+				
 				self.showView();
 			});
 		},
 		
 		showView: function() {
 			this.show({
-				navLeftView: NavLeftView,
+				//navLeftView: NavLeftView,
+				navLeftView: new NavLeftView({
+					templateHelpers: {
+						SDI: this.SDI
+					}
+				}),
 				contentRightView: new CameraView({
 					cameraId: this.cameraId,
 					templateHelpers: {

@@ -3,6 +3,7 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
+	var AckId = require("web/common/ackid");
 	
 	var tmpl = require("text!web/index/zkhy/hymb/hymb_show_template.html");
 	
@@ -28,10 +29,17 @@ define(function(require) {
 				if(res.code === 0) {
 					$btn.parents("li").remove();
 				} else {
-					alert("删除会议模板失败！");	
+					if(res.code == AckId.AckId_SysInCalling)
+					{
+						Util.alert("模板在使用，不允许删除!");
+					}
+					else
+					{
+						Util.alert("删除会议模板失败！");	
+					}
 				}
 			}).fail(function() {
-				alert("删除会议模板失败！");
+				Util.alert("删除会议模板失败！");
 			});
 			
 		}

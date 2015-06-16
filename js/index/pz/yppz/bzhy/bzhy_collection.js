@@ -5,11 +5,11 @@ define(function(require) {
 	var BzhyCollection = Backbone.Collection.extend({
 		model: BzhyModel,
 		urls: {
-			"read": "getAudGroupMixInfoArr.psp"
+			"read": "getAudGroupMixAll.psp"
 		},
 		parse: function(res) {
-			if(res && res.data && res.data.AudGroupMixInfoArr)
-				return res.data.AudGroupMixInfoArr;
+			if(res && res.data && res.data.audGroupMixArr)
+				return res.data.audGroupMixArr;
 			return [];
 		}
 	});

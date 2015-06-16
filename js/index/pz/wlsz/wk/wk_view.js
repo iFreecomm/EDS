@@ -3,6 +3,7 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/pz/wlsz/wk/wk_template.html");
+	var AckId = require("web/common/ackid");
 	
 	var WkView = Mn.ItemView.extend({
 		id: "pz_wlsz_wk",
@@ -78,18 +79,34 @@ define(function(require) {
 		},
 		
 		saveModel: function(e) {
+			var self = this;
 			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
 			if(this.ipAndGatewayCheck(this.$("#ip").val(), this.$("#gateway").val(), this.$("#mask").val())) return;
 			
-			this.model.save().done(this.saveSuccess).fail(this.saveError);
+			this.model.save().done(function(res) {
+				self.saveSuccess(res);
+			}).fail(function() {
+				self.saveError();
+			});
 		},
-		saveSuccess: function() {
+		saveSuccess: function(res) {
+			if(res.code != AckId.AckId_Suc)
+			{
+				switch (res.code){
+					case AckId.AckId_SysInCalling:
+						Util.alert("正在召开会议，不允许修改网络!");
+						break;
+					default:
+						Util.alert("配置网络失败！");
+						break;
+				}
+			}
 			this.showKdbh();
 			Util.refreshSelectmenu(this.$el);
 			//alert("保存成功！");
 		},
 		saveError: function() {
-			alert("保存失败！");
+			Util.alert("保存失败！");
 		},
 		
 		showKdbh: function() {

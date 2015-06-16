@@ -4,12 +4,12 @@ define(function(require) {
 	var BdscModel = Model.extend({
 		defaults: {
 			groupNum: 0,
-			audOutPort: 0,
+			outPort: 0,
 			enable: 0,
 			outVol: 0
 		},
 		urls: {
-			"create": "setVolOutControlCfg.psp",
+			"create": "setVolSingleOutCfg.psp",
 			"read": "getVolOutControlCfg.psp"
 		},
 		parse: function(res, options) {

@@ -1,7 +1,7 @@
 {
   "code": 0,
   "data": {
-    "bookInfo": [
+    "venueArr": [
       {
         "addrName": "我是中文",
         "camPort": 0,

@@ -29,7 +29,7 @@ define(function(require) {
 			"vidSdCfg.pushDumpParam.enable": 0,
 			"vidSdCfg.pushDumpParam.url": "",
 			"vidSdCfg.vidEncParam.bitRate": 1920000,
-			"vidSdCfg.vidEncParam.fmt": 7,
+			"vidSdCfg.vidEncParam.fmt": 4,
 			"vidSdCfg.vidEncParam.frameRate": 30,
 			"vidSdCfg.vidEncParam.vidProt": 5,
 			

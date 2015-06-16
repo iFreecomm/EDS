@@ -4,6 +4,8 @@ define(function(require) {
 	var tmpl = require("text!web/index/lxr/add/lxr_add_template.html");
 	var Util = require("web/common/util");
 	var FormUtil = require("web/common/formUtil");
+	var Const = require("web/common/const");
+	var AckId = require("web/common/ackid");
 	
 	var LxrAddView = Mn.ItemView.extend({
 		id: "lxr_add",
@@ -93,17 +95,41 @@ define(function(require) {
 			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;
 			
 			var self = this;
-			this.model.save().done(function() {
-				self.saveSuccess();
+			this.model.save().done(function(res) {
+				self.saveSuccess(res);
 			}).fail(function() {
 				self.saveError();
 			});
 		},
-		saveSuccess: function() {
-			this.cancelLxr();
+		saveSuccess: function(res) {
+			if(res.code != AckId.AckId_Suc)
+			{
+				switch (res.code){
+					case AckId.AckId_NameDup:
+						Util.alert("名称重复,保存联系人失败！");
+						break;
+					case AckId.AckId_NumberDup:
+						Util.alert("号码重复,保存联系人失败！");
+						break;
+					case AckId.AckId_SysInCalling:
+						Util.alert("在召开的会议中，不允许修改！");
+						break;
+					default:
+						Util.alert("保存联系人失败！");
+//						var self = this;
+//						Util.alert("保存联系人失败！").then(function() {
+//							self.cancelLxr();
+//						});
+						break;
+				}
+			}
+			else
+			{
+				this.cancelLxr();
+			}
 		},
 		saveError: function() {
-			alert("保存联系人失败！");
+			Util.alert("保存联系人失败！");
 		},
 		cancelLxr: function() {
 			Util.navigate("lxr", {trigger: true});

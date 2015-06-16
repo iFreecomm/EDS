@@ -109,12 +109,15 @@ define(function() {
 			recordId = noNameLxr.recordId;
 			
 			_.some(allLxr, function(curLxr) {
+				if(equType === Const.EquType_PLAYER) {
+					noNameLxr.addrName = "播放器";
+					return true;
+				}
+				if(equType === Const.EquType_MP) {
+					noNameLxr.addrName = "多画面";
+					return true;
+				}
 				if(equType === curLxr.equType) {
-					if(equType === Const.EquType_PLAYER || equType === Const.EquType_MP) {
-						noNameLxr.addrName = curLxr.addrName;
-						return true;
-					}
-					
 					if(recordId === curLxr.recordId) {
 						if(equType == Const.EquType_SDI && curLxr.camPort != NONE && curLxr.vgaPort != NONE) {
 							if(noNameLxr.camPort != NONE && curLxr.camPort == noNameLxr.camPort) {

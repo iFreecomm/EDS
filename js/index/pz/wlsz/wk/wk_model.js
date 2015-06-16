@@ -16,9 +16,7 @@ define(function(require) {
 			pwd: ""
 		},
 		urls: {
-			"create": "wk1.psp",
-			"update": "setNetInfo.psp",
-			"delete": "wk1.psp",
+			"create": "setNetInfo.psp",
 			"read": "getNetInfo.psp"
 		},
 		parse: function(res) {

@@ -149,9 +149,72 @@ define(function(require) {
 			{label: "不滚动", value: 3}
 		],
 		"fileType":[
-			{label: "所有类型", value: 2},
+			{label: "所有类型", value: Const.FileType_Cnt},
 			{label: "音频", value: 0},
-			{label: "视频", value: 1}
+			{label: "视频", value: 1},
+			{label: "图片", value: 2}
+		],
+		"recordVidProt":[
+			{label: "H.264",   value: Const.VidProt_H264},
+			{label: "H.264HP", value: Const.VidProt_H264HP}
+		],
+		"comPort":[
+			{label: "COM1", value: 0},
+			{label: "COM2", value: 1},
+			{label: "COM3", value: 2},
+			{label: "COM4", value: 3},
+			{label: "COM5", value: 4},
+			{label: "COM6", value: 5},
+			{label: "COM7", value: 6},
+			{label: "COM8", value: 7}
+		],
+		"comMode":[
+			{label: "RS232", value: 0},
+			{label: "RS485", value: 1}
+		],
+		"baudRate":[
+			{label: "2400", value: 0},
+			{label: "4800", value: 1},
+			{label: "9600", value: 2},
+			{label: "14400", value: 3},
+			{label: "19200", value: 4},
+			{label: "38400", value: 5},
+			{label: "57600", value: 6},
+			{label: "115200", value: 7},
+			{label: "230400", value: 8}
+		],
+		"dataBit":[
+			{label: "5", value: 0},
+			{label: "6", value: 1},
+			{label: "7", value: 2},
+			{label: "8", value: 3}
+		],
+		"evenOddCheck":[
+			{label: "None", value: 0},
+			{label: "奇校验", value: 1},
+			{label: "偶校验", value: 2},
+			{label: "标记", value: 3},
+			{label: "空格", value: 4}
+		],
+		"stopBit":[
+			{label: "1", value: 0},
+			{label: "1.5", value: 1},
+			{label: "2", value: 2}
+		],
+		"cameraProt":[
+			{label: "VISCA", value: 0},
+			{label: "PelcoD", value: 1},
+			{label: "PelcoP", value: 2}
+		],
+		"addr":[
+			{label: "0", value: 0},
+			{label: "1", value: 1},
+			{label: "2", value: 2},
+			{label: "3", value: 3},
+			{label: "4", value: 4},
+			{label: "5", value: 5},
+			{label: "6", value: 6},
+			{label: "7", value: 7}
 		]
 	};
 });

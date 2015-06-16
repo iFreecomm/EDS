@@ -1,7 +1,7 @@
 {
 	"code": 0,
 	"data": {
-		"AudGroupMixInfoArr": [
+		"audGroupMixArr": [
 			{
 				"groupNum": 0,
 				"inputNum": 11,

@@ -7,6 +7,7 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!web/index/zkhy/ydyhy/ydyhy_add_form_template.html");
+	var AckId = require("web/common/ackid");
 	
 	var YdyhyAddFormView = Mn.ItemView.extend({
 		id: "ydyhy_add_form",
@@ -112,17 +113,31 @@ define(function(require) {
 			var yhzArr = Radio.channel("yhz").request("getYhzArr");
 			
 			this.model.set("venueId", yhzArr)
-					  .save().done(function() {
-						  self.saveSuccess();
+					  .save().done(function(res) {
+						  self.saveSuccess(res);
 					  }).fail(function() {
 						  self.saveError();
 					  });
 		},
-		saveSuccess: function() {
+		saveSuccess: function(res) {
 			this.cancelMeeting();
+			if(res.code != AckId.AckId_Suc)
+			{
+				switch (res.code){
+					case AckId.AckId_NameDup:
+						Util.alert("名称重复,保存会议失败！");
+						break;
+					case AckId.AckId_NumberDup:
+						Util.alert("会议号重复,保存会议失败！");
+						break;
+					default:
+						Util.alert("保存会议失败！");
+						break;
+				}
+			}
 		},
 		saveError: function() {
-			alert("保存会议失败！");
+			Util.alert("保存会议失败！");
 		},
 		
 		cancelMeeting: function() {
@@ -178,7 +193,7 @@ define(function(require) {
 			}
 		},
 		saveDateTimeDurationToModel: function() {
-			if(this.model.get("meetingType") != 1) return; //不是预约会议
+			if(this.model.get("meetingType") == 2) return; //不是预约会议
 			var datetime = this.getDateTime();
 			var duration = this.getDuration();
 			if(datetime && duration) {
@@ -188,7 +203,7 @@ define(function(require) {
 					duration: duration
 				});
 			} else {
-				alert("日期不合法！");
+				Util.alert("日期不合法！");
 			}
 		},
 		getTempRecordId: function() {

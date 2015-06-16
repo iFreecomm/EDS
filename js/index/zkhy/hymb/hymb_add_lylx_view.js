@@ -1,4 +1,6 @@
 define(function(require) {
+	var $ = require("jquery");
+	var _ = require("underscore");
 	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
@@ -26,7 +28,7 @@ define(function(require) {
 			"#HD_enbStoreHd":  "vidHdCfg.enbStoreHd",
 			"#HD_vidProt": {
 				observe: "vidHdCfg.vidEncParam.vidProt",
-				selectName: "vidProt"
+				selectName: "recordVidProt"
 			},
 			"#HD_fmt": {
 				observe: "vidHdCfg.vidEncParam.fmt",
@@ -63,7 +65,7 @@ define(function(require) {
 			
 			"#SD_vidProt": {
 				observe: "vidSdCfg.vidEncParam.vidProt",
-				selectName: "vidProt"
+				selectName: "recordVidProt"
 			},
 			"#SD_fmt": {
 				observe: "vidSdCfg.vidEncParam.fmt",

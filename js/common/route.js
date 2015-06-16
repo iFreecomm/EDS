@@ -16,10 +16,14 @@ define(function(require) {
 				if(navLeftView && !optNavLeftView) {
 					navLeftRegion.empty();
 				} else if(optNavLeftView) {
-					if(_.isFunction(optNavLeftView) && !(navLeftView instanceof optNavLeftView)) {
-						navLeftRegion.show(new optNavLeftView());
+					if(_.isFunction(optNavLeftView)) {
+						if(!(navLeftView instanceof optNavLeftView)) {
+							navLeftRegion.show(new optNavLeftView());
+						}
 					} else {
-						navLeftRegion.show(optNavLeftView);
+						if(!(navLeftView && navLeftView.id === optNavLeftView.id)) {
+							navLeftRegion.show(optNavLeftView);
+						}
 					}
 				}
 				

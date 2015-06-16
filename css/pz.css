@@ -325,6 +325,7 @@
 #pz_yppz_jhtj .jhtj-btns .btn {
 	width: 90px;
 	height: 35px;
+	padding: 0;
 	margin-right: 10px;
 	margin-bottom: 20px;
 }

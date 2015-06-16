@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var tmpl = require("text!web/index/wjll/video_template.html");
 	

@@ -5,11 +5,11 @@ define(function(require) {
 	var LxrCollection = Backbone.Collection.extend({
 		model: LxrModel,
 		urls: {
-			"read": "getHc.psp"
+			"read": "getMeetingVenueInfo.psp"
 		},
 		parse: function(res) {
-			if(res && res.data && res.data.bookInfo)
-				return res.data.bookInfo;
+			if(res && res.data && res.data.venueArr)
+				return res.data.venueArr;
 			return [];
 		}
 	});
