@@ -75,30 +75,48 @@
 	text-decoration: none;
 }
 /******文本和图标******/
-.navLeft .nav-text {
-	padding-left: 58px;
+.navLeft .nav-icon {
+	float: left;
+	width: 58px;
+	height: 57px;
+	background-image: url(../img/navLeft/icon.png);
 }
-.navLeft .nav-ydyhy {
-	background: url(../img/navLeft/1.png) no-repeat 15px 10px;
-}
-.navLeft .nav-hyjl {
-	background: url(../img/navLeft/2.png) no-repeat 15px 10px;
-}
-.navLeft .nav-yyhy {
-	background: url(../img/navLeft/3.png) no-repeat 15px 10px;
-}
-.navLeft .nav-hymb {
-	background: url(../img/navLeft/4.png) no-repeat 15px 10px;
-}
+.navLeft .nav-ydyhy { background-position: -1073px -3px; }
+.navLeft .nav-hyjl { background-position: -1131px -3px; }
+.navLeft .nav-yyhy { background-position: -1191px -3px; }
+.navLeft .nav-hymb { background-position: -1254px -3px; }
+
+.navLeft .nav-hcddt { background-position: -235px -3px; }
+.navLeft .nav-tjhc { background-position: -55px -3px; }
+.navLeft .nav-dhm { background-position: -113px -3px; }
+.navLeft .nav-spjz { background-position: 8px -3px; }
+.navLeft .nav-ypclq { background-position: -173px -3px; }
+
+.navLeft .nav-camera { background-position: -352px -3px; }
+
+.navLeft .nav-spsr { background-position: -352px -3px; }
+.navLeft .nav-spsc { background-position: -352px -3px; }
+.navLeft .nav-yppz { background-position: -173px -3px; }
+.navLeft .nav-hcjl { background-position: -472px -3px; }
+.navLeft .nav-cyml { background-position: -528px -3px; }
+.navLeft .nav-wlsz { background-position: -591px -3px; }
+.navLeft .nav-ypsz { background-position: -649px -3px; }
+.navLeft .nav-gpsz { background-position: -709px -3px; }
+.navLeft .nav-rqsj { background-position: -769px -3px; }
+.navLeft .nav-dyxx { background-position: -831px -3px; }
+.navLeft .nav-aqbm { background-position: -891px -3px; }
+.navLeft .nav-xtgx { background-position: -951px -3px; }
+.navLeft .nav-ccsz { background-position: -1011px -3px; }
+
 /******选中和浮动效果-黄色背景图片-图标切换******/
 .navLeft a:hover,
 .navLeft a.active {
 	color: #FBFBFB;
 	background: url(../img/navLeft/bg.png) no-repeat 0 0;
 }
-.navLeft a:hover .nav-text,
-.navLeft a.active .nav-text {
-	background-position: 15px -50px;
+.navLeft a:hover .nav-icon,
+.navLeft a.active .nav-icon {
+	background-position-y: -63px;
 }
 /******右侧内容样式******/
 .contentRight {
