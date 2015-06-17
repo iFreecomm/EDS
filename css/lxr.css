@@ -12,10 +12,9 @@
 #lxr_add .formBox {
 	position: relative;
 	width: 60%;
-	min-width: 800px;
-	max-width: 1050px;
+	min-width: 650px;
+	max-width: 900px;
 	padding-top: 50px;
-	padding-right: 150px;
 	margin: 0 auto;
 }
 #lxr_add .formLine[equType],
@@ -27,11 +26,9 @@
 }
 
 #lxr_add .form-btns {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	width: 140px;
+	margin-left: 260px;
+	margin-bottom: 20px;
 }
 #lxr_add .form-btns .btn {
-	margin-top: 10px;
+	margin-right: 10px;
 }

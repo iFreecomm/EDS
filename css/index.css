@@ -54,6 +54,7 @@
 	float: left;
 	height: 100%;
 	background: #F0F0F0;
+	overflow: hidden;
 }
 .navLeft ul {
 	width: 200px;
@@ -96,7 +97,6 @@
 
 .navLeft .nav-spsr { background-position: -352px -3px; }
 .navLeft .nav-spsc { background-position: -352px -3px; }
-.navLeft .nav-yppz { background-position: -173px -3px; }
 .navLeft .nav-hcjl { background-position: -472px -3px; }
 .navLeft .nav-cyml { background-position: -528px -3px; }
 .navLeft .nav-wlsz { background-position: -591px -3px; }

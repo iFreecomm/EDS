@@ -4,6 +4,7 @@ define(function(require) {
 	var TjhcRoute = require("web/index/hykz/tjhc/tjhc_route");
 	var SpjzRoute = require("web/index/hykz/spjz/spjz_route");
 	var DhmRoute = require("web/index/hykz/dhm/dhm_route");
+	var YpclqRoute = require("web/index/hykz/ypclq/ypclq_route");
 	
 	var HykzRouter = Mn.AppRouter.extend({
 		initialize: function(options) {
@@ -44,7 +45,9 @@ define(function(require) {
 		},
 		
 		ypclq: function() {
-			
+			new YpclqRoute({
+				container: this.container
+			});
 		}
 	});
 	

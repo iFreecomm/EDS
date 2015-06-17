@@ -11,7 +11,8 @@ define(function(require) {
 		template: Handlebars.compile(tmpl),
 		events: {
 			"click .btn": "clickBtn",
-			"click .delBtn": "delLxr"
+			"click .delBtn": "delLxr",
+			"click .box-container a": "disableDefault"
 		},
 		
 		onRender: function() {
@@ -71,6 +72,10 @@ define(function(require) {
 				Util.alert("删除会场失败！");
 			});
 			
+		},
+		
+		disableDefault: function(e) {
+			e.preventDefault();
 		}
 	});
 	

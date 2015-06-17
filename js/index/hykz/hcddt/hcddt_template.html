@@ -1,3 +1,34 @@
+<div class="right_container">
+	<div class="video-container">
+		<img src="img/camera/cover.png" width="100%" alt="player"/>
+	</div>
+
+	<!--<div class="circleMenu">
+		<ul>
+			<li><img src="img/form/circle/delicious.png" alt="" /></li>
+			<li><img src="img/form/circle/digg.png" alt="" /></li>
+			<li><img src="img/form/circle/google.png" alt="" /></li>
+			<li><img src="img/form/circle/stumbleupon.png" alt="" /></li>
+			<li><img src="img/form/circle/technorati.png" alt="" /></li>
+			<li><img src="img/form/circle/twitter.png" alt="" /></li>
+		</ul>			
+	</div>-->
+</div>
+
+<div class="left_container">
+	<ul class="box-container cf">
+		{{#each items}}
+			<li class="fl">
+				<a class="{{getLxrClass equType}}" href="###">
+					<div class="box-head">{{addrName}}</div>
+					<div class="box-body">{{getLxrInfo equType}}</div>
+				</a>
+				<button type="button" class="delBtn" data-id="{{recordId}}"></button>
+			</li>
+		{{/each}}
+	</ul>
+</div>
+
 <div class="btn-area">
 	<button type="button" getHref="getShieldFlag.psp" setHref="setShieldFlag.psp" class="btn byBtn">闭音</button>
 	<button type="button" getHref="getMuteFlag.psp" setHref="setMuteFlag.psp" class="btn jyBtn">静音</button>
@@ -6,26 +37,3 @@
 	<button type="button" setHref="abc.psp" class="btn hcjlBtn">播放会场纪律</button>
 	<button type="button" setHref="endMeeting.psp" class="btn jshyBtn">结束会议</button>
 </div>
-<ul class="box-container cf">
-	<!--<li class="video-container fl"></li>-->
-	{{#each items}}
-		<li class="fl">
-			<a class="{{getLxrClass equType}}" href="###">
-				<div class="box-head">{{addrName}}</div>
-				<div class="box-body">{{getLxrInfo equType}}</div>
-			</a>
-			<button type="button" class="delBtn" data-id="{{recordId}}"></button>
-		</li>
-	{{/each}}
-</ul>
-
-<!--<div class="circleMenu">
-	<ul>
-		<li><img src="img/form/circle/delicious.png" alt="" /></li>
-		<li><img src="img/form/circle/digg.png" alt="" /></li>
-		<li><img src="img/form/circle/google.png" alt="" /></li>
-		<li><img src="img/form/circle/stumbleupon.png" alt="" /></li>
-		<li><img src="img/form/circle/technorati.png" alt="" /></li>
-		<li><img src="img/form/circle/twitter.png" alt="" /></li>
-	</ul>			
-</div>-->

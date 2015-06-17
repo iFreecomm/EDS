@@ -37,7 +37,20 @@ define(function(require) {
 			this.getRegion("contentRight").show(options.contentRightView, options);
 			this.showChildView("modalContainer", new ModalView());
 		},
+		onShow: function() {
+			var $navLeft = this.$(".navLeft");
+			$navLeft.mousewheel(function(event, delta) {
+				var top = $navLeft.scrollTop();
+				if(delta > 0) {
+					top -= 20;
+				} else {
+					top += 20;
+				}
+				$navLeft.scrollTop(top);
+			});
+		},
 		onDestroy: function() {
+			this.$(".navLeft").unmousewheel();
 			Radio.channel("index").reset();
 		},
 		

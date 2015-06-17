@@ -43,4 +43,15 @@
 		height: 90px;
 		margin-top: 15px;
 	}
+	.portal-box .zk img.css3 {
+		width: 22px;
+		height: 22px;
+		top: 46px;
+		margin-left: -28px;
+	}
+	.portal-box .hykz img.css3 {
+		width: 22px;
+		height: 22px;
+		top: 63px;
+	}
 }
