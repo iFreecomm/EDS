@@ -41,10 +41,7 @@ define(function(require) {
 			this.model = new LoginModel();
 		},
 		onRender: function() {
-			var self = this;
-			this.$el.on("keyup", function(e) {
-				FormUtil.checkInput($(e.target), self.checkOptions);
-			});
+			this.stickit();
 		},
 		
 		checkInput: function(e) {
