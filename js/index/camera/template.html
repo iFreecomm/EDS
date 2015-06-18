@@ -19,10 +19,10 @@
 		<ul>
 			{{#each yzwState}}
 				{{#eq this 2}}
-					<li class="using"><span>{{addOne @index}}</span><img src="img/camera/cover.png" width="224" height="119" alt="cover"/></li>
+					<li class="using"><span>{{addOne @index}}</span><img src="img/camera/cover.png" alt="cover"/></li>
 				{{/eq}}
 				{{#eq this 1}}
-					<li class="used"><span>{{addOne @index}}</span><img src="img/camera/cover.png" width="224" height="119" alt="cover"/></li>
+					<li class="used"><span>{{addOne @index}}</span><img src="img/camera/cover.png" alt="cover"/></li>
 				{{/eq}}
 				{{#eq this 0}}
 					<li class="unused"><span>{{addOne @index}}</span></li>
