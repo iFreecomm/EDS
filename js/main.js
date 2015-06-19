@@ -3,6 +3,7 @@ requirejs.config({
     paths: {
     	web: "../../../js",
         mousewheel: "jquery.mousewheel",
+        customIP: "jquery.customIP",
         jplayer: "jplayer/jquery.jplayer",
         jqueryui: "jqueryui/jquery-ui",
         datepickerzhCN: "jqueryui/datepicker-zh-CN",

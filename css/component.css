@@ -192,3 +192,39 @@
 	display: block;
 	right: 100%;
 }
+
+/*************箭头样式***************/
+.ip-container {
+	display: inline-block;
+	width: 200px;
+	padding-left: 1px;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.075) inset;
+	transition: border linear .2s, box-shadow linear .2s;
+	background: #FFF url(../img/ip_bg.png) no-repeat 46px center;
+	vertical-align: middle;
+}
+.ip-container.active {
+	border-color: #FBCB09;
+	box-shadow: 0 0 5px 0 rgba(251,203,9,0.5) inset;
+}
+
+.ip-container .ip-part {
+	float: left;
+	width: 43px;
+	height: 32px;
+	line-height: 32px;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+	margin: 2px 0 2px 8px;
+	text-align: center;
+	ime-mode: disabled;
+}
+.ip-container .ip-part:first-child {
+	margin-left: 0;
+}
+.ip-container .ip-part:focus {
+	box-shadow: none;
+}

@@ -65,6 +65,7 @@ define(function(require) {
 		onRender: function() {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.$(".ip").initIP();
 			this.showKdbh();
 			this.$("h3").children("span").text(this.options.device+1);
 			this.changeNetType();

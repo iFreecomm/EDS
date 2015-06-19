@@ -50,6 +50,7 @@ define(function(require) {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 			this.$(".spinner").spinner();
+			this.$(".ip").initIP();
 		},
 		onAttach: function() {
 			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);

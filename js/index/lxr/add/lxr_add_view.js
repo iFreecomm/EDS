@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var tmpl = require("text!web/index/lxr/add/lxr_add_template.html");
@@ -6,6 +7,8 @@ define(function(require) {
 	var FormUtil = require("web/common/formUtil");
 	var Const = require("web/common/const");
 	var AckId = require("web/common/ackid");
+	
+	require("customIP");
 	
 	var LxrAddView = Mn.ItemView.extend({
 		id: "lxr_add",
@@ -78,6 +81,7 @@ define(function(require) {
 		onRender: function() {
 			this.stickit();
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			this.$(".ip").initIP();
 			this.changeEquType();
 		},
 		onAttach: function() {
