@@ -30,38 +30,19 @@
 			
 			$input.after($ipContainer);
 			
-			$ipContainer.on("input change", ".ip-part", function(e) {
-				var $part = $(this);
-				var ipStr = $part.val();
-				if(!ipStr) return;
-				var ipNumMatch = ipStr.match(/[0-9]/g) || [0];
-				var ipStrNum = ipNumMatch.join("");
-				var ipNum = parseInt(ipStrNum, 10);
-				while(ipNum > 255) {
-					ipStrNum = ipStrNum.slice(0, ipStrNum.length - 1);
-					ipNum = parseInt(ipStrNum, 10);
-				}
-				if(ipStr !== ipNum.toString()) {
-					$part.val(ipNum)
-				};
-				
-				var ipVal = $input.val();
-				var ipValArr = ipVal.split(".");
-				while(ipValArr.length < 4) {
-					ipValArr.push(0);
-				}
-				ipValArr[$part.index()] = ipNum;
-				$input.val(ipValArr.join(".")).change();
-			}).on("blur", ".ip-part", function(e) {
+			$ipContainer.on("input change", ".ip-part", inputChange)
+			.on("blur", ".ip-part", function(e) {
 				var $part = $(this);
 				var ipStr = $part.val();
 				if(!ipStr) {
 					$part.val(0);
 				}
 				$ipContainer.removeClass("active");
-			}).on("focus", ".ip-part", function(e) {
+			})
+			.on("focus", ".ip-part", function(e) {
 				$ipContainer.addClass("active");
-			}).on("keydown", ".ip-part", function(e) {
+			})
+			.on("keydown", ".ip-part", function(e) {
 				var code = e.keyCode;
 				
 				if( (code > 32 && code < 41) ||
@@ -77,7 +58,32 @@
 				}
 				
 				e.preventDefault();
-			});
+			}).children().on("propertychange", inputChange); //不支持事件冒泡，只能绑定在自己身上
+			
+			function inputChange(e) {
+				var $part = $(this);
+				var ipStr = $part.val();
+				if(ipStr) {
+					var ipNumMatch = ipStr.match(/[0-9]/g) || [0];
+					var ipStrNum = ipNumMatch.join("");
+					var ipNum = parseInt(ipStrNum, 10);
+					while(ipNum > 255) {
+						ipStrNum = ipStrNum.slice(0, ipStrNum.length - 1);
+						ipNum = parseInt(ipStrNum, 10);
+					}
+					if(ipStr !== ipNum.toString()) {
+						$part.val(ipNum)
+					};
+				}
+				
+				var ipVal = $input.val();
+				var ipValArr = ipVal.split(".");
+				while(ipValArr.length < 4) {
+					ipValArr.push(0);
+				}
+				ipValArr[$part.index()] = ipNum || 0;
+				$input.val(ipValArr.join(".")).change();
+			}
 		});
 	};
 	

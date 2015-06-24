@@ -30,17 +30,17 @@
 	<div class="formBox-column fl">
 		<div class="formCell">
 			<span class="descTxt">启用争辩状态处理</span>
-			<input type="checkbox" name="aecEn" id="aecEn"/>
-			<label for="aecEn" class="checkbox-label"></label>
+			<input type="checkbox" name="zbEn" id="zbEn"/>
+			<label for="zbEn" class="checkbox-label"></label>
 		</div>
 		<div class="formCell">
 			<span class="descTxt">两个或两个以上麦克风同时持续讲话</span>
-			<input type="text" name="callBeginPort" id="callBeginPort" class="spinner" />
-			<span class="descTxt">秒以上时间</span>
+			<input type="text" name="duration1" id="duration1" class="spinner" data-min="100" data-max="9999" data-step="100"/>
+			<span class="descTxt">毫秒以上时间</span>
 		</div>
 		<div class="formCell">
 			<span class="descTxt">自动切换到摄像机</span>
-			<select name="netType1" id="netType1">
+			<select name="camera1" id="camera1">
 				<option data-stickit-bind-val="0">摄像机1</option>
 				<option data-stickit-bind-val="1">摄像机2</option>
 				<option data-stickit-bind-val="2">摄像机3</option>
@@ -61,17 +61,17 @@
 	<div class="formBox-column fl">
 		<div class="formCell">
 			<span class="descTxt">启用静默状态处理</span>
-			<input type="checkbox" name="aecEn" id="aecEn"/>
-			<label for="aecEn" class="checkbox-label"></label>
+			<input type="checkbox" name="jmEn" id="jmEn"/>
+			<label for="jmEn" class="checkbox-label"></label>
 		</div>
 		<div class="formCell">
 			<span class="descTxt">所有麦克风均没有声音输入，持续</span>
-			<input type="text" name="callBeginPort" id="callBeginPort" class="spinner" />
-			<span class="descTxt">秒以上时间</span>
+			<input type="text" name="duration2" id="duration2" class="spinner" data-min="100" data-max="9999" data-step="100"/>
+			<span class="descTxt">毫秒以上时间</span>
 		</div>
 		<div class="formCell">
 			<span class="descTxt">自动切换到摄像机</span>
-			<select name="netType2" id="netType2">
+			<select name="camera2" id="camera2">
 				<option data-stickit-bind-val="0">手动设置</option>
 				<option data-stickit-bind-val="1">动态获取(DHCP)</option>
 				<option data-stickit-bind-val="2">宽带拨号(PPPoE/ADSL)</option>

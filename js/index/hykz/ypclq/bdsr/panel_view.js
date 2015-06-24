@@ -1,5 +1,6 @@
 define(function(require) {
 	var Mn = require("marionette");
+	var Radio = require("radio");
 	var tmpl = require("text!web/index/hykz/ypclq/bdsr/panel_template.html");
 	
 	var BdsrCollection = require("web/index/hykz/ypclq/bdsr/bdsr_collection");
@@ -19,6 +20,14 @@ define(function(require) {
 				self.showChildView("container", new BdsrCollectionView({
 					collection: collection
 				}));
+				Radio.channel("ypclq").on("refresh", self._refresh, self);
+			});
+		},
+		
+		_refresh: function(data) {
+			var bdsrArr = data.bdsr;
+			this.$(".slider").each(function() {
+				$(this).slider("value", 28);
 			});
 		}
 	});

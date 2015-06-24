@@ -14,7 +14,7 @@ define(function(require) {
 			incPriLev: 0,
 			bandwidth: 384000,
 			e164: "",
-			ip: "",
+			ip: "0.0.0.0",
 			url: "",
 			storNum: 0
 		},

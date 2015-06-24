@@ -270,6 +270,19 @@ define(function() {
 		$(this).change();
 	}
 	
+	Util.initSpinner = function($spinner) {
+		var self = this;
+		this._getReal($spinner, ".spinner").each(function() {
+			var $this = $(this);
+			$this.spinner({
+				min: $this.data("min"),
+				max: $this.data("max"),
+				step: $this.data("step") || 1
+			});
+		});
+		return this;
+	}
+	
 	/**
 	 * 使用jqueryui中的slider控件
 	 * 比较特殊，因为每一个slider的配置信息可能不一样

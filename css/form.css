@@ -66,6 +66,7 @@ input[type=password]:focus {
 /******spinner文本输入框样式******/
 input.spinner {
 	height: 30px;
+	line-height: 16px;
 	width: 100px;
 	border: none;
 	background: none;

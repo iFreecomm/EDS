@@ -1,15 +1,23 @@
 define(function(require) {
 	var Mn = require("marionette");
+	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/hykz/ypclq/yyjl/yyjl_template.html");
 	
 	var YyjlView = Mn.ItemView.extend({
 		id: "hykz_ypclq_yyjl",
-		template: tmpl,
+		template: Handlebars.compile(tmpl),
 		bindings: {
-			"#aecEn": "aecEn",
-			"#agcEn": "agcEn",
-			"[name=aecMode]" : "aecMode"
+			"#duration": "duration",
+			"#minimum": "minimum",
+			
+			"#zbEn": "zbEn",
+			"#duration1": "duration1",
+			"#camera1": "camera1",
+			
+			"#jmEn": "jmEn",
+			"#duration2": "duration2",
+			"#camera2": "camera2"
 		},
 		ui: {
 			formBox: ".formBox",
@@ -29,9 +37,11 @@ define(function(require) {
 			var $el = this.$el;
 			Util.initCheckboxClass($el)
 				.addCheckboxEvent($el)
-				.initSlider($el);
-			this.$(".spinner").spinner();
+				.initSlider($el)
+				.initSpinner($el);
 			
+			this.$(".spinner").unmousewheel()
+				.on("spinstop", function() { $(this).change(); });
 			this.ui.pzTableContainer.append(this.getPzTable());
 		},
 		onAttach: function() {
@@ -45,6 +55,7 @@ define(function(require) {
 		},
 		
 		save: function() {
+			console.log("save start");
 			this.model.save()
 			.done(function() {
 				//success

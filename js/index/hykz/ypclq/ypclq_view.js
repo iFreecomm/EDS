@@ -1,5 +1,6 @@
 define(function(require) {
 	var Mn = require("marionette");
+	var Radio = require("radio");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/hykz/ypclq/ypclq_template.html");
 	
@@ -69,6 +70,28 @@ define(function(require) {
 		
 		onAttach: function() {
 			Util.activeLink();
+		},
+		
+		onShow: function() {
+			//每隔1秒刷新实时信息
+			this._loopTimer();
+		},
+		
+		onDestroy: function() {
+			clearTimeout(this.timerId);
+		},
+		
+		_loopTimer: function() {
+			var self = this;
+			_getRealtimeInfo();
+			
+			function _getRealtimeInfo() {
+				$.getJSON("getYpclq.psp", function(realtime) {
+					Radio.channel("ypclq").trigger("refresh", realtime.data);
+				});
+				
+				self.timerId = setTimeout(_getRealtimeInfo, 1000);
+			}
 		}
 	});
 	

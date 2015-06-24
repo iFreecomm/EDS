@@ -3,13 +3,20 @@ define(function(require) {
 	
 	var YyjlModel = Model.extend({
 		defaults: {
-			aecEn: 0,
-			aecMode: 0,
-			agcEn: 0
+			duration: 1,
+			minimum: 10,
+			
+			zbEn: 0,
+			duration1: 100,
+			camera1: 0,
+			
+			jmEn: 0,
+			duration2: 100,
+			camera2: 0
 		},
 		urls: {
-			"create": "setAecAgcCfg.psp",
-			"read": "getAecAgcCfg.psp"
+			"create": "setYyjlCfg.psp",
+			"read": "getYyjlCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

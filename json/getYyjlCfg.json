@@ -1,0 +1,15 @@
+{
+	"code": 0,
+	"data": {
+		"duration": 5,
+		"minimum": 60,
+		
+		"zbEn": 1,
+		"duration1": 1100,
+		"camera1": 3,
+		
+		"jmEn": 1,
+		"duration2": 2200,
+		"camera2": 1
+	}
+}
