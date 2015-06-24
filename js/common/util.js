@@ -296,7 +296,8 @@ define(function() {
 			range: "min",
 			value: +$sliderValue.text(),
 			min: $slider.data("min"),
-			max: $slider.data("max")
+			max: $slider.data("max"),
+			step: $slider.data("step") || 1
 		};
 		if($slider.data("vertical")) {
 			options.orientation = "vertical";

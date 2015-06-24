@@ -118,6 +118,7 @@
 .pzTable thead th {
 	font-weight: normal;
 	background: #1E89B5;
+	white-space: nowrap;
 }
 .pzTable tbody th {
 	font-weight: normal;
@@ -319,8 +320,82 @@
 
 	/**********音频配置中语音激励模块样式开始**********/
 #yyjl_container {
+	position: relative;
 	overflow: hidden;
 	height: 240px;
+}
+
+#yyjl_container .pzTable-container {
+	margin: 10px 20px;
+}
+#yyjl_container .pzTable th {
+	font-size: 14px;
+}
+
+#yyjl_container .ui-widget {
+	font-size: 16px;
+}
+#yyjl_container .slider.ui-slider-horizontal {
+	width: 265px;
+}
+#yyjl_container .slide-container .formCell {
+	margin-left: 25px;
+	margin-top: 25px;
+	width: 345px;
+}
+#yyjl_container .slide-container span {
+	font-size: 16px;
+	color: #FFF;
+}
+#yyjl_container .slide-container span.name {
+	margin-left: 10px;
+}
+#yyjl_container .slide-container .form-btns {
+	float: right;
+	margin-top: 25px;
+	margin-right: 20px;
+}
+#yyjl_container .slide-container .form-btns .btn {
+	font-size: 14px;
+	padding: .2em .5em;
+}
+
+#yyjl_container .formBox {
+	position: absolute;
+	left: 0;
+	top: 240px;
+	z-index: 999;
+	width: 100%;
+	background: #244959;
+}
+#yyjl_container .formBox span.descTxt {
+	font-size: 14px;
+	color: #FFF;
+	line-height: 38px;
+	vertical-align: middle;
+	margin: 0 2px;
+}
+#yyjl_container .formBox-column {
+	width: 400px;
+	padding-left: 20px;
+}
+#yyjl_container .spinner {
+	width: 20px;
+	height: 20px;
+	padding: 0;
+}
+#yyjl_container .formBox .closeBtn {
+	position: absolute;
+	top: 25px;
+	right: 30px;
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	background: url(../img/form/btn/del.png) no-repeat center;
+	z-index: 1;
+}
+#yyjl_container .formBox .closeBtn:hover {	
+	background-color: #F47900;
 }
 	/**********音频配置中语音激励模块样式结束**********/
 

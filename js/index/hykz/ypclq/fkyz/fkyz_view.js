@@ -2,7 +2,6 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/hykz/ypclq/fkyz/fkyz_template.html");
-	var FkyzModel = require("web/index/hykz/ypclq/fkyz/fkyz_model");
 	
 	var FkyzView = Mn.ItemView.extend({
 		id: "hykz_ypclq_fkyz",

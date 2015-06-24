@@ -7,7 +7,7 @@
 	position: relative;
 	overflow: hidden;
 	height: 100%;
-	padding-bottom: 50px;
+	padding-bottom: 35px;
 }
 .yzw_inner_container {
 	height: 100%;
@@ -64,6 +64,8 @@
 	text-align: center;
 }
 .yzw_container .btn-area .btn {
+	font-size: 14px;
+	padding: 5px 8px;
 	margin: 2px 5px;
 }
 .yzw_container .btn-area .btn.disabled:hover {

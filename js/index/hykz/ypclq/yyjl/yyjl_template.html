@@ -1,0 +1,81 @@
+<div class="pzTable-container"></div>
+
+<div class="slide-container cf">
+	<div class="formCell fl">
+		<span class="name">持续讲话激励时间</span>
+		<div class="fieldBox">
+			<div class="slider" data-min="1" data-max="10"></div>
+			<span class="sliderValue" id="duration" contenteditable="true"></span>
+			<span>s</span>
+		</div>
+	</div>
+	
+	<div class="formCell fl">
+		<span class="name">激励MIC音量最小值</span>
+		<div class="fieldBox">
+			<div class="slider" data-min="10" data-max="100" data-step="10"></div>
+			<span class="sliderValue" id="minimum" contenteditable="true"></span>
+			<span>dB</span>
+		</div>
+	</div>
+	
+	<div class="form-btns">
+		<button type="button" class="btn more">更多...</button>
+	</div>
+</div>
+	
+<div class="formBox cf">
+	<button type="button" class="btn closeBtn"></button>
+	
+	<div class="formBox-column fl">
+		<div class="formCell">
+			<span class="descTxt">启用争辩状态处理</span>
+			<input type="checkbox" name="aecEn" id="aecEn"/>
+			<label for="aecEn" class="checkbox-label"></label>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">两个或两个以上麦克风同时持续讲话</span>
+			<input type="text" name="callBeginPort" id="callBeginPort" class="spinner" />
+			<span class="descTxt">秒以上时间</span>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">自动切换到摄像机</span>
+			<select name="netType1" id="netType1">
+				<option data-stickit-bind-val="0">摄像机1</option>
+				<option data-stickit-bind-val="1">摄像机2</option>
+				<option data-stickit-bind-val="2">摄像机3</option>
+				<option data-stickit-bind-val="3">摄像机4</option>
+				<option data-stickit-bind-val="4">摄像机5</option>
+				<option data-stickit-bind-val="5">摄像机6</option>
+				<option data-stickit-bind-val="6">摄像机7</option>
+				<option data-stickit-bind-val="7">摄像机8</option>
+				<option data-stickit-bind-val="8">摄像机9</option>
+				<option data-stickit-bind-val="9">摄像机10</option>
+				<option data-stickit-bind-val="10">摄像机11</option>
+				<option data-stickit-bind-val="11">摄像机12</option>
+				<option data-stickit-bind-val="12">摄像机13</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="formBox-column fl">
+		<div class="formCell">
+			<span class="descTxt">启用静默状态处理</span>
+			<input type="checkbox" name="aecEn" id="aecEn"/>
+			<label for="aecEn" class="checkbox-label"></label>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">所有麦克风均没有声音输入，持续</span>
+			<input type="text" name="callBeginPort" id="callBeginPort" class="spinner" />
+			<span class="descTxt">秒以上时间</span>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">自动切换到摄像机</span>
+			<select name="netType2" id="netType2">
+				<option data-stickit-bind-val="0">手动设置</option>
+				<option data-stickit-bind-val="1">动态获取(DHCP)</option>
+				<option data-stickit-bind-val="2">宽带拨号(PPPoE/ADSL)</option>
+			</select>
+		</div>
+	</div>
+</div>
