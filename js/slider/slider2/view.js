@@ -39,6 +39,11 @@ define(function(require) {
 			.fail(function() {
 				Util.alert("保存失败！");
 			});
+		},
+		
+		_refresh: function(value) {
+			value = Math.floor(Math.random() * 32) + 1;
+			this.$(".color").stop().animate({height: value * 225 / 32}, 1000);
 		}
 	});
 	

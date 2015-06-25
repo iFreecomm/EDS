@@ -330,14 +330,14 @@ define(function() {
 		$(this).siblings(".sliderValue").change();
 	}
 	Util._slideVerticalEvent = function(event, ui) {
-		var $this = $(this);
-		var value = _.isNumber(ui.value) ? ui.value : $this.slider("value");
-		
-		var min = $this.data("min");
-		var max = $this.data("max");
-		var height = $this.data("height");
-		
-		$this.siblings(".color").height((value - min) * height / (max - min));
+//		var $this = $(this);
+//		var value = _.isNumber(ui.value) ? ui.value : $this.slider("value");
+//		
+//		var min = $this.data("min");
+//		var max = $this.data("max");
+//		var height = $this.data("height");
+//		
+//		$this.siblings(".color").height((value - min) * height / (max - min));
 	}
 	Util._slideVerticalChangeEvent = function(event, ui) {
 		$(this).siblings(".sliderValue").text(ui.value).change();
