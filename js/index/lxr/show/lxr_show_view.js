@@ -22,14 +22,13 @@ define(function(require) {
 		confirmDelLxr: function(e) {
 			e.preventDefault();
 			var $btn = $(e.target);
-			var id = $btn.data("id");
 			
-			Util.confirm("确认删除吗？").then(_.bind(this.delLxr, this, id));
+			Util.confirm("确认删除吗？").then(_.bind(this.delLxr, this, $btn));
 		},
 		
-		delLxr: function(id) {
+		delLxr: function($btn) {
 			$.getJSON("delAddrBook.psp", Util.encode({
-				recordId: id
+				recordId: $btn.data("id")
 			})).done(function(res) {
 				if(res.code === 0) {
 					$btn.parents("li").remove();

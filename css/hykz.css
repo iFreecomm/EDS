@@ -329,7 +329,23 @@
 	margin: 10px 20px;
 }
 #yyjl_container .pzTable th {
+	background-color: #244959;
+}
+#yyjl_container .pzTable th.used {
 	font-size: 14px;
+	background-color: #1E89B5;
+}
+#yyjl_container .pzTable td {
+	background-color: #244959;
+}
+#yyjl_container .pzTable td.used {
+	background-color: #15577E;
+}
+#yyjl_container .pzTable td.locked {
+	background-color: #F47900;
+}
+#yyjl_container .pzTable td.active {
+	background-color: #2AB100;
 }
 
 #yyjl_container .ui-widget {
@@ -338,10 +354,12 @@
 #yyjl_container .slider.ui-slider-horizontal {
 	width: 265px;
 }
+#yyjl_container .slide-container {
+	margin-top: 20px;
+}
 #yyjl_container .slide-container .formCell {
-	margin-left: 25px;
-	margin-top: 25px;
-	width: 345px;
+	width: 380px;
+	padding-left: 25px;
 }
 #yyjl_container .slide-container span {
 	font-size: 16px;
@@ -350,23 +368,23 @@
 #yyjl_container .slide-container span.name {
 	margin-left: 10px;
 }
-#yyjl_container .slide-container .form-btns {
-	float: right;
-	margin-top: 25px;
-	margin-right: 20px;
-}
-#yyjl_container .slide-container .form-btns .btn {
-	font-size: 14px;
-	padding: .2em .5em;
-}
 
 #yyjl_container .formBox {
+	display: none;
 	position: absolute;
 	left: 0;
 	top: 240px;
-	z-index: 999;
+	z-index: 99;
 	width: 100%;
+	height: 208px;
+	padding-top: 30px;
 	background: #244959;
+}
+#yyjl_container .formBox select {
+	width: 150px;
+}
+#yyjl_container .formBox span.ui-selectmenu-text {
+  padding: 3px 34px 3px 16px;
 }
 #yyjl_container .formBox span.descTxt {
 	font-size: 14px;
@@ -384,18 +402,13 @@
 	height: 20px;
 	padding: 0;
 }
-#yyjl_container .formBox .closeBtn {
+#yyjl_container .more {
 	position: absolute;
-	top: 25px;
-	right: 30px;
-	width: 26px;
-	height: 26px;
-	padding: 0;
-	background: url(../img/form/btn/del.png) no-repeat center;
-	z-index: 1;
-}
-#yyjl_container .formBox .closeBtn:hover {	
-	background-color: #F47900;
+	top: 210px;
+	right: 5px;
+	z-index: 999;
+	padding: .2em .5em;
+	font-size: 14px;
 }
 	/**********音频配置中语音激励模块样式结束**********/
 

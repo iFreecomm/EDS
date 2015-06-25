@@ -1,0 +1,17 @@
+{
+	"code": 0,
+	"data": {
+		"discussCfg": {
+			"discussEnable": 1,
+			"time": 1100,
+			"vidInPort": 3
+		},
+		
+		"silenceCfg": {
+			"silenceEnable": 1,
+			"time": 2200,
+			"vidInPort": 1
+		}
+	}
+}
+
