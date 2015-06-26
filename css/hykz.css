@@ -328,17 +328,19 @@
 #yyjl_container .pzTable-container {
 	margin: 10px 20px;
 }
-#yyjl_container .pzTable th {
-	background-color: #244959;
+#yyjl_container .pzTable {
+	width: auto;
 }
-#yyjl_container .pzTable th.used {
+#yyjl_container .pzTable th span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 47px;
 	font-size: 14px;
-	background-color: #1E89B5;
+	white-space: nowrap;
+	overflow: hidden;
 }
 #yyjl_container .pzTable td {
-	background-color: #244959;
-}
-#yyjl_container .pzTable td.used {
+	width: 47px;
 	background-color: #15577E;
 }
 #yyjl_container .pzTable td.locked {
@@ -384,7 +386,7 @@
 	width: 150px;
 }
 #yyjl_container .formBox span.ui-selectmenu-text {
-  padding: 3px 34px 3px 16px;
+    padding: 3px 34px 3px 16px;
 }
 #yyjl_container .formBox span.descTxt {
 	font-size: 14px;

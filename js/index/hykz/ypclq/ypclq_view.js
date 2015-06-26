@@ -1,4 +1,5 @@
 define(function(require) {
+	var $ = require("jquery");
 	var Mn = require("marionette");
 	var Radio = require("radio");
 	var Util = require("web/common/util");
@@ -70,6 +71,11 @@ define(function(require) {
 		
 		onAttach: function() {
 			Util.activeLink();
+			var self = this;
+			$(".contentRight").on("scroll", function() {
+				self._stopTimer();
+				self._loopTimer(2000);
+			});
 		},
 		
 		onShow: function() {
@@ -78,12 +84,15 @@ define(function(require) {
 		},
 		
 		onDestroy: function() {
-			clearTimeout(this.timerId);
+			this._stopTimer();
+			$(".contentRight").off("scroll");
+			Radio.channel("ypclq").reset();
 		},
 		
-		_loopTimer: function() {
+		_loopTimer: function(time) {
 			var self = this;
-			_getRealtimeInfo();
+			time = time || 0;
+			this.timerId = setTimeout(_getRealtimeInfo, time);
 			
 			function _getRealtimeInfo() {
 				$.getJSON("getYpclq.psp", function(realtime) {
@@ -92,6 +101,10 @@ define(function(require) {
 				
 				self.timerId = setTimeout(_getRealtimeInfo, 1000);
 			}
+		},
+		
+		_stopTimer: function() {
+			clearTimeout(this.timerId);
 		}
 	});
 	

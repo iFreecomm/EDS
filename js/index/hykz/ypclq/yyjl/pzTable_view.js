@@ -4,12 +4,11 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Radio = require("radio");
 	var Util = require("web/common/util");
-	var tmpl = require("text!web/index/hykz/ypclq/yyjl/pzTable_template.html");
 	
 	var YyjlView = Mn.ItemView.extend({
-		template: tmpl,
+		template: false,
 		events: {
-			"click td.used": "lockVenue"
+			"click td": "lockVenue"
 		},
 		
 		onRender: function() {
@@ -22,39 +21,64 @@ define(function(require) {
 		
 		lockVenue: function(e) {
 			var $td = $(e.target);
-			$td.toggleClass("locked");
+			
+			$.getJSON("temp.psp", Util.encode({
+				enable: $td.is(".locked") ? 1 : 0
+			})).done(function(res) {
+				if(res.code === 0) {
+					$td.toggleClass("locked");
+				}
+			});
 		},
 		
 		initPzTable: function() {
 			var allVenue = this.options.allVenue;
 			var lockedVenue = this.options.lockedVenue;
-			var $table = this.$(".pzTable");
-			var $secondTable = $table.clone();
 			
-			this._setPzTable($table, allVenue.slice(0, 16), lockedVenue);
+			if(allVenue.length > 0) {
+				this.$el.append(this._getPzTable(allVenue.slice(0, 16), lockedVenue));
+			}
 			
 			if(allVenue.length > 16) {
-				this._setPzTable($secondTable, allVenue.slice(16, 32), lockedVenue);
-				this.$el.append($secondTable);
+				this.$el.append(this._getPzTable(allVenue.slice(16, 32), lockedVenue));
 			}
 		},
 		
-		_setPzTable: function($table, allVenue, lockedVenue) {
-			var $ths = $table.find("th").slice(1);
-			var $tds = $table.find("td"), curTd;
+		_getPzTable: function(allVenue, lockedVenue) {
+			var $table = $('<table class="pzTable"></table>');
+			var $thead = $('<thead></thead>');
+			var $tbody = $('<tbody></tbody>');
+			var $tr1 = $('<tr><th>会场</th></tr>');
+			var $tr2 = $('<tr><th>锁定</th></tr>');
+			var $th = $('<th></th>');
+			var $td = $('<td></td>');
+			
+			var curTd;
 			_.each(allVenue, function(venue, index) {
-				$ths.eq(index).text(venue.name).addClass("used");
-				curTd = $tds.eq(index);
-				curTd.addClass("used");
-				if(_.contains(lockedVenue, venue.recordId)) {
+				var name = venue.name;
+				var recordId = venue.recordId;
+				var $span = $('<span></span>').text(name);
+				$tr1.append($th.clone().append($span).attr("title", name));
+				
+				curTd = $td.clone().attr("title", name).data("recordId", recordId);
+				if(_.contains(lockedVenue, recordId)) {
 					curTd.addClass("locked");
 				}
+				$tr2.append(curTd);
 			});
+			
+			return $table.append($thead.append($tr1)).append($tbody.append($tr2));
 		},
 		
 		_refresh: function(data) {
-			var index = Math.floor(Math.random() * 10);
-			this.$("td.used").removeClass("active").eq(index).addClass("active");
+			var id = Math.floor(Math.random() * 10)+1;
+			this.$("td").removeClass("active").each(function() {
+				var $this = $(this);
+				if($this.data("recordId") === id) {
+					$this.addClass("active");
+					return false;
+				}
+			});
 		}
 	});
 	
