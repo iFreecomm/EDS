@@ -158,6 +158,8 @@ define(function(require) {
 		onAttach: function() {
 			Util.selectmenu(this.ui.select, this.ui.formBox);
 			this.ui.select.change();
+			
+			this.$("#equSrc").selectmenu("menuWidget").css({maxHeight:240});
 		},
 		onDestroy: function() {
 			Radio.channel("yhz").off("addLxr", this.addVidSrc);
