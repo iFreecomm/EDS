@@ -1,0 +1,9 @@
+{
+	"code": 0,
+	"data": {
+		"powersaving": 1,
+		"closedisplay": 2,
+		"dormant": 2,
+		"shutdown": 2
+	}
+}

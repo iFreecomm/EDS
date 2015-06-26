@@ -215,6 +215,33 @@ define(function(require) {
 			{label: "5", value: 5},
 			{label: "6", value: 6},
 			{label: "7", value: 7}
+		],
+		"timezoneArr":[
+			{"label":"UTC-12:00", "value":-12},
+			{"label":"UTC-11:00", "value":-11},
+			{"label":"UTC-10:00", "value":-10},
+			{"label":"UTC-9:00", "value":-9},
+			{"label":"UTC-8:00", "value":-8},
+			{"label":"UTC-7:00", "value":-7},
+			{"label":"UTC-6:00", "value":-6},
+			{"label":"UTC-5:00","value":-5},
+			{"label":"UTC-4:00","value":-4},
+			{"label":"UTC-3:00","value":-3},
+			{"label":"UTC-2:00","value":-2},
+			{"label":"UTC-1:00","value":-1},
+			{"label":"UTC","value":0},
+			{"label":"UTC+1:00","value":1},
+			{"label":"UTC+2:00","value":2},
+			{"label":"UTC+3:00","value":3},
+			{"label":"UTC+4:00","value":4},
+			{"label":"UTC+5:00","value":5},
+			{"label":"UTC+6:00","value":6},
+			{"label":"UTC+7:00","value":7},
+			{"label":"UTC+8:00","value":8},
+			{"label":"UTC+9:00","value":9},
+			{"label":"UTC+10:00","value":10},
+			{"label":"UTC+11:00","value":11},
+			{"label":"UTC+12:00","value":12}
 		]
 	};
 });
