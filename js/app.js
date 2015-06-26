@@ -14,6 +14,7 @@ define(function(require) {
 	var ZkhyRouter = require("web/index/zkhy/zkhy_router");
 	var HykzRouter = require("web/index/hykz/hykz_router");
 	var PzRouter = require("web/index/pz/pz_router");
+	var BzRouter = require("web/index/bz/bz_router");
 	var WjllRouter = require("web/index/wjll/wjll_router");
 	var CameraRouter = require("web/index/camera/router");
 	
@@ -53,6 +54,7 @@ define(function(require) {
 			new ZkhyRouter(opt);
 			new HykzRouter(opt);
 			new PzRouter(opt);
+			new BzRouter(opt);
 			new WjllRouter(opt);
 			new CameraRouter(opt);
 		},
