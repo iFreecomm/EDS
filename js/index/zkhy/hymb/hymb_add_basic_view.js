@@ -83,6 +83,8 @@ define(function(require) {
 			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
 			
 			Radio.channel("basic").reply("isFormValid", this.isFormValid, this);
+			
+			this.listenTo(this.model, "change:secVidFlag", this.secVidFlagChange);
 		},
 		onAttach: function() {
 			Util.selectmenu(this.ui.select, this.ui.formBox);
@@ -94,6 +96,10 @@ define(function(require) {
 		
 		isFormValid: function() {
 			return FormUtil.checkForm(this.$el, this.checkOptions);
+		},
+		secVidFlagChange:function(){
+			Radio.channel("dhm").request("secVidFlgChange");
+			Radio.channel("spjz").request("secVidFlgChange");
 		}
 	});
 	

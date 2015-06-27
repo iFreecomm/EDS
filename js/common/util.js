@@ -79,7 +79,7 @@ define(function() {
 		
 		return _.some(lxrArr, function(lxr) {
 			if(equType === lxr.equType) {
-				if(equType === Const.EquType_PLAYER || equType === Const.EquType_MP) {
+				if(equType === Const.EquType_PLAYER || equType === Const.EquType_MP || equType === Const.EquType_AUX) {
 					return true;
 				} else if(equType === Const.EquType_SDI) {
 					if(recordId === lxr.recordId) {
@@ -115,6 +115,10 @@ define(function() {
 				}
 				if(equType === Const.EquType_MP) {
 					noNameLxr.addrName = "多画面";
+					return true;
+				}
+				if(equType === Const.EquType_AUX) {
+					noNameLxr.addrName = "辅流";
 					return true;
 				}
 				if(equType === curLxr.equType) {

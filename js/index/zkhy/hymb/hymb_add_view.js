@@ -90,11 +90,11 @@ define(function(require) {
 
 			for(var i = 0; i < arrName.length - 1; i ++) {
 				if(arrUrl[i] != "" && arrUrl[i] == arrUrl[i+1]) {
-					Util.alert("RTSP同名冲突！");
+					Util.alert("RTMP同名冲突！");
 					return true;
 				}
 				if(arrName[i] != "" && arrName[i] == arrName[i+1]) {
-					Util.alert("RTMP同名冲突！");
+					Util.alert("RTSP同名冲突！");
 					return true;
 				}
 			}

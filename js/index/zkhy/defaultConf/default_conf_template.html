@@ -1,0 +1,14 @@
+<div class="left_container">
+	<ul class="lxr-box cf">
+		{{#each meetingList}}
+			<div class="lxr" data-id="{{recordId}}">
+				<div class="lxr-head" title={{name}}>{{name}}</div>
+				<div class="lxr-body">{{info}}</div>
+			</div>
+		{{/each}}
+	</ul>
+</div>
+
+<div class="btn-area">
+	<button type="button" class="btn btn-ls saveBtn">保存</button>
+</div>

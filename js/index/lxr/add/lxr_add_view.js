@@ -8,8 +8,6 @@ define(function(require) {
 	var Const = require("web/common/const");
 	var AckId = require("web/common/ackid");
 	
-	require("customIP");
-	
 	var LxrAddView = Mn.ItemView.extend({
 		id: "lxr_add",
 		template: Handlebars.compile(tmpl),

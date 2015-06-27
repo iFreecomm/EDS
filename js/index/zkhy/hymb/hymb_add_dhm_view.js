@@ -32,6 +32,7 @@ define(function(require) {
 		onRender: function() {
 			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
 			Radio.channel("dhm").reply("getMpMode", this.getMpMode, this);
+			Radio.channel("dhm").reply("secVidFlgChange", this.secVidFlgChange, this);
 			
 			Radio.channel("yhz").on("addLxr", this.addDhmlxr, this);
 			Radio.channel("yhz").on("subLxr", this.subDhmlxr, this);
@@ -133,12 +134,21 @@ define(function(require) {
 		},
 		
 		getDhmLxr: function() {
-			return [
-				{
+			var addrArr = [{
 					equType: Const.EquType_PLAYER,
 					addrName: "播放器"
-				}
-			].concat(Util.getLxrDataById(this.model.get("venueId"), this.options.allLxr));
+				}];
+			
+			var secVidFlag = this.model.get("secVidFlag");
+		
+			if(secVidFlag)
+			{
+				addrArr.push({
+					equType: Const.EquType_AUX,
+					addrName: "辅流"
+				});
+			}
+			return addrArr.concat(Util.getLxrDataById(this.model.get("venueId"), this.options.allLxr));
 		},
 		
 		/************************************/
@@ -234,7 +244,21 @@ define(function(require) {
 			this.saveCurrentSubPicInfo();
 			return this.mpMode;
 		},
-		
+		secVidFlgChange:function(e){
+			var secVidFlag = this.model.get("secVidFlag");
+			var lxrArr = [{
+					equType: Const.EquType_AUX,
+					addrName: "辅流"
+			}];
+			if(secVidFlag)
+			{
+				this.ui.dhmLxrs.children().first().after(this.getLiArr(lxrArr));
+			}
+			else
+			{
+				this.subDhmlxr(lxrArr);
+			}
+		},
 		saveCurrentSubPicInfo: function() {
 			var curMode = this.getMode(this.getShowMpMode());
 			if(!curMode) return;
@@ -254,7 +278,11 @@ define(function(require) {
 		addDhmlxr: function(lxrArr) {
 			if(_.isEmpty(lxrArr)) return;
 			lxrArr = Util.transSDI2Lxr(lxrArr);
-			
+			this.ui.dhmLxrs.append(this.getLiArr(lxrArr));
+		},
+		
+		getLiArr: function(lxrArr)
+		{
 			var $li = $('<li class="lxr-li"></li>');
 			var $span = $('<span class="lxr-span"></span>');
 			var $curLi, $curSpan;
@@ -270,8 +298,7 @@ define(function(require) {
 				
 				return $curLi;
 			});
-			
-			this.ui.dhmLxrs.append($liArr);
+			return $liArr;
 		},
 		
 		subDhmlxr: function(lxrArr) {

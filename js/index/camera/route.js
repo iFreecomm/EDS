@@ -13,28 +13,36 @@ define(function(require) {
 		initialize: function(options) {
 			var self = this;
 			this.container = options.container;
-			this.cameraId = options.id;
-			
 			this.model = new CameraFormModel();
 			
-			$.when(
-				$.getJSON("getCameraPreset.psp"), //预置位状态数组
-				$.getJSON("getSdiPort.psp"),
-				this.model.mustFetch({ //摄像机配置信息
-					vidInPort: options.id
-				})
-			).done(function(yzwState,sdi) {
-				self.yzwState = yzwState[0].data;
-				self.model.set("cameraId", options.id);
-				
+			$.getJSON("getSdiPort.psp").done(function(sdi) {
 				self.SDI = [];
-				if(sdi[0].data && sdi[0].data.sdiInfo)
+				if(sdi.data && sdi.data.sdiInfo)
 				{
-					self.SDI = sdi[0].data.sdiInfo;
+					self.SDI = sdi.data.sdiInfo;
+					//self.vidInPort = _.isNumber(options.id)?options.id:self.SDI[0].camPort;
+					self.vidInPort = options.id==-1?self.SDI[0].camPort:options.id;
 				}
-				
-				self.showView();
+				$.when(
+					$.getJSON("getCameraPreset.psp",JSON.stringify({
+		  				vidInPort:self.vidInPort
+		  			})), //预置位状态数组
+		  			self.model.mustFetch({ //摄像机配置信息
+						vidInPort: self.vidInPort
+					})
+					
+				).done(function(yzwState) {
+					self.yzwState = [];
+					if(yzwState[0].data && yzwState[0].data.presetArr)
+					{
+						self.yzwState = yzwState[0].data.presetArr;
+					}
+					self.model.set("vidInPort", self.vidInPort);
+					
+					self.showView();
+				});
 			});
+			
 		},
 		
 		showView: function() {
@@ -46,7 +54,7 @@ define(function(require) {
 					}
 				}),
 				contentRightView: new CameraView({
-					cameraId: this.cameraId,
+					vidInPort: this.vidInPort,
 					templateHelpers: {
 						yzwState: this.yzwState
 					}

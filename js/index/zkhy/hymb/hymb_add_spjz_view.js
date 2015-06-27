@@ -23,6 +23,7 @@ define(function(require) {
 		
 		onRender: function() {
 			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
+			Radio.channel("spjz").reply("secVidFlgChange", this.secVidFlgChange, this);
 			
 			Radio.channel("yhz").on("addLxr", this.addMatrix, this);
 			Radio.channel("yhz").on("subLxr", this.subMatrix, this);
@@ -117,6 +118,32 @@ define(function(require) {
 					}
 				}
 			}).get();
+		},
+		
+		secVidFlgChange:function(e){
+			/*var secVidFlag = this.model.get("secVidFlag");
+			var lxrArr = [{
+					equType: Const.EquType_AUX,
+					addrName: "辅流"
+			}];
+			if(secVidFlag)
+			{
+				this.addMatrix(lxrArr);
+			}
+			else
+			{
+				this.subMatrix(lxrArr);
+			}*/
+			//缓存已经配置的矩阵数据
+			if(this.matrixInOut === undefined) {
+				this.matrixInOut = this.model.get("matrixInOut") || [];
+			} else {
+				this.matrixInOut = this.getMatrixInOut();
+			}
+			//清空现有的表格
+			this.ui.spjz_table_container.empty();
+			//重新绘制表格
+			this.renderMatrix();
 		},
 		
 		addMatrix: function(addLxrArr) {
@@ -234,6 +261,7 @@ define(function(require) {
 						break;
 					case Const.EquType_MP:
 					case Const.EquType_PLAYER:
+					case Const.EquType_AUX:
 						return i;
 						break;
 					default:
@@ -301,6 +329,11 @@ define(function(require) {
 			
 			srcArr.push({equType:Const.EquType_MP,addrName:"多画面"});
 			srcArr.push({equType:Const.EquType_PLAYER,addrName:"播放器"});
+			var secVidFlag = this.model.get("secVidFlag");
+			if(secVidFlag)
+			{
+				srcArr.push({equType:Const.EquType_AUX,addrName:"辅流"});
+			}
 			return srcArr;
 		},
 		_getColHead: function() {

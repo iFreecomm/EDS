@@ -15,7 +15,7 @@ define(function(require) {
 		camera: function(id) {
 			new CameraRoute({
 				container: this.container,
-				id: id || 1
+				id: id || -1
 			});
 		}
 	});

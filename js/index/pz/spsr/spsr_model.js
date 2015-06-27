@@ -9,9 +9,9 @@ define(function(require) {
 			ydsd: 0,
 			srjkxh: 0,
 			
-			ld: 123,
-			dbd: 124,
-			bhd: 125,
+			ld: 50,
+			dbd: 50,
+			bhd: 50,
 			sppy: 126,
 			czpy: 127
 		},

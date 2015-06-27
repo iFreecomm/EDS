@@ -24,6 +24,7 @@ define(function(require) {
 	require("datepickerzhCN");
 	require("mousewheel");
 	require("jplayer");
+	require("customIP");
 	
 	var AppView = Mn.LayoutView.extend({
 		el: document,

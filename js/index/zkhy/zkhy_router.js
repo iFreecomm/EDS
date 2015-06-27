@@ -4,6 +4,7 @@ define(function(require) {
 	var YdyhyAddRoute = require("web/index/zkhy/ydyhy/ydyhy_add_route");
 	var HymbShowRoute = require("web/index/zkhy/hymb/hymb_show_route");
 	var HymbAddRoute = require("web/index/zkhy/hymb/hymb_add_route");
+	var DefaultConfRoute = require("web/index/zkhy/defaultConf/default_conf_route");
 	
 	var Const = require("web/common/const");
 	
@@ -19,6 +20,7 @@ define(function(require) {
 			"zkhy/modifyYdyhy/:id/:state": "modifyYdyhy",
 			"zkhy/showHymb": "showHymb",
 			"zkhy/addHymb(/:id)": "addHymb",
+			"zkhy/defaultConf":"defaultConf"
 		},
 		
 		showYdyhy: function() {
@@ -52,6 +54,11 @@ define(function(require) {
 			new HymbAddRoute({
 				container: this.container,
 				id: id
+			});
+		},
+		defaultConf: function() {
+			new DefaultConfRoute({
+				container: this.container
 			});
 		}
 	});
