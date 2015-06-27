@@ -1,0 +1,9 @@
+{
+	"code": 0,
+	"data": {
+		"enable": 1,
+		"username": "username123",
+		"password": "password456",
+		"port": 1234
+	}
+}

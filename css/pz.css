@@ -25,8 +25,8 @@
 	margin: 0 0 -10px -10px;
 }
 .wlsz-box .btn {
-	width: 205px;
-	height: 120px;
+	width: 180px;
+	height: 100px;
 	margin-bottom: 10px;
 	margin-left: 10px;
 }
@@ -63,3 +63,22 @@
 	margin: 20px 50px;
 }
 /*************恢复出厂设置样式结束************/
+
+/*************系统更新样式开始********/
+#pz_xtgx .btn {
+	margin: 20px 10px;
+}
+/*************系统更新样式结束************/
+
+/*************安全保密样式开始********/
+.aqbm-box {
+	padding: 20px;
+	margin: 0 0 -10px -10px;
+}
+.aqbm-box .btn {
+	width: 180px;
+	height: 100px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+/*************安全保密样式结束************/
