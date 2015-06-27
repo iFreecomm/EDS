@@ -12,23 +12,41 @@ define(function(require) {
 		id: "default_conf",
 		template: Handlebars.compile(tmpl),
 		events: {
-			"click .lxr" : "selectLxr"
+			"click a" : "selectDefault"
 		},
 		
+		onRender: function() {
+			var meetingId = this.options.meetingId;
+			this.$("a").each(function() {
+				var $a = $(this);
+				if($a.data("id") == meetingId) {
+					$a.addClass("active");
+					return false;
+				}
+			});
+		},
 		onAttach: function() {
 			Util.activeLink();
 		},
 		
-		selectLxr: function(e) {
+		selectDefault: function(e) {
+			e.preventDefault();
+			
 			var self = this;
 			var $tar = $(e.target);
-			var $lxr = $tar.is(".lxr") ? $tar : $tar.parents(".lxr");
-			$lxr.addClass("active").siblings().removeClass("active");
+			var $a = $tar.is("a") ? $tar : $tar.parents("a");
 			
-			this.model.mustFetch({
-				"recordId": $lxr.data("id")
-			}).done(function() {
-				Util.refreshSelectmenu(self.$el).refreshSlider(self.$el);
+			$.getJSON("setDefBeginMeetingCfg.psp", Util.encode({
+				"recordId": $a.data("id")
+			})).done(function(res) {
+				if(res.code === 0) {
+					self.$("a").removeClass("active");
+					$a.addClass("active");
+				} else {
+					Util.alert("设置默认会议失败");
+				}
+			}).fail(function() {
+				Util.alert("设置默认会议失败");
 			});
 		}
 	});

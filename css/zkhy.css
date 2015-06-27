@@ -27,7 +27,19 @@
 }
 /************预定义会议样式结束*************/
 
-
+/*********添加会议模板样式开始***********/
+#default_conf .active .box-body {
+	position: relative;
+}
+#default_conf .active .box-body:after {
+	content: "默认会议";
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	padding: 5px 8px;
+	background: #F47900;
+}
+/************预定义会议样式结束*************/
 
 /*********添加会议模板样式开始***********/
 #zkhy_hymb_add .tabBox {

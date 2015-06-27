@@ -8,7 +8,7 @@ define(function(require) {
 	
 	var Const = require("web/common/const");
 	
-	var LxrRouter = Mn.AppRouter.extend({
+	var ZkhyRouter = Mn.AppRouter.extend({
 		initialize: function(options) {
 			this.container = options.container;
 		},
@@ -63,5 +63,5 @@ define(function(require) {
 		}
 	});
 	
-	return LxrRouter;
+	return ZkhyRouter;
 });

@@ -5,27 +5,26 @@ define(function(require) {
 	var NavLeftView = require("web/index/zkhy/navLeft/navLeft_view");
 	var DefaultConfView = require("web/index/zkhy/defaultConf/default_conf_view");
 	
-	var DefaultConfModel = require("web/index/zkhy/defaultConf/default_conf_model");
-
 	var DefaultConfRoute = Route.extend({
 		
 		initialize: function(options) {
 			var self = this;
 			this.container = options.container;
-			this.defaultConfModel = new DefaultConfModel();
 			
-			$.getJSON("getMeeting.psp").done(function(meeting) {
+			$.when(
+				$.getJSON("getMeeting.psp"),
+				
+				$.getJSON("getDefBeginMeetingCfg.psp")
+			).done(function(meeting, defaultConf) {
 				self.meetingList = [];
-				if(meeting.data && meeting.data.meetingList)
+				if(meeting[0].data && meeting[0].data.meetingList)
 				{
-					self.meetingList = meeting.data.meetingList;
+					self.meetingList = meeting[0].data.meetingList;
 				}
 				
-				$.when(
-					self.defaultConfModel.fetch()
-				).done(function() {
-					self.showView();
-				});
+				self.meetingId = defaultConf[0].data.meetingId;
+				
+				self.showView();
 			});
 		},
 		
@@ -33,7 +32,7 @@ define(function(require) {
 			this.show({
 				navLeftView: NavLeftView,
 				contentRightView: new DefaultConfView({
-					model: this.defaultConfModel,
+					meetingId: this.meetingId,
 					templateHelpers: {
 						meetingList: this.meetingList
 					}
