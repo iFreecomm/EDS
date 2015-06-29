@@ -14,20 +14,10 @@
 		</div>
 		<div class="formCell">
 			<span class="descTxt">自动切换到摄像机</span>
-			<select name="discussVidInPort" id="discussVidInPort">
-				<option data-stickit-bind-val="0">摄像机1</option>
-				<option data-stickit-bind-val="1">摄像机2</option>
-				<option data-stickit-bind-val="2">摄像机3</option>
-				<option data-stickit-bind-val="3">摄像机4</option>
-				<option data-stickit-bind-val="4">摄像机5</option>
-				<option data-stickit-bind-val="5">摄像机6</option>
-				<option data-stickit-bind-val="6">摄像机7</option>
-				<option data-stickit-bind-val="7">摄像机8</option>
-				<option data-stickit-bind-val="8">摄像机9</option>
-				<option data-stickit-bind-val="9">摄像机10</option>
-				<option data-stickit-bind-val="10">摄像机11</option>
-				<option data-stickit-bind-val="11">摄像机12</option>
-				<option data-stickit-bind-val="12">摄像机13</option>
+			<select name="discussVenueId" id="discussVenueId">
+				{{#each cameraArr}}
+					<option data-stickit-bind-val="{{recordId}}">{{addrName}}</option>
+				{{/each}}
 			</select>
 		</div>
 	</div>
@@ -45,20 +35,10 @@
 		</div>
 		<div class="formCell">
 			<span class="descTxt">自动切换到摄像机</span>
-			<select name="silenceVidInPort" id="silenceVidInPort">
-				<option data-stickit-bind-val="0">摄像机1</option>
-				<option data-stickit-bind-val="1">摄像机2</option>
-				<option data-stickit-bind-val="2">摄像机3</option>
-				<option data-stickit-bind-val="3">摄像机4</option>
-				<option data-stickit-bind-val="4">摄像机5</option>
-				<option data-stickit-bind-val="5">摄像机6</option>
-				<option data-stickit-bind-val="6">摄像机7</option>
-				<option data-stickit-bind-val="7">摄像机8</option>
-				<option data-stickit-bind-val="8">摄像机9</option>
-				<option data-stickit-bind-val="9">摄像机10</option>
-				<option data-stickit-bind-val="10">摄像机11</option>
-				<option data-stickit-bind-val="11">摄像机12</option>
-				<option data-stickit-bind-val="12">摄像机13</option>
+			<select name="silenceVenueId" id="silenceVenueId">
+				{{#each cameraArr}}
+					<option data-stickit-bind-val="{{recordId}}">{{addrName}}</option>
+				{{/each}}
 			</select>
 		</div>
 	</div>

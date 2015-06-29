@@ -5,11 +5,11 @@ define(function(require) {
 		defaults: {
 			"discussCfg.discussEnable": 0,
 			"discussCfg.time": 100,
-			"discussCfg.vidInPort": 0,
+			"discussCfg.venueId": 0,
 			
 			"silenceCfg.silenceEnable": 0,
 			"silenceCfg.time": 100,
-			"silenceCfg.vidInPort": 0
+			"silenceCfg.venueId": 0
 		},
 		urls: {
 			"create": "setYyjlAdvanceCfg.psp",

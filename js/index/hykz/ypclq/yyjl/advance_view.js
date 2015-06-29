@@ -1,18 +1,19 @@
 define(function(require) {
 	var Mn = require("marionette");
+	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
 	var tmpl = require("text!web/index/hykz/ypclq/yyjl/advance_template.html");
 	
 	var AdvanceView = Mn.ItemView.extend({
-		template: tmpl,
+		template: Handlebars.compile(tmpl),
 		bindings: {
 			"#discussEnable": "discussCfg.discussEnable",
 			"#discussTime": "discussCfg.time",
-			"#discussVidInPort": "discussCfg.vidInPort",
+			"#discussVenueId": "discussCfg.venueId",
 			
 			"#silenceEnable": "silenceCfg.silenceEnable",
 			"#silenceTime": "silenceCfg.time",
-			"#silenceVidInPort": "silenceCfg.vidInPort"
+			"#silenceVenueId": "silenceCfg.venueId"
 		},
 		ui: {
 			formBox: ".formBox",

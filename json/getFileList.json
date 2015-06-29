@@ -1,6 +1,7 @@
 {
 	"code": 0,
 	"data": {
+		"pageNum": 2,
 		"endFlag": 0,
 		"fileList": [
 			{
@@ -13,7 +14,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "media/video/video1.mp4",
-				"realPath": "media/video/video1.mp4"
+				"realPath": "media/video/video1.mp4",
+				"ip": "172.16.2.18",
+				"bandWidth": "1234K",
+				"startTime": "08:50"
 			},
 			{
 				"fileName": "文件2",
@@ -25,7 +29,10 @@
 				"convenor": "召集人2",
 				"fileType": "视频文件",
 				"filePath": "media/video/video2.mp4",
-				"realPath": "media/video/video2.mp4"
+				"realPath": "media/video/video2.mp4",
+				"ip": "172.16.2.19",
+				"bandWidth": "2345K",
+				"startTime": "08:51"
 			},
 			{
 				"fileName": "文件1",
@@ -37,7 +44,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "media/video/video3.mp4",
-				"realPath": "media/video/video3.mp4"
+				"realPath": "media/video/video3.mp4",
+				"ip": "172.16.2.20",
+				"bandWidth": "3456K",
+				"startTime": "08:52"
 			},
 			{
 				"fileName": "文件1",
@@ -49,7 +59,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "media/video/video4.mp4",
-				"realPath": "media/video/video4.mp4"
+				"realPath": "media/video/video4.mp4",
+				"ip": "172.16.2.21",
+				"bandWidth": "4567K",
+				"startTime": "08:53"
 			},
 			{
 				"fileName": "安迪",
@@ -61,7 +74,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "media/audio/Andy.mp3",
-				"realPath": "media/audio/Andy.mp3"
+				"realPath": "media/audio/Andy.mp3",
+				"ip": "172.16.2.22",
+				"bandWidth": "5678K",
+				"startTime": "08:54"
 			},
 			{
 				"fileName": "死不了",
@@ -73,7 +89,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "media/audio/sbl.mp3",
-				"realPath": "media/audio/sbl.mp3"
+				"realPath": "media/audio/sbl.mp3",
+				"ip": "172.16.2.23",
+				"bandWidth": "6789K",
+				"startTime": "08:55"
 			},
 			{
 				"fileName": "忘忧草",
@@ -85,7 +104,10 @@
 				"convenor": "召集人2",
 				"fileType": "视频文件",
 				"filePath": "media/audio/wyc.mp3",
-				"realPath": "media/audio/wyc.mp3"
+				"realPath": "media/audio/wyc.mp3",
+				"ip": "172.16.2.24",
+				"bandWidth": "7890K",
+				"startTime": "08:56"
 			},
 			{
 				"fileName": "文件1",
@@ -97,7 +119,10 @@
 				"convenor": "召集人1",
 				"fileType": "视频文件",
 				"filePath": "rtsp://172.16.2.40:8554/1",
-				"realPath": "rtsp://172.16.2.67/main"
+				"realPath": "rtsp://172.16.2.67/main",
+				"ip": "172.16.2.25",
+				"bandWidth": "8901K",
+				"startTime": "08:57"
 			}
 		]
 	}

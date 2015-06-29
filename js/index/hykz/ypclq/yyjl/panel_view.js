@@ -29,9 +29,10 @@ define(function(require) {
 				$.getJSON("getYyjlLockedVenue.psp"),
 				
 				$.getJSON("getYyjlAdvanceCfg.psp"),
+				$.getJSON("getExcitedAudVenueInfo.psp"),
 				
 				slideModel.fetch()
-			).done(function(allVenue, lockedVenue, advanceCfg) {
+			).done(function(allVenue, lockedVenue, advanceCfg, cameraArr) {
 				self.showChildView("pzTableContainer", new PzTableView({
 					allVenue: allVenue[0].data.allVenue,
 					lockedVenue: lockedVenue[0].data.lockedVenue
@@ -42,7 +43,10 @@ define(function(require) {
 				}));
 				
 				self.showChildView("formBoxContainer", new AdvanceView({
-					model: new AdvanceModel(Util.flat(advanceCfg[0].data))
+					model: new AdvanceModel(Util.flat(advanceCfg[0].data)),
+					templateHelpers: {
+						cameraArr: cameraArr[0].data.cameraArr
+					}
 				}));
 			});
 		}

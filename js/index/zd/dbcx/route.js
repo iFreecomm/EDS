@@ -3,17 +3,26 @@ define(function(require) {
 
     var NavLeftView = require("../navLeft/view");
     var DbcxView = require("./view");
+    
+    var FileCollection = require("./collection");
 
     var DbcxRoute = Route.extend({
         initialize: function(options) {
+        	var self = this;
             this.container = options.container;
-            this.showView();
+            
+            this.collection = new FileCollection();
+            this.collection.pageFetch().done(function() {
+	            self.showView();
+            });
         },
 
         showView: function() {
             this.show({
                 navLeftView: NavLeftView,
-                contentRightView: new DbcxView()
+                contentRightView: new DbcxView({
+                	collection: this.collection
+                })
             });
         }
     });

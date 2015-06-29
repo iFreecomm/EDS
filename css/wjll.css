@@ -29,52 +29,9 @@
 #wjll_file_list {
 	margin: 10px 50px;
 }
-#wjll_file_list table {
-	table-layout: fixed;
-	width: 100%;
-	min-width: 1156px;
-	text-align: center;
-	border: 1px solid #d6d5d5;
-}
-#wjll_file_list th {
-	background: #ecdccc;
-	font-size: 18px;
-	color: #232323;
-	font-weight: normal;
-	white-space: nowrap;
-}
-#wjll_file_list td {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	padding: 3px 0px;
-	font-size: 16px;
-	color: #353535;
-}
-#wjll_file_list tr.even {
-	background: #f8f7f7;
-}
-#wjll_file_list tr.odd {
-	background: #e0dcdc;
-}
-#wjll_file_list a {
-	color: #1f8500;
-	white-space: nowrap;
-}
-#wjll_file_list .checkbox-label {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width: 100%;
-	margin-left: 12px;
-	vertical-align: middle;
-}
 
 #wjll_show .form-btns {
 	padding: 0 50px;
-}
-#wjll_show .pageNum {
-	margin: 12px 0 0 10px;
 }
 
 #burnDiskContainer .popup {

@@ -1,0 +1,48 @@
+{
+	"code": 0,
+	"data": {
+		"endFlag": 0,
+		"cameraArr": [
+			{
+				"recordId": 111,
+				"addrName": "摄像机1"
+			},
+			{
+				"recordId": 222,
+				"addrName": "摄像机12"
+			},
+			{
+				"recordId": 333,
+				"addrName": "摄像机13"
+			},
+			{
+				"recordId": 444,
+				"addrName": "摄像机14"
+			},
+			{
+				"recordId": 555,
+				"addrName": "摄像机15"
+			},
+			{
+				"recordId": 666,
+				"addrName": "摄像机16"
+			},
+			{
+				"recordId": 777,
+				"addrName": "摄像机17"
+			},
+			{
+				"recordId": 888,
+				"addrName": "摄像机18"
+			},
+			{
+				"recordId": 999,
+				"addrName": "摄像机19"
+			},
+			{
+				"recordId": 1110,
+				"addrName": "摄像机10"
+			}
+		]
+	}
+}
