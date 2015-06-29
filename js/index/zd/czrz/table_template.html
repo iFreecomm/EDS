@@ -1,22 +1,16 @@
 <table class="listTable">
 	<tr>
 		<th width="100">序号</th>
-		<th width="200">客户端IP</th>
-		<th>点播文件名</th>
-		<th width="120">带宽</th>
-		<th width="150">开始时间</th>
-		<th width="100">强制结束</th>
+		<th width="200">级别</th>
+		<th>操作</th>
+		<th width="300">时间</th>
 	</tr>
 	{{#each items}}
 		<tr>
 			<td>{{addOne @index}}</td>
-			<td>{{ip}}</td>
-			<td title="{{fileName}}" class="tal">{{fileName}}</td>
-			<td>{{bandWidth}}</td>
-			<td>{{startTime}}</td>
-			<td>
-				<a href="javascript:void(0);" class="stopBtn">结束</a>
-			</td>
+			<td>{{level}}</td>
+			<td title="{{operate}}">{{operate}}</td>
+			<td>{{time}}</td>
 		</tr>
 	{{/each}}
 </table>

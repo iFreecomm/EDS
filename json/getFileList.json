@@ -17,7 +17,10 @@
 				"realPath": "media/video/video1.mp4",
 				"ip": "172.16.2.18",
 				"bandWidth": "1234K",
-				"startTime": "08:50"
+				"startTime": "08:50",
+				"level": 1,
+				"operate": "web用户登录",
+				"time": "2014-12-20 15:05:04"
 			},
 			{
 				"fileName": "文件2",
@@ -32,7 +35,10 @@
 				"realPath": "media/video/video2.mp4",
 				"ip": "172.16.2.19",
 				"bandWidth": "2345K",
-				"startTime": "08:51"
+				"startTime": "08:51",
+				"level": 2,
+				"operate": "web用户登录",
+				"time": "2014-12-20 15:05:04"
 			},
 			{
 				"fileName": "文件1",
@@ -47,7 +53,10 @@
 				"realPath": "media/video/video3.mp4",
 				"ip": "172.16.2.20",
 				"bandWidth": "3456K",
-				"startTime": "08:52"
+				"startTime": "08:52",
+				"level": 3,
+				"operate": "远端挂断呼叫",
+				"time": "2014-12-20 15:05:04"
 			},
 			{
 				"fileName": "文件1",
@@ -62,7 +71,10 @@
 				"realPath": "media/video/video4.mp4",
 				"ip": "172.16.2.21",
 				"bandWidth": "4567K",
-				"startTime": "08:53"
+				"startTime": "08:53",
+				"level": 4,
+				"operate": "终端离会",
+				"time": "2014-12-19 15:15:14"
 			},
 			{
 				"fileName": "安迪",
@@ -77,7 +89,10 @@
 				"realPath": "media/audio/Andy.mp3",
 				"ip": "172.16.2.22",
 				"bandWidth": "5678K",
-				"startTime": "08:54"
+				"startTime": "08:54",
+				"level": 5,
+				"operate": "取消选择观看",
+				"time": "2014-12-19 15:23:12"
 			},
 			{
 				"fileName": "死不了",
@@ -92,7 +107,10 @@
 				"realPath": "media/audio/sbl.mp3",
 				"ip": "172.16.2.23",
 				"bandWidth": "6789K",
-				"startTime": "08:55"
+				"startTime": "08:55",
+				"level": 6,
+				"operate": "web用户登出",
+				"time": "2014-12-19 16:15:14"
 			},
 			{
 				"fileName": "忘忧草",
@@ -107,7 +125,10 @@
 				"realPath": "media/audio/wyc.mp3",
 				"ip": "172.16.2.24",
 				"bandWidth": "7890K",
-				"startTime": "08:56"
+				"startTime": "08:56",
+				"level": 7,
+				"operate": "web用户登录",
+				"time": "2014-12-19 17:25:36"
 			},
 			{
 				"fileName": "文件1",
@@ -122,7 +143,10 @@
 				"realPath": "rtsp://172.16.2.67/main",
 				"ip": "172.16.2.25",
 				"bandWidth": "8901K",
-				"startTime": "08:57"
+				"startTime": "08:57",
+				"level": 8,
+				"operate": "web用户登出",
+				"time": "2014-12-19 18:35:56"
 			}
 		]
 	}
