@@ -1,34 +1,33 @@
-<div class="bbxx">
-    <h3>网络ping</h3>
-    
-    <table>
-    	<tr>
-    		<td>软件版本：</td>
-    		<td>V1.0.1 Build 1066</td>
-    	</tr>
-    	<tr>
-    		<td>版本发布日期:</td>
-    		<td>2014年3月23日 09:35:28</td>
-    	</tr>
-    	<tr>
-    		<td>配置文件发布日期:</td>
-    		<td>2014年3月28日 10:35:28</td>
-    	</tr>
-    	<tr>
-    		<td>主控制板版本:</td>
-    		<td>V1.0</td>
-    	</tr>
-    	<tr>
-    		<td>交互背板版本:</td>
-    		<td>V1.0</td>
-    	</tr>
-    	<tr>
-    		<td>视频矩阵板版本:</td>
-    		<td>V1.0</td>
-    	</tr>
-    	<tr>
-    		<td>接口板版本：</td>
-    		<td>V1.0</td>
-    	</tr>
-    </table>
+<p>输入IP地址后，点击“开始测试”启动网络Ping测试：</p>
+
+<div class="formBox">
+	<div class="formCell">
+		<span class="cellName">请输入IP：</span>
+		<div class="fieldBox">
+			<input type="text" name="ip" id="ip" class="ip" />
+			<button type="button" class="btn testBtn">开始测试</button>
+		</div>
+	</div>
+	<div class="formCell">
+		<span>测试结果：</span>
+		<div class="fieldBox">
+PING 172.16.2.1 (172.16.2.1): 56 data bytes<br />
+
+64 bytes from 172.16.2.1: seq=0 ttl=255 time=12.372 ms<br />
+
+64 bytes from 172.16.2.1: seq=1 ttl=255 time=1.715 ms<br />
+
+64 bytes from 172.16.2.1: seq=2 ttl=255 time=1.683 ms<br />
+
+64 bytes from 172.16.2.1: seq=3 ttl=255 time=1.658 ms<br />
+
+ <br />
+
+--- 172.16.2.1 ping statistics ---<br />
+
+4 packets transmitted, 4 packets received, 0% packet loss<br />
+
+round-trip min/avg/max = 1.658/4.357/12.372 ms<br />
+		</div>
+	</div>
 </div>

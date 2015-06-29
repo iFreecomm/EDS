@@ -7,9 +7,14 @@ define(function(require) {
     var MicView = Mn.ItemView.extend({
         id: "zd_mic",
         template: tmpl,
+        ui: {
+			formBox: ".formBox",
+			select: "select"
+		},
         
         onAttach: function() {
         	Util.activeLink();
+        	Util.selectmenu(this.ui.select, this.ui.formBox);
         }
         
     });
