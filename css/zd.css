@@ -30,10 +30,51 @@
 #zd_mic {
 	margin: 20px 40px;
 }
+#zd_mic .formBox {
+	margin-top: 50px;
+}
+#zd_mic .formCell {
+	margin-bottom: 20px;
+}
 #zd_mic .cellName {
 	width: 200px;
+	padding-right: 0;
 }
 #zd_mic .fieldBox {
 	padding-left: 200px;
+}
+#zd_mic .form-btns {
+	margin-left: 200px;
+}
+/**********麦克风测试样式结束**********/
+
+/**********麦克风测试样式开始**********/
+#zd_ping {
+	margin: 20px 40px;
+}
+#zd_ping .formBox {
+	margin-top: 50px;
+}
+#zd_ping .formCell {
+	margin-bottom: 20px;
+}
+#zd_ping .cellName {
+	width: 160px;
+	padding-right: 0;
+}
+#zd_ping .fieldBox {
+	padding-left: 160px;
+}
+#zd_ping .testBtn {
+	padding: 6px 12px;
+	margin-left: 20px;
+	vertical-align: middle;
+}
+
+#zd_ping .pingResult {
+	width: 500px;
+	min-height: 200px;
+	padding: 8px;
+	background-color: #D1CFCF;
 }
 /**********麦克风测试样式结束**********/

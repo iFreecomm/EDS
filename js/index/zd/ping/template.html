@@ -4,14 +4,15 @@
 	<div class="formCell">
 		<span class="cellName">请输入IP：</span>
 		<div class="fieldBox">
-			<input type="text" name="ip" id="ip" class="ip" />
+			<input type="hidden" name="ip" id="ip" class="ip" value="0.0.0.0"/>
 			<button type="button" class="btn testBtn">开始测试</button>
 		</div>
 	</div>
 	<div class="formCell">
-		<span>测试结果：</span>
+		<span class="cellName">测试结果：</span>
 		<div class="fieldBox">
-PING 172.16.2.1 (172.16.2.1): 56 data bytes<br />
+			<div class="pingResult">				
+<!--PING 172.16.2.1 (172.16.2.1): 56 data bytes<br />
 
 64 bytes from 172.16.2.1: seq=0 ttl=255 time=12.372 ms<br />
 
@@ -27,7 +28,8 @@ PING 172.16.2.1 (172.16.2.1): 56 data bytes<br />
 
 4 packets transmitted, 4 packets received, 0% packet loss<br />
 
-round-trip min/avg/max = 1.658/4.357/12.372 ms<br />
+round-trip min/avg/max = 1.658/4.357/12.372 ms<br />-->
+			</div>
 		</div>
 	</div>
 </div>

@@ -95,11 +95,10 @@ define(function(require) {
 			this.timerId = setTimeout(_getRealtimeInfo, time);
 			
 			function _getRealtimeInfo() {
-				$.getJSON("getYpclq.psp", function(realtime) {
+				$.getJSON("getYpclq.psp").done(function(realtime) {
 					Radio.channel("ypclq").trigger("refresh", realtime.data);
+					self.timerId = setTimeout(_getRealtimeInfo, 1000);
 				});
-				
-				self.timerId = setTimeout(_getRealtimeInfo, 1000);
 			}
 		},
 		
