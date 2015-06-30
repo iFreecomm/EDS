@@ -216,6 +216,15 @@ define(function(require) {
 			{label: "6", value: 6},
 			{label: "7", value: 7}
 		],
+		"vidPortType":[
+			{label: "VGA", value: Const.VidPortType_VGA},
+			{label: "YPbPr", value: Const.VidPortType_YPbPr},
+		],
+		"speed":[
+			{label: "快速", value: 0},
+			{label: "中速", value: 1},
+			{label: "慢速", value: 2}
+		],
 		"timezoneArr":[
 			{"label":"UTC-12:00", "value":-12},
 			{"label":"UTC-11:00", "value":-11},

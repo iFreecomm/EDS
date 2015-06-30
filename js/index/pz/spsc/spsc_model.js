@@ -21,6 +21,10 @@ define(function(require) {
 			"update": "spsc.psp",
 			"delete": "spsc.psp",
 			"read": "spsc.psp"
+		},
+		
+		parse: function(res) {
+			return res.data;
 		}
 	});
 	

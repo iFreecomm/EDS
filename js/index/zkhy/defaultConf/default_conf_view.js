@@ -37,7 +37,7 @@ define(function(require) {
 			var $a = $tar.is("a") ? $tar : $tar.parents("a");
 			
 			$.getJSON("setDefBeginMeetingCfg.psp", Util.encode({
-				"recordId": $a.data("id")
+				"meetingId": $a.data("id")
 			})).done(function(res) {
 				if(res.code === 0) {
 					self.$("a").removeClass("active");

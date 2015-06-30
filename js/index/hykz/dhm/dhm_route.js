@@ -21,8 +21,9 @@ define(function(require) {
 				$.getJSON("getAllAddrBook.psp"),//所有联系人
 				
 				$.getJSON("getVenueCfg.psp"),//会场
+				$.getJSON("getMeetingSecVidInfo.psp"),//是否支持辅流
 				this.dhmModel.fetch()
-			).done(function(allLxr,venue) {
+			).done(function(allLxr,venue,secVid) {
 				var venueId = [];
 				if(venue && venue[0].data && venue[0].data.venueId)
 				{
@@ -31,6 +32,13 @@ define(function(require) {
 				self.dhmModel.set({
 					"venueId": venueId
 				});
+				
+				if(secVid && secVid[0].data && secVid[0].data.supportSecVid)
+				{
+					self.dhmModel.set({
+						"secVidFlag": secVid[0].data.supportSecVid
+					});
+				}
 				
 				self.allLxr = allLxr[0].data.bookInfo;
 				

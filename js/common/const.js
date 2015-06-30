@@ -172,6 +172,16 @@ define(function() {
 	    FileType_Audio:0,
 	    FileType_Video:1,
 	    FileType_Image:2,
-	    FileType_Cnt:3
+	    FileType_Cnt:3,
+	    
+	    VidPortType_Auto:0,   /*由底层自动选择*/
+	    VidPortType_YPbPr:1,
+	    VidPortType_VGA:2,
+	    VidPortType_Dvi:3,
+	    VidPortType_Hdmi:4,
+	    VidPortType_CVBS:5,
+	    VidPortType_SVideo:6,
+	    VidPortType_3GSDI:7,
+	    VidPortType_Cnt:8
 	};
 });

@@ -10,7 +10,8 @@ define(function(require) {
 			baudRate:0,
 			addr: 0,
 			dataBit: 0,
-			cameraProt: 0
+			cameraProt: 0,
+			speed: 0
 		},
 		urls: {
 			"create": "setCameraCfg.psp",

@@ -4,22 +4,27 @@ define(function(require) {
 	var SpsrModel = Model.extend({
 		idAttribute: "recordId",
 		defaults: {
-			name: "SDI1",
-			kzck: 0,
-			ydsd: 0,
-			srjkxh: 0,
+			cameraName: "SDI1",
+			vidPortType: 0,
 			
-			ld: 50,
-			dbd: 50,
-			bhd: 50,
-			sppy: 126,
-			czpy: 127
+			bright: 50,
+			contrast: 50,
+			saturation: 50,
+			clock: 126,
+			phase: 127,
+			horOffset:128,
+			vertOffset:128,
+			nr2d:5,
+			nr3d:5,
+			acutance:5
 		},
 		urls: {
-			"create": "spsr.psp",
-			"update": "spsr.psp",
-			"delete": "spsr.psp",
-			"read": "spsr.psp"
+			"update": "setVidInCfg.psp",
+			"read": "getVidInCfg.psp"
+		},
+		
+		parse: function(res) {
+			return res.data;
 		}
 	});
 	

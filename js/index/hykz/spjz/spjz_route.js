@@ -22,10 +22,11 @@ define(function(require) {
 				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
 				
 				$.getJSON("getVenueCfg.psp"),//会场
+				$.getJSON("getMeetingSecVidInfo.psp"),//是否支持辅流
 				//$.getJSON("getVidMatrix.psp"),//视频矩阵
 				
 				this.spjzModel.fetch()
-			).done(function(allLxr,outPort,venue) {
+			).done(function(allLxr,outPort,venue,secVid) {
 				var venueId = [];
 				if(venue && venue[0].data && venue[0].data.venueId)
 				{
@@ -35,6 +36,13 @@ define(function(require) {
 						"venueId": venueId,
 						//"matrixInOut": matrixInOut[0].data.matrixInOut
 				});
+				
+				if(secVid && secVid[0].data && secVid[0].data.supportSecVid)
+				{
+					self.spjzModel.set({
+						"secVidFlag": secVid[0].data.supportSecVid
+					});
+				}
 				
 				self.allLxr = allLxr[0].data.bookInfo;
 				

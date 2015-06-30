@@ -38,6 +38,10 @@ define(function(require) {
 			"#cameraProt": {
 				observe: "cameraProt",
 				selectName: "cameraProt"
+			},
+			"#speed": {
+				observe: "speed",
+				selectName: "speed"
 			}
 		},
 		ui: {

@@ -10,19 +10,25 @@ define(function(require) {
 		id: "pz_spsr",
 		template: Handlebars.compile(tmpl),
 		bindings: {
-			"#name": "name",
-			"#kzck": "kzck",
-			"#ydsd": "ydsd",
-			"#srjkxh": "srjkxh",
+			"#cameraName": "cameraName",
+			"#vidPortType": {
+				observe: "vidPortType",
+				selectName: "vidPortType"
+			},
 			
-			"#ld": "ld",
-			"#dbd": "dbd",
-			"#bhd": "bhd",
-			"#sppy": "sppy",
-			"#czpy": "czpy"
+			"#bright": "bright",
+			"#contrast": "contrast",
+			"#saturation": "saturation",
+			"#clock": "clock",
+			"#phase": "phase",
+			"#horOffset": "horOffset",
+			"#vertOffset": "vertOffset",
+			"#nr2d": "nr2d",
+			"#nr3d": "nr3d",
+			"#acutance": "acutance"
 		},
 		checkOptions: {
-			"#name": {
+			"#cameraName": {
 				constraint: ["notNull", "trimCheck"],
 				appendTo: ".formCell"
 			}
@@ -33,9 +39,12 @@ define(function(require) {
 		},
 		events: {
 			"keyup": "checkInput",
-			"click .lxr" : "selectLxr"
+			"click .lxr" : "selectLxr",
+			"click .saveBtn" : "saveModel"
 		},
-		
+		initialize: function(opt) {
+			Util.setSelectBindings(this.bindings);
+		},
 		onRender: function() {
 			this.stickit();
 			Util.initSlider(this.$el);
@@ -48,13 +57,23 @@ define(function(require) {
 		checkInput: function(e) {
 			FormUtil.checkInput($(e.target), this.checkOptions);
 		},
-		
+		saveModel: function(e) {
+			var self = this;
+			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;	
+			
+			this.model.save().done(function(res) {
+				
+			}).fail(function() {
+				
+			});
+		},
 		selectLxr: function(e) {
 			var self = this;
 			var $tar = $(e.target);
 			var $lxr = $tar.is(".lxr") ? $tar : $tar.parents(".lxr");
 			$lxr.addClass("active").siblings().removeClass("active");
 			
+			this.model.set("recordId",$lxr.data("id"));
 			this.model.mustFetch({
 				"recordId": $lxr.data("id")
 			}).done(function() {

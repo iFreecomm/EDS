@@ -22,7 +22,10 @@ define(function(require) {
 					self.meetingList = meeting[0].data.meetingList;
 				}
 				
-				self.meetingId = defaultConf[0].data.meetingId;
+				if(defaultConf[0].data && defaultConf[0].data.meetingId)
+				{
+					self.meetingId = defaultConf[0].data.meetingId;
+				}
 				
 				self.showView();
 			});

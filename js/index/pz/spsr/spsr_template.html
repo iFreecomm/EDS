@@ -26,43 +26,16 @@
 				<div class="formCell fl">
 					<span class="cellName">别名：</span>
 					<div class="fieldBox sm">
-						<input type="text" name="name" id="name" autofocus="autofocus" autocomplete="off"/>
-					</div>
-				</div>
-				<div class="formCell fl SDI">
-					<span class="cellName">控制串口：</span>
-					<div class="fieldBox sm">
-						<select name="kzck" id="kzck">
-							<option value="0">COM1</option>
-							<option value="1">COM2</option>
-							<option value="2">COM3</option>
-							<option value="3">COM4</option>
-							<option value="4">COM5</option>
-							<option value="5">COM6</option>
-							<option value="6">COM7</option>
-							<option value="7">COM8</option>
-						</select>
-					</div>
-				</div>
-				<div class="formCell fl SDI">
-					<span class="cellName">移动速度：</span>
-					<div class="fieldBox sm">
-						<select name="ydsd" id="ydsd">
-							<option value="0">慢速</option>
-							<option value="1">中速</option>
-							<option value="2">快速</option>
-						</select>
+						<input type="text" name="cameraName" id="cameraName" autofocus="autofocus" autocomplete="off"/>
 					</div>
 				</div>
 				<div class="formCell fl VGA">
-						<span class="cellName">输入接口信号：</span>
-						<div class="fieldBox sm">
-							<select name="srjkxh" id="srjkxh">
-								<option value="0">VGA</option>
-								<option value="1">YPbPr</option>
-							</select>
-						</div>
+					<span class="cellName">输入接口信号：</span>
+					<div class="fieldBox sm">
+						<select name="vidPortType" id="vidPortType">
+						</select>
 					</div>
+				</div>
 			</div>
 		
 			<div class="formLine sliderBox cf">
@@ -70,7 +43,7 @@
 					<span class="cellName">亮度：</span>
 					<div class="fieldBox">
 						<div class="slider" data-min="0" data-max="99"></div>
-						<span class="sliderValue" id="ld" contenteditable="true"></span>
+						<span class="sliderValue" id="bright" contenteditable="true"></span>
 					</div>
 				</div>
 				
@@ -78,7 +51,7 @@
 					<span class="cellName">对比度：</span>
 					<div class="fieldBox">
 						<div class="slider" data-min="0" data-max="99"></div>
-						<span class="sliderValue" id="dbd" contenteditable="true"></span>
+						<span class="sliderValue" id="contrast" contenteditable="true"></span>
 					</div>
 				</div>
 				
@@ -86,7 +59,28 @@
 					<span class="cellName">饱和度：</span>
 					<div class="fieldBox">
 						<div class="slider" data-min="0" data-max="99"></div>
-						<span class="sliderValue" id="bhd" contenteditable="true"></span>
+						<span class="sliderValue" id="saturation" contenteditable="true"></span>
+					</div>
+				</div>
+				<div class="formCell fl">
+					<span class="cellName">2D降噪：</span>
+					<div class="fieldBox">
+						<div class="slider" data-min="0" data-max="9"></div>
+						<span class="sliderValue" id="nr2d" contenteditable="true"></span>
+					</div>
+				</div>
+				<div class="formCell fl">
+					<span class="cellName">3D降噪：</span>
+					<div class="fieldBox">
+						<div class="slider" data-min="0" data-max="9"></div>
+						<span class="sliderValue" id="nr3d" contenteditable="true"></span>
+					</div>
+				</div>
+				<div class="formCell fl">
+					<span class="cellName">锐度：</span>
+					<div class="fieldBox">
+						<div class="slider" data-min="0" data-max="9"></div>
+						<span class="sliderValue" id="acutance" contenteditable="true"></span>
 					</div>
 				</div>
 				
@@ -94,7 +88,7 @@
 					<span class="cellName">时钟：</span>
 					<div class="fieldBox">
 						<div class="slider" data-min="0" data-max="255"></div>
-						<span class="sliderValue" id="sppy" contenteditable="true"></span>
+						<span class="sliderValue" id="clock" contenteditable="true"></span>
 					</div>
 				</div>
 				
@@ -102,9 +96,25 @@
 					<span class="cellName">相位：</span>
 					<div class="fieldBox">
 						<div class="slider" data-min="0" data-max="255"></div>
-						<span class="sliderValue" id="czpy" contenteditable="true"></span>
+						<span class="sliderValue" id="phase" contenteditable="true"></span>
 					</div>
 				</div>
+				
+				<div class="formCell fl">
+					<span class="cellName">水平偏移：</span>
+					<div class="fieldBox">
+						<div class="slider" data-min="0" data-max="255"></div>
+						<span class="sliderValue" id="horOffset" contenteditable="true"></span>
+					</div>
+				</div>
+				<div class="formCell fl">
+					<span class="cellName">垂直偏移：</span>
+					<div class="fieldBox">
+						<div class="slider" data-min="0" data-max="255"></div>
+						<span class="sliderValue" id="vertOffset" contenteditable="true"></span>
+					</div>
+				</div>
+	
 			</div>
 		
 			<div class="form-btns">
