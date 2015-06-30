@@ -6,14 +6,24 @@ define(function(require) {
 
     var XtztRoute = Route.extend({
         initialize: function(options) {
+        	var self = this;
             this.container = options.container;
-            this.showView();
+            
+            $.getJSON("getXtztData.psp").done(function(res) {
+            	self.xtztData = res.data;
+            	
+            	self.showView();
+            });
         },
 
         showView: function() {
             this.show({
                 navLeftView: NavLeftView,
-                contentRightView: new XtztView()
+                contentRightView: new XtztView({
+                	templateHelpers: {
+                		xtztData: this.xtztData
+                	}
+                })
             });
         }
     });

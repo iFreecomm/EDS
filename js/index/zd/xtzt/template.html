@@ -1,34 +1,205 @@
-<div class="bbxx">
-    <h3>系统状态</h3>
-    
-    <table>
-    	<tr>
-    		<td>软件版本：</td>
-    		<td>V1.0.1 Build 1066</td>
-    	</tr>
-    	<tr>
-    		<td>版本发布日期:</td>
-    		<td>2014年3月23日 09:35:28</td>
-    	</tr>
-    	<tr>
-    		<td>配置文件发布日期:</td>
-    		<td>2014年3月28日 10:35:28</td>
-    	</tr>
-    	<tr>
-    		<td>主控制板版本:</td>
-    		<td>V1.0</td>
-    	</tr>
-    	<tr>
-    		<td>交互背板版本:</td>
-    		<td>V1.0</td>
-    	</tr>
-    	<tr>
-    		<td>视频矩阵板版本:</td>
-    		<td>V1.0</td>
-    	</tr>
-    	<tr>
-    		<td>接口板版本：</td>
-    		<td>V1.0</td>
-    	</tr>
-    </table>
-</div>
+{{#with xtztData}}
+	<div class="line cf">
+		<div class="fl">
+		    <h3>系统</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>产品型号：</td>
+		    		<td>{{xt.cpxh}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SN号：</td>
+		    		<td>{{xt.sn}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>会场号码：</td>
+		    		<td>{{xt.hchm}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>GK状态：</td>
+		    		<td>{{xt.gk}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>温度：</td>
+		    		<td>{{xt.wd}}</td>
+		    	</tr>
+		    </table>
+		</div>
+		<div class="fl">
+		    <h3>CPU占用率</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>占用率：</td>
+		    		<td>{{cpu.zyl}}</td>
+		    	</tr>
+		    </table>		
+		</div>
+	</div>
+	
+	<div class="line cf">
+		<div class="fl">
+		    <h3>视频输入</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>SDI1：</td>
+		    		<td>{{videoIn.sdi1}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI2：</td>
+		    		<td>{{videoIn.sdi2}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI3：</td>
+		    		<td>{{videoIn.sdi3}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI4：</td>
+		    		<td>{{videoIn.sdi4}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI5：</td>
+		    		<td>{{videoIn.sdi5}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI6：</td>
+		    		<td>{{videoIn.sdi6}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI7：</td>
+		    		<td>{{videoIn.sdi7}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>SDI8：</td>
+		    		<td>{{videoIn.sdi8}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA1：</td>
+		    		<td>{{videoIn.vga1}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA2：</td>
+		    		<td>{{videoIn.vga2}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA3：</td>
+		    		<td>{{videoIn.vga3}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA4：</td>
+		    		<td>{{videoIn.vga4}}</td>
+		    	</tr>
+		    </table>
+		</div>
+		<div class="fl">
+		    <h3>视频输出</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>VGA1：</td>
+		    		<td>{{videoOut.vga1}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA2：</td>
+		    		<td>{{videoOut.vga2}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA3：</td>
+		    		<td>{{videoOut.vga3}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>VGA4：</td>
+		    		<td>{{videoOut.vga4}}</td>
+		    	</tr>
+		    </table>		
+		</div>
+	</div>
+	
+	<div class="line cf">
+		<div class="fl">
+		    <h3>硬盘A</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>容量：</td>
+		    		<td>{{diskA.rl}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>剩余：</td>
+		    		<td>{{diskA.sy}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>文件系统：</td>
+		    		<td>{{diskA.wjxt}}</td>
+		    	</tr>
+		    </table>
+		</div>
+		<div class="fl">
+		    <h3>硬盘B</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>容量：</td>
+		    		<td>{{diskB.rl}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>剩余：</td>
+		    		<td>{{diskB.sy}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>文件系统：</td>
+		    		<td>{{diskB.wjxt}}</td>
+		    	</tr>
+		    </table>		
+		</div>
+	</div>
+	
+	<div class="line cf">
+		<div class="fl">
+		    <h3>网口1</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>IP：</td>
+		    		<td>{{net1.ip}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>掩码：</td>
+		    		<td>{{net1.ym}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>MAC：</td>
+		    		<td>{{net1.mac}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>带宽：</td>
+		    		<td>{{net1.dk}}</td>
+		    	</tr>
+		    </table>
+		</div>
+		<div class="fl">
+		    <h3>网口2</h3>
+		    
+		    <table>
+		    	<tr>
+		    		<td>IP：</td>
+		    		<td>{{net2.ip}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>掩码：</td>
+		    		<td>{{net2.ym}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>MAC：</td>
+		    		<td>{{net2.mac}}</td>
+		    	</tr>
+		    	<tr>
+		    		<td>带宽：</td>
+		    		<td>{{net2.dk}}</td>
+		    	</tr>
+		    </table>		
+		</div>
+	</div>
+{{/with}}

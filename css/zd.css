@@ -1,3 +1,23 @@
+/**********系统状态样式开始**********/
+#zd_xtzt {
+	margin: 20px 40px;
+}
+#zd_xtzt h3 {
+	width: 400px;
+	padding: 15px 20px;
+	margin: 0;
+	background-color: #D1CFCF;
+}
+#zd_xtzt td {
+	padding: 5px 20px;
+}
+#zd_xtzt .fl {
+	margin-right: 50px;
+	margin-bottom: 20px;
+	background: #DDDDDD;
+}
+/**********系统状态样式结束**********/
+
 /**********点播查询样式开始**********/
 #zd_dbcx {
 	margin: 20px 40px;
