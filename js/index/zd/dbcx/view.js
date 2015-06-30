@@ -1,7 +1,5 @@
 define(function(require) {
 	var $ = require("jquery");
-	var _ = require("underscore");
-	var Radio = require("radio");
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
@@ -71,7 +69,7 @@ define(function(require) {
 		},
 		
 		curPage: function() {
-			if(this.collection.endFlag === 1 && this.curSize === 1) {
+			if(this.collection.lastPageEmpty()) {
 				this.prevPage();
 			} else {
 				this._refreshTable();

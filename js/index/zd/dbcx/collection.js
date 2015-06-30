@@ -10,6 +10,7 @@ define(function(require) {
 		},
 		pageNum: 1,
 		endFlag: 1,
+		curSize: 0,
 		parse: function(res) {
 			if(res && res.data && res.data.fileList) {
 				this.pageNum = res.data.pageNum;
@@ -25,6 +26,14 @@ define(function(require) {
 					pageNum: this.pageNum
 				})
 			});
+		},
+		
+		lastPageEmpty: function() {
+			if(this.endFlag === 1 && this.curSize <= 1) {
+				return true;
+			} else {
+				return false;
+			}
 		},
 		
 		prevPage: function() {

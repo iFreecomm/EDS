@@ -11,6 +11,16 @@
 #zd_czrz {
 	margin: 20px 40px;
 }
+#zd_czrz .listTable {
+	min-width: 745px;
+}
+#zd_czrz .cellName {
+	width: 100px;
+	padding-right: 0;
+}
+#zd_czrz .fieldBox.sm {
+	padding-left: 100px;
+}
 #zd_czrz .form-btns {
 	margin-top: 10px;
 }

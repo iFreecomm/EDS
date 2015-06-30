@@ -10,6 +10,7 @@ define(function(require) {
 		},
 		pageNum: 1,
 		endFlag: 1,
+		searchTerms: null,
 		parse: function(res) {
 			if(res && res.data && res.data.fileList) {
 				this.pageNum = res.data.pageNum;
@@ -22,7 +23,8 @@ define(function(require) {
 		pageFetch: function() {
 			return this.fetch({
 				data: Util.encode({
-					pageNum: this.pageNum
+					pageNum: this.pageNum,
+					searchTerms: this.searchTerms
 				})
 			});
 		},
