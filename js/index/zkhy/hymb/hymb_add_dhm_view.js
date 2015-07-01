@@ -158,8 +158,7 @@ define(function(require) {
 		selectMode: function(e) {
 			this.saveCurrentSubPicInfo();
 			
-			var $tar = $(e.target);
-			var $box = $tar.is(".mode-box") ? $tar : $tar.parents(".mode-box");
+			var $box = $(e.currentTarget);
 			$box.addClass("active").siblings().removeClass("active");
 			
 			this.ui.mode_box_big.html($box.html());

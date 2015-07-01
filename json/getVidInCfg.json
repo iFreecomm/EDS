@@ -1,0 +1,19 @@
+{
+	"code": 0,
+	"data": {
+		"cameraName": "视频输入名称",
+		"vidPortType": "1",
+		
+		"bright": 51,
+		"contrast": 51,
+		"saturation": 51,
+		"clock": 127,
+		"phase": 128,
+		"horOffset": 129,
+		"vertOffset": 129,
+		"nr2d": 6,
+		"nr3d": 6,
+		"acutance": 6
+	}
+}
+

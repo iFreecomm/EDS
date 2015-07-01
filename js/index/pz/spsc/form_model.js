@@ -1,7 +1,7 @@
 define(function(require) {
 	var Model = require("web/common/model");
 	
-	var SpscModel = Model.extend({
+	var FormModel = Model.extend({
 		idAttribute: "recordId",
 		defaults: {
 			name: "默认名称000",
@@ -28,5 +28,5 @@ define(function(require) {
 		}
 	});
 	
-	return SpscModel;
+	return FormModel;
 });

@@ -3,64 +3,60 @@ define(function(require) {
 	var Mn = require("marionette");
 	var Handlebars = require("handlebars");
 	var Util = require("web/common/util");
-	var FormUtil = require("web/common/formUtil");
-	var tmpl = require("text!web/index/pz/spsc/spsc_template.html");
+	var tmpl = require("text!./spsc_template.html");
 	
-	var SpscView = Mn.ItemView.extend({
+	var FormView = require("./form_view");
+	var FormModel = require("./form_model");
+	
+	var SpscView = Mn.LayoutView.extend({
 		id: "pz_spsc",
 		template: Handlebars.compile(tmpl),
-		bindings: {
-			"#name": "name",
-			"#szxh": "szxh",
-			"#mnxh": "mnxh",
-			"#fbl": "fbl",
-			"#xsms": "xsms",
-			
-			"#ld": "ld",
-			"#dbd": "dbd",
-			"#bhd": "bhd",
-			"#sppy": "sppy",
-			"#czpy": "czpy"
-		},
-		checkOptions: {
-			"#name": {
-				constraint: ["notNull", "trimCheck"],
-				appendTo: ".formCell"
-			}
-		},
-		ui: {
-			formBox: ".formBox",
-			select: "select"
+		regions: {
+			formBoxContainer: ".formBox-container"
 		},
 		events: {
-			"keyup": "checkInput",
 			"click .lxr" : "selectLxr"
 		},
 		
+		initialize: function() {
+			this.formModel = new FormModel();
+			this.formView = new FormView({
+				model: this.formModel
+			});
+			
+			this.listenTo(this.formView, "changeName", this.changeName);
+		},
 		onRender: function() {
-			this.stickit();
-			Util.initSlider(this.$el);
-		},
-		onAttach: function() {
-			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
-			this.ui.select.change();
-		},
-		
-		checkInput: function(e) {
-			FormUtil.checkInput($(e.target), this.checkOptions);
+			var $lxr = this.$(".lxr").eq(0).addClass("active");
+			if($lxr.length == 0) return;
+			
+			this.showFormView($lxr);
 		},
 		
 		selectLxr: function(e) {
-			var self = this;
-			var $tar = $(e.target);
-			var $lxr = $tar.is(".lxr") ? $tar : $tar.parents(".lxr");
+			var $lxr = $(e.currentTarget);
 			$lxr.addClass("active").siblings().removeClass("active");
 			
-			this.model.mustFetch({
-				"recordId": $lxr.data("id")
-			}).done(function() {
-				Util.refreshSelectmenu(self.$el).refreshSlider(self.$el);
-			});
+			this.showFormView($lxr);
+		},
+		
+		showFormView: function($lxr) {
+			var self = this;
+			var id = $lxr.data("id");
+			
+			if(this.getChildView("formBoxContainer")) {
+				this.formView.updateView(id);
+			} else {
+				this.formModel.set("recordId", id).mustFetch({
+					"recordId": id
+				}).done(function() {
+					self.showChildView("formBoxContainer", self.formView);
+				});
+			}
+		},
+		
+		changeName: function(name) {
+			this.$(".lxr.active").children(".lxr-head").text(name);
 		}
 	});
 	

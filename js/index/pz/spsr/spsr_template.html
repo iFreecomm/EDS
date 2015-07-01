@@ -3,14 +3,14 @@
 		<h3>视频输入接口配置</h3>
 		<div class="lxr-box cf">
 			{{#each SDI}}
-				<div class="lxr" data-id="{{camPort}}">
+				<div class="lxr" data-id="{{camPort}}" data-type="SDI">
 					<div class="lxr-head">{{name}}</div>
 					<div class="lxr-body">{{info}}</div>
 				</div>
 			{{/each}}
 			
 			{{#each VGA}}
-				<div class="lxr" data-id="{{vgaPort}}">
+				<div class="lxr" data-id="{{vgaPort}}" data-type="VGA">
 					<div class="lxr-head">{{name}}</div>
 					<div class="lxr-body">{{info}}</div>
 				</div>
@@ -18,108 +18,5 @@
 		</div>
 	</div>
 	
-	<div class="shadow-box">
-		<h3>SDI接口配置</h3>
-		
-		<div class="formBox">
-			<div class="formLine cf">
-				<div class="formCell fl">
-					<span class="cellName">别名：</span>
-					<div class="fieldBox sm">
-						<input type="text" name="cameraName" id="cameraName" autofocus="autofocus" autocomplete="off"/>
-					</div>
-				</div>
-				<div class="formCell fl VGA">
-					<span class="cellName">输入接口信号：</span>
-					<div class="fieldBox sm">
-						<select name="vidPortType" id="vidPortType">
-						</select>
-					</div>
-				</div>
-			</div>
-		
-			<div class="formLine sliderBox cf">
-				<div class="formCell fl">
-					<span class="cellName">亮度：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="99"></div>
-						<span class="sliderValue" id="bright" contenteditable="true"></span>
-					</div>
-				</div>
-				
-				<div class="formCell fl">
-					<span class="cellName">对比度：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="99"></div>
-						<span class="sliderValue" id="contrast" contenteditable="true"></span>
-					</div>
-				</div>
-				
-				<div class="formCell fl">
-					<span class="cellName">饱和度：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="99"></div>
-						<span class="sliderValue" id="saturation" contenteditable="true"></span>
-					</div>
-				</div>
-				<div class="formCell fl">
-					<span class="cellName">2D降噪：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="9"></div>
-						<span class="sliderValue" id="nr2d" contenteditable="true"></span>
-					</div>
-				</div>
-				<div class="formCell fl">
-					<span class="cellName">3D降噪：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="9"></div>
-						<span class="sliderValue" id="nr3d" contenteditable="true"></span>
-					</div>
-				</div>
-				<div class="formCell fl">
-					<span class="cellName">锐度：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="9"></div>
-						<span class="sliderValue" id="acutance" contenteditable="true"></span>
-					</div>
-				</div>
-				
-				<div class="formCell fl">
-					<span class="cellName">时钟：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="255"></div>
-						<span class="sliderValue" id="clock" contenteditable="true"></span>
-					</div>
-				</div>
-				
-				<div class="formCell fl">
-					<span class="cellName">相位：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="255"></div>
-						<span class="sliderValue" id="phase" contenteditable="true"></span>
-					</div>
-				</div>
-				
-				<div class="formCell fl">
-					<span class="cellName">水平偏移：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="255"></div>
-						<span class="sliderValue" id="horOffset" contenteditable="true"></span>
-					</div>
-				</div>
-				<div class="formCell fl">
-					<span class="cellName">垂直偏移：</span>
-					<div class="fieldBox">
-						<div class="slider" data-min="0" data-max="255"></div>
-						<span class="sliderValue" id="vertOffset" contenteditable="true"></span>
-					</div>
-				</div>
-	
-			</div>
-		
-			<div class="form-btns">
-				<button type="button" class="btn btn-ls saveBtn">保存</button>
-			</div>
-		</div>
-	</div>
+	<div class="formBox-container"></div>
 </div>

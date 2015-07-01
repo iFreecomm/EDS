@@ -93,8 +93,7 @@ define(function(require) {
 		},
 		
 		selectLxr: function(e) {
-			var $tar = $(e.target);
-			var $lxr = $tar.is(".lxr") ? $tar : $tar.parents(".lxr");
+			var $lxr = $(e.currentTarget);
 			$lxr.toggleClass("active");
 		},
 		

@@ -43,10 +43,7 @@ define(function(require) {
 		
 		selectLi: function(e) {
 			this.ui.lis.eq(this.selectedYzwIndex).removeClass("selected");
-			var $li = $(e.target);
-			if(!$li.is("li")) {
-				$li = $li.parents("li");
-			}
+			var $li = $(e.currentTarget);
 			$li.addClass("selected");
 			this.selectedYzwIndex = $li.index();
 			
@@ -148,10 +145,7 @@ define(function(require) {
 		},
 		
 		startControlCamera: function(e) {
-			var $btn = $(e.target);
-			if(!$btn.is("button")) {
-				$btn = $btn.parents("button");
-			}
+			var $btn = $(e.currentTarget);
 			
 			var self = this;
 			var vidInPort = this.options.vidInPort;

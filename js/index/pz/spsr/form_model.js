@@ -1,7 +1,7 @@
 define(function(require) {
 	var Model = require("web/common/model");
 	
-	var SpsrModel = Model.extend({
+	var FormModel = Model.extend({
 		idAttribute: "recordId",
 		defaults: {
 			cameraName: "SDI1",
@@ -12,13 +12,14 @@ define(function(require) {
 			saturation: 50,
 			clock: 126,
 			phase: 127,
-			horOffset:128,
-			vertOffset:128,
-			nr2d:5,
-			nr3d:5,
-			acutance:5
+			horOffset: 128,
+			vertOffset: 128,
+			nr2d: 5,
+			nr3d: 5,
+			acutance: 5
 		},
 		urls: {
+			"create": "temp.psp",
 			"update": "setVidInCfg.psp",
 			"read": "getVidInCfg.psp"
 		},
@@ -28,5 +29,5 @@ define(function(require) {
 		}
 	});
 	
-	return SpsrModel;
+	return FormModel;
 });

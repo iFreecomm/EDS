@@ -33,8 +33,7 @@ define(function(require) {
 			e.preventDefault();
 			
 			var self = this;
-			var $tar = $(e.target);
-			var $a = $tar.is("a") ? $tar : $tar.parents("a");
+			var $a = $(e.currentTarget);
 			
 			$.getJSON("setDefBeginMeetingCfg.psp", Util.encode({
 				"meetingId": $a.data("id")

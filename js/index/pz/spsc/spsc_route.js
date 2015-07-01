@@ -5,14 +5,11 @@ define(function(require) {
 	var NavLeftView = require("web/index/pz/navLeft/navLeft_view");
 	var SpscView = require("web/index/pz/spsc/spsc_view");
 	
-	var SpscModel = require("web/index/pz/spsc/spsc_model");
-
 	var SpscRoute = Route.extend({
 		
 		initialize: function(options) {
 			var self = this;
 			this.container = options.container;
-			this.spscModel = new SpscModel();
 			
 			$.getJSON("getVidOutPort.psp").done(function(vga) {
 				self.VGA = [];
@@ -21,12 +18,7 @@ define(function(require) {
 					self.VGA = vga.data.outPortInfo;
 				}
 				
-				$.when(self.spscModel.mayFetch({
-					// TODO 这里的id有问题
-					id: self.VGA[0].vidOutPort
-				})).done(function() {
-					self.showView();
-				});
+				self.showView();
 			});
 		},
 		
@@ -34,7 +26,6 @@ define(function(require) {
 			this.show({
 				navLeftView: NavLeftView,
 				contentRightView: new SpscView({
-					model: this.spscModel,
 					templateHelpers: {
 						VGA: this.VGA
 					}
