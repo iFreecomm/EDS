@@ -27,10 +27,10 @@ define(function(require) {
 				selectName: "vidExpandMode"
 			},
 			
-			"#vidFmt": {
-				observe: "vidFmt",
-				selectName: "vidOutFmt_vga"
-			},
+//			"#vidFmt": {
+//				observe: "vidFmt",
+//				selectName: "vidOutFmt_vga"
+//			},
 			
 			"#bright": "bright",
 			"#contrast": "contrast",
@@ -44,7 +44,7 @@ define(function(require) {
 			"#acutance": "acutance"
 		},
 		checkOptions: {
-			"#name": {
+			"#dispName": {
 				constraint: ["notNull", "trimCheck"],
 				appendTo: ".formCell"
 			}
@@ -65,7 +65,11 @@ define(function(require) {
 			Util.setSelectBindings(this.bindings);
 		},
 		onRender: function() {
+			this.changeVga();
+			this.changeFmt();
+			
 			this.stickit();
+			
 			Util.initSlider(this.$el);
 		},
 		onAttach: function() {
@@ -73,9 +77,6 @@ define(function(require) {
 			
 			this.listenTo(this.model, "change:vidPortType", this.changeVidPortType);
 			this.listenTo(this.model, "change:vidPortAuxType", this.changeVidAuxPortType);
-			
-			this.changeVidPortType();
-			this.changeVidAuxPortType();
 		},
 		
 		checkInput: function(e) {
@@ -86,50 +87,57 @@ define(function(require) {
 		 * 数字信号改变事件
 		 */
 		changeVidPortType:function() {
-			var vidPortType = this.model.get("vidPortType");
-			
-			if(vidPortType == Const.VidPortType_Hdmi) {
-				this._changeFmt('hdmi');
-			} else if(vidPortType == Const.VidPortType_Dvi) {
-				this._changeFmt(this.ui.vidPortAuxType.children(":selected").text());
-			}
+			this.changeFmt();
+			Util.refreshSelectmenu(this.ui.vidFmt, this.ui.formBox);
 		},
 		/**
 		 * 模拟信号改变事件
 		 */
 		changeVidAuxPortType: function() {
-			this._changeVga();
+			this.changeVga();
 			
-			if(this.model.get("vidPortType") == Const.VidPortType_Dvi) {
-				this._changeFmt(this.ui.vidPortAuxType.children(":selected").text());
-			}
+			this.changeFmt();
+			Util.refreshSelectmenu(this.ui.vidFmt, this.ui.formBox);
 		},
 		/**
 		 * 改变分辨率下拉列表
 		 */
+		changeFmt: function() {
+			var vidPortType = this.model.get("vidPortType");
+			var vidPortAuxType = this.model.get("vidPortAuxType");
+			
+			if(vidPortType == Const.VidPortType_Hdmi) {
+				this._changeFmt('hdmi');
+			} else if(vidPortType == Const.VidPortType_Dvi) {
+				if(vidPortAuxType == Const.VidPortType_VGA) {
+					this._changeFmt('vga');
+				} else if(vidPortAuxType == Const.VidPortType_YPbPr) {
+					this._changeFmt('ypbpr');
+				}
+			}
+		},
 		_changeFmt: function(selectName) {
 			selectName = "vidOutFmt_" + selectName.toLowerCase();
 			var arr = SelectObj[selectName];
 			if(_.isEmpty(arr)) return;
 			
-			var fmtVal = this.model.get("vidFmt");
-			var $fmt = this.ui.vidFmt.empty();
-			for(var i = 0; i < arr.length; i ++) {
-				$("<option></option>").text(arr[i].label).val(arr[i].value).appendTo($fmt);
-			}
+			var binding = { observe: "vidFmt" };
+			binding.selectOptions = {};
+			binding.selectOptions.collection = arr;
+			this.addBinding(this.model, "#vidFmt", binding);
 			
+			var $fmt = this.ui.vidFmt;
+			var fmtVal = this.model.get("vidFmt");
 			$fmt.val(fmtVal);
 			if($fmt.val() != fmtVal) {
 				$fmt.get(0).selectedIndex = 0;
 				this.model.set("vidFmt", $fmt.val());
 			}
-			
-			Util.refreshSelectmenu(this.ui.vidFmt, this.ui.formBox);
 		},
 		/**
 		 * 隐藏显示VGA相关字段
 		 */
-		_changeVga: function() {
+		changeVga: function() {
 			if(this.model.get("vidPortAuxType") == Const.VidPortType_VGA) {
 				this.ui.vga.show();
 			} else {
@@ -152,13 +160,13 @@ define(function(require) {
 		
 		updateView: function(id) {
 			var self = this;
-			this.model.set("recordId", id).mustFetch({
-				"recordId": id
+			this.model.fetch({
+				data: Util.encode({ "recordId": id }),
+				silent: true
 			}).done(function() {
+				self.model.set("recordId", id);
 				self.render();
 				Util.selectmenu(self.ui.select, self.ui.formBox);
-				self.changeVidPortType();
-				self.changeVidAuxPortType();
 			});
 		}
 	});
