@@ -4,23 +4,28 @@ define(function(require) {
 	var FormModel = Model.extend({
 		idAttribute: "recordId",
 		defaults: {
-			name: "默认名称000",
-			szxh: 0,
-			mnxh: 0,
-			fbl: 0,
-			xsms: 0,
+			dispName: "DVI1",
+			vidPortType: 0,
+			vidPortAuxType:0,
+			vidExpandMode:0,
+			vidFmt:0,
+			frameRate:0,
+			scanType:0,
 			
-			ld: 123,
-			dbd: 124,
-			bhd: 125,
-			sppy: 126,
-			czpy: 127
+			bright: 50,
+			contrast: 50,
+			saturation: 50,
+			clock: 0,
+			phase: 0,
+			horOffset:0,
+			vertOffset:0,
+			nr2d:5,
+			nr3d:5,
+			acutance:5
 		},
 		urls: {
-			"create": "spsc.psp",
-			"update": "spsc.psp",
-			"delete": "spsc.psp",
-			"read": "spsc.psp"
+			"update": "setVidOutCfg.psp",
+			"read": "getVidOutCfg.psp"
 		},
 		
 		parse: function(res) {

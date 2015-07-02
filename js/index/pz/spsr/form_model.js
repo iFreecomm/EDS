@@ -5,7 +5,7 @@ define(function(require) {
 		idAttribute: "recordId",
 		defaults: {
 			cameraName: "SDI1",
-			vidPortType: 0,
+			vidPortType: 2,
 			
 			bright: 50,
 			contrast: 50,
@@ -19,7 +19,6 @@ define(function(require) {
 			acutance: 5
 		},
 		urls: {
-			"create": "temp.psp",
 			"update": "setVidInCfg.psp",
 			"read": "getVidInCfg.psp"
 		},

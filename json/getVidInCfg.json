@@ -2,7 +2,7 @@
 	"code": 0,
 	"data": {
 		"cameraName": "视频输入名称",
-		"vidPortType": "1",
+		"vidPortType": 1,
 		
 		"bright": 51,
 		"contrast": 51,

@@ -5,6 +5,7 @@ define(function(require) {
 	var Util = require("web/common/util");
 	var FormUtil = require("web/common/formUtil");
 	var tmpl = require("text!./form_template.html");
+	var Const = require("web/common/const");
 	
 	var FormView = Mn.ItemView.extend({
 		className: "shadow-box",
@@ -13,7 +14,7 @@ define(function(require) {
 			"#cameraName": "cameraName",
 			"#vidPortType": {
 				observe: "vidPortType",
-				selectName: "vidPortType"
+				selectName: "vidPortAuxType"
 			},
 			
 			"#bright": "bright",
@@ -37,7 +38,8 @@ define(function(require) {
 			formBox: ".formBox",
 			select: "select",
 			h3: "h3",
-			vga: ".vga"
+			vga: ".vga",
+			vidPortType: ".vidPortType"
 		},
 		events: {
 			"keyup": "checkInput",
@@ -45,17 +47,14 @@ define(function(require) {
 		},
 		initialize: function(opt) {
 			Util.setSelectBindings(this.bindings);
+			
 		},
 		onRender: function() {
 			this.stickit();
 			Util.initSlider(this.$el);
 			this.ui.h3.text(this.options.type + "接口配置");
-			
-			if(this.options.type === "SDI") {
-				this.ui.vga.hide();
-			} else {
-				this.ui.vga.show();
-			}
+			this.changeVidPortType();		
+			this.listenTo(this.model, "change:vidPortType", this.changeVidPortType);
 		},
 		onAttach: function() {
 			Util.activeLink().selectmenu(this.ui.select, this.ui.formBox);
@@ -64,7 +63,22 @@ define(function(require) {
 		checkInput: function(e) {
 			FormUtil.checkInput($(e.target), this.checkOptions);
 		},
-		
+		changeVidPortType: function() {
+			if(this.options.type === "SDI") {
+				this.ui.vga.hide();
+				this.ui.vidPortType.hide();
+			} else {
+				this.ui.vidPortType.show();
+				if(this.model.get("vidPortType") == Const.VidPortType_VGA)
+				{
+					this.ui.vga.show();
+				}
+				else
+				{
+					this.ui.vga.hide();
+				}
+			}
+		},
 		saveModel: function(e) {
 			var self = this;
 			if(FormUtil.checkForm(this.$el, this.checkOptions)) return;	

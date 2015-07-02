@@ -52,7 +52,8 @@ define(function(require) {
 			
 			Radio.channel("wjll").command("playFile", {
 				title: model.get("fileName"),
-				path: "Alias0"+model.get("filePath")
+				path: model.get("filePath")
+//				path: "Alias0"+model.get("filePath")
 				//path: "Alias0/HardDisk1/recordfiles/2015/05/25/video2.mp4"
 			});
 		},

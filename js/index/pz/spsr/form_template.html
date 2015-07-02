@@ -8,7 +8,7 @@
 				<input type="text" name="cameraName" id="cameraName" autofocus="autofocus" autocomplete="off"/>
 			</div>
 		</div>
-		<div class="formCell fl vga">
+		<div class="formCell fl vidPortType">
 			<span class="cellName">输入接口信号：</span>
 			<div class="fieldBox sm">
 				<select name="vidPortType" id="vidPortType"></select>
@@ -65,7 +65,7 @@
 		<div class="formCell fl vga">
 			<span class="cellName">时钟：</span>
 			<div class="fieldBox">
-				<div class="slider" data-min="0" data-max="255"></div>
+				<div class="slider" data-min="-128" data-max="128"></div>
 				<span class="sliderValue" id="clock" contenteditable="true"></span>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 		<div class="formCell fl vga">
 			<span class="cellName">相位：</span>
 			<div class="fieldBox">
-				<div class="slider" data-min="0" data-max="255"></div>
+				<div class="slider" data-min="-128" data-max="128"></div>
 				<span class="sliderValue" id="phase" contenteditable="true"></span>
 			</div>
 		</div>
@@ -81,14 +81,14 @@
 		<div class="formCell fl vga">
 			<span class="cellName">水平偏移：</span>
 			<div class="fieldBox">
-				<div class="slider" data-min="0" data-max="255"></div>
+				<div class="slider" data-min="-128" data-max="128"></div>
 				<span class="sliderValue" id="horOffset" contenteditable="true"></span>
 			</div>
 		</div>
 		<div class="formCell fl vga">
 			<span class="cellName">垂直偏移：</span>
 			<div class="fieldBox">
-				<div class="slider" data-min="0" data-max="255"></div>
+				<div class="slider" data-min="-128" data-max="128"></div>
 				<span class="sliderValue" id="vertOffset" contenteditable="true"></span>
 			</div>
 		</div>

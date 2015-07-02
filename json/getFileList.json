@@ -6,8 +6,8 @@
 		"fileList": [
 			{
 				"fileName": "media/video/video1.mp4media/video/video1.mp4media/video/video1.mp4",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
+				"fileSize": "3000",
+				"playTime": "3000",
 				"recordTime": "2015-05-05 00:00:00",
 				"confNum": 111,
 				"confName": "会议名称1",
@@ -24,8 +24,8 @@
 			},
 			{
 				"fileName": "文件2",
-				"fileSize": "3M",
-				"playTime": "00:20:30",
+				"fileSize": "5000",
+				"playTime": "5000",
 				"recordTime": "2015-06-06 01:00:00",
 				"confNum": 222,
 				"confName": "会议名称2",
@@ -42,8 +42,8 @@
 			},
 			{
 				"fileName": "文件1",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
+				"fileSize": "7000",
+				"playTime": "7000",
 				"recordTime": "2015-05-05 00:00:00",
 				"confNum": 111,
 				"confName": "会议名称1",
@@ -60,8 +60,8 @@
 			},
 			{
 				"fileName": "文件1",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
+				"fileSize": "8000",
+				"playTime": "8000",
 				"recordTime": "2015-05-05 00:00:00",
 				"confNum": 111,
 				"confName": "会议名称1",
@@ -78,8 +78,8 @@
 			},
 			{
 				"fileName": "安迪",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
+				"fileSize": "9000",
+				"playTime": "9000",
 				"recordTime": "2015-05-05 00:00:00",
 				"confNum": 111,
 				"confName": "会议名称1",
@@ -96,8 +96,8 @@
 			},
 			{
 				"fileName": "死不了",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
+				"fileSize": "32300",
+				"playTime": "32300",
 				"recordTime": "2015-05-05 00:00:00",
 				"confNum": 111,
 				"confName": "会议名称1",
@@ -114,8 +114,8 @@
 			},
 			{
 				"fileName": "忘忧草",
-				"fileSize": "3M",
-				"playTime": "00:20:30",
+				"fileSize": "12000",
+				"playTime": "12000",
 				"recordTime": "2015-06-06 01:00:00",
 				"confNum": 222,
 				"confName": "会议名称2",
@@ -132,8 +132,8 @@
 			},
 			{
 				"fileName": "文件1",
-				"fileSize": "300M",
-				"playTime": "00:10:20",
+				"fileSize": "53000",
+				"playTime": "53000",
 				"recordTime": "2015-05-05 00:00:00",
 				"confNum": 111,
 				"confName": "会议名称1",

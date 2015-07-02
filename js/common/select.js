@@ -166,7 +166,9 @@ define(function(require) {
 			{label: "COM5", value: 4},
 			{label: "COM6", value: 5},
 			{label: "COM7", value: 6},
-			{label: "COM8", value: 7}
+			{label: "COM8", value: 7},
+			{label: "COM9", value: 8},
+			{label: "COM10", value: 9}
 		],
 		"comMode":[
 			{label: "RS232", value: 0},
@@ -216,14 +218,55 @@ define(function(require) {
 			{label: "6", value: 6},
 			{label: "7", value: 7}
 		],
-		"vidPortType":[
+		"vidPortAuxType":[
 			{label: "VGA", value: Const.VidPortType_VGA},
-			{label: "YPbPr", value: Const.VidPortType_YPbPr},
+			{label: "YPbPr", value: Const.VidPortType_YPbPr}
+		],
+		"vidPortType":[
+			{label: "DVI", value: Const.VidPortType_Dvi},
+			{label: "HDMI", value: Const.VidPortType_Hdmi}
 		],
 		"speed":[
 			{label: "快速", value: 0},
 			{label: "中速", value: 1},
 			{label: "慢速", value: 2}
+		],
+		"vidExpandMode":[
+			{label: "等比缩放", value: 0},
+			{label: "全屏缩放", value: 1},
+			{label: "智能缩放", value: 2}
+		],
+		"vidOutFmt_vga":[
+			{label: "1080P60(1920x1080)", value: Const.VidFmt_1080+"060"},
+			{label: "1080P50(1920x1080)", value: Const.VidFmt_1080+"050"},
+			{label: "720P60(1280x720)",   value: Const.VidFmt_720+"060"},
+			{label: "720P50(1280x720)",   value: Const.VidFmt_720+"050"},
+			{label: "UXGA(1600x1200)",   value: Const.VidFmt_1600X1200+"060"},
+			{label: "SXGA(1280x1024)",  value: Const.VidFmt_1280X1024+"060"},
+			{label: "XGA(1024x768)",    value: Const.VidFmt_1024X768+"060"},
+			{label: "SVGA(800x600)",    value: Const.VidFmt_800X600+"060"}
+		],
+		"vidOutFmt_ypbpr":[
+			{label: "1080P60(1920x1080)", value: Const.VidFmt_1080+"060"},
+			{label: "1080P50(1920x1080)", value: Const.VidFmt_1080+"050"},
+			{label: "1080P30(1920x1080)", value: Const.VidFmt_1080+"030"},
+			{label: "1080I60(1920x1080)", value: Const.VidFmt_1080+"160"},
+			{label: "1080I50(1920x1080)", value: Const.VidFmt_1080+"150"},
+			{label: "720P60(1280x720)",   value: Const.VidFmt_720+"060"},
+			{label: "720P50(1280x720)",   value: Const.VidFmt_720+"050"}
+		],
+		"vidOutFmt_hdmi":[
+			{label: "1080P60(1920x1080)", value: Const.VidFmt_1080+"060"},
+			{label: "1080P50(1920x1080)", value: Const.VidFmt_1080+"050"},
+			{label: "1080P30(1920x1080)", value: Const.VidFmt_1080+"030"},
+			{label: "1080I60(1920x1080)", value: Const.VidFmt_1080+"160"},
+			{label: "1080I50(1920x1080)", value: Const.VidFmt_1080+"150"},
+			{label: "720P60(1280x720)",   value: Const.VidFmt_720+"060"},
+			{label: "720P50(1280x720)",   value: Const.VidFmt_720+"050"},
+			{label: "UXGA(1600x1200)",   value: Const.VidFmt_1600X1200+"060"},
+			{label: "SXGA(1280x1024)",  value: Const.VidFmt_1280X1024+"060"},
+			{label: "XGA(1024x768)",    value: Const.VidFmt_1024X768+"060"},
+			{label: "SVGA(800x600)",    value: Const.VidFmt_800X600+"060"}
 		],
 		"timezoneArr":[
 			{"label":"UTC-12:00", "value":-12},
