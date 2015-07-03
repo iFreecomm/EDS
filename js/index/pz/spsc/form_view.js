@@ -88,7 +88,7 @@ define(function(require) {
 		 */
 		changeVidPortType:function() {
 			this.changeFmt();
-			Util.refreshSelectmenu(this.ui.vidFmt, this.ui.formBox);
+			Util.refreshSelectmenu(this.ui.vidFmt);
 		},
 		/**
 		 * 模拟信号改变事件
@@ -97,7 +97,7 @@ define(function(require) {
 			this.changeVga();
 			
 			this.changeFmt();
-			Util.refreshSelectmenu(this.ui.vidFmt, this.ui.formBox);
+			Util.refreshSelectmenu(this.ui.vidFmt);
 		},
 		/**
 		 * 改变分辨率下拉列表
