@@ -319,6 +319,23 @@
 	color: #FFF;
 	cursor: move;
 }
+
+/**********多画面表单样式**********/
+#hymb_add_dhm .formCell-slider {
+	width: 510px;
+}
+#hymb_add_dhm .cellName {
+	width: 120px;
+	padding-right: 5px;
+}
+#hymb_add_dhm .slider.ui-slider-horizontal {
+	width: 320px;
+}
+#hymb_add_dhm .selectcolor {
+	float: right;
+	width: 75px;
+	height: 21px;
+}
 /************多画面样式结束*************/
 
 /************视频矩阵样式开始*************/

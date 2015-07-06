@@ -4,8 +4,11 @@ define(function(require) {
 	var DhmModel = Model.extend({
 		defaults: {
 			venueId: [],
-			subPicInfo: [],
-			enableMp: 0
+			enableMp: 0,
+			fadeInTime: 1000,
+			fadeOutTime: 1000,
+			minAlphaValue: 60,
+			backgroundColor: 0
 		},
 		urls: {
 			"create": "setVidMultiPic.psp",

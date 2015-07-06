@@ -20,8 +20,13 @@ define(function(require) {
 			secVidSend: 1,
 			enbTransGuard: true,
 			enableMp:0,
+			fadeInTime:1000,
+			fadeOutTime:1000,
+			minAlphaValue:60,
+			backgroundColor:0,
 			showMpMode:1,
 			mpMode: [],
+			
 			enableVM:0,
 			
 			recorder: {

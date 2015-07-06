@@ -75,6 +75,8 @@ define(function(require) {
 			this.listenTo(this.model, "change:equType", this.changeEquType);
 			
 			Util.setSelectBindings(this.bindings);
+			
+			this.setMicInfoClass(opt.templateHelpers.micInfo);
 		},
 		onRender: function() {
 			this.stickit();
@@ -142,6 +144,12 @@ define(function(require) {
 			var preHclx = this.model.previous("equType");
 			this.$("[equType*="+preHclx+"]").hide();
 			this.$("[equType*="+curHclx+"]").show();
+		},
+		
+		setMicInfoClass: function(micInfo) {
+			_.each(micInfo, function(mic) {
+				mic.className = mic.enable ? "" : "disabled";
+			});
 		}
 	});
 	

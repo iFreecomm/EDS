@@ -61,6 +61,7 @@ define(function(require) {
 			"keyup": "checkInput",
 			"click .saveBtn" : "saveModel"
 		},
+		
 		initialize: function(opt) {
 			Util.setSelectBindings(this.bindings);
 		},

@@ -16,7 +16,7 @@ define(function(require) {
 			dhm: "#hykz_dhm_container"
 		},
 		events: {
-			"click .saveBtn": "saveSpjz"
+			"click .saveBtn": "saveDhm"
 		},
 		
 		onBeforeShow: function(view, region, options) {
@@ -26,7 +26,7 @@ define(function(require) {
 			Util.activeLink("hykz/dhm");
 		},
 		
-		saveSpjz: function(e) {
+		saveDhm: function(e) {
 			e.preventDefault();
 			var self = this;
 			

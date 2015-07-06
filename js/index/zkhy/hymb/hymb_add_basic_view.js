@@ -89,6 +89,9 @@ define(function(require) {
 		onAttach: function() {
 			Util.selectmenu(this.ui.select, this.ui.formBox);
 		},
+		onDestroy: function() {
+			Radio.channel("basic").reset();
+		},
 		
 		checkInput: function(e) {
 			FormUtil.checkInput($(e.target), this.checkOptions);
@@ -98,8 +101,7 @@ define(function(require) {
 			return FormUtil.checkForm(this.$el, this.checkOptions);
 		},
 		secVidFlagChange:function(){
-			Radio.channel("dhm").request("secVidFlgChange");
-			Radio.channel("spjz").request("secVidFlgChange");
+			Radio.channel("basic").trigger("secVidFlgChange");
 		}
 	});
 	

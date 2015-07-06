@@ -23,7 +23,8 @@ define(function(require) {
 		
 		onRender: function() {
 			Radio.channel("spjz").reply("getMatrixInOut", this.getMatrixInOut, this);
-			Radio.channel("spjz").reply("secVidFlgChange", this.secVidFlgChange, this);
+			
+			Radio.channel("basic").on("secVidFlgChange", this.secVidFlgChange, this);
 			
 			Radio.channel("yhz").on("addLxr", this.addMatrix, this);
 			Radio.channel("yhz").on("subLxr", this.subMatrix, this);
@@ -36,6 +37,9 @@ define(function(require) {
 		},
 		onDestroy: function() {
 			Radio.channel("spjz").reset();
+			
+			Radio.channel("basic").off("secVidFlgChange", this.secVidFlgChange);
+			
 			Radio.channel("yhz").off("addLxr", this.addMatrix);
 			Radio.channel("yhz").off("subLxr", this.subMatrix);
 		},

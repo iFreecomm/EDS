@@ -17,9 +17,18 @@ define(function(require) {
 		id: "hymb_add_dhm",
 		template: Handlebars.compile(tmpl),
 		bindings: {
-			"#enableMp": "enableMp"
+			"#enableMp": "enableMp",
+			"#fadeInTime": "fadeInTime",
+			"#fadeOutTime": "fadeOutTime",
+			"#minAlphaValue": "minAlphaValue",
+			"#backgroundColor": {
+				observe: "backgroundColor",
+				selectName: "backgroundColor"
+			}
 		},
 		ui: {
+			"formBox": ".formBox",
+			"backgroundColor": "#backgroundColor",
 			"mode_box_big": ".mode-box-big",
 			"mode_box": ".mode-box-container .mode-box",
 			"dhmLxrs": ".dhmLxrs",
@@ -29,10 +38,14 @@ define(function(require) {
 			"click @ui.mode_box": "selectMode"
 		},
 		
+		initialize: function(opt) {
+			Util.setSelectBindings(this.bindings);
+		},
 		onRender: function() {
 			Radio.channel("dhm").reply("getShowMpMode", this.getShowMpMode, this);
 			Radio.channel("dhm").reply("getMpMode", this.getMpMode, this);
-			Radio.channel("dhm").reply("secVidFlgChange", this.secVidFlgChange, this);
+			
+			Radio.channel("basic").on("secVidFlgChange", this.secVidFlgChange, this);
 			
 			Radio.channel("yhz").on("addLxr", this.addDhmlxr, this);
 			Radio.channel("yhz").on("subLxr", this.subDhmlxr, this);
@@ -40,7 +53,9 @@ define(function(require) {
 			this.initMpMode();
 			this.fixMpMode();
 			this.stickit();
-			Util.initCheckboxClass(this.$el).addCheckboxEvent(this.$el);
+			Util.initCheckboxClass(this.$el)
+				.addCheckboxEvent(this.$el)
+				.initSlider(this.$el);
 			
 			//初始化多画面左侧可以拖拽的联系人
 			this.addDhmlxr(this.getDhmLxr());
@@ -59,8 +74,26 @@ define(function(require) {
 				}
 			});
 		},
+		onAttach: function() {
+			var colors = ['white', 'yellow', 'cyan', 'green', 'magenta', 'red', 'blue', 'black'];
+			$.widget("custom.colorselectmenu", $.ui.selectmenu, {
+				_renderItem: function(ul, item) {
+					var $li = $("<li>");
+					this._setText($li, item.label);
+					$('<span class="selectcolor"></span>').css("background-color", colors[item.index]).appendTo($li);
+					return $li.appendTo(ul);
+				}
+			});
+			this.ui.backgroundColor.colorselectmenu({
+				change: Util._selectChangeEvent,
+				appendTo: this.ui.formBox
+			});
+		},
 		onDestroy: function() {
 			Radio.channel("dhm").reset();
+			
+			Radio.channel("basic").off("secVidFlgChange", this.secVidFlgChange);
+			
 			Radio.channel("yhz").off("addLxr", this.addDhmlxr);
 			Radio.channel("yhz").off("subLxr", this.subDhmlxr);
 		},

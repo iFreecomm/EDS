@@ -294,6 +294,16 @@ define(function(require) {
 			{"label":"UTC+10:00","value":10},
 			{"label":"UTC+11:00","value":11},
 			{"label":"UTC+12:00","value":12}
+		],
+		"backgroundColor":[
+			{"label":"白色","value":0},
+			{"label":"黄色","value":1},
+			{"label":"青色","value":2},
+			{"label":"绿色","value":3},
+			{"label":"品红色/洋红","value":4},
+			{"label":"红色","value":5},
+			{"label":"蓝色","value":6},
+			{"label":"黑色","value":7}
 		]
 	};
 });

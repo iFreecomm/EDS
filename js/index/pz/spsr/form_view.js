@@ -47,7 +47,6 @@ define(function(require) {
 		},
 		initialize: function(opt) {
 			Util.setSelectBindings(this.bindings);
-			
 		},
 		onRender: function() {
 			this.stickit();

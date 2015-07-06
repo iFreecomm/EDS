@@ -363,6 +363,7 @@ define(function() {
 	Util.addCheckboxEvent = function($el) {
 		$el.on("click", ".checkbox-label", function() {
 			var $label = $(this);
+			if($label.is(".disabled")) return;
 			var $checkbox = $label.prev();
 			var box = $checkbox.get(0);
 			box.checked = !box.checked;
