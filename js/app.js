@@ -18,6 +18,7 @@ define(function(require) {
 	var ZdRouter = require("web/index/zd/zd_router");
 	var WjllRouter = require("web/index/wjll/wjll_router");
 	var CameraRouter = require("web/index/camera/router");
+	var BfqRouter = require("web/index/bfq/router");
 	
 	require("stickit");
 	require("jqueryui");
@@ -60,6 +61,7 @@ define(function(require) {
 			new ZdRouter(opt);
 			new WjllRouter(opt);
 			new CameraRouter(opt);
+			new BfqRouter(opt);
 		},
 		
 		initRenderer: function() {

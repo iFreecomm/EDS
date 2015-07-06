@@ -5,6 +5,7 @@ requirejs.config({
         mousewheel: "jquery.mousewheel",
         customIP: "jquery.customIP",
         jplayer: "jplayer/jquery.jplayer",
+        playlist: "jplayer/jplayer.playlist",
         jqueryui: "jqueryui/jquery-ui",
         datepickerzhCN: "jqueryui/datepicker-zh-CN",
         timepicker: "jqueryui/jquery-ui-timepicker-addon",
@@ -13,7 +14,8 @@ requirejs.config({
         marionette: "backbone.marionette"
     },
     shim: {
-    	mobilyblocks: ["jquery"]
+    	mobilyblocks: ["jquery"],
+    	playlist: ["jquery"]
     }
 });
 

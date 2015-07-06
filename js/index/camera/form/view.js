@@ -45,7 +45,6 @@ define(function(require) {
 			}
 		},
 		ui: {
-			formBox: ".formBox",
 			select: "select"
 		},
 		events: {
@@ -58,7 +57,7 @@ define(function(require) {
 			this.stickit();
 		},
 		onAttach: function() {
-			Util.selectmenu(this.ui.select, this.ui.formBox);
+			Util.selectmenu(this.ui.select, this.$el);
 		},
 		
 		saveCamera: function() {

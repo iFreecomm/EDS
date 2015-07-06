@@ -121,7 +121,7 @@ define(function(require) {
 			Util.alert("保存会议模板失败！");
 		},
 		cancelTemp: function() {
-			Backbone.history.navigate("zkhy/showHymb", {trigger: true});
+			Util.navigate("zkhy/showHymb", {trigger: true});
 		}
 	});
 	

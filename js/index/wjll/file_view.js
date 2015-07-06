@@ -32,8 +32,7 @@ define(function(require) {
 			this.$("[type=checkbox]").prop("checked", isChecked);
 			Util.initCheckboxClass(this.$el);
 		},
-		downloadFile:function(e){
-			//e.preventDefault();
+		downloadFile: function(e) {
 			var $tr = $(e.target).parents("tr");
 			var path = $tr.data("path");
 			//var fileName = "Alias0"+path.substr(path.lastIndexOf("\/"));
@@ -49,13 +48,17 @@ define(function(require) {
 			e.preventDefault();
 			var index = $(e.target).parents("tr").index() - 1;
 			var model = this.collection.at(index);
+			var list = [model.toJSON()];
 			
-			Radio.channel("wjll").command("playFile", {
-				title: model.get("fileName"),
-				path: model.get("filePath")
+			localStorage.setItem("playList", JSON.stringify(list));
+			Util.navigate("playFile", {trigger:true});
+			
+//			Radio.channel("wjll").command("playFile", {
+//				title: model.get("fileName"),
+//				path: model.get("filePath")
 //				path: "Alias0"+model.get("filePath")
-				//path: "Alias0/HardDisk1/recordfiles/2015/05/25/video2.mp4"
-			});
+//				path: "Alias0/HardDisk1/recordfiles/2015/05/25/video2.mp4"
+//			});
 		},
 		deleteFile: function(e) {
             //单个文件删除

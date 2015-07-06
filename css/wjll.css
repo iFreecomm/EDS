@@ -77,6 +77,11 @@
 	bottom: 1px;
 }
 
+#bfq_show {
+	width: 642px;
+	margin: 10px auto 0;
+}
+
 .jp-audio,
 .jp-video,
 .jp-progress,
