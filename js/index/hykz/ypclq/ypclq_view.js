@@ -92,17 +92,25 @@ define(function(require) {
 		_loopTimer: function(time) {
 			var self = this;
 			time = time || 0;
+			this.timerFlag = true;
 			this.timerId = setTimeout(_getRealtimeInfo, time);
-			
+			var now = Date.now();
+
 			function _getRealtimeInfo() {
-				$.getJSON("getYpclq.psp").done(function(realtime) {
+				var cur = Date.now();
+				console.log("enter1:", cur - now);
+				now = cur;
+				$.getJSON("getAudExcitedJoinVenueInfo.psp").done(function(realtime) {
+					console.log("enter2:", Date.now() - now);
 					Radio.channel("ypclq").trigger("refresh", realtime.data);
-					self.timerId = setTimeout(_getRealtimeInfo, 1000);
+					if(self.timerFlag)
+						self.timerId = setTimeout(_getRealtimeInfo, 1000);
 				});
 			}
 		},
 		
 		_stopTimer: function() {
+			this.timerFlag = false;
 			clearTimeout(this.timerId);
 		}
 	});
