@@ -4,62 +4,62 @@
     "micInfo": [
       {
         "micPort": 0,
-        "name": "MIC0",
-        "enable": 0
-      },
-      {
-        "micPort": 1,
         "name": "MIC1",
         "enable": 0
       },
       {
-        "micPort": 2,
+        "micPort": 1,
         "name": "MIC2",
         "enable": 0
       },
       {
-        "micPort": 3,
+        "micPort": 2,
         "name": "MIC3",
         "enable": 0
       },
       {
-        "micPort": 4,
+        "micPort": 3,
         "name": "MIC4",
+        "enable": 0
+      },
+      {
+        "micPort": 4,
+        "name": "MIC5",
         "enable": 1
       },
       {
         "micPort": 5,
-        "name": "MIC5",
+        "name": "MIC6",
         "enable": 0
       },
       {
         "micPort": 6,
-        "name": "MIC6",
-        "enable": 1
-      },
-      {
-        "micPort": 7,
         "name": "MIC7",
         "enable": 1
       },
       {
-        "micPort": 8,
+        "micPort": 7,
         "name": "MIC8",
         "enable": 1
       },
       {
-        "micPort": 9,
+        "micPort": 8,
         "name": "MIC9",
         "enable": 1
       },
       {
-        "micPort": 10,
+        "micPort": 9,
         "name": "MIC10",
         "enable": 1
       },
       {
-        "micPort": 11,
+        "micPort": 10,
         "name": "MIC11",
+        "enable": 1
+      },
+      {
+        "micPort": 11,
+        "name": "MIC12",
         "enable": 1
       }
     ],

@@ -17,7 +17,7 @@ define(function(require) {
 			
 			var playList = this.getPlayList();
 			
-			new jPlayerPlaylist({
+			var myPlayList = new jPlayerPlaylist({
 				jPlayer: "#jquery_jplayer_1",
 				cssSelectorAncestor: "#jp_container_1"
 			}, playList, {
@@ -32,6 +32,12 @@ define(function(require) {
 					width: "640px",
 					height: "360px",
 					cssClass: "jp-video-360p"
+				},
+				ready: function() {
+					//播放器会引起页面title变化，这里修正它
+					document.title = document.title.replace(/#.*/, "");
+					//自动播放，并且解决IE8样式问题
+					myPlayList.play();
 				}
 			});
 		},
@@ -48,8 +54,8 @@ define(function(require) {
 					artist: model.artist
 				};
 				
-//				var path = model.filePath;
-				var path = "Alias0" + model.filePath;
+				var path = model.filePath;
+//				var path = "Alias0" + model.filePath;
 				if(self._isAudio(path)) {
 					oMedia.mp3 = path;
 					oMedia.poster = "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png";

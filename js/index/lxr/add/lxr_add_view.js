@@ -147,7 +147,9 @@ define(function(require) {
 		},
 		
 		setMicInfoClass: function(micInfo) {
+			var micPortArr = this.model.get("micPort");
 			_.each(micInfo, function(mic) {
+				_.contains(micPortArr, mic.micPort) && (mic.enable = 1);
 				mic.className = mic.enable ? "" : "disabled";
 			});
 		}

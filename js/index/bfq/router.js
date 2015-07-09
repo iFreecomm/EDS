@@ -1,7 +1,7 @@
 define(function(require) {
 	var Mn = require("marionette");
-	var BfqRoute = require("web/index/bfq/bfq_route");
-	var PlayFileRoute = require("web/index/bfq/playFile_route");
+	var BfqRoute = require("./bfq_route");
+	var PlayFileRoute = require("./playFile_route");
 
 	var BfqRouter = Mn.AppRouter.extend({
 		initialize: function(options) {
