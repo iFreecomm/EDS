@@ -7,8 +7,8 @@ define(function(require) {
 			decibel: 10
 		},
 		urls: {
-			"create": "setYyjlSlideCfg.psp",
-			"read": "getYyjlSlideCfg.psp"
+			"create": "setExcitedAudTimeCfg.psp",
+			"read": "getExcitedAudTimeCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

@@ -19,36 +19,75 @@ define(function(require) {
 			slideContainer: ".slide-container",
 			formBoxContainer: ".formBox-container"
 		},
+		ui: {
+			popupContainer: ".popup-container",
+			moreBtn: ".more"
+		},
+		events: {
+			"click .more": "showMore"
+		},
 		
 		onAttach: function() {
 			var self = this;
 			var slideModel = new SlideModel();
 			
 			$.when(
-				$.getJSON("getYyjlAllVenue.psp"),
-				$.getJSON("getYyjlLockedVenue.psp"),
-				
-				$.getJSON("getYyjlAdvanceCfg.psp"),
+				$.getJSON("getAudExcitedJoinVenueInfo.psp"),
+				$.getJSON("getExcitedAudVenueCfg.psp"),
+				$.getJSON("getExcitedAudSeniorCfg.psp"),						
 				$.getJSON("getExcitedAudVenueInfo.psp"),
 				
 				slideModel.fetch()
-			).done(function(allVenue, lockedVenue, advanceCfg, cameraArr) {
+			).done(function(allVenueRst, lockedVenueRst, advanceCfg, cameraArrRst) {
+				var allVenue = [];
+				if(allVenueRst[0].data && allVenueRst[0].data.venueArr)
+				{
+					allVenue = allVenueRst[0].data.venueArr
+				}
+				
+				var lockedVenue = [];
+				if(lockedVenueRst[0].data && lockedVenueRst[0].data.lockedVenue)
+				{
+					lockedVenue = lockedVenueRst[0].data.lockedVenue
+				}
+				
 				self.showChildView("pzTableContainer", new PzTableView({
-					allVenue: allVenue[0].data.allVenue,
-					lockedVenue: lockedVenue[0].data.lockedVenue
+					allVenue: allVenue,
+					lockedVenue: lockedVenue
 				}));
 				
 				self.showChildView("slideContainer", new SlideView({
 					model: slideModel
 				}));
 				
+				var cameraArr = [];
+				if(cameraArrRst[0].data && cameraArrRst[0].data.cameraArr)
+				{
+					cameraArr = cameraArrRst[0].data.cameraArr;
+				}
 				self.showChildView("formBoxContainer", new AdvanceView({
 					model: new AdvanceModel(Util.flat(advanceCfg[0].data)),
 					templateHelpers: {
-						cameraArr: cameraArr[0].data.cameraArr
+						cameraArr: cameraArr
 					}
 				}));
 			});
+		},
+		
+		showMore: function() {
+			var con = this.ui.popupContainer;
+			var btn = this.ui.moreBtn;
+			
+			if(btn.is(".active")) {
+				con.animate({top:240}, "fast", function() {
+					con.hide();
+				});
+				btn.text("更多");
+			} else {
+				con.show().animate({top:32}, "fast");
+				btn.text("关闭");
+			}
+			btn.toggleClass("active");
 		}
 	});
 	

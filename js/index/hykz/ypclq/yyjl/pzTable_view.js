@@ -20,13 +20,24 @@ define(function(require) {
 		},
 		
 		lockVenue: function(e) {
-			var $td = $(e.target);
+			var $td = $(e.target), $lockedTd = this.$("td.locked");
+			if($td.is(".locked") || $td.is(".active")) {
+				$lockedTd = $lockedTd.not($td);
+			} else {
+				$lockedTd = $lockedTd.add($td);
+			}
 			
-			$.getJSON("temp.psp", Util.encode({
-				enable: $td.is(".locked") ? 1 : 0
+			var arr = $lockedTd.map(function() {
+				return $(this).data("recordId");
+			}).get();
+			
+			$.getJSON("setExcitedAudVenueCfg.psp", Util.encode({
+				lockedVenue: arr
 			})).done(function(res) {
 				if(res.code === 0) {
 					$td.toggleClass("locked");
+				}else{
+					Util.alert("锁定会场失败！");
 				}
 			});
 		},
@@ -35,12 +46,14 @@ define(function(require) {
 			var allVenue = this.options.allVenue;
 			var lockedVenue = this.options.lockedVenue;
 			
-			if(allVenue.length > 0) {
-				this.$el.append(this._getPzTable(allVenue.slice(0, 16), lockedVenue));
-			}
-			
-			if(allVenue.length > 16) {
-				this.$el.append(this._getPzTable(allVenue.slice(16, 32), lockedVenue));
+			// 最多有32个会场，最多可以放下三行，所以每行最多可以放下11个会场
+			var start = 0, num = 11;
+			var tmpArr = allVenue.slice(0, num);
+			while(tmpArr.length > 0) {
+				this.$el.append(this._getPzTable(tmpArr, lockedVenue));
+				
+				start += num;
+				tmpArr = allVenue.slice(start, start+num);
 			}
 		},
 		
@@ -55,7 +68,7 @@ define(function(require) {
 			
 			var curTd;
 			_.each(allVenue, function(venue, index) {
-				var name = venue.name;
+				var name = venue.addrName;
 				var recordId = venue.recordId;
 				var $span = $('<span></span>').text(name);
 				$tr1.append($th.clone().append($span).attr("title", name));
@@ -71,7 +84,7 @@ define(function(require) {
 		},
 		
 		_refresh: function(data) {
-			var id = Math.floor(Math.random() * 10)+1;
+			var id = data.currentExcitedVenueId || 0;
 			this.$("td").removeClass("active").each(function() {
 				var $this = $(this);
 				if($this.data("recordId") === id) {

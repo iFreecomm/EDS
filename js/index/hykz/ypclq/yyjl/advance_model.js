@@ -12,8 +12,8 @@ define(function(require) {
 			"silenceCfg.venueId": 0
 		},
 		urls: {
-			"create": "setYyjlAdvanceCfg.psp",
-			"read": "getYyjlAdvanceCfg.psp"
+			"create": "setExcitedAudSeniorCfg.psp",
+			"read": "getExcitedAudSeniorCfg.psp"
 		},
 		parse: function(res) {
 			return res.data;

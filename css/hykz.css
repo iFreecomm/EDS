@@ -235,6 +235,14 @@
 #hykz_ypclq_jyby .btn-by.active {
 	background: url(../img/form/btn/by1.png) no-repeat 0 5px;
 }
+#hykz_ypclq_jyby .btn-yyjl {
+	padding-left: 62px;
+	height: 40px;
+	background: url(../img/form/checkbox/switch_off.png) no-repeat 1px 7px;
+}
+#hykz_ypclq_jyby .btn-yyjl.active {
+	background: url(../img/form/checkbox/switch_on.png) no-repeat 1px 7px;
+}
 	/**********音频配置中静音闭音模块样式结束**********/
 
 	/**********音频配置中本地输入模块样式开始**********/
@@ -324,12 +332,13 @@
 	overflow: hidden;
 	height: 240px;
 }
-
+		/**********语音激励模块pzTable-container样式**********/
 #yyjl_container .pzTable-container {
 	margin: 10px 20px;
 }
 #yyjl_container .pzTable {
 	width: auto;
+	margin-top: 10px;
 }
 #yyjl_container .pzTable th span {
 	display: inline-block;
@@ -340,7 +349,7 @@
 	overflow: hidden;
 }
 #yyjl_container .pzTable td {
-	width: 47px;
+	width: 69px;
 	background-color: #15577E;
 }
 #yyjl_container .pzTable td.locked {
@@ -349,29 +358,8 @@
 #yyjl_container .pzTable td.active {
 	background-color: #2AB100;
 }
-
-#yyjl_container .ui-widget {
-	font-size: 16px;
-}
-#yyjl_container .slider.ui-slider-horizontal {
-	width: 265px;
-}
-#yyjl_container .slide-container {
-	margin-top: 20px;
-}
-#yyjl_container .slide-container .formCell {
-	width: 380px;
-	padding-left: 25px;
-}
-#yyjl_container .slide-container span {
-	font-size: 16px;
-	color: #FFF;
-}
-#yyjl_container .slide-container span.name {
-	margin-left: 10px;
-}
-
-#yyjl_container .formBox {
+		/**********语音激励模块popup-container样式**********/
+#yyjl_container .popup-container {
 	display: none;
 	position: absolute;
 	left: 0;
@@ -379,8 +367,36 @@
 	z-index: 99;
 	width: 100%;
 	height: 208px;
-	padding-top: 30px;
+	padding-top: 10px;
 	background: #244959;
+}
+		/**********语音激励模块slide-container样式**********/
+#yyjl_container .ui-widget {
+	font-size: 16px;
+}
+#yyjl_container .slider.ui-slider-horizontal {
+	width: 265px;
+}
+#yyjl_container .slide-container .formCell {
+	width: 410px;
+	padding-left: 20px;
+	margin-bottom: 0;
+}
+#yyjl_container .slide-container span {
+	font-size: 16px;
+	color: #FFF;
+}
+		/**********语音激励模块formBox-container样式**********/
+#yyjl_container .formBox {
+	/*display: none;
+	position: absolute;
+	left: 0;
+	top: 240px;
+	z-index: 99;
+	width: 100%;
+	height: 208px;
+	padding-top: 30px;
+	background: #244959;*/
 }
 #yyjl_container .formBox select {
 	width: 150px;
