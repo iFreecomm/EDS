@@ -10,6 +10,7 @@ define(function(require) {
 	var HymbAddDhmView = require("web/index/zkhy/hymb/hymb_add_dhm_view");
 	var HymbAddSpjzView = require("web/index/zkhy/hymb/hymb_add_spjz_view");
 	var HymbAddLzbmView = require("web/index/zkhy/hymb/hymb_add_lzbm_view");
+	var HymbAddYppzView = require("web/index/zkhy/hymb/hymb_add_yppz_view");
 	
 	var HymbModel = require("web/index/zkhy/hymb/hymb_model");
 	
@@ -25,8 +26,12 @@ define(function(require) {
 				$.getJSON("getVidOutPort_VMatrix.psp"),//视频输出端口
 				$.getJSON("getRecNum.psp"),//录制编码路数
 				
+				$.getJSON("getAudExcitedJoinVenueInfo.psp"), //所有会场
+				$.getJSON("getExcitedAudVenueCfg.psp"), //锁定会场
+				$.getJSON("getExcitedAudVenueInfo.psp"), //摄像机
+				
 				this.hymbModel.mayFetch(options)
-			).done(function(allLxr, outPort, recNum) {
+			).done(function(allLxr, outPort, recNum, allVenueRst, lockedVenueRst, cameraArrRst) {
 				self.allLxr = allLxr[0].data.bookInfo;
 				
 				self.dviArr = [];
@@ -36,6 +41,24 @@ define(function(require) {
 				}
 				
 				self.recNum = recNum[0].data.recNum;
+				
+				self.allVenue = [];
+				if(allVenueRst[0].data && allVenueRst[0].data.venueArr)
+				{
+					self.allVenue = allVenueRst[0].data.venueArr
+				}
+				
+				self.lockedVenue = [];
+				if(lockedVenueRst[0].data && lockedVenueRst[0].data.lockedVenue)
+				{
+					self.lockedVenue = lockedVenueRst[0].data.lockedVenue
+				}
+				
+				self.cameraArr = [];
+				if(cameraArrRst[0].data && cameraArrRst[0].data.cameraArr)
+				{
+					self.cameraArr = cameraArrRst[0].data.cameraArr;
+				}
 				
 				self.showView();
 			});
@@ -79,6 +102,14 @@ define(function(require) {
 					model: this.hymbModel,
 					allLxr: this.allLxr,
 					recNum: this.recNum
+				}),
+				zkhyHymbAddYppzView: new HymbAddYppzView({
+					hymbModel: this.hymbModel,
+					allVenue: this.allVenue,
+					lockedVenue: this.lockedVenue,
+					templateHelpers: {
+						cameraArr: this.cameraArr
+					}
 				})
 			});
 		}

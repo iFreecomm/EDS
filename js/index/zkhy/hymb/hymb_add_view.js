@@ -16,7 +16,8 @@ define(function(require) {
 			yhz: "#zkhy_hymb_add_yhz",
 			dhm: "#zkhy_hymb_add_dhm",
 			spjz: "#zkhy_hymb_add_spjz",
-			lzbm: "#zkhy_hymb_add_lzbm"
+			lzbm: "#zkhy_hymb_add_lzbm",
+			yppz: "#zkhy_hymb_add_yppz"
 		},
 		events: {
 			"click .tabBox li": "selectTab",
@@ -30,6 +31,7 @@ define(function(require) {
 			this.showChildView("dhm", options.zkhyHymbAddDhmView);
 			this.showChildView("spjz", options.zkhyHymbAddSpjzView);
 			this.showChildView("lzbm", options.zkhyHymbAddLzbmView);
+			this.showChildView("yppz", options.zkhyHymbAddYppzView);
 		},
 		onAttach: function() {
 			Util.activeLink("zkhy/showHymb");
@@ -58,6 +60,8 @@ define(function(require) {
 			var matrixInOut = Radio.channel("spjz").request("getMatrixInOut");
 			var recList = Radio.channel("lzbm").request("getRecList");
 			
+			var yppzModel = Radio.channel("yppz").request("getYppzModel");
+			
 			this.model.set({
 				"venueId": yhzArr,
 				
@@ -68,6 +72,7 @@ define(function(require) {
 				"matrixNum": matrixInOut.length,
 				"recorder": {recList:recList,recNum:recList.length}
 			})
+			.set(yppzModel)
 			.save()
 			.done(function(res) {
 				self.saveSuccess(res);

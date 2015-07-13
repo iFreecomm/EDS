@@ -415,4 +415,39 @@
 	background: url(../img/form/btn/advance2.png) no-repeat right 10px;
 }
 /************录制编码样式结束*************/
+
+/************音频配置样式开始*************/
+#hymb_add_yppz .formBox-column {
+	width: 550px;
+	margin-top: 10px;
+}
+#hymb_add_yppz .slider.ui-slider-horizontal {
+	width: 280px;
+}
+
+#hymb_add_yppz .descTxt {
+	font-size: 16px;
+	line-height: 38px;
+	vertical-align: middle;
+	margin: 0 2px;
+}
+
+#hymb_add_yppz .spinner {
+  width: 40px;
+  height: 20px;
+  padding: 0;
+}
+
+#hymb_add_yppz .ui-selectmenu-text {
+  padding: 3px 34px 3px 16px;
+}
+
+#hymb_add_yppz .pzTable {
+  margin-bottom: 10px;
+}
+
+#hymb_add_yppz .locked {
+  background: #F47900;
+}
+/************音频配置样式结束*************/
 /********添加会议模板样式结束***********/

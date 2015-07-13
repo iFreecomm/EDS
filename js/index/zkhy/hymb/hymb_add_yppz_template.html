@@ -1,0 +1,63 @@
+<div class="pzTable-container"></div>
+
+<div class="formBox cf">
+	<div class="formCell">
+		<span class="descTxt">启动语音激励</span>
+		<input type="checkbox" name="enableSe" id="enableSe"/>
+		<label for="enableSe" class="checkbox-label"></label>
+	</div>
+	
+	<div class="formBox-column fl">
+		<div class="formCell">
+			<span class="descTxt fl">持续讲话激励时间</span>
+			<div class="slider" data-min="1" data-max="10"></div>
+			<span class="sliderValue" id="time" contenteditable="true"></span>
+			<span>s</span>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">启用争辩状态处理</span>
+			<input type="checkbox" name="discussEnable" id="discussEnable"/>
+			<label for="discussEnable" class="checkbox-label"></label>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">两个或两个以上麦克风同时持续讲话</span>
+			<input type="text" name="discussTime" id="discussTime" class="spinner" data-min="10" data-max="9999" data-step="10"/>
+			<span class="descTxt">毫秒以上时间</span>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">自动切换到摄像机</span>
+			<select name="discussVenueId" id="discussVenueId">
+				{{#each cameraArr}}
+					<option data-stickit-bind-val="{{recordId}}">{{addrName}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	
+	<div class="formBox-column fl">
+		<div class="formCell">
+			<span class="descTxt fl">激励MIC音量最小值</span>
+			<div class="slider" data-min="10" data-max="100" data-step="10"></div>
+			<span class="sliderValue" id="decibel" contenteditable="true"></span>
+			<span>dB</span>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">启用静默状态处理</span>
+			<input type="checkbox" name="silenceEnable" id="silenceEnable"/>
+			<label for="silenceEnable" class="checkbox-label"></label>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">所有麦克风均没有声音输入，持续</span>
+			<input type="text" name="silenceTime" id="silenceTime" class="spinner" data-min="10" data-max="9999" data-step="10"/>
+			<span class="descTxt">毫秒以上时间</span>
+		</div>
+		<div class="formCell">
+			<span class="descTxt">自动切换到摄像机</span>
+			<select name="silenceVenueId" id="silenceVenueId">
+				{{#each cameraArr}}
+					<option data-stickit-bind-val="{{recordId}}">{{addrName}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+</div>

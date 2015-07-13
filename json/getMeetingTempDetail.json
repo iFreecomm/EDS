@@ -214,6 +214,21 @@
 				}
 			}
 		]
+	},
+	
+	"enableSe": 1,
+	"lockedVenue": [1,2,3,4,5,6,7,8,9,10],
+	"time": 5,
+	"decibel": 70,
+	"discussCfg": {
+		"discussEnable": 1,
+		"time": 1100,
+		"venueId": 333
+	},
+	"silenceCfg": {
+		"silenceEnable": 1,
+		"time": 2200,
+		"venueId": 444
 	}
   }
 }
