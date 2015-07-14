@@ -86,7 +86,7 @@ define(function(require) {
 			var lockedVenue = this.options.lockedVenue;
 			
 			// 最多有32个会场
-			var start = 0, num = 8;
+			var start = 0, num = 11;
 			var tmpArr = allVenue.slice(0, num);
 			while(tmpArr.length > 0) {
 				this.ui.pzTableContainer.append(this._getPzTable(tmpArr, lockedVenue));

@@ -343,10 +343,13 @@
 #yyjl_container .pzTable th span {
 	display: inline-block;
 	vertical-align: middle;
-	width: 47px;
-	font-size: 14px;
+	width: 65px;
+	font-size: 12px;
 	white-space: nowrap;
 	overflow: hidden;
+}
+#yyjl_container th:first-child {
+  font-size: 12px;
 }
 #yyjl_container .pzTable td {
 	width: 69px;

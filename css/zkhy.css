@@ -48,7 +48,7 @@
 #zkhy_hymb_add .tabContentBox {
 	position: absolute;
 	top: 32px;
-	bottom: 60px;
+	bottom: 40px;
 	left: 200px;
 	right: 0;
 	overflow: auto;
@@ -443,11 +443,30 @@
 }
 
 #hymb_add_yppz .pzTable {
+  width: auto;
   margin-bottom: 10px;
 }
 
 #hymb_add_yppz .locked {
   background: #F47900;
+}
+
+#hymb_add_yppz .pzTable th span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 65px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#hymb_add_yppz th:first-child {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#hymb_add_yppz .pzTable td {
+  width: 69px;
 }
 /************音频配置样式结束*************/
 /********添加会议模板样式结束***********/
