@@ -1,5 +1,20 @@
-<div class="formBox cf">
-	<div class="formLine">
+<div class="formBox">
+	<div class="formLine cf">
+		<div class="formCell fl">
+			<span class="cellName">会议名</span>
+			<div class="fieldBox sm">
+				<input type="text" name="confName" id="confName" />
+			</div>
+		</div>
+		
+		<div class="formCell fl">
+			<button type="button" class="btn searchBtn">搜索</button>
+			<button type="button" class="btn resetBtn">重置</button>
+			<button type="button" class="btn btn-advance">高级</button>
+		</div>
+	</div>
+	
+	<div class="formLine cf hidden">
 		<div class="formCell fl">
 			<span class="cellName">文件类型</span>
 			<div class="fieldBox sm">
@@ -24,12 +39,6 @@
 			</div>
 		</div>
 		<div class="formCell fl">
-			<span class="cellName">会议名</span>
-			<div class="fieldBox sm">
-				<input type="text" name="confName" id="confName" />
-			</div>
-		</div>
-		<div class="formCell fl">
 			<span class="cellName">召集人</span>
 			<div class="fieldBox sm">
 				<input type="text" name="convenor" id="convenor" />
@@ -42,10 +51,6 @@
 				<span>至</span>
 				<input type="text" name="endTime" id="endTime" />
 			</div>
-		</div>
-		<div class="formCell fl">
-			<button type="button" class="btn searchBtn">搜索</button>
-			<button type="button" class="btn resetBtn">重置</button>
 		</div>
 	</div>
 </div>

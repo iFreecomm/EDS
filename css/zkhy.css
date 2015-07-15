@@ -44,14 +44,16 @@
 /*********添加会议模板样式开始***********/
 #zkhy_hymb_add .tabBox {
 	position: relative;
+	top: 4px;
 }
 #zkhy_hymb_add .tabContentBox {
 	position: absolute;
-	top: 32px;
+	top: 35px;
 	bottom: 40px;
 	left: 200px;
 	right: 0;
 	overflow: auto;
+	border-top: 1px solid #000;
 }
 #zkhy_hymb_add .btn-area {
 	position: absolute;
@@ -403,7 +405,7 @@
 	padding-left: 50px;
 }
 
-.lzbm .btn-advance {
+.btn.btn-advance {
 	padding-right: 30px;
 	height: 40px;
 	background: url(../img/form/btn/advance1.png) no-repeat right 13px;
@@ -411,7 +413,7 @@
 	font-size: 16px;
 	text-shadow: none;
 }
-.lzbm .btn-advance.active {
+.btn-advance.active {
 	background: url(../img/form/btn/advance2.png) no-repeat right 10px;
 }
 /************录制编码样式结束*************/

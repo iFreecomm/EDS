@@ -44,7 +44,8 @@ define(function(require) {
 		events: {
 			"keyup": "checkInput",
 			"click .searchBtn": "searchFile",
-			"click .resetBtn": "resetFile"
+			"click .resetBtn": "resetFile",
+			"click .btn-advance": "toggleAdvance"
 		},
 		
 		initialize: function() {
@@ -81,7 +82,15 @@ define(function(require) {
 			this.model.clear().set(new SearchTermsModel().toJSON());
 			Util.refreshSelectmenu(this.$el);
 			Radio.channel("wjll").command("searchFile", this.model.toJSON());
-		}
+		},
+		
+		/**
+		 * 点击高级按钮，显示高级配置选项
+		 * @param {Object} e
+		 */
+		toggleAdvance: function(e) {
+			$(e.target).toggleClass("active").parents(".formLine").eq(0).next(".formLine").slideToggle();
+		},
 	});
 	
 	return SearchTermsView;

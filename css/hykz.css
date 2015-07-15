@@ -84,8 +84,16 @@
 
 /************添加会场样式开始*************/
 #hykz_tjhc .btn-area {
-	text-align: center;
-	margin: 20px;
+	text-align: right;
+	margin: 10px 0;
+}
+#hykz_tjhc .saveBtn {
+	margin-right: -49px;
+}
+#hykz_tjhc .rightGap {
+	display: inline-block;
+	width: 20%;
+	height: 1px;
 }
 /************添加会场样式结束*************/
 
@@ -174,7 +182,9 @@
 	min-width: 1680px;
 }
 .ypclq .line {
+	position: relative;
 	margin-bottom: 5px;
+	overflow: hidden;
 }
 .ypclq .formCell {
 	font-size: 0;
@@ -184,6 +194,19 @@
 	color: #FFF;
 	padding-right: 10px;
 	line-height: 32px;
+}
+.ypclq .moreBtn {
+	position: absolute;
+	top: 3px;
+	right: 16px;
+	z-index: 999;
+	width: 35px;
+	height: 21px;
+	padding: 0;
+	background: url(../img/yppz/more1.png);
+}
+.ypclq .moreBtn:hover {
+	background: url(../img/yppz/more2.png);
 }
 	/**********音频配置中表单样式结束**********/
 

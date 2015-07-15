@@ -189,7 +189,7 @@ define(function() {
 			if(obj.hasOwnProperty(key)) {
 				keyArr.push(key);
 				value = obj[key];
-				if(value instanceof Object) {
+				if(_.isObject(value) && !_.isArray(value)) {
 					this.flat(value, keyArr, resultObj);
 				} else {
 					resultObj[keyArr.join(".")] = value;

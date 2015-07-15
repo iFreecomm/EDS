@@ -4,7 +4,6 @@ define(function(require) {
 	var Util = require("web/common/util");
 	
 	var LxrAddView = Mn.ItemView.extend({
-		className: "formBox cf",
 		template: tmpl,
 		bindings: {
 			"#comPort": {
@@ -45,10 +44,12 @@ define(function(require) {
 			}
 		},
 		ui: {
+			formBox: ".formBox",
 			select: "select"
 		},
 		events: {
-			"click .saveBtn": "saveCamera"
+			"click .saveBtn": "saveCamera",
+			"click .cameraFormHead": "toggleFormBox"
 		},
 		initialize: function(opt) {
 			Util.setSelectBindings(this.bindings);
@@ -73,6 +74,10 @@ define(function(require) {
 		},
 		saveError: function() {
 			Util.alert("保存摄像机失败！");
+		},
+		
+		toggleFormBox: function() {
+			this.ui.formBox.toggle();
 		}
 	});
 	

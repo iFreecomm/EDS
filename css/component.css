@@ -134,9 +134,9 @@
 	padding: 0;
 	margin: 0;
 	list-style: none;
-	overflow: hidden;
 }
 .tabBox li {
+	position: relative;
 	float: left;
 	height: 32px;
 	line-height: 22px;
@@ -145,14 +145,16 @@
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom: none;
-	margin-left: 20px;
+	margin-left: 24px;
 	color: #444;
 	cursor: pointer;
+	background: #F4F1F1;
 }
 .tabBox li.active {
 	font-weight: bold;
 	color: #F47900;
-	background: #F4F1F1;
+	background: #FFF;
+	z-index: 9;
 }
 
 .tabContent {

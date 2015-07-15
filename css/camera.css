@@ -159,6 +159,19 @@
 	background-image: url(../img/camera/zoom_in_hover.png);
 }
 
+/********摄像机串口配置表单*********/
+.camera_container .cameraFormHead {
+	height: 32px;
+	line-height: 32px;
+	background: #DDD;
+	text-align: center;
+	cursor: pointer;
+}
+.camera_container .formBox {
+	display: none;
+	border: 1px solid #DDD;
+	padding: 15px 0 5px;
+}
 .camera_container .cellName {
 	width: 100px;
 	padding-right: 5px;
@@ -170,8 +183,11 @@
 .camera_container select {
 	width: 110px;
 }
-.camera_container .form-btns .btn {
+/*.camera_container .form-btns .btn {
 	margin-left: 348px;
 	margin-bottom: 10px;
-}
+}*/
 
+.camera_container .form-btns {
+	text-align: center;
+}

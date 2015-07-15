@@ -45,6 +45,9 @@ define(function(require) {
 			xfContainer: "#xf_container",
 			bdscBzContainer: "#bdsc_bz_container"
 		},
+		events: {
+			"click .moreBtn": "showhide"
+		},
 		
 		onBeforeShow: function(view, region, options) {
 			this.showChildView("bzhyContainer", new BzhyView());
@@ -87,6 +90,17 @@ define(function(require) {
 			this._stopTimer();
 			$(".contentRight").off("scroll");
 			Radio.channel("ypclq").reset();
+		},
+		
+		showhide: function(e) {
+			var $moreBtn = $(e.target);
+			var $line = $moreBtn.parent();
+			var headHeight = 32;
+			var height = $line.height();
+			var scrollHeight = $line.get(0).scrollHeight;
+			console.log("scrollHeight", scrollHeight);
+			var animateHeight = height === scrollHeight ? headHeight : scrollHeight;
+			$line.animate({height: animateHeight});
 		},
 		
 		_loopTimer: function(time) {
