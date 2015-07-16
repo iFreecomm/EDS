@@ -98,7 +98,6 @@ define(function(require) {
 			var headHeight = 32;
 			var height = $line.height();
 			var scrollHeight = $line.get(0).scrollHeight;
-			console.log("scrollHeight", scrollHeight);
 			var animateHeight = height === scrollHeight ? headHeight : scrollHeight;
 			$line.animate({height: animateHeight});
 		},
@@ -106,25 +105,25 @@ define(function(require) {
 		_loopTimer: function(time) {
 			var self = this;
 			time = time || 0;
-			this.timerFlag = true;
 			this.timerId = setTimeout(_getRealtimeInfo, time);
 			var now = Date.now();
 
 			function _getRealtimeInfo() {
 				var cur = Date.now();
-				console.log("enter1:", cur - now);
+				console.log("enter:", cur - now);
 				now = cur;
-				$.getJSON("getAudExcitedJoinVenueInfo.psp").done(function(realtime) {
-					console.log("enter2:", Date.now() - now);
-					Radio.channel("ypclq").trigger("refresh", realtime.data);
-					if(self.timerFlag)
-						self.timerId = setTimeout(_getRealtimeInfo, 1000);
+				self.$curAjax = $.getJSON("getAudExcitedJoinVenueInfo.psp").done(function(realtimeData) {
+					Radio.channel("ypclq").trigger("refresh", realtimeData.data);
+					self.timerId = setTimeout(_getRealtimeInfo, 1000);
 				});
 			}
 		},
 		
 		_stopTimer: function() {
-			this.timerFlag = false;
+			if(this.$curAjax) {
+				this.$curAjax.abort();
+				this.$curAjax = null;
+			}
 			clearTimeout(this.timerId);
 		}
 	});
