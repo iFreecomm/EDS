@@ -68,6 +68,21 @@
 #pz_xtgx .btn {
 	margin: 20px 10px;
 }
+#pz_xtgx form {
+	margin-left: 50px;
+}
+#pz_xtgx .cfgOutBtn {
+	margin-left: 50px;
+	margin-bottom: 20px;
+	width: 120px;
+}
+#pz_xtgx .cfgOutBtn a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #FFF;
+	text-decoration: none;
+}
 /*************系统更新样式结束************/
 
 /*************安全保密样式开始********/

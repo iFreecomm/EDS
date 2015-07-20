@@ -4,6 +4,7 @@ requirejs.config({
     	web: "../../../js",
         mousewheel: "jquery.mousewheel",
         customIP: "jquery.customIP",
+        uploadify: "uploadify/jquery.uploadify",
         jplayer: "jplayer/jquery.jplayer",
         playlist: "jplayer/jplayer.playlist",
         jqueryui: "jqueryui/jquery-ui",
@@ -15,7 +16,8 @@ requirejs.config({
     },
     shim: {
     	mobilyblocks: ["jquery"],
-    	playlist: ["jquery"]
+    	playlist: ["jquery"],
+    	uploadify: ["jquery"]
     }
 });
 
