@@ -63,7 +63,7 @@
 	display: block;
 	width: 32px;
 	height: 32px;
-	margin: 0 auto 50px auto;
+	margin: 80px auto;
 	background: url(../img/form/circle/share.png) no-repeat;
 	cursor: pointer;
 }

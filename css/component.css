@@ -25,6 +25,9 @@
 .box-container a:hover .box-head {
 	background: #F47900 !important;
 }
+.box-container a.active .box-head {
+	background: #F47900 !important;
+}
 /*********小盒子主体样式*********/
 .box-container .box-body {
 	box-sizing: border-box;

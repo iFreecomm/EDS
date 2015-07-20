@@ -6,13 +6,16 @@ define(function(require) {
 	
 	var tmpl = require("text!web/index/hykz/hcddt/hcddt_template.html");
 	
+	require("mobilyblocks");
+	
 	var LxrShowView = Mn.ItemView.extend({
 		id: "hykz_hcddt",
 		template: Handlebars.compile(tmpl),
 		events: {
 			"click .btn": "clickBtn",
 			"click .delBtn": "delLxr",
-			"click .box-container a": "disableDefault"
+			"click .box-container a": "selectLxr",
+			"click .circleMenu li": "circleMenu"
 		},
 		
 		onRender: function() {
@@ -29,6 +32,7 @@ define(function(require) {
 		},
 		onAttach: function() {
 			Util.activeLink();
+			this.$(".circleMenu").mobilyblocks().find(".trigger").click();
 		},
 		
 		clickBtn: function(e) {
@@ -74,8 +78,30 @@ define(function(require) {
 			
 		},
 		
-		disableDefault: function(e) {
+		selectLxr: function(e) {
 			e.preventDefault();
+			var $a = $(e.currentTarget);
+			this.$(".box-container").find("a").removeClass("active");
+			$a.addClass("active");
+			
+			this.selectedId = $a.next().data("id");
+		},
+		
+		circleMenu: function(e) {
+			if(typeof this.selectedId !== 'number') {
+				Util.alert("必须选择一个联系人！");
+				return false;
+			}
+			
+			var $li = $(e.currentTarget);
+			
+			var self = this;
+			var ctrlType = $li.data("ctrltype");
+			
+			$.getJSON("temp.psp", Util.encode({
+				recordId: this.selectedId,
+				ctrlType: ctrlType
+			}));
 		}
 	});
 	
