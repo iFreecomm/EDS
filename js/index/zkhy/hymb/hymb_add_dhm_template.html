@@ -1,46 +1,53 @@
 <div class="formBox">
-	<div class="formLine">
-		<div class="formCell">
-			<span class="cellName">自动多画面模式</span>
-			<div class="fieldBox">
-				<input type="checkbox" name="enableMp" id="enableMp" />
-    			<label for="enableMp" class="checkbox-label">使用自动多画面模式后不用配置多画面模式，系统会根据会议状态自动切换</label>
+	<div class="formCell">
+		<span class="cellName">淡入淡出开关</span>
+		<div class="fieldBox">
+			<input type="checkbox" name="fadeSwitch" id="fadeSwitch" />
+			<label for="fadeSwitch" class="checkbox-label"></label>
+		</div>
+	</div>
+	<div class="fade-cfg-box hidden">
+		<div class="formLine cf">
+			<div class="formCell formCell-slider fl">
+				<span class="cellName">淡入时间</span>
+				<div class="fieldBox">
+					<div class="slider" data-min="100" data-max="4000"></div>
+					<span class="sliderValue" id="fadeInTime" contenteditable="true"></span>
+				</div>
+			</div>
+			
+			<div class="formCell formCell-slider fl">
+				<span class="cellName">淡出时间</span>
+				<div class="fieldBox">
+					<div class="slider" data-min="100" data-max="4000"></div>
+					<span class="sliderValue" id="fadeOutTime" contenteditable="true"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="formLine cf">
+			<div class="formCell formCell-slider fl">
+				<span class="cellName">最小阿尔法值</span>
+				<div class="fieldBox">
+					<div class="slider" data-min="0" data-max="255"></div>
+					<span class="sliderValue" id="minAlphaValue" contenteditable="true"></span>
+				</div>
+			</div>
+			
+			<div class="formCell formCell-slider fl">
+				<span class="cellName">背景色</span>
+				<div class="fieldBox">
+					<select name="backgroundColor" id="backgroundColor"/>
+				</div>
 			</div>
 		</div>
 	</div>
 	
-	<div class="formLine cf">
-		<div class="formCell formCell-slider fl">
-			<span class="cellName">淡入时间</span>
-			<div class="fieldBox">
-				<div class="slider" data-min="100" data-max="4000"></div>
-				<span class="sliderValue" id="fadeInTime" contenteditable="true"></span>
-			</div>
-		</div>
-		
-		<div class="formCell formCell-slider fl">
-			<span class="cellName">淡出时间</span>
-			<div class="fieldBox">
-				<div class="slider" data-min="100" data-max="4000"></div>
-				<span class="sliderValue" id="fadeOutTime" contenteditable="true"></span>
-			</div>
-		</div>
-	</div>
-	
-	<div class="formLine cf">
-		<div class="formCell formCell-slider fl">
-			<span class="cellName">最小阿尔法值</span>
-			<div class="fieldBox">
-				<div class="slider" data-min="0" data-max="255"></div>
-				<span class="sliderValue" id="minAlphaValue" contenteditable="true"></span>
-			</div>
-		</div>
-		
-		<div class="formCell formCell-slider fl">
-			<span class="cellName">背景色</span>
-			<div class="fieldBox">
-				<select name="backgroundColor" id="backgroundColor"/>
-			</div>
+	<div class="formCell">
+		<span class="cellName">自动多画面模式</span>
+		<div class="fieldBox">
+			<input type="checkbox" name="enableMp" id="enableMp" />
+			<label for="enableMp" class="checkbox-label">使用自动多画面模式后不用配置多画面模式，系统会根据会议状态自动切换</label>
 		</div>
 	</div>
 </div>

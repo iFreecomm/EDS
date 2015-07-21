@@ -17,6 +17,11 @@ define(function(require) {
 		id: "hymb_add_dhm",
 		template: Handlebars.compile(tmpl),
 		bindings: {
+			"#fadeSwitch": {
+				observe: "fadeSwitch",
+				visible: true,
+				visibleFn: "showMore"
+			},
 			"#enableMp": "enableMp",
 			"#fadeInTime": "fadeInTime",
 			"#fadeOutTime": "fadeOutTime",
@@ -187,6 +192,11 @@ define(function(require) {
 		/************************************/
 		/*************页面交互事件**************/
 		/************************************/
+		
+		showMore: function($el, isVisible) {
+			var $nextBox = $el.parents(".formCell").eq(0).next();
+			isVisible && $nextBox.slideDown() || $nextBox.slideUp();
+		},
 		
 		selectMode: function(e) {
 			this.saveCurrentSubPicInfo();

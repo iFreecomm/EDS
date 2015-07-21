@@ -69,7 +69,9 @@ define(function(require) {
 		},
 		ui: {
 			formBox: ".formBox",
-			select: "select"
+			select: "select",
+			name: "#name",
+			desc: "#desc"
 		},
 		events: {
 			"keyup": "checkInput"
@@ -98,7 +100,7 @@ define(function(require) {
 		},
 		
 		isFormValid: function() {
-			return FormUtil.checkForm(this.$el, this.checkOptions);
+			return FormUtil.checkInput(this.ui.name, this.checkOptions) || FormUtil.checkInput(this.ui.desc, this.checkOptions);
 		},
 		secVidFlagChange:function(){
 			Radio.channel("basic").trigger("secVidFlgChange");

@@ -326,6 +326,9 @@
 #hymb_add_dhm .formCell-slider {
 	width: 510px;
 }
+#hymb_add_dhm .formCell {
+	margin-bottom: 0;
+}
 #hymb_add_dhm .cellName {
 	width: 120px;
 	padding-right: 5px;

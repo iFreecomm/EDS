@@ -41,6 +41,11 @@ define(function(require) {
 			var $tar = $(e.target);
 			$tar.addClass("active").siblings().removeClass("active");
 			this.$(".tabContentBox").children().removeClass("active").eq($tar.index()).addClass("active");
+			
+			//解决切换标签页导致提示信息错位的BUG
+			if($tar.index() === 0) {
+				Radio.channel("basic").request("isFormValid")
+			}
 		},
 		saveTemp: function(e) {
 			e.preventDefault();

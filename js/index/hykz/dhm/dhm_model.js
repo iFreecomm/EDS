@@ -4,6 +4,7 @@ define(function(require) {
 	var DhmModel = Model.extend({
 		defaults: {
 			venueId: [],
+			fadeSwitch: 0,
 			enableMp: 0,
 			fadeInTime: 1000,
 			fadeOutTime: 1000,
