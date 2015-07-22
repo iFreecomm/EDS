@@ -82,6 +82,11 @@
 	height: 57px;
 	background-image: url(../img/navLeft/icon.png);
 }
+.navLeft .nav-text {
+	margin-right: 26px;
+	white-space: nowrap;
+	overflow: hidden;
+}
 .navLeft .nav-ydyhy { background-position: -1073px -3px; }
 .navLeft .nav-hyjl { background-position: -1131px -3px; }
 .navLeft .nav-yyhy { background-position: -1191px -3px; }

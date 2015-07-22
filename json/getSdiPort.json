@@ -4,15 +4,15 @@
 		"sdiInfo": [
 		  {
 		    "camPort": 0,
-		    "name": "SDI0"
+		    "name": "SDI0我是很长的很长的非常长的"
 		  },
 		  {
 		    "camPort": 1,
-		    "name": "SDI1"
+		    "name": "SDI1我是很长的很长"
 		  },
 		  {
 		    "camPort": 2,
-		    "name": "SDI2"
+		    "name": "SDI2我不太长"
 		  }
 		]
 	}
